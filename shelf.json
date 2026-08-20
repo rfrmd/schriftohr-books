@@ -11,6 +11,66 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/pilgrims-progress/cover.jpg",
       "source": "The Works of John Bunyan, ed. George Offor, 1855, via Project Gutenberg and Standard Ebooks",
       "license": "Text public domain; editorial matter © RFRMD Word Labs LLC, CC BY 4.0; cover and marks reserved"
+    },
+    {
+      "id": "tales-of-the-covenanters-pollok",
+      "title": "Tales of the Covenanters",
+      "author": "Robert Pollok",
+      "blurb": "Pollok's three classic tales of Scotland's covenanting days — Helen of the Glen, Ralph Gemmell, and The Persecuted Family — from the illustrated 1895 Edinburgh edition, with a sketch of Pollok's life.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/tales-of-the-covenanters-pollok/Pollok_Robert-SchriftOhr_Edition-Tales_of_the_Covenanters.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/tales-of-the-covenanters-pollok/cover.jpg",
+      "source": "Internet Archive scan of the 1895 Oliphant Anderson & Ferrier edition",
+      "license": "Text and illustrations public domain"
+    },
+    {
+      "id": "tales-of-the-covenanters-guthrie",
+      "title": "Tales of the Covenanters",
+      "author": "Ellen Jane Guthrie",
+      "blurb": "Guthrie's stories of the covenanting martyrs, from the eleventh edition with its 1920 plates.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/tales-of-the-covenanters-guthrie/Guthrie_Ellen_Jane-SchriftOhr_Edition-Tales_of_the_Covenanters.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/tales-of-the-covenanters-guthrie/cover.jpg",
+      "source": "Project Gutenberg ebook 45678",
+      "license": "Text and plates public domain"
+    },
+    {
+      "id": "treasure-island",
+      "title": "Treasure Island",
+      "author": "Robert Louis Stevenson",
+      "blurb": "Stevenson's adventure entire, with Louis Rhead's illustrations riding along.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/treasure-island/Stevenson_Robert_Louis-SchriftOhr_Edition-Treasure_Island.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/treasure-island/cover.jpg",
+      "source": "Project Gutenberg ebook 120",
+      "license": "Text and illustrations public domain"
+    },
+    {
+      "id": "swiss-family-robinson",
+      "title": "The Swiss Family Robinson",
+      "author": "Johann David Wyss",
+      "blurb": "The island classic, set clean for reading and listening.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/swiss-family-robinson/Wyss_JD-SchriftOhr_Edition-Swiss_Family_Robinson.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/swiss-family-robinson/cover.jpg",
+      "source": "Project Gutenberg ebook 41659",
+      "license": "Text public domain"
+    },
+    {
+      "id": "mystery-at-dark-cedars",
+      "title": "The Mystery at Dark Cedars",
+      "author": "Edith Lavell",
+      "blurb": "A Mary Louise Gay mystery from 1935 — an old house with too many secrets, an orphan niece, and a girl detective who doesn't wait for permission.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/mystery-at-dark-cedars/Lavell_Edith-SchriftOhr_Edition-Mystery_at_Dark_Cedars.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-at-dark-cedars/cover.jpg",
+      "source": "Project Gutenberg ebook 43582",
+      "license": "Text public domain in the United States"
+    },
+    {
+      "id": "green-tent-mystery",
+      "title": "The Green Tent Mystery at Sugar Creek",
+      "author": "Paul Hutchens",
+      "blurb": "A Sugar Creek Gang story from 1950 — a green tent by the creek, a summer mystery, and the gang on the case.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/green-tent-mystery/Hutchens_Paul-SchriftOhr_Edition-Green_Tent_Mystery_at_Sugar_Creek.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/green-tent-mystery/cover.jpg",
+      "source": "Project Gutenberg ebook 58514",
+      "license": "Text public domain in the United States"
     }
   ]
 }
