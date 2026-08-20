@@ -1,0 +1,16 @@
+{
+  "v": 1,
+  "name": "The SchriftOhr Shelf",
+  "books": [
+    {
+      "id": "pilgrims-progress",
+      "title": "The Pilgrim's Progress",
+      "author": "John Bunyan",
+      "blurb": "The SchriftOhr Edition: Bunyan's complete text — both parts, unmodernised — with the journey's stages set as real chapters, a Scripture-only footnote apparatus, and Bunyan's own writings gathered as endnotes. Set for reading, for listening, and for discussion in company.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/pilgrims-progress/Bunyan_John-SchriftOhr_Edition-Pilgrims_Progress.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/pilgrims-progress/cover.jpg",
+      "source": "The Works of John Bunyan, ed. George Offor, 1855, via Project Gutenberg and Standard Ebooks",
+      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC, CC BY 4.0; cover and marks reserved"
+    }
+  ]
+}
