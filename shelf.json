@@ -83,6 +83,26 @@
       "license": "Text public domain in the United States"
     },
     {
+      "id": "sugar-creek-goes-north",
+      "title": "The Sugar Creek Gang Goes North",
+      "author": "Paul Hutchens",
+      "blurb": "The gang heads north for a camping trip, hoping to see their friend Snow-in-the-face again. What they find instead is a kidnapping — and Bill Collins and the rest set about solving it between the tents and the timber.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-goes-north/Hutchens_Paul-SchriftOhr_Edition-Sugar_Creek_Gang_Goes_North.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-goes-north/cover.jpg",
+      "source": "Project Gutenberg ebook 56554, retrieved via OpenChapter.io",
+      "license": "Text public domain in the United States"
+    },
+    {
+      "id": "sugar-creek-digs-for-treasure",
+      "title": "The Sugar Creek Gang Digs for Treasure",
+      "author": "Paul Hutchens",
+      "blurb": "Camping in the north woods, Bill Collins and Little Jim turn the shore into Robinson Crusoe's island and go hunting imaginary treasure. Then the game stops being a game: there is a kidnapper, a ransom, and money nobody can find.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-digs-for-treasure/Hutchens_Paul-SchriftOhr_Edition-Sugar_Creek_Gang_Digs_for_Treasure.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-digs-for-treasure/cover.jpg",
+      "source": "Project Gutenberg ebook 56553, retrieved via OpenChapter.io",
+      "license": "Text public domain in the United States"
+    },
+    {
       "id": "green-tent-mystery",
       "title": "The Green Tent Mystery at Sugar Creek",
       "author": "Paul Hutchens",

@@ -113,3 +113,105 @@ def build(src, out, meta, cover, tpl, plates=()):
     report = {'source_images': sorted(all_imgs), 'carried': sorted(imgmap.values()),
               'used_in_text': sorted(kept), 'chapters': len(chapters)}
     return chapters, report
+
+
+HOUSE_NOTE = ('The work here has been to clear away what had gathered around the text in its '
+              'passage into digital form — the page numbers scattered mid-sentence, the broken '
+              'lines, the apparatus of the scan — so that the book reads cleanly on a screen and '
+              'reads aloud cleanly to a listener.')
+
+def package(out, chapters, meta, cover_png, tpl, epub_path):
+    """Set the house front matter around the chapters and seal the epub."""
+    T, A = meta['title'], meta['author']
+    shutil.copy(f'{tpl}/OEBPS/css/style.css', f'{out}/OEBPS/css/style.css')
+    for m in ('publisher-mark.png', 'publisher-mark-dark.png'):
+        shutil.copy(f'{tpl}/OEBPS/images/{m}', f'{out}/OEBPS/images/{m}')
+    Image.open(cover_png).convert('RGB').save(
+        f'{out}/OEBPS/images/cover.jpg', 'JPEG', quality=90, optimize=True, progressive=True)
+
+    open(f'{out}/OEBPS/text/cover.xhtml', 'w', encoding='utf-8').write(
+        '<?xml version="1.0" encoding="utf-8"?>\n<html xmlns="http://www.w3.org/1999/xhtml" '
+        'xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="en-GB" lang="en-GB">\n'
+        '<head><title>Cover</title><meta charset="utf-8"/><style>body{margin:0;padding:0}'
+        'img{max-width:100%;height:auto;display:block;margin:0 auto}</style></head>\n'
+        '<body epub:type="frontmatter"><section epub:type="cover">'
+        '<img src="../images/cover.jpg" alt="Cover"/></section></body></html>\n')
+    series = f'<p>{html.escape(meta["series"])}</p>\n' if meta.get('series') else ''
+    open(f'{out}/OEBPS/text/00-title.xhtml', 'w', encoding='utf-8').write(page(
+        T, 'titlepage', 'titlepage',
+        f'<h1>{html.escape(T)}</h1>\n<p><strong>{html.escape(A)}</strong></p>\n{series}'
+        '<p>The SchriftOhr Edition</p>\n<p>Developed by RFRMDWordLabs, LLC</p>\n'
+        '<p>For the benefit of readers, prayerfully, to the glory of God.</p>\n'
+        '<p class="publisher-mark"><img src="../images/publisher-mark.png" '
+        'alt="RFRMD Word Labs, LLC"/></p>', 'frontmatter'))
+    open(f'{out}/OEBPS/text/01-edition-note.xhtml', 'w', encoding='utf-8').write(page(
+        'About This Edition', 'preamble', 'preamble', '<h2>About This Edition</h2>\n'
+        f'<p>This is the SchriftOhr edition of <i>{html.escape(T)}</i>, prepared by '
+        f'RFRMDWordLabs, LLC. {html.escape(meta["surname"])}’s text is given as '
+        f'{meta["pronoun"]} wrote it in {meta["year"]}. Nothing has been modernised, abridged, '
+        f'or rewritten. {HOUSE_NOTE}</p>', 'frontmatter'))
+    open(f'{out}/OEBPS/text/97-sources.xhtml', 'w', encoding='utf-8').write(page(
+        'Sources and Acknowledgements', 'preamble', 'preamble',
+        '<h2>Sources and Acknowledgements</h2>\n' + meta['sources'] +
+        '\n<p>The arrangement of this edition is the work of RFRMDWordLabs, LLC. No claim is '
+        'made upon the text.</p>\n<p><i>Soli Deo gloria.</i></p>', 'backmatter'))
+
+    order = ([('cover.xhtml', 'Cover'), ('00-title.xhtml', T),
+              ('01-edition-note.xhtml', 'About This Edition')] + chapters +
+             [('97-sources.xhtml', 'Sources and Acknowledgements')])
+    open(f'{out}/OEBPS/nav.xhtml', 'w', encoding='utf-8').write(
+        '<?xml version="1.0" encoding="utf-8"?>\n<html xmlns="http://www.w3.org/1999/xhtml" '
+        'xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="en-GB" lang="en-GB">\n'
+        '<head><title>Contents</title><meta charset="utf-8"/></head><body>\n'
+        '<nav epub:type="toc" role="doc-toc" id="toc"><h1>Contents</h1><ol>\n' +
+        '\n'.join(f'      <li><a href="text/{f}">{html.escape(t)}</a></li>' for f, t in order[1:]) +
+        '\n</ol></nav>\n</body></html>\n')
+
+    man = ['    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>',
+           '    <item id="css" href="css/style.css" media-type="text/css"/>',
+           '    <item id="cover-img" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>',
+           '    <item id="pubmark" href="images/publisher-mark.png" media-type="image/png"/>',
+           '    <item id="pubmarkdark" href="images/publisher-mark-dark.png" media-type="image/png"/>']
+    for j, extra in enumerate(sorted(set(os.listdir(f'{out}/OEBPS/images')) -
+                                     {'cover.jpg', 'publisher-mark.png', 'publisher-mark-dark.png'})):
+        man.append(f'    <item id="pl{j}" href="images/{extra}" media-type="image/jpeg"/>')
+    spine = []
+    for i, (f, t) in enumerate(order):
+        man.append(f'    <item id="t{i}" href="text/{f}" media-type="application/xhtml+xml"/>')
+        spine.append(f'    <itemref idref="t{i}"/>')
+    open(f'{out}/OEBPS/content.opf', 'w', encoding='utf-8').write(
+f'''<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="uid" xml:lang="en-GB">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:identifier id="uid">urn:uuid:{uuid.uuid5(uuid.NAMESPACE_URL, "schriftohr:" + meta["id"])}</dc:identifier>
+    <dc:title>{html.escape(T)}</dc:title>
+    <dc:creator id="author">{html.escape(A)}</dc:creator>
+    <meta refines="#author" property="role" scheme="marc:relators">aut</meta>
+    <dc:language>en-GB</dc:language>
+    <dc:publisher>SchriftOhr / RFRMDWordLabs, LLC</dc:publisher>
+    <dc:description>{html.escape(meta["description"])}</dc:description>
+    <dc:source>{html.escape(meta["source"])}</dc:source>
+    <dc:rights>{html.escape(meta["rights"])}</dc:rights>
+    <dc:date>{meta["date"]}</dc:date>
+    <meta property="dcterms:modified">{meta["date"]}T00:00:00Z</meta>
+    <meta name="cover" content="cover-img"/>
+  </metadata>
+  <manifest>
+{chr(10).join(man)}
+  </manifest>
+  <spine>
+{chr(10).join(spine)}
+  </spine>
+</package>
+''')
+    open(f'{out}/META-INF/container.xml', 'w', encoding='utf-8').write(
+        '<?xml version="1.0" encoding="utf-8"?>\n<container version="1.0" '
+        'xmlns="urn:oasis:names:tc:opendocument:xmlns:container">\n  <rootfiles>\n'
+        '    <rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/>\n'
+        '  </rootfiles>\n</container>\n')
+    open(f'{out}/mimetype', 'w').write('application/epub+zip')
+    if os.path.exists(epub_path):
+        os.remove(epub_path)
+    subprocess.run(['zip', '-qX0', epub_path, 'mimetype'], cwd=out, check=True)
+    subprocess.run(['zip', '-qXr9', epub_path, 'META-INF', 'OEBPS'], cwd=out, check=True)
+    return epub_path
