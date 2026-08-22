@@ -91,7 +91,9 @@ def build(src, out, meta, cover, tpl, plates=()):
         if not os.path.exists(p):
             continue
         raw = open(p, encoding='utf-8', errors='ignore').read()
-        if 'PROJECT GUTENBERG LICENSE' in raw.upper():
+        # Skip the license PAGE, not every file that mentions the licence —
+        # Gutenberg's own front matter names it, and that file can hold chapters.
+        if re.search(r'<h[12][^>]*>\s*THE FULL PROJECT GUTENBERG LICENSE', raw, re.I):
             continue
         b = body_of(raw)
         for m in re.finditer(r'<h[12][^>]*>(.*?)</h[12]>', b, re.S | re.I):
