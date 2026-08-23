@@ -196,3 +196,33 @@ def decide(inferred, later):
     if _edit(a, b) <= 1 and a[:2] == b[:2]:
         return inferred, 'later printing modernised the spelling; period form kept'
     return later, 'later printing (inference differed)'
+
+
+def apply_readings(xml, ledger_final, unresolved_mark='▫'):
+    """Substitute settled readings into the text.
+
+    Gaps arrive in document order, so they map onto the split in order.
+    Where a gap continues a word, the fragment on either side is already
+    part of the reading, so the fragments are consumed with it.
+    """
+    body_at = xml.find('<text')
+    head, body = xml[:body_at], xml[body_at:]
+    parts = re.split(r'(<gap[^>]*/?>)', body)
+    readings = {g['n']: g for g in ledger_final}
+    n = 0
+    out = [parts[0]]
+    for i in range(1, len(parts), 2):
+        n += 1
+        g = readings.get(n)
+        nxt = parts[i+1] if i+1 < len(parts) else ''
+        if g and g.get('reading'):
+            # drop the fragment already spoken for, on both sides
+            if not re.search(r'\s[• ]*$', flat(out[-1])):
+                out[-1] = re.sub(r'[A-Za-z]+$', '', out[-1].rstrip('• '))
+            nxt = re.sub(r'^[•\s]*[A-Za-z]+', '', nxt, count=1) \
+                  if re.match(r'^[•\s]*[A-Za-z]', nxt) else nxt
+            out.append(g['reading'])
+        else:
+            out.append(unresolved_mark)
+        out.append(nxt)
+    return head + ''.join(out)
