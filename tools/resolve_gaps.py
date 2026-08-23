@@ -165,6 +165,17 @@ def build_index(words):
     return idx
 
 
+def _edit(a, b):
+    """Levenshtein distance — small and exact, no dependency."""
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        cur = [i]
+        for j, cb in enumerate(b, 1):
+            cur.append(min(prev[j] + 1, cur[j-1] + 1, prev[j-1] + (ca != cb)))
+        prev = cur
+    return prev[-1]
+
+
 def decide(inferred, later):
     """Which reading stands, when the two methods differ.
 
@@ -179,7 +190,9 @@ def decide(inferred, later):
     if inferred == later:
         return inferred, 'both agree'
     a, b = inferred, later
-    same_word = a[:3] == b[:3] and abs(len(a) - len(b)) <= 2
-    if same_word:
+    # "Respelling" means ONE letter's difference — wayes/ways. It does not
+    # mean sharing a prefix: provision and promotion share 'pro' and are
+    # different words, and treating them as variants kept the wrong reading.
+    if _edit(a, b) <= 1 and a[:2] == b[:2]:
         return inferred, 'later printing modernised the spelling; period form kept'
     return later, 'later printing (inference differed)'
