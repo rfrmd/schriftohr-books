@@ -87,14 +87,12 @@ files.append(('00-title.xhtml',T))
 open(f'{OUT}/OEBPS/text/01-edition-note.xhtml','w',encoding='utf-8').write(page(
  'About This Edition','preamble','preamble','<h2>About This Edition</h2>\n'
  f'<p>This is the SchriftOhr edition of <i>{T}</i>, prepared by RFRMDWordLabs, LLC. '
- 'Owen’s text is given as he wrote it. Nothing has been modernised, abridged, or rewritten; '
- 'the seventeenth-century spelling stands, save that the long <i>ſ</i> is set as <i>s</i>.</p>\n'
- '<p>The text descends from a transcription keyed by hand from the 1668 printing. Where the page '
- 'defeated the keyer, the reading has been recovered from the context and checked against a later '
- 'printing, and every such decision is recorded — none was made silently. Passages the keyers left '
- 'in Greek are marked <i>[Greek]</i>, and the few readings still unsettled are marked '
- '<i>[…]</i> rather than guessed at.</p>\n'
- '<p>The argument standing at the head of each chapter is the printer’s own, as 1668 set it.</p>',
+ 'Owen\u2019s text is given as he wrote it \u2014 not modernised, abridged, or rewritten. The '
+ 'seventeenth-century spelling stands, save that the long <i>\u017f</i> is set as <i>s</i> and words '
+ 'broken across a line are rejoined.</p>\n'
+ '<p>Where the page was damaged past reading, the word is supplied where it can be established '
+ 'and marked <i>[\u2026]</i> where it cannot. Passages left in Greek are marked <i>[Greek]</i>.</p>\n'
+ '<p>The argument standing at the head of each chapter is the printer\u2019s own, as 1668 set it.</p>',
  'frontmatter'))
 files.append(('01-edition-note.xhtml','About This Edition'))
 if preface:
@@ -119,9 +117,9 @@ open(f'{OUT}/OEBPS/text/97-sources.xhtml','w',encoding='utf-8').write(page(
  'follows the printing of 1668 (Wing O787; ESTC R214591). Owen died in 1683, and his text has long '
  'been in the public domain.</p>\n'
  '<p>Our text descends from the <i>Early English Books Online Text Creation Partnership</i>, whose '
- 'keyers typed it by hand from images of the 1668 pages rather than passing them through a machine. '
- 'The Partnership has waived every right it holds in that work under the <i>CC0 1.0 Public Domain '
- 'Dedication</i>. Freely given, and gratefully used.</p>\n'
+ 'keyers typed it by hand from images of the 1668 pages. The Partnership has waived every right '
+ 'it holds in that work under the <i>CC0 1.0 Public Domain Dedication</i>. Freely given, and '
+ 'gratefully used.</p>\n'
  '<p>The arrangement of this edition is the work of RFRMDWordLabs, LLC. No claim is made upon the '
  'text.</p>\n<p><i>Soli Deo gloria.</i></p>','backmatter'))
 files.append(('97-sources.xhtml','Sources and Acknowledgements'))

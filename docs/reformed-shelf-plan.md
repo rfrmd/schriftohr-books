@@ -150,8 +150,12 @@ So the working order is:
    for the readings that matter.
 3. **Record every one.** Each resolution is written to
    `working/gap-ledger.json` beside the source, with its context and how
-   it was reached. Nothing is filled silently, and any reading can be
-   challenged later.
+   it was reached — for our own reference, so a reading can be revisited.
+   ⚠️ This is working practice, not something the edition announces:
+   collating against a later printing is ordinary proofreading, and the
+   note should not read as a defence of it (John, 2026-08-23). The
+   edition tells the reader what he needs — what was normalised, what
+   the marks mean — and nothing more.
 4. **The Greek and Hebrew** — 29 in Owen, 63 in Brooks, 154 in Charnock —
    are a separate task: the keyers skipped non-Latin script entirely. A
    later printing or the Greek New Testament supplies them.

@@ -59,16 +59,14 @@ open(f'{OUT}/OEBPS/text/00-title.xhtml','w',encoding='utf-8').write(page(T,'titl
 files.append(('00-title.xhtml',T))
 open(f'{OUT}/OEBPS/text/01-edition-note.xhtml','w',encoding='utf-8').write(page(
  'About This Edition','preamble','preamble','<h2>About This Edition</h2>\n'
- f'<p>This is the SchriftOhr edition of <i>{T}</i>, prepared by RFRMDWordLabs, LLC. Burroughs’s '
- 'text is given as he preached and as 1649 printed it. Nothing has been modernised, abridged, or '
- 'rewritten; the seventeenth-century spelling stands, save that the long <i>ſ</i> is set as '
- '<i>s</i> and words broken across a line are rejoined.</p>\n'
- '<p>The text descends from a transcription keyed by hand from the 1649 pages. Where the page '
- 'defeated the keyer, the reading has been recovered from the context and checked against a later '
- 'printing; every such decision is recorded, and none was made silently. Passages left in Greek are '
- 'marked <i>[Greek]</i>, and readings still unsettled <i>[…]</i>, rather than guessed at.</p>\n'
- '<p>The volume of 1649 carried a second work after the Rare Jewel — a sermon on Exodus 14:13, '
- '<i>The Saints’ Duty in Times of Extremity</i>. It is kept here, where its printer put it.</p>',
+ f'<p>This is the SchriftOhr edition of <i>{T}</i>, prepared by RFRMDWordLabs, LLC. '
+ 'Burroughs\u2019s text is given as he preached it and as 1649 printed it \u2014 not modernised, '
+ 'abridged, or rewritten. The seventeenth-century spelling stands, save that the long <i>\u017f</i> '
+ 'is set as <i>s</i> and words broken across a line are rejoined.</p>\n'
+ '<p>Where the page was damaged past reading, the word is supplied where it can be established '
+ 'and marked <i>[\u2026]</i> where it cannot. Passages left in Greek are marked <i>[Greek]</i>.</p>\n'
+ '<p>The volume of 1649 carried a second work after the Rare Jewel \u2014 a sermon on Exodus 14:13, '
+ '<i>The Saints\u2019 Duty in Times of Extremity</i>. It is kept here, where its printer put it.</p>',
  'frontmatter'))
 files.append(('01-edition-note.xhtml','About This Edition'))
 
@@ -96,9 +94,9 @@ open(f'{OUT}/OEBPS/text/97-sources.xhtml','w',encoding='utf-8').write(page(
  f'<p>Jeremiah Burroughs died in 1646; <i>{T}</i> was printed in 1649 for Peter Cole (Wing B6103; '
  'ESTC R32016), and his text has long been in the public domain.</p>\n'
  '<p>Our text descends from the <i>Early English Books Online Text Creation Partnership</i>, whose '
- 'keyers typed it by hand from images of the 1649 pages rather than passing them through a machine. '
- 'The Partnership has waived every right it holds in that work under the <i>CC0 1.0 Public Domain '
- 'Dedication</i>. Freely given, and gratefully used.</p>\n'
+ 'keyers typed it by hand from images of the 1649 pages. The Partnership has waived every right '
+ 'it holds in that work under the <i>CC0 1.0 Public Domain Dedication</i>. Freely given, and '
+ 'gratefully used.</p>\n'
  '<p>The arrangement of this edition is the work of RFRMDWordLabs, LLC. No claim is made upon the '
  'text.</p>\n<p><i>Soli Deo gloria.</i></p>','backmatter'))
 files.append(('97-sources.xhtml','Sources and Acknowledgements'))
