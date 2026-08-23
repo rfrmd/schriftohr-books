@@ -166,6 +166,15 @@ editions will modernise regardless.
 
 ---
 
+## ⚠️ Publication is on hold
+
+John, 2026-08-22: **"don't publish these just yet."** The Reformed
+editions are built, verified and delivered to his Desktop, but none goes
+into `shelf.json` or onto either website until he has read them and said
+so. This is a new imprint direction and the first of five; the marks
+`[…]` and `[Greek]`, and the choice to keep period spelling in stage
+one, are all still open to his judgment.
+
 ## The build, per book
 
 1. **Choose and clear the source.** Name the exact printing. Record it.
