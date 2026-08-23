@@ -116,31 +116,70 @@ def norm(t):
     return re.sub(r'[^a-z ]', ' ', re.sub(r'\s+', ' ',
                   t.replace('ſ', 's').lower())).split()
 
-def collate(g, later_words, index, window=5):
-    """Find this gap's context in the later printing and read what stands there."""
-    before = norm(g['before'])[-window:]
-    after = norm(re.sub(r'^[•\s]+', '', g['after']))[:2]
-    if len(before) < 3:
+def stem(w):
+    """Enough of a word to survive three centuries of spelling drift:
+    'wayes'/'ways', 'mortifie'/'mortify', 'shew'/'show' all share a head."""
+    return w[:4]
+
+def collate(g, later_words, index):
+    """Read what the later printing has where this gap stands.
+
+    Keyed on word stems, because exact keys do not survive the drift
+    between a 1668 printing and a modern one.
+
+    ⚠️ Two traps, both of which produced wrong readings before:
+      · The word carrying the gap may be split ("pro|on"). Its leading
+        fragment is NOT a word — keying on it means 'pro' never matches
+        'prom', and the gap that proves this whole method (promotion)
+        goes unread. Build the key from complete words only.
+      · The answer is then always the word AFTER the key, and where the
+        gap continues a word that answer must start with the fragment.
+    """
+    before = norm(g['before'])
+    after = norm(re.sub(r'^[\u2022\s]+', '', g['after']))
+    continues = not re.search(r'\s[\u2022 ]*$', g['before'])
+    frag = before[-1] if continues and before else ''
+    complete = before[:-1] if continues else before
+    if len(complete) < 3:
         return None
-    key = tuple(before[-3:])
-    for pos in index.get(key, ())[:40]:
-        nxt = later_words[pos + 1: pos + 4]
-        if not nxt:
+    key = tuple(stem(w) for w in complete[-3:])
+    for pos in index.get(key, ())[:60]:
+        at = pos + 1
+        if at >= len(later_words):
             continue
-        # the word standing where the gap is; confirm the text resumes as we expect
-        if after and after[0] not in ('', None):
-            tail = after[0]
-            cand = nxt[0]
-            if cand.endswith(tail) or tail.endswith(cand) or cand == tail:
-                return cand
-            if len(nxt) > 1 and nxt[1] == tail:
-                return cand
-        else:
-            return nxt[0]
+        cand = later_words[at]
+        if frag and not cand.startswith(frag[:3]):
+            continue
+        if frag and len(cand) <= len(frag):
+            continue
+        nxt = later_words[at + 1] if at + 1 < len(later_words) else ''
+        if after and not (stem(nxt) == stem(after[0]) or cand.endswith(after[0])):
+            continue
+        return cand
     return None
 
 def build_index(words):
     idx = {}
     for i in range(len(words) - 2):
-        idx.setdefault(tuple(words[i:i+3]), []).append(i + 2)
+        idx.setdefault(tuple(stem(w) for w in words[i:i+3]), []).append(i + 2)
     return idx
+
+
+def decide(inferred, later):
+    """Which reading stands, when the two methods differ.
+
+    The later printing normally wins — it read the page we cannot. But
+    not when the only difference is that a modern editor respelled the
+    word: this is a 1668 text, so 'wayes' stands and 'ways' does not.
+    """
+    if not later:
+        return inferred, 'inferred from the text'
+    if not inferred:
+        return later, 'later printing'
+    if inferred == later:
+        return inferred, 'both agree'
+    a, b = inferred, later
+    same_word = a[:3] == b[:3] and abs(len(a) - len(b)) <= 2
+    if same_word:
+        return inferred, 'later printing modernised the spelling; period form kept'
+    return later, 'later printing (inference differed)'
