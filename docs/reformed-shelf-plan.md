@@ -195,6 +195,104 @@ one, are all still open to his judgment.
 7. **Publish.** Repo → `shelf.json` → both websites, generated from the
    manifest.
 
+---
+
+# All five are built (2026-08-23)
+
+| | words | chapters | marks left |
+|---|---|---|---|
+| Pink, *Sovereignty of God* | 88,755 | 12 chapters + 2 forewords, introduction, conclusion, 3 appendices | one `[…]` |
+| Owen, *Mortification of Sin* | 42,732 | 14 chapters + preface | 23 `[…]`, one `[Greek]` |
+| Burroughs, *Rare Jewel* | 103,073 | 11 sermons + the bound-in sermon | 10 `[…]` |
+| Brooks, *Precious Remedies* | 94,701 | 38 devices across four Parts | 150 `[…]`, 30 `[Greek]` |
+| Charnock, *Existence and Attributes* | 681,949 | 14 Discourses | none |
+
+Every one passes `tools/verify_epub.py`: mimetype first and stored, manifest
+complete, every internal link resolving, every note reference landing on a
+note, the nav listing every document, and no placeholder or markup debris in
+the text.
+
+## What was settled along the way
+
+**The Greek and Hebrew are restored.** The EEBO-TCP keyers did not type
+non-Latin script — Owen 29 places, Brooks 63, Burroughs 5 — and the builder
+had been calling all of them `[Greek]`. Each is now supplied where the author
+himself fixes it: he names the verse and renders it in English on the spot,
+or gives the word in English letters (`musar paideia`, `suntripsei from
+suntribo`, `Berahh dodi`). Owen's 26 are confirmed against a later printing
+for 24 of them. What no printing settles keeps its mark: one marginal note in
+Owen, thirty places in Brooks. The readings live in `working/greek.json`
+beside each book, with the verse, the author's own gloss, and the witness.
+
+**Every word in a non-Latin script is followed by how it sounds** — John's
+house manner, 2026-08-23: θανατοῦτε (thah-nah-TOO-teh). Hand-written for
+Owen, Burroughs and Brooks; produced by `tools/greek_sound.py` for Charnock's
+221 runs, which agrees with the hand-written ones. Erasmian values, and the
+stress is read off the accents the printer set, not guessed. Charnock's
+Hebrew is unpointed in the source, so it is given without a sound.
+
+**Marginal notes are notes.** Brooks prints a thousand of them, and they were
+being flattened into the middle of his sentences ("to consider2 Remedy. When
+the golden bait…"). They are now real EPUB footnotes at the foot of the
+chapter; the printer's running heads ("2 Remedy.") are dropped as the
+furniture they are. Owen's 23 and Burroughs' 12 are set the same way.
+
+**Four defects in the gap machinery, found by reading the built page:**
+
+1. A reading placed in a gap **ate its neighbours**. The rule assumed a gap
+   sits inside a word (`promo⟦gap⟧on` → promotion); where a whole word was
+   missing between two intact ones it swallowed both — "the ⟦gap⟧ substance
+   of the Religion" came out as bare "the of the Religion". A reading now has
+   to *fit the letters still on the page*: it may absorb a fragment only if
+   it starts or ends with it. `resolve_gaps.validate()`.
+2. That test also **rejects readings that cannot be right**: the collator
+   matches on stems, so it returned `curistas` where the page reads
+   `currist‸` and `time` for `Chrysost‸me`. Eight such in Brooks, two in
+   Burroughs; each falls back to the other candidate, or stays marked.
+3. **A single damaged letter between two intact words is punctuation**, not a
+   missing word. Collating it produced "no good thing and and it hinders" and
+   "for the most part amongst .".
+4. **Gap numbering ran from `<body>`, not from `<text>`.** Brooks has ten
+   gaps in his front matter, so every reading in the book landed ten places
+   out: "an easie work" was printed "Eusebius easie work".
+
+**The printer's own marks.** `Ʋ` (the seventeenth-century capital U, cut as a
+V) was printing as itself and, in Owen, splitting words — "Ʋ pon the
+Eruption". The abbreviation stroke over a vowel now expands to the n or m it
+stands for, each case confirmed by the book's own spelling (mannage 15/1,
+manner 33/1, commit, condition, than). Unidentifiable punctuation marks are
+dropped rather than printed as black squares.
+
+**Brooks is cut by device, not by file.** The 1658 printer closes each train
+of remedies with the announcement of the next device, so the chapters do not
+fall where the divisions do. Titles are Brooks's own sentence, cut short.
+
+**Pink is the one that needed a correction pass**, as expected. The
+page-by-page epub from the Archive has lost every paragraph break, so the
+text comes from the scan's own text layer, which keeps them. Twenty opening
+repairs and sixteen sweeps are recorded in `working/corrections.json`, each
+with what settled it — a later printing, or the sentence completing itself.
+The printer's large opening initial defeats the machine at every chapter:
+"SR IRST, a word concerning…" is *First, a word concerning…*. Where nothing
+settles it, the words are marked `[…]` — that happens once.
+
+**Front matter, on every book from now on:** the cover as a full-page SVG
+first (a bare `<img>` is scaled by each reader's own rules and can land small
+on a field of white), then the **Proofing Copy** notice with a build stamp,
+then the title page. `tools/edition_parts.py`. Drop the proofing page when a
+book is ready to publish.
+
+## Still John's call
+
+- **The `[…]` marks in Brooks** — 150 of them, about one every 600 words.
+  They are honest, and the 1658 page really is damaged in those places, but
+  he may prefer them handled differently.
+- **Pink's Introduction** opens `[…] world-conditions call loudly for a
+  re-examination…`. The words under the initial are gone, and Pink rewrote
+  that paragraph in later editions, so no printing supplies them.
+- **Publication is still on hold.** None of these goes into `shelf.json` or
+  onto either website until he has read them.
+
 ## Order of work
 
 Charnock and Pink first — Charnock because its source is clean and it

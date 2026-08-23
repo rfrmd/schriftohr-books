@@ -198,6 +198,57 @@ def decide(inferred, later):
     return later, 'later printing (inference differed)'
 
 
+
+def fragments(g):
+    """The letters the damage left standing on either side of a gap.
+
+    Returned as (left, right) — either may be ''. A fragment counts only
+    when it is joined to the gap: a word with a space between it and the
+    damage is an intact neighbour, not a fragment.
+    """
+    before = g.get('before', '').replace('ſ', 's')
+    after  = g.get('after',  '').replace('ſ', 's')
+    lf = ''
+    if not re.search(r'\s[\u2022\s]*$', before):
+        m = re.search(r'([A-Za-z]+)$', before)
+        lf = m.group(1) if m else ''
+    m = re.match(r'^[\u2022\s]*([A-Za-z]+)', after)
+    rf = m.group(1) if m else ''
+    return lf, rf
+
+
+def validate(g):
+    """A settled reading has to fit the letters still on the page.
+
+    The collator matches on stems, so it can hand back a word that does not
+    actually continue the fragment — 'curistas' where the page reads
+    'currist‸'. A reading that cannot be reconciled with the surviving
+    letters is not a reading, and the gap stays marked.
+
+    It also records which side the reading may absorb. 'but' continues 'bu'
+    but does not run on into 'then': the page reads 'but then', two words,
+    and absorbing both would have swallowed one of them.
+    """
+    r = g.get('reading')
+    if not r:
+        return g
+    lf, rf = fragments(g)
+    R = r.lower()
+    if lf and not R.startswith(lf.lower()):
+        g['reading'] = None
+        g['source'] = f'rejected — does not continue "{lf}"'
+        return g
+    g['absorb_left']  = bool(lf)
+    g['absorb_right'] = bool(rf) and R.endswith(rf.lower()) and len(R) > len(rf)
+    # The page's own capital survives in the fragment; keep it. Where no
+    # fragment survives, an opening bracket or a full stop says the word
+    # began a name or a sentence.
+    if (lf and lf[0].isupper()) or \
+       (not lf and re.search(r'[.?!(\u201c"]\s*[\u2022\s]*$', g.get('before', ''))):
+        g['reading'] = r[0].upper() + r[1:]
+    return g
+
+
 def apply_readings(xml, ledger_final, unresolved_mark='▫'):
     """Substitute settled readings into the text.
 

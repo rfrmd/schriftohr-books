@@ -2,6 +2,7 @@ import re, html, json, os, sys, shutil, subprocess, uuid
 sys.path.insert(0, os.path.expanduser('~/Developer/schriftohr-books/tools'))
 from PIL import Image
 from tei_reader import open_cap
+from edition_parts import cover_xhtml, proofing_xhtml, PROOFING_CSS, SCRIPT_CSS
 W=os.path.expanduser('~/Desktop/Reformed-Shelf-Working/02-owen-mortification')
 TPL='/private/tmp/claude-501/-Users-johnwest-Developer-schriftohr/6c0e5e0e-5ab4-4c3b-a6f4-cca64a136103/scratchpad/tpl'
 OUT=f'{W}/output/mortification-of-sin'
@@ -9,24 +10,85 @@ xml=open(f'{W}/source/A53715-EEBO-TCP-1668-keyed.xml',encoding='utf-8',errors='i
 led=json.load(open(f'{W}/working/gap-ledger.json'))
 readings={g['n']: g['reading'] for g in led['final'] if g.get('reading')}
 
+gk=json.load(open(f'{W}/working/greek.json',encoding='utf-8'))['gaps']
+GK0,GK1,HB0,HB1,PH0,PH1='\ue000','\ue001','\ue002','\ue003','\ue004','\ue005'
+
 body=xml[xml.find('<text'):]
+# A gap is the WHOLE element, placeholder glyph and all. Replacing only the
+# opening tag left 〈◊〉 and 〈 in non-Latin alphabet 〉 loose in the text, where a
+# later sweep called every one of them Greek — including the illegible words.
+GAP=re.compile(r'<gap\b[^>]*/>|<gap\b[^>]*>.*?</gap>', re.S)
 cnt=[0]
-body=re.sub(r'<gap[^>]*/?>', lambda m: (cnt.__setitem__(0,cnt[0]+1) or f'⟦G{cnt[0]}⟧'), body)
+def _tok(m):
+    cnt[0]+=1
+    # Whether the gap sits INSIDE a word decides whether its reading may absorb
+    # the letters beside it. Decided here, on the XML, because flattening turns
+    # </gap> into a space and hides the join.
+    pre =re.sub(r'<[^>]+>','', body[max(0,m.start()-60):m.start()])
+    post=re.sub(r'<[^>]+>','', body[m.end():m.end()+60])
+    L='1' if re.search(r'[A-Za-zſ]$', pre) else '0'
+    R='1' if re.match(r'[A-Za-zſ]', post) else '0'
+    P='1' if re.search(r'extent="1 letter"', m.group(0)) else '0'
+    return f'⟦{"F" if "foreign" in m.group(0) else "G"}{cnt[0]}:{L}{R}{P}⟧'
+body=GAP.sub(_tok, body)
+
+# Owen's margin — mostly the Scripture he is leaning on — was being flattened
+# into the middle of his sentence ("as the Judgement of another, Rom. 1.26. a
+# greater for the punishment of a less"). It is a note, and is set as one.
+NOTEREF=re.compile(r'⟦N\d+⟧')
+NOTES=[]
+def _note(m):
+    NOTES.append(m.group(1))
+    return f'⟦N{len(NOTES)}⟧'
+body=re.sub(r'<note\b[^>]*>(.*?)</note>', _note, body, flags=re.S)
 
 def totext(x):
-    # An end-of-line hyphen must REJOIN the word, not split it: turning
-    # this tag into a space produced "princi pal".
-    x=re.sub(r'<g ref="char:EOLhyphen"\s*/?>', '', x)
+    # The printer's glyphs, before the generic strip — which turns a tag into a
+    # SPACE and so put one through the middle of a word ("Ʋ pon the Eruption").
+    # An end-of-line hyphen must REJOIN the word: as a space it made "princi pal".
+    x=re.sub(r'<g ref="char:cmbAbbrStroke">[^<]*</g>(?=m)', 'm', x)
+    x=re.sub(r'<g ref="char:cmbAbbrStroke">[^<]*</g>', 'n', x)
+    x=re.sub(r'<g ref="char:EOLhyphen"\s*/?>(?:</g>)?', '', x)
+    x=re.sub(r'<g ref="char:V">[^<]*</g>', 'U', x)   # the 17th-c. capital U, cut as a V
+    x=re.sub(r'<g ref="char:punc">[^<]*</g>', '', x) # a mark the keyers could not identify
+    x=re.sub(r'<g [^>]*>([^<]*)</g>', r'\1', x)      # any other glyph: the character, not a space
     x=re.sub(r'<g [^>]*/?>', '', x)
     x=re.sub(r'<pb[^>]*/?>',' ', x); x=re.sub(r'<[^>]+>',' ', x)
     return re.sub(r'\s+',' ', html.unescape(x).replace('ſ','s')).strip()
 
+def _foreign(m):
+    e=gk.get(m.group(1))
+    if not (e and e.get('t')): return '[Greek]'
+    a,z=(HB0,HB1) if e.get('script')=='hbo' else (GK0,GK1)
+    # The word is no use to a reader who cannot read the script, and none at
+    # all to the ear. Say how it sounds.
+    ph=f" {PH0}({e['ph']}){PH1}" if e.get('ph') else ''
+    return a+e['t']+z+ph
+
+def _damaged(m):
+    left, sp, n = m.group(1) or '', m.group(2), int(m.group(3))
+    L, R, P     = m.group(4)=='1', m.group(5)=='1', m.group(6)=='1'
+    right       = m.group(7) or ''
+    # Where the gap opened the match, the space before it still has to be kept.
+    lead = ' ' if (sp and not left) else ''
+    # A single damaged letter standing between two intact words is a punctuation
+    # mark, not a missing word. Collating it against its neighbours produced
+    # "no good thing and and it hinders" and "for the most part amongst .".
+    if P and not (L or R):
+        return lead + ' '.join(x for x in (left, right) if x)
+    rd = readings.get(n)
+    if rd is None:
+        if L or R: return lead + left + '[…]' + right
+        return lead + ' '.join(x for x in (left, '[…]', right) if x)
+    # The reading is the WHOLE word. It absorbs the broken fragments beside it —
+    # and nothing else: a gap between two intact words used to swallow both
+    # ("the [gap] substance" came out as bare "the").
+    return lead + ' '.join(x for x in (('' if L else left), rd, ('' if R else right)) if x)
+
 def resolve(t):
-    t=re.sub(r'([A-Za-z]*)\s*⟦G(\d+)⟧[•\s]*([A-Za-z]*)',
-             lambda m: readings.get(int(m.group(2))) or (m.group(1)+'[…]'+m.group(3)), t)
-    t=re.sub(r'⟦G(\d+)⟧', lambda m: readings.get(int(m.group(1))) or '[…]', t)
+    t=re.sub(r'⟦F(\d+):\d\d\d⟧', _foreign, t)
+    t=re.sub(r'([A-Za-z]*)(\s*)⟦G(\d+):(\d)(\d)(\d)⟧[•▫▪\s]*([A-Za-z]*)', _damaged, t)
     t=t.replace('•','')
-    t=re.sub(r'〈[^〉]*〉','[Greek]', t)
     return re.sub(r'\s+',' ',t).strip()
 
 ROM=['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV']
@@ -56,7 +118,13 @@ shutil.copy(f'{TPL}/OEBPS/css/style.css', f'{OUT}/OEBPS/css/style.css')
 open(f'{OUT}/OEBPS/css/style.css','a').write(
  '\n/* The printer\'s argument at each chapter head, as 1668 set it. */\n'
  '.argument{font-style:italic;text-align:left;text-indent:0;margin:0 1.2em 1.6em;\n'
- '          font-size:.94em;border-left:2px solid #bbb;padding-left:.8em}\n')
+ '          font-size:.94em;border-left:2px solid #bbb;padding-left:.8em}\n'
+ '/* Owen\'s margin, kept as notes at the foot of the chapter. */\n'
+ '.nref{text-decoration:none;font-size:.8em;vertical-align:super;line-height:0}\n'
+ '.notes{font-size:.9em;color:#555;margin-top:2.4em}\n'
+ '.notes hr{border:0;border-top:1px solid #ccc;width:35%;margin:0 0 .9em}\n'
+ '.fn p{text-indent:0;margin:.35em 0}\n'
+ '.fn a{text-decoration:none;color:#777}\n'+PROOFING_CSS+SCRIPT_CSS)
 for m_ in ('publisher-mark.png','publisher-mark-dark.png'):
     shutil.copy(f'{TPL}/OEBPS/images/{m_}', f'{OUT}/OEBPS/images/{m_}')
 Image.open(os.path.expanduser('~/Desktop/Owen-MortificationofSin.png')).convert('RGB').save(
@@ -68,16 +136,33 @@ def page(title, et, cls, inner, bt='bodymatter'):
       f'<head><title>{html.escape(title)}</title><meta charset="utf-8"/>'
       '<link rel="stylesheet" type="text/css" href="../css/style.css"/></head>\n'
       f'<body epub:type="{bt}"><section epub:type="{et}" class="{cls}">\n{inner}\n</section></body></html>\n')
-E=lambda s: html.escape(s)
+def E(s, seen=None):
+    s=html.escape(s)
+    def _ref(m):
+        n=int(m.group(1))
+        if seen is not None: seen.append(n)
+        return (f'<a epub:type="noteref" href="#fn{n}" id="fr{n}" class="nref">'
+                f'<sup>{n}</sup></a>')
+    s=re.sub(r'\s*⟦N(\d+)⟧', _ref, s)
+    s=s.replace(GK0,'<span xml:lang="grc" lang="grc" class="gk">').replace(GK1,'</span>')
+    s=s.replace(HB0,'<span xml:lang="hbo" lang="hbo" dir="rtl" class="hb">').replace(HB1,'</span>')
+    return s.replace(PH0,'<span class="ph">').replace(PH1,'</span>')
+def notes_block(seen):
+    """Owen's margin, gathered at the foot of the chapter that refers to it."""
+    if not seen: return ''
+    return ('\n<section epub:type="endnotes" class="notes"><hr/>\n'+'\n'.join(
+      f'<aside epub:type="footnote" id="fn{n}" class="fn">'
+      f'<p><a href="#fr{n}">{n}.</a> {E(resolve(totext(NOTES[n-1])))}</p></aside>'
+      for n in seen)+'\n</section>')
+
 files=[]
-open(f'{OUT}/OEBPS/text/cover.xhtml','w',encoding='utf-8').write(
- '<?xml version="1.0" encoding="utf-8"?>\n<html xmlns="http://www.w3.org/1999/xhtml" '
- 'xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="en-GB" lang="en-GB">\n<head><title>Cover</title>'
- '<meta charset="utf-8"/><style>body{margin:0;padding:0}img{max-width:100%;height:auto;display:block;'
- 'margin:0 auto}</style></head>\n<body epub:type="frontmatter"><section epub:type="cover">'
- '<img src="../images/cover.jpg" alt="Cover"/></section></body></html>\n')
-files.append(('cover.xhtml','Cover'))
 T='The Mortification of Sin in Believers'
+_cw,_ch=Image.open(f'{OUT}/OEBPS/images/cover.jpg').size
+open(f'{OUT}/OEBPS/text/cover.xhtml','w',encoding='utf-8').write(cover_xhtml(_cw,_ch))
+files.append(('cover.xhtml','Cover'))
+open(f'{OUT}/OEBPS/text/00-proofing.xhtml','w',encoding='utf-8').write(
+    proofing_xhtml(T,'John Owen'))
+files.append(('00-proofing.xhtml','Proofing Copy'))
 open(f'{OUT}/OEBPS/text/00-title.xhtml','w',encoding='utf-8').write(page(T,'titlepage','titlepage',
  f'<h1>{T}</h1>\n<h2>The Necessity, Nature, and Means of It</h2>\n<p><strong>John Owen</strong></p>\n'
  '<p>The SchriftOhr Edition</p>\n<p>Developed by RFRMDWordLabs, LLC</p>\n'
@@ -91,23 +176,31 @@ open(f'{OUT}/OEBPS/text/01-edition-note.xhtml','w',encoding='utf-8').write(page(
  'seventeenth-century spelling stands, save that the long <i>\u017f</i> is set as <i>s</i> and words '
  'broken across a line are rejoined.</p>\n'
  '<p>Where the page was damaged past reading, the word is supplied where it can be established '
- 'and marked <i>[\u2026]</i> where it cannot. Passages left in Greek are marked <i>[Greek]</i>.</p>\n'
+ 'and marked <i>[\u2026]</i> where it cannot.</p>\n'
+ '<p>The Greek Owen quotes is set as he quoted it, with how it sounds in brackets after it, '
+ 'so the word can be read aloud by anyone. One marginal note, Greek alone and past recovery, '
+ 'is marked <i>[Greek]</i>.</p>\n'
  '<p>The argument standing at the head of each chapter is the printer\u2019s own, as 1668 set it.</p>',
  'frontmatter'))
 files.append(('01-edition-note.xhtml','About This Edition'))
 if preface:
     open(f'{OUT}/OEBPS/text/02-preface.xhtml','w',encoding='utf-8').write(page(
       'To the Reader','preface','preamble',
-      '<h2>To the Reader</h2>\n'+'\n'.join(f'<p>{E(x)}</p>' for x in
-        ([open_cap(preface['paras'][0])]+preface['paras'][1:] if preface['paras'] else [])),'frontmatter'))
+      (lambda _s: '<h2>To the Reader</h2>\n'+'\n'.join(f'<p>{E(x,_s)}</p>' for x in
+        ([open_cap(preface['paras'][0])]+preface['paras'][1:] if preface['paras'] else []))
+       + notes_block(_s))([]),'frontmatter'))
     files.append(('02-preface.xhtml','To the Reader'))
 for i,c in enumerate(chapters,1):
     t=f'Chapter {c["num"]}'
     inner=f'<h2>{t}</h2>\n'
-    if c['argument']: inner+=f'<p class="argument">{E(c["argument"])}</p>\n'
+    if c['argument']:
+        _arg=NOTEREF.sub('', E(c['argument']))     # the head-note takes no note of its own
+        inner+=f'<p class="argument">{_arg}</p>\n'
     _ps=list(c['paras'])
     if _ps: _ps[0]=open_cap(_ps[0])          # the printer's opening flourish
-    inner+='\n'.join(f'<p>{E(p)}</p>' for p in _ps)
+    seen=[]
+    inner+='\n'.join(f'<p>{E(p, seen)}</p>' for p in _ps)
+    inner+=notes_block(seen)
     fn=f'C{i:02d}.xhtml'
     open(f'{OUT}/OEBPS/text/{fn}','w',encoding='utf-8').write(page(t,'chapter','chapter',inner))
     files.append((fn,t))
