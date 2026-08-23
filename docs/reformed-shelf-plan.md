@@ -40,94 +40,97 @@ abridged, or modernised text.
 
 | | |
 |---|---|
-| status | **source in hand, cleared** |
-| use | `sovereigntyofgod00pink_0.epub` — **1918 first edition**, Bible Truth Depot, Swengel, Pa. |
+| status | **cleared; the only one needing OCR repair** |
+| use | `sovereigntyofgod00pink_0` — **1918 first edition**, Bible Truth Depot, Swengel, Pa. |
 | link | https://archive.org/details/sovereigntyofgod00pink_0 |
 | clearance | Published 1918 in the US → public domain. |
 
-⚠️ **Do not use the Banner of Truth edition.** Their 1961 text is
-abridged and edited — whole chapters and the appendices were cut — and
-that editing is under copyright. The 1918 text is also the fuller book,
-which is the one worth having.
+⚠️ **Not the Banner of Truth edition.** Their 1961 text is abridged —
+whole chapters and the appendices cut — and that editing is in
+copyright. The 1918 is also the fuller book.
 
-Quality note: this is an archive.org scan, so expect OCR damage of the
-kind found in Pollok. Budget for a real correction pass.
+Twentieth century, so outside EEBO-TCP: this is a scan, and the only
+title here that needs a real correction pass.
 
 ## 2. The Mortification of Sin — John Owen
 
 | | |
 |---|---|
-| status | **source needs replacing** |
-| have | a calibre-made epub carrying an Amazon ASIN (B003ZSHP3E) — provenance unknown, possibly a modern edition |
-| use instead | Owen's *Works*, ed. Goold — Mortification is in **volume 6** |
-| link | https://archive.org/details/ontemptationmort00owenuoft (Presbyterian Board of Publication) |
-| alt | https://archive.org/details/worksofjohnowe185011owen (Goold set) |
-| clearance | Owen d. 1683; the Goold edition 1850–55 → public domain. |
+| status | **source found — keyed, CC0** |
+| use | EEBO-TCP `A53715` — *Of the Mortification of Sin in Believers*, **1668** (Wing O787; ESTC R214591) |
+| link | https://raw.githubusercontent.com/textcreationpartnership/A53715/master/A53715.xml |
+| size | 44,999 words · 17 divisions · 372 paragraphs · 185 gaps |
+| clearance | **CC0 1.0** |
 
-⚠️ The file on hand cannot be used: an ASIN means it was made from a
-Kindle edition, and we cannot show which text that was. Replace it
-before any work starts.
+Replaces the file that carried an Amazon ASIN. Nothing needs acquiring.
 
 ## 3. The Rare Jewel of Christian Contentment — Jeremiah Burroughs
 
 | | |
 |---|---|
-| status | **unblocked — the best source of the five** |
-| use | EEBO-TCP `A30598` — a **keyed transcription of the 1649 first edition** (Printed for Peter Cole; Wing B6103; ESTC R32016) |
+| status | **source found — keyed, CC0** (John's find) |
+| use | EEBO-TCP `A30598` — the **1649 first edition** (Printed for Peter Cole; Wing B6103; ESTC R32016) |
 | link | https://raw.githubusercontent.com/textcreationpartnership/A30598/master/A30598.xml |
-| citation | https://name.umdl.umich.edu/A30598.0001.001 (UMich blocks automated fetches; GitHub serves the same text) |
-| clearance | **CC0 1.0 Universal.** EEBO-TCP Phase I: "copied, modified, distributed and performed, even for commercial purposes, all without asking permission." |
-
-John found this one. It changes the picture completely: TCP texts are
-**keyed by hand from the images, not OCR**, and it shows —
-
-| | 1651 scan (rejected) | TCP keyed text |
-|---|---|---|
-| long-s read as f | 310 | **0** |
-| stray letters | 729 | 50 |
-| digits inside words | 242 | **0** |
-| words | 94k (fragmentary) | **111,090** |
-
-It is TEI XML with 93 divisions and 429 paragraphs, so the structure is
-already marked — no chapter-cutting guesswork. Period spelling is
-preserved faithfully, including the long s (`Chriſt`, `Leſſons`), which
-is a *feature*: `ſ` → `s` is one deterministic substitution, nothing
-like repairing an OCR misread.
-
-Also in the folder, as collation copies only:
-
-- an RTF converted from an archive.org PDF — mechanically damaged, its
-  letters split apart (`T he ri ght k n ow l e d ge`), 42,451 stray
-  letters, and in modern spelling, so its edition cannot be identified.
-  Not a base.
-- Monergism's epub — comparison after the fact, per John.
+| size | 111,090 words · 93 divisions · 429 paragraphs |
+| clearance | **CC0 1.0** |
 
 ## 4. Precious Remedies Against Satan's Devices — Thomas Brooks
 
 | | |
 |---|---|
-| status | **sources in hand; pick the base** |
-| best base | *Complete Works*, ed. Nichol, Edinburgh 1866 — **Precious Remedies is in volume 1** |
-| have | `completeworksoft01broo.epub` (vol 1), `preciousremedies00broo.epub` (standalone), Monergism *Works*, two raw OCR texts |
-| link | https://archive.org/details/completeworksoft01broo |
-| clearance | Brooks d. 1680; Nichol edition 1866 → public domain. |
+| status | **source found — keyed, CC0** |
+| use | EEBO-TCP `A77614` — **1658** (Wing B4954; Thomason E1426_1) |
+| link | https://raw.githubusercontent.com/textcreationpartnership/A77614/master/A77614.xml |
+| size | 105,586 words · 83 divisions · 438 paragraphs · 441 gaps |
+| clearance | **CC0 1.0** |
 
-Recommendation: build **Precious Remedies alone** first, from the Nichol
-volume 1. The complete works is six volumes and a different undertaking.
-The two `.txt` files are unproofread OCR — useful only for comparison.
+A choice to make: the TCP text is the 1658 original in period spelling;
+Nichol's 1866 (`completeworksoft01broo`, vol. 1) is modern spelling but
+an unrepaired scan. Recommend the TCP text, with Nichol for collation.
 
 ## 5. The Existence and Attributes of God — Stephen Charnock
 
 | | |
 |---|---|
-| status | **best source of the five, in hand** |
-| use | `pg53527-images-3.epub` — **Project Gutenberg 53527, both volumes**, transcribed and proofread by Distributed Proofreaders |
-| link | https://www.gutenberg.org/ebooks/53527 · mirror: https://openchapter.io |
-| clearance | Charnock d. 1680; PG text public domain in the US. |
+| status | **two good sources; use the modern-spelling one** |
+| use | `pg53527` — **Project Gutenberg 53527**, both volumes, Distributed Proofreaders |
+| link | https://www.gutenberg.org/ebooks/53527 |
+| collate | EEBO-TCP `A32723`, the **1682** original (Wing C3711) — 696,696 words, CC0 |
+| link | https://raw.githubusercontent.com/textcreationpartnership/A32723/master/A32723.xml |
 
-This one needs no OCR repair — a proofread transcription is worth more
-than any scan. The Princeton `.txt` files and the archive PDFs stay as
-collation copies only.
+The Gutenberg text is proofread and already in modern spelling, which is
+the friendlier base for reading and for listening. The 1682 keyed text
+settles any doubtful reading.
+
+---
+
+## What EEBO-TCP changed
+
+Four of the five now rest on **hand-keyed transcriptions**, not OCR.
+John's citation opened this: TCP texts are typed from the images by
+people, and both phases are now CC0. Measured against the scans:
+
+| | scan | keyed |
+|---|---|---|
+| long-s read as f | 310 | **0** |
+| digits inside words | 242 | **0** |
+
+The catalogue is 61,315 texts (`TCP-catalogue.csv` in the working
+folder) — worth searching before settling for any scan of a book
+printed before 1700.
+
+**Their one cost: marked gaps** — places a keyer could not read, or
+Greek and Hebrew left untyped. Owen 185, Brooks 441, Charnock 752,
+mostly single letters. Each needs a decision: infer from context, fill
+from a later printing, or leave the mark. None may be filled silently.
+
+## Period spelling
+
+Three of these are seventeenth-century printings, so the text carries
+the long s — `Chriſt`, `Leſſons`. `ſ` → `s` is one deterministic
+substitution. Beyond that, spelling is John's call per book: keep the
+period orthography for stage one, or normalise. The stage-two study
+editions will modernise regardless.
 
 ---
 
