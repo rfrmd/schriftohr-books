@@ -29,9 +29,9 @@ the shelf's sourcing promise true.
 
 The shelf says publicly that we use public-domain sources. For these
 five that needs care, because every one of them has a modern edited
-edition still in copyright. **The rule: build from a pre-1929 printing
-or a Distributed-Proofreaders transcription of one, and name the exact
-edition in the sources page.** Never from a modern publisher's edited,
+edition still in copyright. **The rule: build from a pre-1929 printing, or from a keyed
+transcription of one (Distributed Proofreaders, EEBO-TCP), and name the
+exact edition in the sources page.** Never from a modern publisher's edited,
 abridged, or modernised text.
 
 ---
@@ -72,29 +72,35 @@ before any work starts.
 
 | | |
 |---|---|
-| status | **blocked — no usable public-domain base** |
-| clearance | Burroughs d. 1646; the text is public domain. The problem is not rights, it is that no clean printing exists to build from. |
+| status | **unblocked — the best source of the five** |
+| use | EEBO-TCP `A30598` — a **keyed transcription of the 1649 first edition** (Printed for Peter Cole; Wing B6103; ESTC R32016) |
+| link | https://raw.githubusercontent.com/textcreationpartnership/A30598/master/A30598.xml |
+| citation | https://name.umdl.umich.edu/A30598.0001.001 (UMich blocks automated fetches; GitHub serves the same text) |
+| clearance | **CC0 1.0 Universal.** EEBO-TCP Phase I: "copied, modified, distributed and performed, even for commercial purposes, all without asking permission." |
 
-What the search found: every public-domain copy is a seventeenth-century
-printing — 1649, 1650, 1651, 1652, 1655, 1659 — and every one is an EEBO
-scan in period type. The OCR is not repairable prose:
+John found this one. It changes the picture completely: TCP texts are
+**keyed by hand from the images, not OCR**, and it shows —
 
-> *afuhifsof honow^ and ejieemmththe teB of Men*
+| | 1651 scan (rejected) | TCP keyed text |
+|---|---|---|
+| long-s read as f | 310 | **0** |
+| stray letters | 729 | 50 |
+| digits inside words | 242 | **0** |
+| words | 94k (fragmentary) | **111,090** |
 
-310 long-s-as-f errors, 729 stray letters, 242 digits inside words, in
-94,000 words. That is a transcription project, not a correction pass.
-**There is no printing at all between 1659 and the modern editions**,
-and those (Banner of Truth 1964, Reformation Heritage 2013) are in
-copyright. HathiTrust and CCEL add nothing.
+It is TEI XML with 93 divisions and 429 paragraphs, so the structure is
+already marked — no chapter-cutting guesswork. Period spelling is
+preserved faithfully, including the long s (`Chriſt`, `Leſſons`), which
+is a *feature*: `ſ` → `s` is one deterministic substitution, nothing
+like repairing an OCR misread.
 
-Options, in the order I would take them:
+Also in the folder, as collation copies only:
 
-1. **Defer.** Build the other four. Burroughs waits for a better base —
-   Distributed Proofreaders may yet do one.
-2. **Ask Monergism for permission** to use their text, naming them in the
-   sources page. Different from building on their file unasked, and it
-   is the only clean route to this book today.
-3. **Transcribe from the 1651** ourselves. Honest, and expensive.
+- an RTF converted from an archive.org PDF — mechanically damaged, its
+  letters split apart (`T he ri ght k n ow l e d ge`), 42,451 stray
+  letters, and in modern spelling, so its edition cannot be identified.
+  Not a base.
+- Monergism's epub — comparison after the fact, per John.
 
 ## 4. Precious Remedies Against Satan's Devices — Thomas Brooks
 
@@ -145,8 +151,8 @@ collation copies only.
 
 Charnock and Pink first — Charnock because its source is clean and it
 proves the pipeline on a large book; Pink because it is cleared and
-wanted. Then Brooks, then Owen once its source is replaced.
-Burroughs is blocked and waits, since its source has to be replaced first.
+wanted. Then Brooks, then Burroughs (its TCP text needs no repair at all), and Owen
+last, once its source is replaced, since its source has to be replaced first.
 
 ## Stage two — the study editions
 
