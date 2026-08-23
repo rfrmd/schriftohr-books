@@ -27,7 +27,10 @@ def cover_xhtml(width, height, src='../images/cover.jpg'):
       '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"\n'
       f'     version="1.1" width="100%" height="100%" viewBox="0 0 {width} {height}"\n'
       '     preserveAspectRatio="xMidYMid meet">\n'
-      f'  <image width="{width}" height="{height}" xlink:href="{src}"/>\n'
+      # BOTH href and xlink:href: the first is SVG 2, the second SVG 1.1, and
+      # readers are split between them — with only xlink some draw nothing at
+      # all, and the book appears to open on its title page.
+      f'  <image width="{width}" height="{height}" href="{src}" xlink:href="{src}"/>\n'
       '</svg>\n</section></body></html>\n')
 
 SCRIPT_CSS = """

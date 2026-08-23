@@ -284,7 +284,7 @@ book is ready to publish.
 
 ## Still John's call
 
-- **The `[…]` marks in Brooks** — 150 of them, about one every 600 words.
+- **The `[…]` marks in Brooks** — 22 in his prose and 104 in his notes.
   They are honest, and the 1658 page really is damaged in those places, but
   he may prefer them handled differently.
 - **Pink's Introduction** opens `[…] world-conditions call loudly for a

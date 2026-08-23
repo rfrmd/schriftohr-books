@@ -12,7 +12,8 @@ English word. Those we propose automatically. Gaps that swallow whole
 words, and Greek or Hebrew left untyped, are listed for a human and for
 collation against a later edition.
 """
-import re, html, json, os
+import re, html, json, os, unicodedata
+import itertools, string
 
 def lexicon(*texts):
     """The book is its own dictionary — and a better one than a word list.
@@ -31,7 +32,24 @@ WORDLIST = {w.strip().lower() for w in open('/usr/share/dict/words')} \
            if os.path.exists('/usr/share/dict/words') else set()
 
 def flat(x):
-    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', x)))
+    """The context around a gap, normalised the way the built page is.
+
+    ⚠️ These two have to agree. A context left as the file writes it keeps the
+    printer's marks — the abbreviation stroke over a vowel, the V-form capital
+    U — and neither is a letter, so the fragment beside a gap reads as empty
+    and the gap looks like a whole missing word. 'Multi ama_ veritatem' could
+    not be matched at all until this was fixed.
+    """
+    x = re.sub(r'<g ref="char:cmbAbbrStroke">[^<]*</g>(?=m)', 'm', x)
+    x = re.sub(r'<g ref="char:cmbAbbrStroke">[^<]*</g>', 'n', x)
+    x = re.sub(r'<g ref="char:EOL[^"]*"\s*/?>(?:</g>)?', '', x)
+    x = re.sub(r'<g ref="char:V">[^<]*</g>', 'U', x)
+    x = re.sub(r'<g ref="char:punc">[^<]*</g>', '', x)
+    x = re.sub(r'<g [^>]*>([^<]*)</g>', r'\1', x)
+    x = re.sub(r'<[^>]+>', '', x)
+    x = html.unescape(x).replace('\u017f', 's').replace('\u01b2', 'U')
+    x = unicodedata.normalize('NFC', x)
+    return re.sub(r'\s+', ' ', x)
 
 def extent_len(extent):
     m = re.match(r'(\d+)\s+letter', extent or '')
@@ -116,52 +134,85 @@ def norm(t):
     return re.sub(r'[^a-z ]', ' ', re.sub(r'\s+', ' ',
                   t.replace('ſ', 's').lower())).split()
 
+def fold(w):
+    """Flatten the spellings a printing may vary without changing the word.
+
+    Between 1658 and 1866 the same word is set 'sinne'/'sin', 'wee'/'we',
+    'vpon'/'upon', 'mercie'/'mercy'. Folding u/v and i/j together, collapsing
+    doubled letters and settling the -ie/-y ending puts them on one form, so a
+    stem can be taken from either and still match.
+    """
+    w = w.lower().replace('\u017f', 's')
+    w = re.sub(r'ie$', 'y', w)
+    w = w.replace('v', 'u').replace('j', 'i').replace('y', 'i')
+    w = re.sub(r'(.)\1+', r'\1', w)
+    return w
+
 def stem(w):
     """Enough of a word to survive three centuries of spelling drift:
     'wayes'/'ways', 'mortifie'/'mortify', 'shew'/'show' all share a head."""
-    return w[:4]
+    return fold(w)[:4]
 
-def collate(g, later_words, index):
-    """Read what the later printing has where this gap stands.
+def candidates(g, later_words, index, after_index, fits):
+    """Every word the later printing offers for this gap, best first.
 
-    Keyed on word stems, because exact keys do not survive the drift
-    between a 1668 printing and a modern one.
-
-    ⚠️ Two traps, both of which produced wrong readings before:
-      · The word carrying the gap may be split ("pro|on"). Its leading
-        fragment is NOT a word — keying on it means 'pro' never matches
-        'prom', and the gap that proves this whole method (promotion)
-        goes unread. Build the key from complete words only.
-      · The answer is then always the word AFTER the key, and where the
-        gap continues a word that answer must start with the fragment.
+    One key in one place is brittle: the words before a gap may be mangled in
+    the scan, or too few, or the gap may sit at the head of a paragraph. So the
+    text is keyed from BOTH sides and at two widths, every match is collected,
+    and the word that turns up most often — among those that actually fit the
+    letters on the page — is the reading.
     """
     before = norm(g['before'])
-    after = norm(re.sub(r'^[\u2022\s]+', '', g['after']))
+    after  = norm(re.sub(r'^[\u2022\s]+', '', g['after']))
     continues = not re.search(r'\s[\u2022 ]*$', g['before'])
-    frag = before[-1] if continues and before else ''
+    tail_frag = after[0] if (after and not re.match(r'^[\u2022\s]*\s', g['after'])) else ''
     complete = before[:-1] if continues else before
-    if len(complete) < 3:
-        return None
-    key = tuple(stem(w) for w in complete[-3:])
-    for pos in index.get(key, ())[:60]:
-        at = pos + 1
-        if at >= len(later_words):
-            continue
-        cand = later_words[at]
-        if frag and not cand.startswith(frag[:3]):
-            continue
-        if frag and len(cand) <= len(frag):
-            continue
-        nxt = later_words[at + 1] if at + 1 < len(later_words) else ''
-        if after and not (stem(nxt) == stem(after[0]) or cand.endswith(after[0])):
-            continue
-        return cand
-    return None
+    tail     = after[1:] if tail_frag else after
+
+    found = {}
+    def offer(w):
+        if w and fits(g, w):
+            found[w] = found.get(w, 0) + 1
+
+    for width in (3, 2):
+        if len(complete) >= width:
+            key = tuple(stem(x) for x in complete[-width:])
+            for pos in index.get(key, ())[:80]:
+                if pos + 1 < len(later_words):
+                    offer(later_words[pos + 1])
+        if len(tail) >= width:
+            key = tuple(stem(x) for x in tail[:width])
+            for pos in after_index.get(key, ())[:80]:
+                if pos - 1 >= 0:
+                    offer(later_words[pos - 1])
+    if not found:
+        return []
+    return sorted(found, key=lambda w: (fit_rank(g, w), -found[w]))
+
+
+def collate(g, later_words, index, after_index=None):
+    """The single best reading the later printing offers, or None."""
+    def _any(_g, _w): return True
+    c = candidates(g, later_words, index, after_index or {}, _any)
+    return c[0] if c else None
+
 
 def build_index(words):
+    """Key: the stems of three words. Value: where the third of them sits."""
     idx = {}
     for i in range(len(words) - 2):
         idx.setdefault(tuple(stem(w) for w in words[i:i+3]), []).append(i + 2)
+        idx.setdefault(tuple(stem(w) for w in words[i:i+2]), []).append(i + 1)
+    return idx
+
+
+def build_after_index(words):
+    """The same, keyed on three words and pointing at the FIRST of them, so a
+    gap can be read backwards from the words that follow it."""
+    idx = {}
+    for i in range(len(words) - 2):
+        idx.setdefault(tuple(stem(w) for w in words[i:i+3]), []).append(i)
+        idx.setdefault(tuple(stem(w) for w in words[i:i+2]), []).append(i)
     return idx
 
 
@@ -217,6 +268,161 @@ def fragments(g):
     return lf, rf
 
 
+def readings_of(g):
+    """The ways this gap's surroundings can be read, likeliest first.
+
+    Flattening the page puts a space between the gap and whatever follows it,
+    so the letters after a gap may be the REST OF THE DAMAGED WORD ('app_ar' —
+    appear) or an INTACT NEIGHBOUR ('if h_ should' — he). Nothing in the
+    flattened text tells the two apart, so both are tried, and the reading that
+    makes a word the author actually uses is the one that stands.
+    """
+    lf, rf = fragments(g)
+    # The same space that hides a following fragment hides a preceding one:
+    # "Multi aman ⟦⟧ veritatem" is amant, with the gap joined to the word
+    # before it. So the word before is offered as a fragment too.
+    before = g.get('before', '').replace('\u017f', 's')
+    m = re.search(r'([A-Za-z]+)[\s\u2022]*$', before)
+    pw = m.group(1) if (m and not lf) else ''
+    # Fullest use of the page first. Where nothing survives joined to the gap
+    # on the left, the word standing before it is still a better reading than
+    # none — "the ham ⟦⟧er" is hammer, not "the ham her".
+    pairs = []
+    if lf:
+        pairs += [(lf, rf), (lf, '')]
+    if pw:
+        pairs += [(pw, rf), (pw, '')]
+    if rf:
+        pairs += [('', rf)]
+    seen, out = set(), []
+    for pair in pairs:
+        if pair not in seen and any(pair):
+            seen.add(pair); out.append(pair)
+    return out
+
+
+def fit_rank(g, word):
+    """Which reading of the surroundings this word satisfies — 0 is the fullest.
+
+    Ranking matters as much as fitting. Where the page reads 'si_s chiefe',
+    both 'sits' (using the letters on both sides) and 'is' (using only those
+    after) fit; the first uses more of what survived and is the better reading.
+    """
+    if not word:
+        return None
+    w = word.lower()
+    n = extent_len(g.get('extent'))
+    for i, (lf, rf) in enumerate(readings_of(g)):
+        lo, hi = lf.lower(), rf.lower()
+        if lo and not w.startswith(lo):
+            continue
+        if hi and not w.endswith(hi):
+            continue
+        if n:
+            if len(w) != len(lo) + n + len(hi):
+                continue
+        elif len(w) <= len(lo) + len(hi):
+            continue
+        return i
+    return None
+
+
+def fits(g, word):
+    """Does this word fit the letters the page still shows, and the count the
+    keyer made of what is missing?"""
+    return fit_rank(g, word) is not None
+
+
+def construct(g, freq, later_word=None, max_letters=3, bigrams=None):
+    """Build the word the page had, from the letters it still has.
+
+    The strongest constraint on a damaged word is not a later printing but the
+    page itself: the letters standing on either side, and the number the keyer
+    counted missing. Filling those in gives a small closed set of candidates —
+    26 for one missing letter — and two things choose between them: the book's
+    own vocabulary, which is in the author's spelling, and the later printing,
+    which read the page we cannot.
+
+    This is what taking the later printing's word wholesale could not do. Its
+    'Chrysostom' does not fit a page reading 'Chrysost_me'; but of the 26 words
+    that DO fit, only 'Chrysostome' is that word in 1658 dress.
+    """
+    n = extent_len(g.get('extent'))
+    if not n or n > max_letters:
+        return None, None
+    # Read the page as fully as it can be read first. Only if the fullest
+    # reading makes no word the author ever uses is a partial one tried —
+    # otherwise 'he' gets seated in "thou hast do_e this", where the letters
+    # on both sides plainly say 'done'.
+    blocked = False
+    for rank, (lf, rf) in enumerate(readings_of(g)):
+        word, why, had_known = _construct_one(g, freq, later_word, n, lf, rf,
+                                              bigrams, rank, blocked)
+        if word:
+            return word, why
+        if rank == 0 and had_known:
+            blocked = True
+    return None, None
+
+
+def _construct_one(g, freq, later_word, n, lf, rf, bigrams, rank=0, blocked=False):
+    lo, hi = (lf or '').lower(), (rf or '').lower()
+    fits = [lo + ''.join(c) + hi
+            for c in itertools.product(string.ascii_lowercase, repeat=n)]
+    known = [w for w in fits if freq.get(w)]
+    if later_word:
+        target = fold(later_word)
+        same = [w for w in fits if fold(w) == target]
+        if len(same) == 1:
+            return _cased(same[0], lf), 'the letters on the page, read as the later printing has it', True
+        if same:                                   # several fold alike: the book decides
+            best = max(same, key=lambda w: freq.get(w, 0))
+            if freq.get(best):
+                return _cased(best, lf), 'the letters on the page, and the author\'s own spelling', bool(known)
+    # A word standing a few words away is the strongest signal of all: a
+    # damaged word often repeats one the author has just used, and a repeated
+    # phrase carries its own answer — "migremus hinc, migr_mus hinc".
+    # ⚠️ These last three are guesses, not readings, and they are only allowed
+    # on the FULLEST use of the page. Let them run on a partial reading and
+    # they seat 'he' in "thou hast do_e this", where the letters on both sides
+    # plainly say 'done'.
+    if rank > 0 and blocked:
+        return None, None, bool(known)
+    # ⚠️ A reading that throws away letters the page still shows is not a
+    # reading. Where 'Ign' stands before the damage, only a printing that read
+    # the page may set a word ignoring it — never a guess from the English
+    # lexicon, which offered 'that' for Latin 'Ignorat'.
+    if rank > 0 and fragments(g)[0] and not lf:
+        return None, None, bool(known)
+    near = set(norm(g.get('before', '') + ' ' + g.get('after', '')))
+    close = [w for w in fits if w in near and len(w) > 2]
+    if len(close) == 1:
+        return _cased(close[0], lf), 'the letters on the page, and the same word standing beside the gap', bool(known)
+    if len(known) == 1:
+        return _cased(known[0], lf), 'the letters on the page, and the only word the author uses that fits', bool(known)
+    if known and bigrams is not None:
+        # ⚠️ Raw frequency is the wrong judge here. 'sin' outnumbers 'sun' in
+        # this book many times over, so it wins every s_n gap — including "the
+        # body of the S_n", where the page means the sun. What settles it is
+        # whether the author ever puts THIS word next to THESE neighbours.
+        pre = norm(g['before'])[-1:] or ['']
+        post = norm(re.sub(r'^[\u2022\s]+', '', g['after']))[:1] or ['']
+        def ctx(w):
+            return (bigrams.get((pre[0], w), 0) + bigrams.get((w, post[0]), 0))
+        ranked = sorted(known, key=lambda w: (-ctx(w), -freq[w]))
+        best, rest = ranked[0], ranked[1:]
+        if ctx(best) and (not rest or ctx(best) >= 2 * max(1, ctx(rest[0]))):
+            return _cased(best, lf), 'the letters on the page, and the company the author keeps for that word', bool(known)
+    return None, None, bool(known)
+
+
+def _cased(word, lf):
+    """Keep the capital the page still shows."""
+    if lf and lf[0].isupper():
+        return word[0].upper() + word[1:]
+    return word
+
+
 def validate(g):
     """A settled reading has to fit the letters still on the page.
 
@@ -232,17 +438,20 @@ def validate(g):
     r = g.get('reading')
     if not r:
         return g
-    lf, rf = fragments(g)
-    R = r.lower()
-    if lf and not R.startswith(lf.lower()):
+    if not fits(g, r):
         g['reading'] = None
-        g['source'] = f'rejected — does not continue "{lf}"'
+        g['source'] = f'rejected — does not fit the letters on the page'
         return g
+    # Which way the surroundings read is settled by the reading itself: it
+    # absorbs a fragment only where it actually begins or ends with it.
+    R = r.lower()
+    lf, rf = fragments(g)
+    if lf and not R.startswith(lf.lower()):
+        lf = ''
+    if rf and not (R.endswith(rf.lower()) and len(R) > len(rf)):
+        rf = ''
     g['absorb_left']  = bool(lf)
-    g['absorb_right'] = bool(rf) and R.endswith(rf.lower()) and len(R) > len(rf)
-    # The page's own capital survives in the fragment; keep it. Where no
-    # fragment survives, an opening bracket or a full stop says the word
-    # began a name or a sentence.
+    g['absorb_right'] = bool(rf)
     if (lf and lf[0].isupper()) or \
        (not lf and re.search(r'[.?!(\u201c"]\s*[\u2022\s]*$', g.get('before', ''))):
         g['reading'] = r[0].upper() + r[1:]
