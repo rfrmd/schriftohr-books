@@ -7,6 +7,7 @@ sweeps the text for the marks that mean the pipeline leaked: placeholder
 glyphs, doubled fragments, tag debris.
 """
 import re, sys, zipfile, html
+import xml.etree.ElementTree as ET
 from collections import Counter
 
 LEAKS = {
@@ -62,7 +63,18 @@ def check(path):
             tgt = f'{d.rsplit("/",1)[0]}/{href}'
             while '/../' in tgt: tgt = re.sub(r'[^/]+/\.\./', '', tgt, count=1)
             if tgt not in names: bad.append(f'{d.split("/")[-1]} links to missing {href}')
-    # 4. every note reference must land on a note
+    # 4. EVERY DOCUMENT MUST PARSE. This check was missing, and its absence let
+    #    a book through with four pages that a reader opens to an error box: a
+    #    source anchor with no closing tag had swallowed a note reference's own
+    #    </a>. Stripping tags with a regex, as the sweep below does, sees
+    #    nothing wrong with that — only a parser does.
+    for d in docs + ([opf_path] if opf_path in names else []):
+        try:
+            ET.fromstring(z.read(d))
+        except ET.ParseError as e:
+            bad.append(f'{d.split("/")[-1]} is not well-formed XML: {e}')
+
+    # 5. every note reference must land on a note
     refs, bodies = set(), set()
     for d in docs:
         b = z.read(d).decode('utf-8','replace')
@@ -71,7 +83,7 @@ def check(path):
     if refs - bodies: bad.append(f'{len(refs-bodies)} note references with no note')
     if bodies - refs: bad.append(f'{len(bodies-refs)} notes nothing refers to')
 
-    # 5. text sweep
+    # 6. text sweep
     # The edition note and the proofing page quote the marks on purpose
     # ("the long ſ is set as s", "marked […]"); they are not leaks.
     text = []

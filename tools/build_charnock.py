@@ -60,13 +60,17 @@ def clean(b, seen):
     b = re.sub(r'<h[12][^>]*>.*?</h[12]>', '', b, flags=re.S)     # our own heads replace them
     b = re.sub(r'<a class="anchor pginternal" href="[^"]*#pg_[^"]*"[^>]*></a>', '', b)
     b = re.sub(r'<a[^>]*id="pg_[^"]*"[^>]*></a>', '', b)
+    # ⚠️ Mark the note references, unwrap every anchor, and only THEN write the
+    # real <a>. Writing it first and excluding it from the unwrap looked safe
+    # and was not: the source carries anchors with no closing tag, and the
+    # unwrap's non-greedy (.*?)</a> reached past them to eat the note
+    # reference's own </a>, leaving four pages that a reader opens to an error.
     def _ref(m):
         n = int(m.group(1)); seen.append(n)
-        return (f'<a epub:type="noteref" href="#fn{n}" id="fr{n}" class="nref">'
-                f'<sup>{n}</sup></a>')
-    b = re.sub(r'<a[^>]*href="[^"]*-31\.htm[^"]*#fn_(\d+)"[^>]*>\d+</a>', _ref, b)
-    # any link left over — but never the note references just made
-    b = re.sub(r'<a(?![^>]*epub:type)\b[^>]*>(.*?)</a>', r'\1', b, flags=re.S)
+        return f'\ue008{n}\ue009'
+    b = re.sub(r'<a[^>]*href="[^"]*-31\.htm[^"]*#fn_(\d+)"[^>]*>[^<]*</a>', _ref, b)
+    b = re.sub(r'<a\b[^>]*>(.*?)</a>', r'\1', b, flags=re.S)
+    b = re.sub(r'</?a\b[^>]*/?>', '', b)          # anything unclosed, or an orphan close
     # Mark the two scripts BEFORE the general span strip — a span made here
     # and stripped two lines later leaves the Greek unglossed and unstyled.
     b = re.sub(r'<span lang="he">([^<]+)</span>', lambda m: HB0 + m.group(1) + HB1, b)
@@ -88,6 +92,9 @@ def clean(b, seen):
     b = re.sub(HB0 + r'([^' + HB1 + r']*)' + HB1,
                lambda m: f'<span xml:lang="hbo" lang="hbo" dir="rtl" class="hb">{m.group(1)}</span>', b)
     b = re.sub(r'<(em|i|cite)[^>]*>', '<i>', b); b = re.sub(r'</(em|i|cite)>', '</i>', b)
+    b = re.sub('\ue008(\\d+)\ue009',
+               lambda m: (f'<a epub:type="noteref" href="#fn{m.group(1)}" '
+                          f'id="fr{m.group(1)}" class="nref"><sup>{m.group(1)}</sup></a>'), b)
     out = []
     for m in re.finditer(r'<(p|blockquote|h[3-6])\b[^>]*>(.*?)</\1>', b, flags=re.S):
         tag, inner = m.group(1), re.sub(r'\s+', ' ', m.group(2)).strip()

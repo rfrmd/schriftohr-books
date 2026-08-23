@@ -43,10 +43,20 @@ def clean(b, imgmap, kept):
     b = re.sub(r'<div class="pb"[^>]*>.*?</div>', '', b, flags=re.S)
     b = re.sub(r'\[\d+\]', '', b)
     b = re.sub(r'<a\b[^>]*>(.*?)</a>', r'\1', b, flags=re.S)
+    # ⚠️ A page marker is written <a id="Page_9" title="9"> with no close, and
+    # the unwrap above leaves it standing — an opening tag inside a paragraph
+    # that nothing ever closes, so the page will not parse at all.
+    b = re.sub(r'</?a\b[^>]*/?>', '', b)
+    # A stanza arrives as nested divs. Wrapping that in <p> below produced
+    # <p><div><div><div>text</p>, which is not markup any reader can open.
+    b = re.sub(r'<div class="poetry"[^>]*>\s*(?:<div class="verse"[^>]*>\s*)?', '', b)
+    b = re.sub(r'<div class="line[^"]*"[^>]*>(.*?)</div>', r'<p class="verse">\1</p>', b, flags=re.S)
     b = re.sub(r'</?span[^>]*>', '', b)
     out = []
     for m in re.finditer(r'<(p|blockquote|div|figure|h[3-6])\b[^>]*>(.*?)</\1>', b, flags=re.S):
         tag, inner = m.group(1), re.sub(r'\s+', ' ', m.group(2)).strip()
+        if tag in ('p', 'div') and re.search(r'<(?:div|p|blockquote|table)\b', inner):
+            continue                         # a block inside a block: its children are matched too
         img = re.search(r'<img[^>]*src="([^"]+)"', inner)
         if img:
             name = os.path.basename(img.group(1))
@@ -56,7 +66,8 @@ def clean(b, imgmap, kept):
             continue
         if not flatten(inner):
             continue
-        out.append(f'<p>{inner}</p>' if tag in ('p', 'div') else f'<{tag}>{inner}</{tag}>')
+        cls = ' class="verse"' if 'class="verse"' in m.group(0) else ''
+        out.append(f'<p{cls}>{inner}</p>' if tag in ('p', 'div') else f'<{tag}>{inner}</{tag}>')
     return '\n'.join(out)
 
 def page(title, et, cls, inner, bt='bodymatter'):

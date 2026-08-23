@@ -40,14 +40,50 @@ SCRIPT_CSS = """
 """
 
 PROOFING_CSS = """
-/* The proofing notice. Loud on purpose: this copy is not for keeping. */
+/* The proofing notice. Loud on purpose: this copy is not for keeping.
+   Its quieter cousin, .note, is for a published edition — same invitation,
+   without telling the reader the book is unfinished. */
 .proof{border:2px solid #fd8008;border-radius:10px;padding:1.2em 1.1em;margin:2.2em 0}
 .proof h1{font-size:1.25em;letter-spacing:.14em;text-align:center;color:#fd8008;
           margin:0 0 .8em;text-transform:uppercase}
 .proof p{text-indent:0;margin:.75em 0;font-size:.97em;text-align:left}
 .proof .stamp{font-size:.84em;color:#777;text-align:center;margin-top:1.2em;
               border-top:1px solid #ddd;padding-top:.7em}
+.note{border-top:1px solid #d8d3c8;border-bottom:1px solid #d8d3c8;
+      padding:1.1em 0;margin:2.4em 0}
+.note h1{font-size:1.1em;text-align:center;margin:0 0 .7em;font-weight:600}
+.note p{text-indent:0;margin:.7em 0;font-size:.97em;text-align:left}
+.note .stamp{font-size:.84em;color:#888;text-align:center;margin-top:1.1em}
 """
+
+
+def corrections_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com'):
+    """The published edition's version of the same invitation.
+
+    A finished book should not tell its reader it is unfinished, but it can
+    still ask to be told when something is wrong — every one of these is set
+    from a scan or an old printing, and errors survive that.
+    """
+    E = html.escape
+    build = build or date.today().isoformat()
+    return (XHTML_OPEN +
+      '<head><title>About This Copy</title><meta charset="utf-8"/>'
+      '<link rel="stylesheet" type="text/css" href="../css/style.css"/></head>\n'
+      '<body epub:type="frontmatter"><section epub:type="preamble" class="preamble">\n'
+      '<div class="note">\n'
+      '<h1>About This Copy</h1>\n'
+      '<p>This is a <i>SchriftOhr Edition</i>: a book long out of copyright, set again '
+      'with care — for reading on a page, and for listening to aloud. It is free, and '
+      'yours to keep and to pass on.</p>\n'
+      '<p>Every edition here begins with a scan or an old printing, and errors survive '
+      'that. If something reads wrongly — a misprint, a word that sits oddly, a chapter '
+      'that begins in the wrong place — we would be glad to be told. Note the chapter and '
+      'the sentence around it and send it to '
+      f'<a href="mailto:{contact}">{contact}</a>. Small things are worth reporting; they '
+      'are how the next printing gets better.</p>\n'
+      f'<p class="stamp">{E(title)} &#183; {E(author)}<br/>'
+      f'SchriftOhr Edition &#183; build {E(build)}</p>\n'
+      '</div>\n</section></body></html>\n')
 
 def proofing_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com'):
     E = html.escape
