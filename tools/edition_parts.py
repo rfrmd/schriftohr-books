@@ -41,19 +41,20 @@ SCRIPT_CSS = """
 
 PROOFING_CSS = """
 /* The proofing notice. Loud on purpose: this copy is not for keeping.
-   Its quieter cousin, .note, is for a published edition — same invitation,
-   without telling the reader the book is unfinished. */
+   .note is the same box for a published edition — the orange is the house
+   mark and stays; only the words change. */
 .proof{border:2px solid #fd8008;border-radius:10px;padding:1.2em 1.1em;margin:2.2em 0}
 .proof h1{font-size:1.25em;letter-spacing:.14em;text-align:center;color:#fd8008;
           margin:0 0 .8em;text-transform:uppercase}
 .proof p{text-indent:0;margin:.75em 0;font-size:.97em;text-align:left}
 .proof .stamp{font-size:.84em;color:#777;text-align:center;margin-top:1.2em;
               border-top:1px solid #ddd;padding-top:.7em}
-.note{border-top:1px solid #d8d3c8;border-bottom:1px solid #d8d3c8;
-      padding:1.1em 0;margin:2.4em 0}
-.note h1{font-size:1.1em;text-align:center;margin:0 0 .7em;font-weight:600}
-.note p{text-indent:0;margin:.7em 0;font-size:.97em;text-align:left}
-.note .stamp{font-size:.84em;color:#888;text-align:center;margin-top:1.1em}
+.note{border:2px solid #fd8008;border-radius:10px;padding:1.2em 1.1em;margin:2.2em 0}
+.note h1{font-size:1.25em;letter-spacing:.14em;text-align:center;color:#fd8008;
+         margin:0 0 .8em;text-transform:uppercase}
+.note p{text-indent:0;margin:.75em 0;font-size:.97em;text-align:left}
+.note .stamp{font-size:.84em;color:#777;text-align:center;margin-top:1.2em;
+             border-top:1px solid #ddd;padding-top:.7em}
 """
 
 
