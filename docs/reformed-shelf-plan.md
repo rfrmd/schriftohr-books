@@ -18,6 +18,13 @@ per-book provenance notes are the parts that belong in git.
 
 ---
 
+## What the Monergism files are for
+
+John supplied them **for comparison after the fact** — reference copies
+to check a doubtful reading against, never a base to build from. Every
+edition here is built from a printing we can name. That is what keeps
+the shelf's sourcing promise true.
+
 ## The clearance rule
 
 The shelf says publicly that we use public-domain sources. For these
@@ -65,16 +72,29 @@ before any work starts.
 
 | | |
 |---|---|
-| status | **usable source, licence to confirm** |
-| have | a Monergism Books epub — clean text, but their compilation |
-| original | 1651 first edition, for collation |
-| link | https://archive.org/details/rarejewelchrist00burrgoog |
-| clearance | Burroughs d. 1646; text public domain. |
+| status | **blocked — no usable public-domain base** |
+| clearance | Burroughs d. 1646; the text is public domain. The problem is not rights, it is that no clean printing exists to build from. |
 
-To settle: what Monergism's terms permit. Their files are freely
-distributed, but a redistributed edition should either rest on a
-scan we can name or carry their permission. Ask, or build from the
-1651 and use Monergism only to check readings.
+What the search found: every public-domain copy is a seventeenth-century
+printing — 1649, 1650, 1651, 1652, 1655, 1659 — and every one is an EEBO
+scan in period type. The OCR is not repairable prose:
+
+> *afuhifsof honow^ and ejieemmththe teB of Men*
+
+310 long-s-as-f errors, 729 stray letters, 242 digits inside words, in
+94,000 words. That is a transcription project, not a correction pass.
+**There is no printing at all between 1659 and the modern editions**,
+and those (Banner of Truth 1964, Reformation Heritage 2013) are in
+copyright. HathiTrust and CCEL add nothing.
+
+Options, in the order I would take them:
+
+1. **Defer.** Build the other four. Burroughs waits for a better base —
+   Distributed Proofreaders may yet do one.
+2. **Ask Monergism for permission** to use their text, naming them in the
+   sources page. Different from building on their file unasked, and it
+   is the only clean route to this book today.
+3. **Transcribe from the 1651** ourselves. Honest, and expensive.
 
 ## 4. Precious Remedies Against Satan's Devices — Thomas Brooks
 
@@ -125,8 +145,8 @@ collation copies only.
 
 Charnock and Pink first — Charnock because its source is clean and it
 proves the pipeline on a large book; Pink because it is cleared and
-wanted. Then Brooks, then Burroughs once its licence question is
-settled, and Owen last, since its source has to be replaced first.
+wanted. Then Brooks, then Owen once its source is replaced.
+Burroughs is blocked and waits, since its source has to be replaced first.
 
 ## Stage two — the study editions
 
