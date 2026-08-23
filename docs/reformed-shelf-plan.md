@@ -121,8 +121,40 @@ printed before 1700.
 
 **Their one cost: marked gaps** — places a keyer could not read, or
 Greek and Hebrew left untyped. Owen 185, Brooks 441, Charnock 752,
-mostly single letters. Each needs a decision: infer from context, fill
-from a later printing, or leave the mark. None may be filled silently.
+Burroughs 31; mostly single letters.
+
+### How gaps are settled (John, 2026-08-22)
+
+> *Infer from context, and check a later printing.*
+
+Both halves are needed, and Owen's very first gap proves it. The text
+reads `for the pro⟦4 letters⟧on and furtherance of this work`. Inference
+from Owen's own vocabulary proposed **provision** — plausible, and
+wrong. The later printing reads **promotion**. Inference alone would
+have put an error into the edition.
+
+So the working order is:
+
+1. **Infer from the book's own lexicon.** `tools/resolve_gaps.py` builds
+   a frequency list from the text itself, because a word the author uses
+   elsewhere beats a dictionary curiosity that merely fits the letter
+   count. On Owen this settles **89 of 185**, and it picks the period
+   spellings — `wayes`, `alwayes` — precisely because it is reading his
+   usage rather than a modern word list.
+2. **Collate against a later printing**, which decides where the two
+   disagree. ⚠️ The collator in the tool is **not yet trustworthy**:
+   three-word context keys do not survive the spelling drift between a
+   1668 printing and a modern one, so it matched only 20 of 185 and
+   mis-aligned one of those. Do not let it write readings until it can
+   align on normalised spelling. Until then collation is done by hand
+   for the readings that matter.
+3. **Record every one.** Each resolution is written to
+   `working/gap-ledger.json` beside the source, with its context and how
+   it was reached. Nothing is filled silently, and any reading can be
+   challenged later.
+4. **The Greek and Hebrew** — 29 in Owen, 63 in Brooks, 154 in Charnock —
+   are a separate task: the keyers skipped non-Latin script entirely. A
+   later printing or the Greek New Testament supplies them.
 
 ## Period spelling
 
