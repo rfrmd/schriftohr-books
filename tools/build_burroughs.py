@@ -1,6 +1,6 @@
 import sys, os, re, html, json, shutil, subprocess, uuid
 sys.path.insert(0, os.path.expanduser('~/Developer/schriftohr-books/tools'))
-from tei_reader import sections, words
+from tei_reader import sections, words, open_cap
 from PIL import Image
 W=os.path.expanduser('~/Desktop/Reformed-Shelf-Working/03-burroughs-rare-jewel')
 TPL='/private/tmp/claude-501/-Users-johnwest-Developer-schriftohr/6c0e5e0e-5ab4-4c3b-a6f4-cca64a136103/scratchpad/tpl'
@@ -27,9 +27,15 @@ def page(title, et, cls, inner, bt='bodymatter'):
       f'<head><title>{E(title)}</title><meta charset="utf-8"/>'
       '<link rel="stylesheet" type="text/css" href="../css/style.css"/></head>\n'
       f'<body epub:type="{bt}"><section epub:type="{et}" class="{cls}">\n{inner}\n</section></body></html>\n')
-def render(node, level=3):
+def render(node, level=3, first=True):
     out=[]
-    for p in node['paras']: out.append(f'<p>{E(p)}</p>')
+    for i,p in enumerate(node['paras']):
+        # A sermon opens with its text and then its exposition, and the
+        # flourish can sit on either. FINIS is a closing, not an opening,
+        # and keeps its capitals.
+        if first and i < 3 and p.strip() != 'FINIS.':
+            p = open_cap(p)
+        out.append(f'<p>{E(p)}</p>')
     for s in node['subs']:
         if s['head']: out.append(f'<h{level}>{E(s["head"])}</h{level}>')
         out.append(render(s, min(level+1,6)))
@@ -67,7 +73,8 @@ open(f'{OUT}/OEBPS/text/01-edition-note.xhtml','w',encoding='utf-8').write(page(
 files.append(('01-edition-note.xhtml','About This Edition'))
 
 # Sermon I is the work's own opening matter; II-XI are its subsections
-inner=f'<h2>Sermon I</h2>\n'+'\n'.join(f'<p>{E(p)}</p>' for p in rj['paras'])
+_p=list(rj['paras']); _p[0]=open_cap(_p[0]) if _p else ''
+inner=f'<h2>Sermon I</h2>\n'+'\n'.join(f'<p>{E(x)}</p>' for x in _p)
 open(f'{OUT}/OEBPS/text/S01.xhtml','w',encoding='utf-8').write(page('Sermon I','chapter','chapter',inner))
 files.append(('S01.xhtml','Sermon I'))
 for i,s in enumerate(rj['subs'], start=2):

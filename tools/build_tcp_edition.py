@@ -1,6 +1,7 @@
 import re, html, json, os, sys, shutil, subprocess, uuid
 sys.path.insert(0, os.path.expanduser('~/Developer/schriftohr-books/tools'))
 from PIL import Image
+from tei_reader import open_cap
 W=os.path.expanduser('~/Desktop/Reformed-Shelf-Working/02-owen-mortification')
 TPL='/private/tmp/claude-501/-Users-johnwest-Developer-schriftohr/6c0e5e0e-5ab4-4c3b-a6f4-cca64a136103/scratchpad/tpl'
 OUT=f'{W}/output/mortification-of-sin'
@@ -99,13 +100,16 @@ files.append(('01-edition-note.xhtml','About This Edition'))
 if preface:
     open(f'{OUT}/OEBPS/text/02-preface.xhtml','w',encoding='utf-8').write(page(
       'To the Reader','preface','preamble',
-      '<h2>To the Reader</h2>\n'+'\n'.join(f'<p>{E(p)}</p>' for p in preface['paras']),'frontmatter'))
+      '<h2>To the Reader</h2>\n'+'\n'.join(f'<p>{E(x)}</p>' for x in
+        ([open_cap(preface['paras'][0])]+preface['paras'][1:] if preface['paras'] else [])),'frontmatter'))
     files.append(('02-preface.xhtml','To the Reader'))
 for i,c in enumerate(chapters,1):
     t=f'Chapter {c["num"]}'
     inner=f'<h2>{t}</h2>\n'
     if c['argument']: inner+=f'<p class="argument">{E(c["argument"])}</p>\n'
-    inner+='\n'.join(f'<p>{E(p)}</p>' for p in c['paras'])
+    _ps=list(c['paras'])
+    if _ps: _ps[0]=open_cap(_ps[0])          # the printer's opening flourish
+    inner+='\n'.join(f'<p>{E(p)}</p>' for p in _ps)
     fn=f'C{i:02d}.xhtml'
     open(f'{OUT}/OEBPS/text/{fn}','w',encoding='utf-8').write(page(t,'chapter','chapter',inner))
     files.append((fn,t))

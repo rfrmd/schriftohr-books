@@ -94,3 +94,25 @@ def sections(xml_path, gapmap=None):
 def words(node):
     n = sum(len(p.split()) for p in node['paras'])
     return n + sum(words(s) for s in node['subs'])
+
+
+def open_cap(text):
+    """Undo the printer's opening flourish.
+
+    A seventeenth-century chapter begins with a large initial and the
+    next letter or two set to match it, which a transcription renders
+    as 'THat', 'HAving', 'EIghthly' — or the whole first word in
+    capitals, 'THE', 'NOW'. Both are the same convention, and both look
+    like errors on a screen. Reduce the first word to ordinary
+    capitalisation; the flourish belongs to the page, not the text.
+
+    Only ever applied to the FIRST word of an opening paragraph.
+    """
+    m = re.match(r'([A-Z]{2,})([a-z]*)(?=\b)', text)
+    if not m:
+        return text
+    word = m.group(0)
+    if len(word) < 2:
+        return text
+    fixed = word[0] + word[1:].lower()
+    return fixed + text[m.end():]
