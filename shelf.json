@@ -121,6 +121,26 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/green-tent-mystery/cover.jpg",
       "source": "Project Gutenberg ebook 58514",
       "license": "Text public domain in the United States"
+    },
+    {
+      "id": "mortification-of-sin",
+      "title": "The Mortification of Sin in Believers",
+      "author": "John Owen",
+      "blurb": "Owen preaching to Oxford undergraduates in 1656 on eight words of Paul: if ye through the Spirit do mortify the deeds of the body, ye shall live. The most searching book in English on how sin is actually killed, and on the several ways a man deceives himself that it has been. Set from the 1668 printing. This is a proofing copy — corrections welcome.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/mortification-of-sin/Owen_John-SchriftOhr_Edition-Mortification_of_Sin.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/mortification-of-sin/cover.jpg",
+      "source": "EEBO-TCP A53715 (Wing O787), the 1668 printing, keyed and released CC0",
+      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC"
+    },
+    {
+      "id": "rare-jewel-of-christian-contentment",
+      "title": "The Rare Jewel of Christian Contentment",
+      "author": "Jeremiah Burroughs",
+      "blurb": "Sermons on Paul’s \"I have learned, in whatsoever state I am, therewith to be content\" — learned, Burroughs insists, and therefore teachable. He takes contentment apart: what it is, what it is not, the excellence of it, and the many ways a discontented heart argues with God. Set from the 1649 printing. This is a proofing copy — corrections welcome.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/rare-jewel-of-christian-contentment/Burroughs_Jeremiah-SchriftOhr_Edition-Rare_Jewel_of_Christian_Contentment.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/rare-jewel-of-christian-contentment/cover.jpg",
+      "source": "EEBO-TCP A30598 (Wing B6103), the 1649 printing, keyed and released CC0",
+      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC"
     }
   ],
   "note": "Every edition begins with a public-domain source, often an original scanned book. We set the text properly — adding chapter divisions where the source had none, and clearing away what scanning and re-keying leave behind — so the book reads well on the page and sounds right read aloud."
