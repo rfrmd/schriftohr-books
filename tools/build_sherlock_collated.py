@@ -108,7 +108,11 @@ STORIES = [
 # ⚠️ Captions read off the page rather than guessed, which corrected one:
 # "HAVE MERCY! HE SHRIEKED" is Ryder in the Blue Carbuncle, not the Beryl
 # Coronet, and a mapping by page number in the other copy had put it wrong.
-PAGET_SRC = pathlib.Path('/tmp/ia3/EPUB')      # unpacked archive.org copy
+# ⚠️ The plates live in the working folder, NOT in a scratch directory. They were
+# once read from an unpacked copy under /tmp; /tmp is emptied, and a build that
+# cannot find a plate used only to warn — so the book would quietly ship with
+# fifteen illustrations missing and nobody the wiser (John, 2026-08-29).
+PAGET_SRC = W / 'artwork' / 'paget'
 PAGET = [
     (7,   'THE GENTLEMAN IN THE PEW HANDED IT UP TO HER', 'X'),
     (22,  'A MAN ENTERED', 'I'),
@@ -176,9 +180,17 @@ def carry_plates(out_dir):
     for n, caption, roman in PAGET:
         src = PAGET_SRC / f'image_{n:04d}_00.jpeg'
         if not src.exists():
-            print(f'  !! plate image_{n:04d} is not there')
-            continue
+            raise SystemExit(f'!! plate image_{n:04d} is not in {PAGET_SRC}.\n'
+                             '   Refusing to build: a proof that silently drops its\n'
+                             '   illustrations looks finished and is not.')
         im = Image.open(src).convert('L')
+        # ⚠️ A bitonal scan destroys a halftone — the plate comes out a blank
+        # rectangle with its caption underneath. Ours did, at 0.4% ink. Any
+        # plate this flat is not a picture.
+        h = im.histogram(); ink = sum(h[:128]) / max(1, sum(h))
+        if ink < 0.05:
+            raise SystemExit(f'!! plate image_{n:04d} is {ink:.1%} ink — a blank page,\n'
+                             '   not a drawing. Check the scan is greyscale.')
         if im.width > 1100:
             im = im.resize((1100, round(im.height * 1100 / im.width)), Image.LANCZOS)
         dest = f'paget-{n:04d}.jpg'
@@ -200,7 +212,7 @@ def main():
     print(f'{len(stories)} Adventures cut · {sum(len(b.split()) for _,_,b in stories):,} words')
 
     paget = carry_plates(OUT)
-    print(f'{len(paget)} Paget plates carried from our own scan')
+    print(f'{len(paget)} Paget plates carried from the 1892 Harper scan')
 
     colour = {}
     for roman, filename in PLATES.items():
