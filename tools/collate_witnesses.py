@@ -48,15 +48,20 @@ def join_hyphens(lines):
 
     ⚠️ Both witnesses fail here identically ('ad- vice'), so it would not show up
     as a disagreement — it would sail through as agreed nonsense. Repair first.
-    Only join when the next line starts lower-case: 'Saxe-\\nCoburg' is a real
+    Only join when the next line starts lower-case: 'Saxe-\nCoburg' is a real
     hyphen and must survive.
+
+    Accepts plain strings or (text, *provenance) records and returns the same
+    shape, so a joined word keeps the line it started on — which is the line
+    whose picture the reviewer needs to see.
     """
+    recs = [(l, ()) if isinstance(l, str) else (l[0], tuple(l[1:])) for l in lines]
     out = []
     i = 0
-    while i < len(lines):
-        line = lines[i].rstrip()
-        while line.endswith('-') and i + 1 < len(lines):
-            nxt = lines[i + 1].lstrip()
+    while i < len(recs):
+        line, prov = recs[i][0].rstrip(), recs[i][1]
+        while line.endswith('-') and i + 1 < len(recs):
+            nxt = recs[i + 1][0].lstrip()
             if not nxt or not nxt[0].islower():
                 break
             head, _, _ = line.rpartition('-')
@@ -65,11 +70,11 @@ def join_hyphens(lines):
             if not word or not tail:
                 break
             line = head + tail.group(1)
-            lines[i + 1] = nxt[len(tail.group(1)):].lstrip()
-            if lines[i + 1]:
+            recs[i + 1] = (nxt[len(tail.group(1)):].lstrip(), recs[i + 1][1])
+            if recs[i + 1][0]:
                 break
             i += 1
-        out.append(line)
+        out.append(line if not prov else (line,) + prov)
         i += 1
     return out
 
@@ -119,8 +124,9 @@ def read_vision(directory, zone=0.085, repeats=5):
     NUMBERISH = re.compile(r"^[\s\d IlOSB!$|.,;:_\-—~'’`()\[\]]*$")
     ROMAN = re.compile(r'^[\s.,;:_\-]*[IVXLC]{1,7}[\s.,;:_\-]*$', re.I)
 
-    pages, dropped = [], []
-    for rows in pages_raw:
+    stems = [p.stem for p in sorted(pathlib.Path(directory).glob('*.tsv'))]
+    pages, dropped, records = [], [], []
+    for stem, rows in zip(stems, pages_raw):
         keep = []
         for text, top, bottom, _ in rows:
             in_zone = top < zone or bottom > 1 - zone
@@ -128,8 +134,11 @@ def read_vision(directory, zone=0.085, repeats=5):
                             or ROMAN.match(text)):
                 dropped.append(text)
                 continue
-            keep.append(text)
-        pages.append(join_hyphens(keep))
+            keep.append((text, stem, top, bottom))
+        joined = join_hyphens(keep)
+        pages.append([r[0] for r in joined])
+        records.extend(joined)
+    read_vision.records = records
     return pages, dropped
 
 
@@ -155,6 +164,35 @@ def read_plain(path):
             continue
         keep.append(s)
     return join_hyphens(keep), dropped
+
+
+def trim_to_body(words, start, end):
+    """Cut a witness down to the book itself.
+
+    ⚠️ Two copies of a book do not share their front matter. One carries
+    Google's scanning notice, the other Berkeley's accession stamps; neither is
+    Doyle. Collating them whole reports hundreds of "disagreements" that are
+    nothing of the kind, and buries the real ones. Anchor on the first and last
+    words of the text and compare only what lies between.
+    """
+    if not start and not end:
+        return words, 0
+    low = [w.lower() for w in words]
+    def find(phrase):
+        want = [w.lower() for w in re.findall(r"[A-Za-z0-9']+", phrase)]
+        if not want: return None
+        for i in range(len(low) - len(want) + 1):
+            if low[i:i+len(want)] == want:
+                return i
+        return None
+    a = find(start) if start else 0
+    b = find(end) if end else None
+    if a is None:
+        raise SystemExit(f'anchor not found in a witness: {start!r}')
+    if end and b is None:
+        raise SystemExit(f'end anchor not found in a witness: {end!r}')
+    b = (b + len(re.findall(r"[A-Za-z0-9']+", end))) if end else len(words)
+    return words[a:b], a
 
 
 # ── comparison ──────────────────────────────────────────────────────────────────
@@ -192,6 +230,8 @@ def main():
     ap.add_argument('--vision', required=True, help='directory of Vision .txt/.tsv pages')
     ap.add_argument('--plain', required=True, help='a full-text file (e.g. _djvu.txt)')
     ap.add_argument('--out', required=True)
+    ap.add_argument('--start', default='', help='first words of the text proper')
+    ap.add_argument('--end', default='', help='last words of the text proper')
     ap.add_argument('--zone', type=float, default=0.085,
                     help='fraction of the page treated as margin for the census')
     args = ap.parse_args()
@@ -208,6 +248,8 @@ def main():
     (out / 'witness-b-plain.txt').write_text(p_text, encoding='utf-8')
 
     A, B = tokens(v_text), tokens(p_text)
+    A, _ = trim_to_body(A, args.start, args.end)
+    B, _ = trim_to_body(B, args.start, args.end)
     print(f'witness A (Vision) : {len(pages):>4} pages · {len(A):>7,} words · '
           f'{len(v_dropped):,} furniture lines dropped')
     print(f'witness B (plain)  : {len(p_lines):>4} lines · {len(B):>7,} words · '
