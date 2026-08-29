@@ -32,7 +32,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_edition import page, package, slug
-from edition_parts import proofing_xhtml, PROOFING_CSS
+from edition_parts import proofing_xhtml, PROOFING_CSS, stamp_proof_cover
 from PIL import Image
 
 W = pathlib.Path.home() / 'Desktop/Sherlock-Working'
@@ -331,8 +331,13 @@ def main():
             'for this edition.</p>'),
     }
 
-    package(str(OUT), chapters, META, str(ART / 'SherlockHolmes-Master.jpg'),
-            TPL, str(EPUB))
+    # ⚠️ A proof must LOOK like one before it is opened. The notice inside is
+    # no help in a library grid, where a reader is choosing what to read.
+    banded = OUT / 'proof-cover.jpg'
+    stamp_proof_cover(ART / 'SherlockHolmes-Master.jpg', banded)
+    print('cover banded PROOFING COPY')
+
+    package(str(OUT), chapters, META, str(banded), TPL, str(EPUB))
 
     # nav: one row per Adventure, landing on its plate
     nav = (OUT / 'OEBPS/nav.xhtml').read_text(encoding='utf-8')

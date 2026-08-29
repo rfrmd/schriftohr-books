@@ -128,3 +128,56 @@ def proofing_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com',
       f'<p class="stamp">{E(title)} &#183; {E(author)}<br/>'
       f'SchriftOhr Edition &#183; build {E(build)}</p>\n'
       '</div>\n</section></body></html>\n')
+
+
+# ── the proof band ──────────────────────────────────────────────────────────
+
+PROOF_ORANGE = (253, 128, 8)
+
+def stamp_proof_cover(src, dst, label='PROOFING COPY', at=0.425, quality=90):
+    """Band a cover so a proof is obvious on a shelf of finished books.
+
+    ⚠️ The orange notice inside a proof is no use where a reader chooses what
+    to open. A proofing copy sitting in a library grid beside published
+    editions looks exactly like one of them — John, 2026-08-29, of the Sherlock
+    cover: "it just doesn't have the orange bordered proof copy on it."
+
+    ⚠️ NOT ACROSS THE FOOT. That is where the publisher's mark sits, and the
+    first attempt put the band straight over the RFRMD Word Labs logo. `at`
+    is the band's centre as a fraction of the height; the default sits it in
+    the upper-middle, which on these covers is the quietest ground and still
+    reads at thumbnail size.
+    """
+    from PIL import Image, ImageDraw, ImageFont
+
+    im = Image.open(src).convert('RGB')
+    W, H = im.size
+    band_h = max(44, round(H * 0.070))
+    y0 = max(0, round(H * at - band_h / 2))
+    y1 = min(H, y0 + band_h)
+    pad = round(W * 0.035)
+
+    layer = Image.new('RGBA', im.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    d.rectangle([pad, y0, W - pad, y1], fill=(18, 18, 20, 232),
+                outline=PROOF_ORANGE + (255,), width=max(3, round(W * 0.005)))
+
+    size = round(band_h * 0.46)
+    font = None
+    for path in ('/System/Library/Fonts/Supplemental/Arial Bold.ttf',
+                 '/System/Library/Fonts/Supplemental/Georgia Bold.ttf'):
+        try:
+            font = ImageFont.truetype(path, size); break
+        except OSError:
+            continue
+    text = ' '.join(label.upper())          # letter-spaced, like the notice
+    if font:
+        box = d.textbbox((0, 0), text, font=font)
+        d.text(((W - (box[2] - box[0])) / 2, (y0 + y1) / 2 - (box[3] - box[1]) / 2 - box[1]),
+               text, font=font, fill=PROOF_ORANGE + (255,))
+    else:
+        d.text((pad + 12, y0 + band_h / 3), text, fill=PROOF_ORANGE + (255,))
+
+    out = Image.alpha_composite(im.convert('RGBA'), layer).convert('RGB')
+    out.save(dst, 'JPEG', quality=quality, optimize=True, progressive=True)
+    return out.size
