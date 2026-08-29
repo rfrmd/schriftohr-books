@@ -215,6 +215,8 @@ def main():
     ap.add_argument('--printing', default='Harper &amp; Brothers scan')
     ap.add_argument('--start', default='')
     ap.add_argument('--end', default='')
+    ap.add_argument('--only', default='',
+                    help='a residual TSV; render only the rows it names')
     ap.add_argument('--limit', type=int, default=0,
                     help='only the first N doubtful places (for a quick look)')
     ap.add_argument('--include-resolvable', action='store_true',
@@ -225,6 +227,9 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     vocab = real_words()
 
+    from collections import Counter as _C
+    read_vision(args.vision)
+    _dropped = getattr(read_vision, 'dropped_texts', [])
     stream = vision_stream(args.vision)
     A0 = [w for w, *_ in stream]
     A, offset = trim_to_body(A0, args.start, args.end)
@@ -234,9 +239,20 @@ def main():
 
     sm = difflib.SequenceMatcher(None, [w.lower() for w in A],
                                  [w.lower() for w in B], autojunk=False)
-    spots, auto = [], 0
+    only = set()
+    if args.only:
+        import csv as _csv
+        only = {int(r['n']) for r in _csv.DictReader(open(args.only), delimiter='\t')}
+
+    spots, auto, seq = [], 0, 0
     for tag, a1, a2, b1, b2 in sm.get_opcodes():
         if tag == 'equal':
+            continue
+        seq += 1
+        # ⚠️ The ledger numbers disagreements in this same order, so the n-th
+        # non-equal opcode IS ledger row n. Anything else would silently show
+        # the reviewer a different place from the one they were sent to.
+        if only and seq not in only:
             continue
         v = ' '.join(A[a1:a2])
         p = ' '.join(B[b1:b2])
@@ -252,7 +268,7 @@ def main():
             idx = max(0, a1 - 1)
         _, line_no, stem, top, bottom = stream[min(idx, len(stream) - 1)]
         spots.append({
-            'id': f'{a1}', 'vision': v, 'plain': p, 'stem': stem,
+            'id': f'{seq}', 'vision': v, 'plain': p, 'stem': stem,
             'top': top, 'bottom': bottom,
             'before': ' '.join(A[max(0, a1 - 7):a1]),
             'after': ' '.join(A[a2:a2 + 7]),

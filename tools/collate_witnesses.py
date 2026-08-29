@@ -139,13 +139,63 @@ def read_vision(directory, zone=0.085, repeats=5):
         pages.append([r[0] for r in joined])
         records.extend(joined)
     read_vision.records = records
+    read_vision.dropped_texts = dropped
     return pages, dropped
 
 
 RUNNING_HEAD = re.compile(
     r'^[\s_\-.]*[A-Z][A-Z\s\'’.,;:_\-]{6,60}?[\s.,;:_\-]*[0-9IlOS!$|]{1,4}[\s.,;:_\-]*$')
 
-def read_plain(path):
+def strip_inline_heads(text, heads, threshold=0.74):
+    """Cut running heads out of a full-text witness even when glued to the prose.
+
+    ⚠️ A line-shaped rule cannot see these. This witness runs the head into the
+    text it interrupts — 'suffi- 4 ADVENTURES OF SHERLOCK HOLMES cient to
+    absorb' — so matching whole lines leaves 20% of the disagreement ledger
+    filled with page furniture. Worse, it is furniture on ONE side only, so it
+    reads as though the other witness dropped a phrase.
+
+    Matched fuzzily, because the head is mangled differently on every page:
+    ADVINTURIS, SHIRLOCK HOLMIS, RED- BADRD LEAGUE. `heads` comes from the other
+    witness's own census, so nothing is hard-coded per book.
+    """
+    if not heads:
+        return text, 0
+    toks = text.split()
+    def norm(ws):
+        return re.sub(r'[^a-z]', '', ' '.join(ws).lower())
+    capish = [bool(re.match(r'^[^a-z]*[A-Z][^a-z]*$', w)) and len(w) >= 2 for w in toks]
+    keep, cut, i = [], 0, 0
+    while i < len(toks):
+        best = 0
+        for span in range(8, 1, -1):
+            if i + span > len(toks):
+                continue
+            window = toks[i:i + span]
+            if sum(capish[i:i + span]) < max(2, span - 1):
+                continue
+            n = norm(window)
+            if len(n) < 8:
+                continue
+            if any(difflib.SequenceMatcher(None, n, h).ratio() >= threshold for h in heads):
+                best = span
+                break
+        if best:
+            # a bare page number often sits against the head; take it too
+            if keep and re.fullmatch(r"[\dIlOSB!$|.,;:_\-]{1,4}", keep[-1]):
+                keep.pop(); cut += 1
+            j = i + best
+            while j < len(toks) and re.fullmatch(r"[\dIlOSB!$|.,;:_\-]{1,4}", toks[j]):
+                j += 1; cut += 1
+            cut += best
+            i = j
+            continue
+        keep.append(toks[i])
+        i += 1
+    return ' '.join(keep), cut
+
+
+def read_plain(path, heads=()):
     """A full-text file (archive.org's _djvu.txt), furniture stripped by pattern.
 
     Its running heads are 'THE RED-HEADED LEAGUE 43' — the title, then a page
@@ -163,7 +213,10 @@ def read_plain(path):
             dropped.append(s)
             continue
         keep.append(s)
-    return join_hyphens(keep), dropped
+    joined = join_hyphens(keep)
+    text, cut = strip_inline_heads('\n'.join(joined), heads)
+    read_plain.inline_cut = cut
+    return text.split('\n'), dropped
 
 
 def trim_to_body(words, start, end):
@@ -241,7 +294,9 @@ def main():
 
     pages, v_dropped = read_vision(args.vision, args.zone)
     v_text = '\n'.join('\n'.join(p) for p in pages)
-    p_lines, p_dropped = read_plain(args.plain)
+    head_norm = Counter(re.sub(r'[^a-z]', '', d.lower()) for d in v_dropped)
+    heads = [h for h, c in head_norm.items() if c >= 4 and len(h) >= 10]
+    p_lines, p_dropped = read_plain(args.plain, heads)
     p_text = '\n'.join(p_lines)
 
     (out / 'witness-a-vision.txt').write_text(v_text, encoding='utf-8')
@@ -253,7 +308,8 @@ def main():
     print(f'witness A (Vision) : {len(pages):>4} pages · {len(A):>7,} words · '
           f'{len(v_dropped):,} furniture lines dropped')
     print(f'witness B (plain)  : {len(p_lines):>4} lines · {len(B):>7,} words · '
-          f'{len(p_dropped):,} furniture lines dropped')
+          f'{len(p_dropped):,} furniture lines, '
+          f'{getattr(read_plain, "inline_cut", 0):,} inline head words dropped')
 
     agreed, rows, ratio = collate(A, B, 'vision', 'plain')
     print(f'\nagreement: {ratio*100:.1f}%  ({agreed:,} words both witnesses read the same)')
