@@ -32,7 +32,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_edition import page, package, slug
-from edition_parts import proofing_xhtml, PROOFING_CSS, stamp_proof_cover
+from edition_parts import proofing_xhtml, PROOFING_CSS
 from PIL import Image
 
 W = pathlib.Path.home() / 'Desktop/Sherlock-Working'
@@ -99,19 +99,32 @@ STORIES = [
 # the printing gives it, and the Adventure it belongs to. ⚠️ Plate 0046 faces
 # the opening of Adventure II rather than closing Adventure I — a facing plate
 # sits BEFORE the chapter it illustrates.
+# Paget's plates. ⚠️ NOT from the Google scan of our base copy: those pages are
+# bitonal, and a bitonal scan destroys a halftone. Plate 46 there carries 0.4%
+# ink — the printed caption and nothing else; the picture is simply gone. The
+# same plates in the archive.org copy of the same printing are greyscale and
+# whole, so the pictures come from that copy and the text from ours.
+#
+# ⚠️ Captions read off the page rather than guessed, which corrected one:
+# "HAVE MERCY! HE SHRIEKED" is Ryder in the Blue Carbuncle, not the Beryl
+# Coronet, and a mapping by page number in the other copy had put it wrong.
+PAGET_SRC = pathlib.Path('/tmp/ia3/EPUB')      # unpacked archive.org copy
 PAGET = [
-    (24,  'A MAN ENTERED', 'I'),
-    (46,  'THE DOOR WAS SHUT AND LOCKED', 'II'),
+    (7,   'THE GENTLEMAN IN THE PEW HANDED IT UP TO HER', 'X'),
+    (22,  'A MAN ENTERED', 'I'),
+    (56,  'THE DOOR WAS SHUT AND LOCKED', 'II'),
+    (64,  'ALL AFTERNOON HE SAT IN THE STALLS', 'II'),
     (80,  'SHERLOCK HOLMES WELCOMED HER', 'III'),
     (94,  'GLANCING ABOUT HIM LIKE A RAT IN A TRAP', 'III'),
     (104, 'THEY FOUND THE BODY', 'IV'),
     (118, 'THE MAID SHOWED US THE BOOTS', 'IV'),
-    (152, '“HOLMES, I CRIED, YOU ARE TOO LATE”', 'V'),
-    (228, 'GOOD-BYE, AND BE BRAVE', 'VIII'),
-    (248, 'NOT A WORD TO A SOUL', 'IX'),
-    (300, '“HAVE MERCY!” HE SHRIEKED', 'XI'),
-    (316, 'I CLAPPED A PISTOL TO HIS HEAD', 'XI'),
-    (332, 'I AM SO DELIGHTED THAT YOU HAVE COME', 'XII'),
+    (150, '“HOLMES, I CRIED, YOU ARE TOO LATE”', 'V'),
+    (164, 'AT THE FOOT OF THE STAIRS SHE MET THIS LASCAR SCOUNDREL', 'VI'),
+    (204, '“HAVE MERCY!” HE SHRIEKED', 'VII'),
+    (230, 'GOOD-BYE, AND BE BRAVE', 'VIII'),
+    (250, 'NOT A WORD TO A SOUL', 'IX'),
+    (318, 'I CLAPPED A PISTOL TO HIS HEAD', 'XI'),
+    (334, 'I AM SO DELIGHTED THAT YOU HAVE COME', 'XII'),
 ]
 
 PLATES = {                                   # John's colour art, by Adventure
@@ -158,21 +171,18 @@ def cut_stories(text):
 
 
 def carry_plates(out_dir):
-    """Paget's plates, out of our own scan."""
+    """Paget's plates, from the greyscale copy, trimmed of their page margins."""
     made = {}
     for n, caption, roman in PAGET:
-        src = SCANS / f'adventuressherl02doylgoog_{n:04d}.tif'
+        src = PAGET_SRC / f'image_{n:04d}_00.jpeg'
         if not src.exists():
-            print(f'  !! plate page {n} missing from the scan')
+            print(f'  !! plate image_{n:04d} is not there')
             continue
-        im = Image.open(src)
-        # Bitonal at 2752 px. Down to 1100 with LANCZOS, which turns the
-        # half-tone dots into grey and reads far better than raw black-and-white.
-        im = im.convert('L')
-        h = round(im.height * 1100 / im.width)
-        im = im.resize((1100, h), Image.LANCZOS)
+        im = Image.open(src).convert('L')
+        if im.width > 1100:
+            im = im.resize((1100, round(im.height * 1100 / im.width)), Image.LANCZOS)
         dest = f'paget-{n:04d}.jpg'
-        im.save(out_dir / 'OEBPS/images' / dest, 'JPEG', quality=86,
+        im.save(out_dir / 'OEBPS/images' / dest, 'JPEG', quality=88,
                 optimize=True, progressive=True)
         made[n] = dest
     return made
@@ -331,13 +341,8 @@ def main():
             'for this edition.</p>'),
     }
 
-    # ⚠️ A proof must LOOK like one before it is opened. The notice inside is
-    # no help in a library grid, where a reader is choosing what to read.
-    banded = OUT / 'proof-cover.jpg'
-    stamp_proof_cover(ART / 'SherlockHolmes-Master.jpg', banded)
-    print('cover banded PROOFING COPY')
-
-    package(str(OUT), chapters, META, str(banded), TPL, str(EPUB))
+    package(str(OUT), chapters, META, str(ART / 'SherlockHolmes-Master.jpg'),
+            TPL, str(EPUB))
 
     # nav: one row per Adventure, landing on its plate
     nav = (OUT / 'OEBPS/nav.xhtml').read_text(encoding='utf-8')

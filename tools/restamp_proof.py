@@ -21,7 +21,7 @@ import tempfile
 import zipfile
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from edition_parts import stamp_proof_cover
+from edition_parts import stamp_proof_cover, proofing_xhtml
 
 
 def main():
@@ -31,6 +31,8 @@ def main():
     ap.add_argument('--out', default='')
     ap.add_argument('--no-band', action='store_true')
     ap.add_argument('--at', type=float, default=0.425)
+    ap.add_argument('--refresh-notice', action='store_true',
+                    help="rewrite the proofing page with the current wording")
     args = ap.parse_args()
 
     src = pathlib.Path(args.epub)
@@ -55,6 +57,33 @@ def main():
                                 f'    <dc:source>{args.source}</dc:source>\n  </metadata>')
             changed.append('source added')
         opf.write_text(text, encoding='utf-8')
+
+    # ── the proofing notice ────────────────────────────────────────────────
+    # ⚠️ A book built before the wording changed keeps the old words forever.
+    # Setting a source does not touch the notice, and neither does anything
+    # else short of a rebuild — so the notice is rewritten here from the
+    # current text, with this book's own title and author.
+    if args.refresh_notice:
+        page = None
+        for cand in work.rglob('*proofing*.xhtml'):
+            page = cand; break
+        if page is None:
+            print('  !! no proofing page in this book')
+        else:
+            import xml.sax.saxutils as _s
+            meta = opf.read_text(encoding='utf-8')
+            def dc(tag):
+                m = re.search(rf'<dc:{tag}[^>]*>(.*?)</dc:{tag}>', meta, re.S)
+                return _s.unescape(m.group(1)).strip() if m else ''
+            was = page.read_text(encoding='utf-8')
+            # keep whatever "these are deliberate" paragraph the book already
+            # carries — it is per-book and says true things about THIS text
+            keep = re.search(r'<p>(Two things are deliberate.*?)</p>', was, re.S)
+            page.write_text(
+                proofing_xhtml(dc('title'), dc('creator'),
+                               deliberate=keep.group(1) if keep else None),
+                encoding='utf-8')
+            changed.append('proofing notice rewritten')
 
     # ── the cover ───────────────────────────────────────────────────────────
     if not args.no_band:

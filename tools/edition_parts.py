@@ -118,7 +118,9 @@ def proofing_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com',
       # like text").
       '<p class="rule">— — — — — — —</p>\n'
       '<p><strong>This edition is not finished. It is circulated for reading and '
-      'correction only — please do not pass it on.</strong></p>\n'
+      'correction — please read and enjoy, but rather than pass it on, ask others '
+      'to acquire it from us as we may have updated and improved the edition.'
+      '</strong></p>\n'
       '<p>If something reads wrongly — a misprint, a word that sits oddly, a chapter '
       'that begins in the wrong place, a heading out of order — note the chapter and '
       'the sentence around it and send it to '
