@@ -89,9 +89,20 @@ def corrections_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com
       f'SchriftOhr Edition &#183; build {E(build)}</p>\n'
       '</div>\n</section></body></html>\n')
 
-def proofing_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com'):
+def proofing_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com',
+                   deliberate=None):
+    """`deliberate`: the "these are not errors" paragraph, when a book needs
+    its own. The default speaks of seventeenth-century spelling and damaged
+    pages, which is true of the Reformed shelf and of nothing else — a Doyle
+    proofing copy that warned about long-s would be telling the reader a
+    falsehood about the book in their hands."""
     E = html.escape
     build = build or date.today().isoformat()
+    note = deliberate or (
+        'Two things are deliberate, and are not errors. The seventeenth-century '
+        'spelling stands as the author wrote it. And where the original page was '
+        'damaged past reading, a word that could not be established is marked '
+        '<i>[&#8230;]</i>.')
     return (XHTML_OPEN +
       '<head><title>Proofing Copy</title><meta charset="utf-8"/>'
       '<link rel="stylesheet" type="text/css" href="../css/style.css"/></head>\n'
@@ -105,10 +116,7 @@ def proofing_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com'):
       'the sentence around it and send it to '
       f'<a href="mailto:{contact}">{contact}</a>. Small things are worth reporting; '
       'they are exactly what this copy is for.</p>\n'
-      '<p>Two things are deliberate, and are not errors. The seventeenth-century '
-      'spelling stands as the author wrote it. And where the original page was damaged '
-      'past reading, a word that could not be established is marked '
-      '<i>[&#8230;]</i>.</p>\n'
+      f'<p>{note}</p>\n'
       f'<p class="stamp">{E(title)} &#183; {E(author)}<br/>'
       f'SchriftOhr Edition &#183; build {E(build)}</p>\n'
       '</div>\n</section></body></html>\n')
