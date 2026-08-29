@@ -21,6 +21,20 @@ import sys
 
 SHELF = pathlib.Path(__file__).resolve().parent.parent / 'shelf.json'
 
+WORDS = ('no', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight',
+         'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen',
+         'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty',
+         'Twenty-one', 'Twenty-two', 'Twenty-three', 'Twenty-four',
+         'Twenty-five', 'Twenty-six', 'Twenty-seven', 'Twenty-eight',
+         'Twenty-nine', 'Thirty')
+
+
+def spell(n):
+    """"Fourteen so far" reads better than "14 so far" in running prose, and
+    the number has to change with the shelf either way."""
+    return WORDS[n] if n < len(WORDS) else str(n)
+
+
 SITES = [
     # (path, css class, how the title line reads, how the description reads)
     (pathlib.Path.home() / 'Developer/rfrmdwordlabs-web/books.html', 'card bk',
@@ -51,6 +65,32 @@ def cards(books, klass, title_of, desc_of, indent='    '):
     return '\n'.join(out)
 
 
+def shelf_strip(books, base_indent='      '):
+    """The row of cover thumbnails on a front page."""
+    return '\n'.join(
+        f'{base_indent}<img src="{html.escape(b["cover"])}" '
+        f'alt="{html.escape(b["title"])}" loading="lazy" width="1074" height="1600">'
+        for b in books)
+
+
+def replace_strip(text, block):
+    """Swap the images inside <a class="shelf"> and leave the anchor alone."""
+    m = re.search(r'(<a class="shelf"[^>]*>)(.*?)(</a>)', text, re.S)
+    if not m:
+        return None, 0
+    had = len(re.findall(r'<img', m.group(2)))
+    return text[:m.end(1)] + '\n' + block + '\n    ' + text[m.start(3):], had
+
+
+def replace_count(text, n):
+    """The prose count beside the strip — "Eleven so far"."""
+    pat = re.compile(r'<strong>([A-Za-z-]+) so far</strong>')
+    m = pat.search(text)
+    if not m:
+        return text, None
+    return pat.sub(f'<strong>{spell(n)} so far</strong>', text, count=1), m.group(1)
+
+
 def replace_block(text, klass, block):
     """Swap the run of cards, leaving every word around them alone."""
     pattern = re.escape(f'<a class="{klass}"')
@@ -78,6 +118,28 @@ def main():
     print(f'{len(books)} editions on the shelf')
 
     stale = 0
+
+    # ⚠️ The front page carries the shelf too — a strip of covers and a count
+    # in the prose. It said "Eleven so far" on the day the fourteenth went up,
+    # which is the same drift the card lists had, in a place that is harder to
+    # notice (John, 2026-08-29).
+    front = pathlib.Path.home() / 'Developer/rfrmdwordlabs-web/index.html'
+    if front.exists():
+        text = front.read_text(encoding='utf-8')
+        new, had = replace_strip(text, shelf_strip(books))
+        if new is None:
+            print(f'  !! no shelf strip in {front.name}')
+        else:
+            new, was = replace_count(new, len(books))
+            same = new == text
+            print(f'  {front.parent.name}/{front.name}: strip {had} -> {len(books)} '
+                  f'cover(s); count {was!r} -> {spell(len(books))!r}'
+                  f'{"  (already current)" if same else ""}')
+            if not same:
+                stale += 1
+                if not args.check:
+                    front.write_text(new, encoding='utf-8')
+
     for path, klass, title_of, desc_of in SITES:
         if not path.exists():
             print(f'  !! {path} is not here'); continue
