@@ -172,17 +172,30 @@ def chapters_from_source(out):
         out.append(b[last:])
         return ''.join(out)
 
-    def restore_figures(xhtml, chapter_figs):
+    def restore_figures(xhtml, chapter_figs, chapter_file):
+        """Put the plates back, each anchored and each carrying its way home.
+
+        The caption is a link to this illustration's row in the List of
+        Illustrations, and the row links back here — the footnote grammar
+        John asked for, running both directions.
+        """
         for i, (dest, cap) in enumerate(chapter_figs):
-            caption = f'<figcaption>{html.escape(cap)}</figcaption>' if cap else ''
+            n = figure_index[(chapter_file, i)]
+            back = (f'<a class="figref" href="02-illustrations.xhtml#li{n}" '
+                    f'epub:type="backlink">&#8593;</a>')
+            caption = (f'<figcaption id="figc{n}">{html.escape(cap)} {back}</figcaption>'
+                       if cap else f'<figcaption id="figc{n}">{back}</figcaption>')
             xhtml = xhtml.replace(
                 f'<p>@@FIG{i}@@</p>',
-                f'<figure class="paget"><img alt="{html.escape(cap)}" '
+                f'<figure class="paget" id="fig{n}"><img alt="{html.escape(cap)}" '
                 f'src="../images/{dest}" />{caption}</figure>')
         return xhtml
 
     head = re.compile(r'Adventure\s+([IVX]+)\s+(.*)$', re.S)
     chapters, seen, budget = [], [], []
+    # Every illustration in the book, numbered once, so the list and the text
+    # can point at each other.
+    illustrations, figure_index, plates_made = [], {}, []
 
     # ⚠️ ONE STREAM, not one pass per file. Gutenberg splits this book across
     # four files WITHOUT regard to the stories: -h-1 opens mid-way through
@@ -210,19 +223,51 @@ def chapters_from_source(out):
             chapter_figs = []
             body = protect_figures(body, chapter_figs)
 
-            title = f'Adventure {roman}: {titled(shout)}'
-            fn = f'C{len(chapters)+1:02d}-{slug(titled(shout))}.xhtml'
-            plate = ''
+            story = titled(shout)
+            title = f'Adventure {roman}'
+            # ⚠️ Number by STORY, not by len(chapters) — a plate and its text
+            # are two documents per Adventure, so the old counter advanced by
+            # two and left the list pointing at #plate2 while the page held
+            # id="plate3". Every anchor but the first was dead.
+            idx = len(seen) + 1
+            fn = f'C{idx:02d}-{slug(story)}.xhtml'
+            for i, (dest, cap) in enumerate(chapter_figs):
+                figure_index[(fn, i)] = len(illustrations) + 1
+                illustrations.append((len(illustrations) + 1, dest, cap, fn, story))
+
+            # ⚠️ The plate is a PAGE, not a picture at the top of the text —
+            # John: "the new plate in opposition to the opening page of each
+            # adventure". A figure inside the chapter shares the page with the
+            # first paragraphs; its own spine document cannot, so on a
+            # two-page spread the plate stands opposite the opening, and on a
+            # single page it is the page you turn to reach the story.
+            plate_fn = ''
             if roman in plate_dest:
-                plate = (f'<figure class="plate"><img alt="" '
-                         f'src="../images/{plate_dest[roman]}" /></figure>\n')
+                plate_fn = f'P{idx:02d}-{slug(story)}.xhtml'
+                plates_made.append((plate_fn, roman, story, plate_dest[roman]))
+                open(f'{out}/OEBPS/text/{plate_fn}', 'w', encoding='utf-8').write(
+                    page(story, 'titlepage', 'plate-page',
+                         f'<div class="plate-page">'
+                         f'<img alt="{html.escape(story)}" '
+                         f'src="../images/{plate_dest[roman]}" id="plate{idx}" />'
+                         f'<p class="plate-back">'
+                         f'<a class="figref" href="02-illustrations.xhtml#lp{idx}">&#8593;</a>'
+                         f'</p></div>', 'frontmatter'))
+
             open(f'{out}/OEBPS/text/{fn}', 'w', encoding='utf-8').write(
                 restore_figures(
-                    page(title, 'chapter', 'chapter',
-                         f'{plate}<h2>{html.escape(title)}</h2>\n'
+                    page(f'Adventure {roman}. {story}', 'chapter', 'chapter',
+                         f'<p class="advnum">Adventure {roman}</p>\n'
+                         f'<h2>{html.escape(story)}</h2>\n'
                          f'{clean(body, imgmap, kept)}'),
-                    chapter_figs))
-            chapters.append((fn, title))
+                    chapter_figs, fn))
+            if plate_fn:
+                chapters.append((plate_fn, f'{roman}. {story}'))
+                # In the spine, but struck from the nav below — the Adventure
+                # is ONE row, landing on its plate.
+                chapters.append((fn, story))
+            else:
+                chapters.append((fn, f'{roman}. {story}'))
             seen.append(roman)
             # ⚠️ Nothing disappears silently. Count the words the source holds
             # for this Adventure against the words the edition kept; captions
@@ -258,7 +303,7 @@ def chapters_from_source(out):
     if share < 98:
         print(f'  !! {total_src - total_got:,} words of the book did not '
               f'reach the edition')
-    return chapters
+    return chapters, illustrations, plates_made
 
 
 META = {
@@ -297,6 +342,59 @@ DELIBERATE = (
     'Sidney Paget’s own, from the <i>Strand</i>, and are reproduced as they stand.')
 
 
+def illustrations_page(illustrations, plates_made):
+    """Both kinds of art, each row a door into the book — and each picture
+    carrying a door back (John, 2026-08-29)."""
+    E = html.escape
+    rows = []
+    rows.append('<h2>Illustrations</h2>')
+    rows.append('<p class="listnote">Every picture in this edition, in the order '
+                'it appears. Touch a line to go to it; the arrow beneath each '
+                'picture brings you back here.</p>')
+
+    rows.append('<h3>The Adventure Plates</h3>')
+    rows.append('<p class="listnote">Made for this edition — one at the head of '
+                'each Adventure.</p>')
+    rows.append('<ol class="illus">')
+    for i, (fn, roman, story, _dest) in enumerate(plates_made, 1):
+        rows.append(f'  <li id="lp{i}"><a href="{fn}#plate{i}">'
+                    f'<span class="num">{roman}.</span> {E(story)}</a></li>')
+    rows.append('</ol>')
+
+    rows.append('<h3>Sidney Paget’s Drawings</h3>')
+    rows.append('<p class="listnote">From the <i>Strand Magazine</i>, 1891–92, '
+                'with the captions as they were printed.</p>')
+    rows.append('<ol class="illus">')
+    for n, _dest, cap, fn, story in illustrations:
+        label = E(cap) if cap else '<i>untitled</i>'
+        rows.append(f'  <li id="li{n}"><a href="{fn}#fig{n}">{label}</a>'
+                    f'<span class="in">{E(story)}</span></li>')
+    rows.append('</ol>')
+    return page('Illustrations', 'loi', 'illustrations',
+                '\n'.join(rows), 'frontmatter')
+
+
+LIST_CSS = """
+/* The List of Illustrations, and the two-way links into the plates. */
+ol.illus{list-style:none;margin:0 0 1.4em;padding:0}
+ol.illus li{margin:0 0 .55em;padding:0;line-height:1.45}
+ol.illus li .num{font-variant:small-caps;letter-spacing:.04em;margin-right:.35em}
+ol.illus li .in{display:block;font-size:.82em;color:#6b665e;font-style:italic}
+ol.illus a{text-decoration:none}
+p.listnote{font-size:.9em;color:#6b665e;margin:.2em 0 1em}
+a.figref{text-decoration:none;font-size:.9em;padding-left:.4em;opacity:.65}
+/* The plate stands alone: its own page, opposite the opening of the story. */
+div.plate-page{margin:0;padding:0;text-align:center;page-break-after:always;
+  break-after:page}
+div.plate-page img{max-width:100%;max-height:96vh;height:auto;display:block;
+  margin:0 auto}
+p.plate-back{margin:.3em 0 0}
+/* The Adventure's number, set above its title the way the plates set it. */
+p.advnum{font-variant:small-caps;letter-spacing:.12em;font-size:.82em;
+  color:#6b665e;margin:0 0 .1em;text-align:center}
+"""
+
+
 def main():
     print(f'=== {T} ===')
     unpack()
@@ -305,10 +403,15 @@ def main():
         os.makedirs(f'{OUT}/{d}', exist_ok=True)
     os.makedirs(os.path.dirname(EPUB), exist_ok=True)
 
-    chapters = chapters_from_source(OUT)
-    if len(chapters) != 12:
-        print(f'  !! expected 12 Adventures, cut {len(chapters)} — stopping')
+    chapters, illustrations, plates_made = chapters_from_source(OUT)
+    stories = [c for c in chapters if c[0].startswith('C')]
+    if len(plates_made) != 12 or len(stories) != 12:
+        print(f'  !! expected 12 Adventures, cut {len(stories)} — stopping')
         return 1
+
+    loi_fn = '02-illustrations.xhtml'
+    open(f'{OUT}/OEBPS/text/{loi_fn}', 'w', encoding='utf-8').write(
+        illustrations_page(illustrations, plates_made))
 
     # The proofing notice rides in front of the title page until John has read
     # it through; drop this block to publish.
@@ -318,13 +421,28 @@ def main():
 
     package(OUT, chapters, META, f'{DESKTOP}/SherlockHolmes-Master.jpg', TPL, EPUB)
 
+    # package() builds nav from every row it is given. A chapter's TEXT is not
+    # a nav row of its own — the reader taps the Adventure and lands on its
+    # plate, and turns the page into the story — so those rows carry a None
+    # title and are struck from the nav here, while staying in the spine.
+    nav = open(f'{OUT}/OEBPS/nav.xhtml', encoding='utf-8').read()
+    nav = re.sub(r'\s*<li><a href="text/C\d\d[^"]*">[^<]*</a></li>', '', nav)
+    nav = nav.replace('<li><a href="text/01-edition-note.xhtml">About This Edition</a></li>',
+                      '<li><a href="text/01-edition-note.xhtml">About This Edition</a></li>\n'
+                      f'      <li><a href="text/{loi_fn}">Illustrations</a></li>')
+    open(f'{OUT}/OEBPS/nav.xhtml', 'w', encoding='utf-8').write(nav)
+
     # package() writes the manifest without knowing about the proofing page, so
     # thread it in behind the cover — the house order: cover, proofing, title.
     opf = open(f'{OUT}/OEBPS/content.opf', encoding='utf-8').read()
     opf = opf.replace('  </manifest>',
                       f'    <item id="proof" href="text/{proof_fn}" '
+                      'media-type="application/xhtml+xml"/>\n'
+                      f'    <item id="loi" href="text/{loi_fn}" '
                       'media-type="application/xhtml+xml"/>\n  </manifest>')
     opf = re.sub(r'(<itemref idref="t0"/>)', r'\1\n    <itemref idref="proof"/>', opf)
+    # The list sits after About This Edition (t2) and before the first plate.
+    opf = re.sub(r'(<itemref idref="t2"/>)', r'\1\n    <itemref idref="loi"/>', opf)
     open(f'{OUT}/OEBPS/content.opf', 'w', encoding='utf-8').write(opf)
 
     css = open(f'{OUT}/OEBPS/css/style.css', encoding='utf-8').read()
@@ -337,7 +455,10 @@ def main():
                 'figure.paget img{max-width:100%;height:auto;display:block;margin:0 auto}\n'
                 'figure.paget figcaption{font-size:.82em;letter-spacing:.06em;\n'
                 '  color:#6b665e;margin-top:.5em;font-variant:small-caps}\n')
-    open(f'{OUT}/OEBPS/css/style.css', 'w', encoding='utf-8').write(css + PROOFING_CSS)
+    open(f'{OUT}/OEBPS/css/style.css', 'w', encoding='utf-8').write(
+        css + LIST_CSS + PROOFING_CSS)
+    print(f'  illustrations listed: {len(plates_made)} plates + '
+          f'{len(illustrations)} Paget, each linked both ways')
 
     os.remove(EPUB)
     subprocess.run(['zip', '-qX0', EPUB, 'mimetype'], cwd=OUT, check=True)

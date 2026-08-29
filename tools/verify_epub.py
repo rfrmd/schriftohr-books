@@ -49,11 +49,53 @@ def check(path):
     for n in nav:
         body = z.read(n).decode('utf-8','replace')
         if re.search(r'<a\b[^>]*>[^<]*<a\b', body): bad.append('nested <a> in the nav document')
+        # ⚠️ NOT a count. The old test was `entries < len(spine) - 2`, which
+        # asks the wrong question: a book may legitimately carry a document
+        # the contents does not name — a plate facing a chapter's opening, a
+        # continuation page — and Sherlock has twelve of them. What actually
+        # matters is that no CONTENT is stranded where the contents cannot
+        # reach it. An unlisted document following a listed one is that
+        # listed one continuing; two unlisted in a row, after the front
+        # matter, means chapters have fallen out of the contents.
+        listed = set(re.findall(r'<a href="([^"#]+)', body))
         entries = len(re.findall(r'<li>', body))
-        if entries and entries < len(spine) - 2:
-            bad.append(f'nav lists {entries} entries for {len(spine)} spine documents')
+        started, run, worst = False, 0, 0
+        for r in spine:
+            href = man.get(r, '')
+            if href in listed:
+                started, run = True, 0
+                continue
+            if started:
+                run += 1
+                worst = max(worst, run)
+        if worst > 1:
+            bad.append(f'{worst} spine documents in a row are absent from the '
+                       f'contents — chapters look stranded ({entries} nav entries, '
+                       f'{len(spine)} documents)')
     if not re.search(r'properties="cover-image"', opf): bad.append('no cover-image property')
     if not re.search(r'properties="nav"', opf): bad.append('no nav document')
+    # 3a. every internal link's FRAGMENT resolves, not just its file.
+    #     ⚠️ Added 2026-08-29: Sherlock's List of Illustrations pointed at
+    #     #plate2 while the page held id="plate3" — eleven dead anchors, and
+    #     this file reported the book clean, because it only ever checked that
+    #     the document on the left of the '#' existed.
+    ids = {}
+    for r in spine:
+        if r not in man: continue
+        d = f'{base}/{man[r]}' if base else man[r]
+        body = z.read(d).decode('utf-8', 'replace')
+        ids[man[r].split('/')[-1]] = set(re.findall(r'\sid="([^"]+)"', body))
+    for r in spine:
+        if r not in man: continue
+        d = f'{base}/{man[r]}' if base else man[r]
+        body = z.read(d).decode('utf-8', 'replace')
+        for href in re.findall(r'href="([^"]*#[^"]+)"', body):
+            target, frag = href.split('#', 1)
+            key = (target or man[r]).split('/')[-1]
+            if key in ids and frag not in ids[key]:
+                bad.append(f'{man[r].split("/")[-1]} links to #{frag} in '
+                           f'{key or "itself"}, which has no such id')
+
     # 3. every internal link resolves
     docs = [f'{base}/{man[r]}' if base else man[r] for r in spine if r in man]
     for d in docs:
