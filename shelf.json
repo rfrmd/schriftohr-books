@@ -13,6 +13,16 @@
       "license": "Text public domain; editorial matter © RFRMD Word Labs LLC, CC BY 4.0; cover and marks reserved"
     },
     {
+      "id": "adventures-of-sherlock-holmes",
+      "title": "The Adventures of Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "blurb": "The twelve stories that made Sherlock Holmes, as they ran in the Strand Magazine between 1891 and 1892 — a king’s photograph, a pawnbroker paid to copy out an encyclopaedia, a stepfather who is not what he seems, and a whistle in the night at Stoke Moran. Set from the Harper & Brothers printing of 1892, with Sidney Paget’s plates and a colour plate at the head of every Adventure. This is a proofing copy — corrections welcome.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/adventures-of-sherlock-holmes/Doyle_Arthur_Conan-SchriftOhr_Edition-Adventures_of_Sherlock_Holmes.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/adventures-of-sherlock-holmes/cover.jpg",
+      "source": "Harper & Brothers, New York, 1892 — collated from two scans of two copies of that printing, read independently",
+      "license": "Text and Sidney Paget’s plates public domain; cover, Adventure plates and editorial matter © RFRMD Word Labs LLC"
+    },
+    {
       "id": "tales-of-the-covenanters-pollok",
       "title": "Tales of the Covenanters",
       "author": "Robert Pollok",
@@ -111,16 +121,6 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/green-tent-mystery/cover.jpg",
       "source": "Project Gutenberg ebook 58514",
       "license": "Text public domain in the United States"
-    },
-    {
-      "id": "adventures-of-sherlock-holmes",
-      "title": "The Adventures of Sherlock Holmes",
-      "author": "Arthur Conan Doyle",
-      "blurb": "The twelve stories that made Sherlock Holmes, as they ran in the Strand Magazine between 1891 and 1892 — a king’s photograph, a pawnbroker paid to copy out an encyclopaedia, a stepfather who is not what he seems, and a whistle in the night at Stoke Moran. Set from the Harper & Brothers printing of 1892, with Sidney Paget’s plates and a colour plate at the head of every Adventure. This is a proofing copy — corrections welcome.",
-      "epub": "https://rfrmd.github.io/schriftohr-books/books/adventures-of-sherlock-holmes/Doyle_Arthur_Conan-SchriftOhr_Edition-Adventures_of_Sherlock_Holmes.epub",
-      "cover": "https://rfrmd.github.io/schriftohr-books/books/adventures-of-sherlock-holmes/cover.jpg",
-      "source": "Harper & Brothers, New York, 1892 — collated from two scans of two copies of that printing, read independently",
-      "license": "Text and Sidney Paget’s plates public domain; cover, Adventure plates and editorial matter © RFRMD Word Labs LLC"
     }
   ],
   "note": "Every edition begins with a public-domain source, often an original scanned book. We set the text properly — adding chapter divisions where the source had none, and clearing away what scanning and re-keying leave behind — so the book reads well on the page and sounds right read aloud."
