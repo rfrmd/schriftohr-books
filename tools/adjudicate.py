@@ -288,8 +288,21 @@ def main():
             missing += 1
         img = (f'<div class="strip"><img alt="" src="data:image/png;base64,{png}"></div>'
                if png else '<p class="ctx">(no page image for this line)</p>')
+        # ⚠️ A THIRD OPTION WHEN NEITHER WITNESS HAS THE MARK. John's first pass
+        # showed the cost of offering only two: the 1892 page sets an em dash,
+        # this scan glues it to a hyphen and the archive spaces it, so he was
+        # choosing the least-wrong of two wrong readings — and chose
+        # differently on similar lines, because there was no right answer to
+        # pick. Where a rule can name what the page actually carries, offer it.
+        import auto_decide as _AD
+        suggested, _why = _AD.better(s['vision'], s['plain'])
+        extra = []
+        if suggested and suggested not in (s['vision'], s['plain']):
+            extra = [('what the page sets', suggested)]
+
         opts = []
-        for who, val in (('this scan', s['vision']), ('other witness', s['plain'])):
+        for who, val in (tuple(extra) + (('this scan', s['vision']),
+                                         ('other witness', s['plain']))):
             label = html.escape(val) if val else '<i>(nothing)</i>'
             opts.append(f'<div class="opt" data-val="{html.escape(val)}">'
                         f'<span class="who">{who}</span>{label}</div>')

@@ -66,8 +66,15 @@ def better(vision, plain):
 
     # ── a spurious space inside one word ────────────────────────────────────
     if v and p and re.sub(r'\s+', '', lv) == re.sub(r'\s+', '', lp):
-        return (v, 'same letters; this one is not broken by a space') if ' ' not in v else \
-               (p, 'same letters; this one is not broken by a space')
+        # ⚠️ Which side has the spurious space? Ask whether the JOINED form is
+        # a word. 'tempera ment' joins to 'temperament' and the space is
+        # debris; "You'lldo" is not a word and the SPACE is what was lost.
+        joined = [x for x in (v, p) if ' ' not in x]
+        spaced = [x for x in (v, p) if ' ' in x]
+        if joined and spaced:
+            if is_english(joined[0].replace('-', '')):
+                return joined[0], 'the joined form is a word; the space was debris'
+            return spaced[0], 'the joined form is not a word; a space was lost'
 
     # ── hyphen or dash? let the witnesses tell you which ────────────────────
     # ⚠️ Not "prefer the hyphenated form". The 1892 setting uses an em dash
@@ -83,15 +90,11 @@ def better(vision, plain):
         if '-' in p and '-' not in v:
             return p, 'the printing hyphenates this'
 
-    # ── a stray quote mark stuck to a word ──────────────────────────────────
-    # Vision reads the 1892 quotation marks poorly and attaches them to the
-    # neighbouring word. When the two sides differ only by a leading or
-    # trailing quote, the bare word is the word.
-    if v and p:
-        sv, sp = v.strip("'\u2018\u2019\""), p.strip("'\u2018\u2019\"")
-        if sv == sp and sv:
-            return (v, 'no stray quote mark on this one') if len(v) <= len(p) else \
-                   (p, 'no stray quote mark on this one')
+    # ⚠️ NO AUTOMATIC RULE FOR QUOTE MARKS. There was one here, preferring the
+    # bare word — and it stripped real quotation marks: the page reads
+    # "'P,' of course, stands for 'Papier.'", where that trailing mark closes a
+    # quotation and is not debris. Vision does attach junk quotes, but the two
+    # cases cannot be told apart without looking, so they go to review.
 
     # ── the archive scan's systematic letter confusions ─────────────────────
     # Measured on this book: it reads I as T, y as v, h as b, r as t.
@@ -144,8 +147,13 @@ def better(vision, plain):
     # nothing there. A single character that is not a word is not text.
     if bool(v) != bool(p):
         lone = (v or p)
-        if re.fullmatch(r"[A-Za-z0-9]['’]?", lone) and lone.lower() not in SINGLE:
-            return '', 'a lone mark on one side only; not a word'
+        # ⚠️ DIGITS AND MARKS ONLY. This rule used to delete any lone
+        # character that was not a word, and a lone LETTER is often text: the
+        # Bohemia note is read as "a large E with a small g, a P, and a large
+        # G with a small t". It would have quietly deleted four letters out of
+        # the passage that explains the monogram (John's own pass, 2026-08-29).
+        if re.fullmatch(r"[0-9]['’]?|[^\w\s]", lone):
+            return '', 'a lone digit or mark on one side only; not text'
 
     return None, None
 
