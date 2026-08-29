@@ -43,6 +43,7 @@ SCRIPT_CSS = """
 """
 
 PROOFING_CSS = """
+.proof .rule{text-align:center;color:#fd8008;letter-spacing:.3em;margin:.2em 0 .8em}
 /* The proofing notice. Loud on purpose: this copy is not for keeping.
    .note is the same box for a published edition — the orange is the house
    mark and stays; only the words change. */
@@ -109,8 +110,15 @@ def proofing_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com',
       '<body epub:type="frontmatter"><section epub:type="preamble" class="preamble">\n'
       '<div class="proof">\n'
       '<h1>Proofing Copy</h1>\n'
-      '<p>This edition is not finished. It is circulated for reading and correction '
-      'only — please do not pass it on.</p>\n'
+      # ⚠️ The orange box is CSS, and SchriftOhr's own reader takes only bold and
+      # italic from a book's stylesheet — borders and colour live in publisher
+      # view alone. So the notice must also announce itself in ways that survive
+      # any renderer: a rule made of characters, and BOLD on the sentence that
+      # matters (John, 2026-08-29: "where is the orange proofing page it looks
+      # like text").
+      '<p class="rule">— — — — — — —</p>\n'
+      '<p><strong>This edition is not finished. It is circulated for reading and '
+      'correction only — please do not pass it on.</strong></p>\n'
       '<p>If something reads wrongly — a misprint, a word that sits oddly, a chapter '
       'that begins in the wrong place, a heading out of order — note the chapter and '
       'the sentence around it and send it to '

@@ -374,7 +374,13 @@ ol.illus a{text-decoration:none}
 p.listnote{font-size:.9em;color:#6b665e;margin:.2em 0 1em}
 a.figref{text-decoration:none;font-size:.9em;padding-left:.4em;opacity:.65}
 """
-    (OUT / 'OEBPS/css/style.css').write_text(css + PROOFING_CSS, encoding='utf-8')
+    # ⚠️ the donor template already carries PROOFING_CSS; appending it again
+    # put the whole block in the stylesheet twice.
+    if '.proof{' not in css:
+        css += PROOFING_CSS
+    elif '.proof .rule{' not in css:
+        css += '\n.proof .rule{text-align:center;color:#fd8008;letter-spacing:.3em;margin:.2em 0 .8em}\n'
+    (OUT / 'OEBPS/css/style.css').write_text(css, encoding='utf-8')
 
     if EPUB.exists():
         EPUB.unlink()
