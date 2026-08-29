@@ -318,7 +318,15 @@ def main():
     if missing:
         print(f'⚠️ {missing} spots had no page image')
 
-    key = json.dumps(f'adjudicate:{args.title}')
+    # ⚠️ KEY ON THE SPOT SET, NOT THE TITLE. Two review pages for the same book
+    # shared one browser store, so decisions made on the first page reappeared
+    # on the second — attached to whatever spot happened to carry that number
+    # in the NEW numbering. Four of John's answers came back pinned to
+    # unrelated readings (2026-08-29). A digest of the ids makes the store
+    # belong to this exact page.
+    import hashlib
+    digest = hashlib.sha256('|'.join(s['id'] for s in spots).encode()).hexdigest()[:12]
+    key = json.dumps(f'adjudicate:{args.title}:{digest}')
     page = (PAGE_HEAD % {'title': html.escape(args.title), 'total': len(spots),
                          'printing': args.printing}
             + '\n'.join(body) + PAGE_FOOT % {'key': key})
