@@ -10,7 +10,12 @@
 //
 // For each page it writes:
 //   page_NNNN.txt   the lines, in reading order, nothing removed
-//   page_NNNN.tsv   line<TAB>ymin<TAB>ymax<TAB>confidence
+//   page_NNNN.tsv   line<TAB>ymin<TAB>ymax<TAB>confidence<TAB>xmin<TAB>xmax
+//
+// ⚠️ The x matters as much as the y. A printed paragraph is marked by the
+// INDENT of its first line and by nothing else — there is no blank line on the
+// page — so without the left edge a text rebuilt from these pages has no
+// paragraphs at all.
 //
 // ⚠️ The .txt keeps EVERYTHING — running heads, page numbers, catchwords. The
 // .tsv is how they are found and dropped later: furniture sits at the very top
@@ -93,7 +98,8 @@ DispatchQueue.concurrentPerform(iterations: pages.count) { i in
         let top = 1 - line.boundingBox.maxY
         let bottom = 1 - line.boundingBox.minY
         let clean = best.string.replacingOccurrences(of: "\t", with: " ")
-        tsv += String(format: "%@\t%.4f\t%.4f\t%.3f\n", clean, top, bottom, best.confidence)
+        tsv += String(format: "%@\t%.4f\t%.4f\t%.3f\t%.4f\t%.4f\n", clean, top, bottom,
+                      best.confidence, line.boundingBox.minX, line.boundingBox.maxX)
     }
 
     try? text.write(to: outDir.appendingPathComponent("\(stem).txt"),

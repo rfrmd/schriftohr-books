@@ -125,9 +125,18 @@ def better(vision, plain):
         jv, jp = re.sub(r'-\s*', '', lv), re.sub(r'-\s*', '', lp)
         sv, sp = re.sub(r'\s+', '', jv), re.sub(r'\s+', '', jp)
         if sv == sp and sv:
+            # ⚠️ A HYPHEN WITHOUT A SPACE IS A REAL HYPHEN. Preferring the
+            # joined form here destroyed the printing's own compounds
+            # wherever they happened to fall at a line end — step-father,
+            # arm-chair, lime-cream, to-night all came out welded. The
+            # discriminator is the space: 'predom- inates' is a line break and
+            # joins; 'step-father' is a word the printer hyphenated and stays.
+            tight = [x for x in (v, p) if '-' in x and ' ' not in x]
+            if tight:
+                return tight[0], 'a hyphen with no space: the printing hyphenates this'
             whole = [x for x in (v, p) if '-' not in x and ' ' not in x]
             if whole:
-                return whole[0], 'the same word, joined'
+                return whole[0], 'the same word, broken at a line end; joined'
         if lv.rstrip('-') == lp.rstrip('-') and lv != lp:
             return (v, 'broken at a line end; keep the hyphen for the join pass') \
                 if v.endswith('-') else \

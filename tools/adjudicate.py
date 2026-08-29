@@ -193,9 +193,15 @@ document.addEventListener('keydown', e=>{
   else if (e.key === 'n') jumpNext();
 });
 function exportTSV(){
-  let out = 'id\\tchosen\\n';
+  // ⚠️ The readings travel with the decision. An id is only meaningful inside
+  // the page that made it — 205 of 212 ids in one page disagreed with the
+  // ledger row of the same number, and decisions recovered by id landed on the
+  // wrong words. Match on the readings, never on the number.
+  let out = 'id\tchosen\tvision\tplain\n';
   spots.forEach(s=>{ const id = s.dataset.id;
-    if (picks[id] !== undefined) out += id + '\\t' + picks[id] + '\\n'; });
+    if (picks[id] === undefined) return;
+    const o = [...s.querySelectorAll('.opt')].map(x=>x.dataset.val);
+    out += id + '\t' + picks[id] + '\t' + (o[o.length-2]||'') + '\t' + (o[o.length-1]||'') + '\n'; });
   const ta = document.createElement('textarea');
   ta.value = out; document.querySelector('.wrap').prepend(ta); ta.select();
   alert(Object.keys(picks).length + ' decisions are in the box at the top — copy them into decisions.tsv');

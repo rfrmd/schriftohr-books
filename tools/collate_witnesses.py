@@ -105,7 +105,7 @@ def read_vision(directory, zone=0.085, repeats=5):
         rows = []
         for row in tsv.read_text(encoding='utf-8').splitlines():
             parts = row.split('\t')
-            if len(parts) == 4:
+            if len(parts) >= 4:
                 rows.append((parts[0], float(parts[1]), float(parts[2]), float(parts[3])))
         pages_raw.append(rows)
 
