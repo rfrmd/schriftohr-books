@@ -35,7 +35,11 @@ from build_edition import page, package, slug
 from edition_parts import proofing_xhtml, PROOFING_CSS
 from PIL import Image
 
-W = pathlib.Path.home() / 'Desktop/Sherlock-Working'
+# The working root. SHERLOCK_ROOT overrides it, which is what makes the
+# reproducibility claim checkable: point it at the private archive's copy of
+# these same files and the build must produce the published book byte for byte.
+W = pathlib.Path(os.environ.get('SHERLOCK_ROOT',
+                                pathlib.Path.home() / 'Desktop/Sherlock-Working'))
 DESKTOP = pathlib.Path.home() / 'Desktop'
 # ⚠️ The art lives in the working tree, not loose on the Desktop. Every one of
 # these files — the cover and all twelve plates — had been cleared off the
@@ -46,7 +50,12 @@ SCANS = DESKTOP / 'adventuressherl02doylgoog_tif'
 # ⚠️ the MENDED text: breaks both witnesses share, closed from the book's
 # own vocabulary — collation cannot see an error both witnesses make.
 CLEAN = W / 'working/sherlock-mended.txt'
-TPL = '/tmp/schriftohr-tpl'
+# The three house files every edition shares — the stylesheet and the two
+# publisher marks. They are unpacked from a finished book by default, which
+# means a build depends on a DIFFERENT repository. SCHRIFTOHR_TPL points at a
+# kept copy instead, so the private archive can build without reaching outside
+# itself.
+TPL = os.environ.get('SCHRIFTOHR_TPL', '/tmp/schriftohr-tpl')
 OUT = W / 'output/adventures-of-sherlock-holmes'
 EPUB = W / 'output/Doyle_Arthur_Conan-SchriftOhr_Edition-Adventures_of_Sherlock_Holmes.epub'
 
@@ -142,6 +151,10 @@ PLATES = {                                   # John's colour art, by Adventure
 
 
 def unpack_template():
+    if os.environ.get('SCHRIFTOHR_TPL'):
+        if not os.path.exists(f'{TPL}/OEBPS/css/style.css'):
+            raise SystemExit(f'!! SCHRIFTOHR_TPL={TPL} has no OEBPS/css/style.css')
+        return
     if not os.path.exists(f'{TPL}/OEBPS/css/style.css'):
         shutil.rmtree(TPL, ignore_errors=True)
         os.makedirs(TPL, exist_ok=True)
