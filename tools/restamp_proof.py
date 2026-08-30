@@ -84,6 +84,22 @@ def main():
                                deliberate=keep.group(1) if keep else None),
                 encoding='utf-8')
             changed.append('proofing notice rewritten')
+            # ⚠️ The page is not the whole notice. A book built before the rule
+            # became an <hr> carries CSS that styles a run of em-dashes and says
+            # nothing about hr, so the new rule would come out as the reader's
+            # default hairline instead of the house orange.
+            for css in work.rglob('*.css'):
+                s = css.read_text(encoding='utf-8')
+                if '.proof' not in s: continue
+                s2 = re.sub(r'\.proof \.rule\{[^}]*\}',
+                            '.proof hr.rule{border:0;border-top:2px solid #fd8008;'
+                            'margin:1em 0 1.1em}', s)
+                if 'hr.rule' not in s2:
+                    s2 += ('\n.proof hr.rule{border:0;border-top:2px solid #fd8008;'
+                           'margin:1em 0 1.1em}\n')
+                if s2 != s:
+                    css.write_text(s2, encoding='utf-8')
+                    changed.append('proofing stylesheet updated')
 
     # ── the cover ───────────────────────────────────────────────────────────
     if not args.no_band:

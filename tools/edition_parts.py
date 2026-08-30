@@ -43,7 +43,7 @@ SCRIPT_CSS = """
 """
 
 PROOFING_CSS = """
-.proof .rule{text-align:center;color:#fd8008;letter-spacing:.3em;margin:.2em 0 .8em}
+.proof hr.rule{border:0;border-top:2px solid #fd8008;margin:1em 0 1.1em}
 /* The proofing notice. Loud on purpose: this copy is not for keeping.
    .note is the same box for a published edition — the orange is the house
    mark and stays; only the words change. */
@@ -116,7 +116,7 @@ def proofing_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com',
       # any renderer: a rule made of characters, and BOLD on the sentence that
       # matters (John, 2026-08-29: "where is the orange proofing page it looks
       # like text").
-      '<p class="rule">— — — — — — —</p>\n'
+      '<hr class="rule"/>\n'
       '<p><strong>This edition is not finished. It is circulated for reading and '
       'correction — please read and enjoy, but rather than pass it on, ask others '
       'to acquire it from us as we may have updated and improved the edition.'
