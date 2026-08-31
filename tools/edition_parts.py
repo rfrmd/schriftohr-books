@@ -183,3 +183,109 @@ def stamp_proof_cover(src, dst, label='PROOFING COPY', at=0.425, quality=90):
     out = Image.alpha_composite(im.convert('RGBA'), layer).convert('RGB')
     out.save(dst, 'JPEG', quality=quality, optimize=True, progressive=True)
     return out.size
+
+
+def closing_xhtml(title='Why We Make These Books'):
+    """The last page of every edition: why the book exists, and the rules we keep.
+
+    John, 2026-08-30. A proofing copy is a STAGE, not an apology — it ends, after
+    the readers have had it, in an initial edition. And every book says on its own
+    front matter what was done to its text, because the shelf will hold both plain
+    transcriptions and, in time, faithful modernised editions, and a reader is
+    owed the difference.
+    """
+    P = ('<p>%s</p>\n')
+    return ('<?xml version="1.0" encoding="utf-8"?>\n'
+      '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" '
+      'xml:lang="en-GB" lang="en-GB">\n<head><title>' + html.escape(title) + '</title>'
+      '<meta charset="utf-8"/><link rel="stylesheet" type="text/css" href="../css/style.css"/>'
+      '</head>\n<body epub:type="backmatter"><section epub:type="afterword" class="preamble">\n'
+      '<h2>' + html.escape(title) + '</h2>\n'
+      + P % ('What we are after is a faithful text: the author\u2019s own words, set from a '
+             'printing we can name, and set out to be read.')
+      + P % ('These were written by brothers from another age \u2014 men who thought long and '
+             'hard about God and wrote down what they found. The depth of the thinking and the '
+             'distance of the years both make them heavy going in places. We think they are '
+             'worth the effort, if they draw heart and mind to consider our need of a Saviour.')
+      + P % ('So they are set for reading together. A chapter is broken where the author '
+             'himself breaks it, which gives a group somewhere to stop and something to take '
+             'up; and the point of the talk is never the book but the God it is about \u2014 '
+             'the most glorious God, our Saviour.')
+      + '<h3>Reading it in portions</h3>\n'
+      + P % ('A book like this is not read at a sitting, and where it breaks decides '
+             'whether a group can use it. So the divisions matter, and we take them '
+             'seriously.')
+      + P % ('We divide only where the author divides. Where he says \u201cI shall do '
+             'these three things\u201d, or \u201cthe second thing proposed is\u201d, we '
+             'set a heading there and give it a place in the contents. The break then '
+             'falls where his own thought turns \u2014 which is also where a reader can '
+             'stop and a group can begin talking.')
+      + P % ('Where he signposts nothing, we add nothing. That is why one chapter may be '
+             'opened into six passages and the next not divided at all. It is not '
+             'inconsistency. It is the author\u2019s own shape, and imposing a tidier one '
+             'would mean deciding for him where his argument turns.')
+      + P % ('The same divisions serve a reader alone. A chapter too long to hold is a '
+             'chapter that gets set down.')
+      + '<h3>How an edition comes to be</h3>\n'
+      + P % ('Every book here begins as a <b>proofing copy</b>. That is not an apology, it is '
+             'a stage. The text has been set with care and now wants other eyes on it. Readers '
+             'who find an error tell us, and we correct it.')
+      + P % ('When that has run its course the book is issued as an <b>initial edition</b> '
+             '\u2014 the same work, settled, with the corrections in and the proofing notice '
+             'gone.')
+      + '<h3>What was done to this book</h3>\n'
+      + P % ('<b>Every edition states, on its own front matter, what was done to its text.</b> '
+             'Not in general terms: which printing, what was changed, what was left alone, and '
+             'what could not be recovered.')
+      + P % ('We begin with <b>straightforward transcription</b> \u2014 the author\u2019s '
+             'words as he set them, cleared of what the passage into digital form left behind, '
+             'and nothing more.')
+      + P % ('In time we hope to offer <b>faithful modernised editions</b> as well: the same '
+             'work brought forward in spelling and in the conventions of the page, for a reader '
+             'who would otherwise set it down. Where a book has been modernised it says so, and '
+             'says what was changed. It will not be silent about it, and it will not be '
+             'abridged.')
+      + '<h3>A word on spelling</h3>\n'
+      + P % ('We keep English spelling \u2014 <i>Saviour</i>, <i>honour</i>, <i>labour</i> '
+             '\u2014 because that is how these authors wrote and how their printers set them. '
+             'Where we bring a spelling forward it is because the word itself has changed, '
+             'never to suit a different country.')
+      + '<h3>How we keep them faithful</h3>\n<ol>\n'
+      + '<li><b>We name what we set from.</b> Every edition says which printing, and where that '
+        'printing was found.</li>\n'
+      + '<li><b>Where two copies survive, we collate them</b> \u2014 and record every place '
+        'they differ, with the reason one was preferred.</li>\n'
+      + '<li><b>Scripture is left exactly as it was printed</b>, capitals, spelling and all. '
+        'Those words are not ours to modernise.</li>\n'
+      + '<li><b>The author\u2019s own English is left alone.</b> We may correct his spelling; '
+        'we do not rewrite him. <i>Thou</i>, <i>hath</i> and <i>doth</i> stand.</li>\n'
+      + '<li><b>Nothing is invented.</b> Where the page is lost and no witness settles it, the '
+        'edition says so. A book that quietly fills its holes with something plausible reads '
+        'better and is worth less.</li>\n'
+      + '<li><b>A heading we add stands only where the author announces the division '
+        'himself.</b> Where he divides nothing, we add nothing.</li>\n'
+      + '<li><b>Nothing is abridged.</b> No chapter cut, nothing summarised, nothing left out '
+        'because it is difficult.</li>\n</ol>\n'
+      + P % ('If you find something wrong, we would rather know.')
+      + '</section></body></html>\n')
+
+def heard_xhtml(title='This Book Is Made to Be Heard'):
+    """A short note at the FRONT. John, 2026-08-30: the explanation belongs in a
+    foreword as well as at the back — a reader meeting a phonetic gloss on page three
+    should not have to reach the last page to learn why it is there."""
+    P = '<p>%s</p>\n'
+    return ('<?xml version="1.0" encoding="utf-8"?>\n'
+      '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="en-GB" lang="en-GB">\n'
+      '<head><title>' + html.escape(title) + '</title><meta charset="utf-8"/>'
+      '<link rel="stylesheet" type="text/css" href="../css/style.css"/></head>\n'
+      '<body epub:type="frontmatter"><section epub:type="preface" class="preamble">\n'
+      '<h2>' + html.escape(title) + '</h2>\n'
+      + P % ('It is set to be read aloud as well as read, and some of what is in it is '
+             'here for no other reason.')
+      + P % ('Every Greek and Hebrew word carries its sound beside it, because a '
+             'narrator can read neither alphabet. Chapters are numbered 1, 2, 3 rather '
+             'than I, II, III, because a voice meeting \u201cChapter II\u201d may say '
+             'anything at all. Abbreviations are written out, and Scripture references '
+             'are resolved, because a listener cannot turn back to a footnote.')
+      + P % ('None of it shows on the page. It shows when the book is spoken.')
+      + '</section></body></html>\n')

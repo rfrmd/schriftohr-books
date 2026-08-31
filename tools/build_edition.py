@@ -11,6 +11,7 @@ dropped and reported. Nothing disappears silently.
 """
 import re, os, html, glob, uuid, shutil, zipfile, subprocess, unicodedata
 from PIL import Image
+from edition_parts import closing_xhtml, heard_xhtml
 
 def slug(s):
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
@@ -169,9 +170,16 @@ def package(out, chapters, meta, cover_png, tpl, epub_path):
         '\n<p>The arrangement of this edition is the work of RFRMDWordLabs, LLC. No claim is '
         'made upon the text.</p>\n<p><i>Soli Deo gloria.</i></p>', 'backmatter'))
 
+    # ⚠️ The closing page goes AFTER the sources, so a reader who has finished
+    # the book meets it on the way out.
+    open(f'{out}/OEBPS/text/98-why.xhtml', 'w', encoding='utf-8').write(closing_xhtml())
+    # the same explanation, short, at the FRONT
+    open(f'{out}/OEBPS/text/02-heard.xhtml', 'w', encoding='utf-8').write(heard_xhtml())
     order = ([('cover.xhtml', 'Cover'), ('00-title.xhtml', T),
-              ('01-edition-note.xhtml', 'About This Edition')] + chapters +
-             [('97-sources.xhtml', 'Sources and Acknowledgements')])
+              ('01-edition-note.xhtml', 'About This Edition'),
+              ('02-heard.xhtml', 'This Book Is Made to Be Heard')] + chapters +
+             [('97-sources.xhtml', 'Sources and Acknowledgements'),
+              ('98-why.xhtml', 'Why We Make These Books')])
     open(f'{out}/OEBPS/nav.xhtml', 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="utf-8"?>\n<html xmlns="http://www.w3.org/1999/xhtml" '
         'xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="en-GB" lang="en-GB">\n'
