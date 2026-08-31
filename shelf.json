@@ -141,6 +141,14 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/rare-jewel-of-christian-contentment/cover.jpg",
       "source": "EEBO-TCP A30598 (Wing B6103), the 1649 printing, keyed and released CC0",
       "license": "Text public domain; editorial matter © RFRMD Word Labs LLC"
+    },
+    {
+      "id": "glory-of-christ",
+      "title": "Meditations and Discourses on the Glory of Christ",
+      "author": "John Owen",
+      "blurb": "Owen’s last work, in two parts: the glory of Christ in his person, office and grace, and then the same meditations applied to the unconverted and to saints under spiritual decay. Set from two independently keyed copies of the London printing of 1691, collated against each other — neither copy is the whole book. Spelling and capitalisation modernised; Scripture left exactly as printed. This is a proofing copy — corrections welcome.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/glory-of-christ/Owen_John-SchriftOhr_Edition-Glory_of_Christ.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/glory-of-christ/cover.jpg"
     }
   ],
   "note": "Every edition begins with a public-domain source, often an original scanned book. We set the text properly — adding chapter divisions where the source had none, and clearing away what scanning and re-keying leave behind — so the book reads well on the page and sounds right read aloud."
