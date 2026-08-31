@@ -198,7 +198,15 @@ def package(out, chapters, meta, cover_png, tpl, epub_path):
         man.append(f'    <item id="pl{j}" href="images/{extra}" media-type="image/jpeg"/>')
     spine = []
     for i, (f, t) in enumerate(order):
-        man.append(f'    <item id="t{i}" href="text/{f}" media-type="application/xhtml+xml"/>')
+        # ⚠️ The cover page wraps its image in an <svg> so it scales to any
+        # screen, and EPUB requires a document that uses SVG to say so here.
+        # Apple Books does not merely warn about the omission — it refuses to
+        # open the book at all on iPhone and iPad, with "not formatted
+        # properly". Fourteen published editions shipped without it.
+        src = open(f'{out}/OEBPS/text/{f}', encoding='utf-8').read()
+        props = ' properties="svg"' if re.search(r'<svg[\s>]', src) else ''
+        man.append(f'    <item id="t{i}" href="text/{f}" '
+                   f'media-type="application/xhtml+xml"{props}/>')
         spine.append(f'    <itemref idref="t{i}"/>')
     open(f'{out}/OEBPS/content.opf', 'w', encoding='utf-8').write(
 f'''<?xml version="1.0" encoding="utf-8"?>
