@@ -108,10 +108,104 @@ def replace_block(text, klass, block):
     return text[:first.start()] + block.lstrip() + text[last_close + 4:], had
 
 
+
+# ⚠️ The two sites are hand-copied to a hosting server, so every book we publish
+# used to mean John copying three files. This script lets the page refresh its
+# own list from shelf.json on GitHub Pages, which serves it with
+# access-control-allow-origin: *, so a page on another domain may read it.
+#
+# It is an ENHANCEMENT, not a replacement. The generated cards stay in the HTML:
+# the page is correct the moment it is uploaded, works with JavaScript off, and
+# stays readable to a crawler. The script only steps in when the shelf has moved
+# on since the upload — which means John copies files when the DESIGN changes,
+# not when a book is added.
+#
+# ⚠️ Nothing from the JSON is written as HTML. Every value goes in through
+# textContent or setAttribute, so a stray angle bracket in a blurb cannot become
+# markup.
+LIVE_JS = """<script>
+/* Refresh the shelf from rfrmd.github.io. Static cards above are the fallback. */
+(function () {
+  var SRC = 'https://rfrmd.github.io/schriftohr-books/shelf.json';
+  var KLASS = %(klass)r, TITLE_MODE = %(mode)r;
+  function card(b) {
+    var a = document.createElement('a');
+    a.className = KLASS; a.href = b.epub; a.rel = 'noopener';
+    var img = document.createElement('img');
+    img.className = 'cover'; img.src = b.cover; img.alt = '';
+    img.loading = 'lazy'; img.width = 1074; img.height = 1600;
+    var t = document.createElement('span'); t.className = 't';
+    var bold = document.createElement('b');
+    bold.appendChild(document.createTextNode(
+      TITLE_MODE === 'both' ? b.title + ' \u2014 ' + b.author : b.title));
+    var host = document.createElement('span');
+    host.className = 'host';
+    host.textContent = /proofing copy/i.test(b.blurb || '')
+      ? 'proofing copy \u2014 free EPUB' : 'free EPUB download';
+    bold.appendChild(document.createTextNode(' ')); bold.appendChild(host);
+    var d = document.createElement('span'); d.className = 'd';
+    d.textContent = TITLE_MODE === 'both' ? b.blurb : b.author + ' \u2014 ' + b.blurb;
+    t.appendChild(bold); t.appendChild(d);
+    a.appendChild(img); a.appendChild(t);
+    return a;
+  }
+  fetch(SRC).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+    if (!j || !j.books || !j.books.length) return;
+    var have = document.querySelectorAll('a.' + KLASS.split(' ').join('.'));
+    if (!have.length) return;
+    var same = have.length === j.books.length;
+    if (same) for (var i = 0; i < have.length; i++)
+      if (have[i].getAttribute('href') !== j.books[i].epub) { same = false; break; }
+    if (same) return;                       /* the page is already current */
+    var parent = have[0].parentNode, anchor = have[0];
+    for (var k = have.length - 1; k >= 1; k--) have[k].parentNode.removeChild(have[k]);
+    var frag = document.createDocumentFragment();
+    j.books.forEach(function (b) { frag.appendChild(card(b)); });
+    parent.replaceChild(frag, anchor);
+    var strip = document.querySelector('a.shelf');
+    if (strip) {
+      while (strip.firstChild) strip.removeChild(strip.firstChild);
+      j.books.forEach(function (b) {
+        var i = document.createElement('img');
+        i.src = b.cover; i.alt = b.title; i.loading = 'lazy';
+        i.width = 1074; i.height = 1600; strip.appendChild(i);
+      });
+    }
+    var W = ['no','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
+             'Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen',
+             'Eighteen','Nineteen','Twenty','Twenty-one','Twenty-two','Twenty-three',
+             'Twenty-four','Twenty-five','Twenty-six','Twenty-seven','Twenty-eight',
+             'Twenty-nine','Thirty'];
+    var n = j.books.length;
+    Array.prototype.forEach.call(document.querySelectorAll('strong'), function (s) {
+      if (/ so far$/.test(s.textContent))
+        s.textContent = (W[n] || String(n)) + ' so far';
+    });
+  }).catch(function () { /* leave the page as uploaded */ });
+})();
+</script>"""
+
+
+def strip_live(text):
+    return re.sub(r'\\n?<script>\\n/\\* Refresh the shelf.*?</script>', '', text, flags=re.S)
+
+
+def inject_live(text, klass, mode):
+    """Put the refresher just before </body>, replacing any earlier copy."""
+    js = LIVE_JS % {'klass': klass, 'mode': mode}
+    text = re.sub(r'<script>\n/\* Refresh the shelf.*?</script>', '', text, flags=re.S)
+    if '</body>' in text:
+        return text.replace('</body>', js + '\n</body>', 1)
+    return text + js + '\n'
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--check', action='store_true',
                     help='report what would change; write nothing')
+    ap.add_argument('--live', action='store_true',
+                    help='embed the script that refreshes the shelf from GitHub '
+                         '(⚠️ untested in a browser as of 2026-08-31)')
     args = ap.parse_args()
 
     books = json.loads(SHELF.read_text())['books']
@@ -125,12 +219,15 @@ def main():
     # notice (John, 2026-08-29).
     front = pathlib.Path.home() / 'Developer/rfrmdwordlabs-web/index.html'
     if front.exists():
-        text = front.read_text(encoding='utf-8')
+        text = strip_live(front.read_text(encoding='utf-8'))
         new, had = replace_strip(text, shelf_strip(books))
         if new is None:
             print(f'  !! no shelf strip in {front.name}')
         else:
             new, was = replace_count(new, len(books))
+            same = new == text
+            if args.live:
+                new = inject_live(new, 'card bk', 'title')
             same = new == text
             print(f'  {front.parent.name}/{front.name}: strip {had} -> {len(books)} '
                   f'cover(s); count {was!r} -> {spell(len(books))!r}'
@@ -143,12 +240,14 @@ def main():
     for path, klass, title_of, desc_of in SITES:
         if not path.exists():
             print(f'  !! {path} is not here'); continue
-        text = path.read_text(encoding='utf-8')
+        text = strip_live(path.read_text(encoding='utf-8'))
         block = cards(books, klass, title_of, desc_of)
         new, had = replace_block(text, klass, block)
         if new is None:
             print(f'  !! no "{klass}" cards found in {path.name} — not touching it')
             continue
+        if args.live:
+            new = inject_live(new, klass, 'both' if 'src' in klass else 'title')
         same = new == text
         print(f'  {path.parent.name}/{path.name}: {had} card(s) -> {len(books)}'
               f'{"  (already current)" if same else ""}')
