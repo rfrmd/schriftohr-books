@@ -179,7 +179,7 @@ def package(out, chapters, meta, cover_png, tpl, epub_path):
               ('01-edition-note.xhtml', 'About This Edition'),
               ('02-heard.xhtml', 'This Book Is Made to Be Heard')] + chapters +
              [('97-sources.xhtml', 'Sources and Acknowledgements'),
-              ('98-why.xhtml', 'Why We Make These Books')])
+              ('98-why.xhtml', 'How These Books Are Made')])
     open(f'{out}/OEBPS/nav.xhtml', 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="utf-8"?>\n<html xmlns="http://www.w3.org/1999/xhtml" '
         'xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="en-GB" lang="en-GB">\n'
