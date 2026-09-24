@@ -67,7 +67,8 @@ def corrections_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com
 
     A finished book should not tell its reader it is unfinished, but it can
     still ask to be told when something is wrong — every one of these is set
-    from a scan or an old printing, and errors survive that.
+    from a scan or builds on another's transcription, and errors survive either way
+    (John, 2026-09-24: the old sentence was not true of the transcription-built books).
     """
     E = html.escape
     build = build or date.today().isoformat()
@@ -80,8 +81,9 @@ def corrections_xhtml(title, author, build=None, contact='john@rfrmdwordlabs.com
       '<p>This is a <i>SchriftOhr Edition</i>: a book long out of copyright, set again '
       'with care — for reading on a page, and for listening to aloud. It is free, and '
       'yours to keep and to pass on.</p>\n'
-      '<p>Every edition here begins with a scan or an old printing, and errors survive '
-      'that. If something reads wrongly — a misprint, a word that sits oddly, a chapter '
+      '<p>Every edition here begins either with a scan of an old printing or with a '
+      'transcription that others made before us. The Sources and Acknowledgements at the '
+      'back say which, and name them. Errors can survive either way. If something reads wrongly — a misprint, a word that sits oddly, a chapter '
       'that begins in the wrong place — we would be glad to be told. Note the chapter and '
       'the sentence around it and send it to '
       f'<a href="mailto:{contact}">{contact}</a>. Small things are worth reporting; they '
