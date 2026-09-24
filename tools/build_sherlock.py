@@ -322,7 +322,7 @@ META = {
     'source': 'Project Gutenberg 48320 (Adventures of Sherlock Holmes, Illustrated)',
     'rights': ('The text and Sidney Paget’s illustrations are in the public domain. '
                'The cover, the twelve Adventure plates, and the arrangement of this '
-               'edition are © RFRMD Word Labs, LLC.'),
+               'edition are © RFRMD Word Labs LLC.'),
     'sources': (
         '<p>The text is Project Gutenberg 48320, <i>Adventures of Sherlock Holmes</i>, '
         'Illustrated — prepared by Distributed Proofreaders from the 1892 George Newnes '

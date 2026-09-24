@@ -347,7 +347,7 @@ def main():
                    'two copies of that printing'),
         'rights': ('The text and Sidney Paget’s plates are in the public domain. The '
                    'cover, the twelve Adventure plates, and the setting of this '
-                   'edition are © RFRMD Word Labs, LLC.'),
+                   'edition are © RFRMD Word Labs LLC.'),
         'sources': (
             '<p>The text is set from <i>Adventures of Sherlock Holmes</i>, Harper &amp; '
             'Brothers, New York, 1892 — the first American edition, gathering the '

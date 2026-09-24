@@ -107,13 +107,13 @@ files.append(('00-proofing.xhtml','Proofing Copy'))
 open(f'{OUT}/OEBPS/text/00-title.xhtml','w',encoding='utf-8').write(page(T,'titlepage','titlepage',
  f'<h1>{T}</h1>\n<h2>Wherein is shewed the Excellent Temper of a Christian</h2>\n'
  '<p><strong>Jeremiah Burroughs</strong></p>\n<p>The SchriftOhr Edition</p>\n'
- '<p>Developed by RFRMDWordLabs, LLC</p>\n'
+ '<p>Developed by RFRMD Word Labs LLC</p>\n'
  '<p>For the benefit of readers, prayerfully, to the glory of God.</p>\n'
- '<p class="publisher-mark"><img src="../images/publisher-mark.png" alt="RFRMD Word Labs, LLC"/></p>','frontmatter'))
+ '<p class="publisher-mark"><img src="../images/publisher-mark.png" alt="RFRMD Word Labs LLC"/></p>','frontmatter'))
 files.append(('00-title.xhtml',T))
 open(f'{OUT}/OEBPS/text/01-edition-note.xhtml','w',encoding='utf-8').write(page(
  'About This Edition','preamble','preamble','<h2>About This Edition</h2>\n'
- f'<p>This is the SchriftOhr edition of <i>{T}</i>, prepared by RFRMDWordLabs, LLC. '
+ f'<p>This is the SchriftOhr edition of <i>{T}</i>, prepared by RFRMD Word Labs LLC. '
  'Burroughs\u2019s text is given as he preached it and as 1649 printed it \u2014 not modernised, '
  'abridged, or rewritten. The seventeenth-century spelling stands, save that the long <i>\u017f</i> '
  'is set as <i>s</i> and words broken across a line are rejoined.</p>\n'
@@ -170,7 +170,7 @@ open(f'{OUT}/OEBPS/text/97-sources.xhtml','w',encoding='utf-8').write(page(
  'keyers typed it by hand from images of the 1649 pages. The Partnership has waived every right '
  'it holds in that work under the <i>CC0 1.0 Public Domain Dedication</i>. Freely given, and '
  'gratefully used.</p>\n'
- '<p>The arrangement of this edition is the work of RFRMDWordLabs, LLC. No claim is made upon the '
+ '<p>The arrangement of this edition is the work of RFRMD Word Labs LLC. No claim is made upon the '
  'text.</p>\n<p><i>Soli Deo gloria.</i></p>','backmatter'))
 files.append(('97-sources.xhtml','Sources and Acknowledgements'))
 
@@ -197,7 +197,7 @@ f'''<?xml version="1.0" encoding="utf-8"?>
     <dc:creator id="author">Jeremiah Burroughs</dc:creator>
     <meta refines="#author" property="role" scheme="marc:relators">aut</meta>
     <dc:language>en-GB</dc:language>
-    <dc:publisher>SchriftOhr / RFRMDWordLabs, LLC</dc:publisher>
+    <dc:publisher>SchriftOhr / RFRMD Word Labs LLC</dc:publisher>
     <dc:description>A reading edition of Burroughs's sermons on contentment, from the EEBO-TCP keyed transcription of the 1649 printing.</dc:description>
     <dc:source>EEBO-TCP A30598 (Wing B6103), the 1649 printing, CC0</dc:source>
     <dc:rights>Burroughs's text is in the public domain.</dc:rights>

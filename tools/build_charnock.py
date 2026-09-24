@@ -170,13 +170,13 @@ files.append(('00-proofing.xhtml','Proofing Copy'))
 open(f'{OUT}/OEBPS/text/00-title.xhtml','w',encoding='utf-8').write(page(T,'titlepage','titlepage',
  f'<h1>{html.escape(T)}</h1>\n<h2>Fourteen Discourses, in Two Volumes</h2>\n'
  f'<p><strong>{html.escape(AUTHOR)}</strong></p>\n<p>The SchriftOhr Edition</p>\n'
- '<p>Developed by RFRMDWordLabs, LLC</p>\n'
+ '<p>Developed by RFRMD Word Labs LLC</p>\n'
  '<p>For the benefit of readers, prayerfully, to the glory of God.</p>\n'
- '<p class="publisher-mark"><img src="../images/publisher-mark.png" alt="RFRMD Word Labs, LLC"/></p>','frontmatter'))
+ '<p class="publisher-mark"><img src="../images/publisher-mark.png" alt="RFRMD Word Labs LLC"/></p>','frontmatter'))
 files.append(('00-title.xhtml',T))
 open(f'{OUT}/OEBPS/text/01-edition-note.xhtml','w',encoding='utf-8').write(page(
  'About This Edition','preamble','preamble','<h2>About This Edition</h2>\n'
- f'<p>This is the SchriftOhr edition of <i>{html.escape(T)}</i>, prepared by RFRMDWordLabs, LLC. '
+ f'<p>This is the SchriftOhr edition of <i>{html.escape(T)}</i>, prepared by RFRMD Word Labs LLC. '
  'Charnock’s text is given as he wrote it — not modernised, abridged, or rewritten.</p>\n'
  '<p>The chapters are his own fourteen Discourses. Charnock quotes the Greek and Hebrew '
  'constantly; the Greek is followed by how it sounds, in brackets, so it can be read aloud by '
@@ -213,7 +213,7 @@ open(f'{OUT}/OEBPS/text/97-sources.xhtml','w',encoding='utf-8').write(page(
  '<p>Our text descends from <i>Project Gutenberg</i> ebook 53527, proofread by the volunteers '
  'of <i>Distributed Proofreaders</i> from scans of that printing. Freely given, and gratefully '
  'used.</p>\n'
- '<p>The arrangement of this edition is the work of RFRMDWordLabs, LLC. No claim is made upon '
+ '<p>The arrangement of this edition is the work of RFRMD Word Labs LLC. No claim is made upon '
  'the text.</p>\n<p><i>Soli Deo gloria.</i></p>','backmatter'))
 files.append(('97-sources.xhtml','Sources and Acknowledgements'))
 

@@ -185,13 +185,13 @@ files.append(('00-proofing.xhtml','Proofing Copy'))
 open(f'{OUT}/OEBPS/text/00-title.xhtml','w',encoding='utf-8').write(page(T,'titlepage','titlepage',
  f'<h1>{E(T)}</h1>\n<h2>Or, Salve for Believers and Unbelievers’ Sores</h2>\n'
  f'<p><strong>{E(AUTHOR)}</strong></p>\n<p>The SchriftOhr Edition</p>\n'
- '<p>Developed by RFRMDWordLabs, LLC</p>\n'
+ '<p>Developed by RFRMD Word Labs LLC</p>\n'
  '<p>For the benefit of readers, prayerfully, to the glory of God.</p>\n'
- '<p class="publisher-mark"><img src="../images/publisher-mark.png" alt="RFRMD Word Labs, LLC"/></p>','frontmatter'))
+ '<p class="publisher-mark"><img src="../images/publisher-mark.png" alt="RFRMD Word Labs LLC"/></p>','frontmatter'))
 files.append(('00-title.xhtml',T))
 open(f'{OUT}/OEBPS/text/01-edition-note.xhtml','w',encoding='utf-8').write(page(
  'About This Edition','preamble','preamble','<h2>About This Edition</h2>\n'
- f'<p>This is the SchriftOhr edition of <i>{E(T)}</i>, prepared by RFRMDWordLabs, LLC. '
+ f'<p>This is the SchriftOhr edition of <i>{E(T)}</i>, prepared by RFRMD Word Labs LLC. '
  'Brooks’s text is given as he wrote it — not modernised, abridged, or rewritten. The '
  'seventeenth-century spelling stands, save that the long <i>ſ</i> is set as <i>s</i> and '
  'words broken across a line are rejoined.</p>\n'
@@ -251,7 +251,7 @@ open(f'{OUT}/OEBPS/text/97-sources.xhtml','w',encoding='utf-8').write(page(
  'whose keyers typed it by hand from images of the 1658 pages. The Partnership has waived every '
  'right it holds in that work under the <i>CC0 1.0 Public Domain Dedication</i>. Freely given, '
  'and gratefully used.</p>\n'
- '<p>The arrangement of this edition is the work of RFRMDWordLabs, LLC. No claim is made upon '
+ '<p>The arrangement of this edition is the work of RFRMD Word Labs LLC. No claim is made upon '
  'the text.</p>\n<p><i>Soli Deo gloria.</i></p>','backmatter'))
 files.append(('97-sources.xhtml','Sources and Acknowledgements'))
 

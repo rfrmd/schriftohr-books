@@ -154,20 +154,20 @@ def package(out, chapters, meta, cover_png, tpl, epub_path):
     open(f'{out}/OEBPS/text/00-title.xhtml', 'w', encoding='utf-8').write(page(
         T, 'titlepage', 'titlepage',
         f'<h1>{html.escape(T)}</h1>\n<p><strong>{html.escape(A)}</strong></p>\n{series}'
-        '<p>The SchriftOhr Edition</p>\n<p>Developed by RFRMDWordLabs, LLC</p>\n'
+        '<p>The SchriftOhr Edition</p>\n<p>Developed by RFRMD Word Labs LLC</p>\n'
         '<p>For the benefit of readers, prayerfully, to the glory of God.</p>\n'
         '<p class="publisher-mark"><img src="../images/publisher-mark.png" '
-        'alt="RFRMD Word Labs, LLC"/></p>', 'frontmatter'))
+        'alt="RFRMD Word Labs LLC"/></p>', 'frontmatter'))
     open(f'{out}/OEBPS/text/01-edition-note.xhtml', 'w', encoding='utf-8').write(page(
         'About This Edition', 'preamble', 'preamble', '<h2>About This Edition</h2>\n'
         f'<p>This is the SchriftOhr edition of <i>{html.escape(T)}</i>, prepared by '
-        f'RFRMDWordLabs, LLC. {html.escape(meta["surname"])}’s text is given as '
+        f'RFRMD Word Labs LLC. {html.escape(meta["surname"])}’s text is given as '
         f'{meta["pronoun"]} wrote it in {meta["year"]}. Nothing has been modernised, abridged, '
         f'or rewritten. {HOUSE_NOTE}</p>', 'frontmatter'))
     open(f'{out}/OEBPS/text/97-sources.xhtml', 'w', encoding='utf-8').write(page(
         'Sources and Acknowledgements', 'preamble', 'preamble',
         '<h2>Sources and Acknowledgements</h2>\n' + meta['sources'] +
-        '\n<p>The arrangement of this edition is the work of RFRMDWordLabs, LLC. No claim is '
+        '\n<p>The arrangement of this edition is the work of RFRMD Word Labs LLC. No claim is '
         'made upon the text.</p>\n<p><i>Soli Deo gloria.</i></p>', 'backmatter'))
 
     # ⚠️ The closing page goes AFTER the sources, so a reader who has finished
@@ -217,7 +217,7 @@ f'''<?xml version="1.0" encoding="utf-8"?>
     <dc:creator id="author">{html.escape(A)}</dc:creator>
     <meta refines="#author" property="role" scheme="marc:relators">aut</meta>
     <dc:language>en-GB</dc:language>
-    <dc:publisher>SchriftOhr / RFRMDWordLabs, LLC</dc:publisher>
+    <dc:publisher>SchriftOhr / RFRMD Word Labs LLC</dc:publisher>
     <dc:description>{html.escape(meta["description"])}</dc:description>
     <dc:source>{html.escape(meta["source"])}</dc:source>
     <dc:rights>{html.escape(meta["rights"])}</dc:rights>
