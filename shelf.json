@@ -3,16 +3,6 @@
   "name": "The SchriftOhr Shelf",
   "books": [
     {
-      "id": "pilgrims-progress",
-      "title": "The Pilgrim's Progress",
-      "author": "John Bunyan",
-      "blurb": "A man named Christian, a burden on his back and a book in his hand, flees the City of Destruction for the Celestial City. The road runs through the Slough of Despond, Vanity Fair, the Valley of the Shadow of Death and the dungeons of Doubting Castle. Part Two follows his wife Christiana and their children along the same road — the most widely read allegory in the English language.",
-      "epub": "https://rfrmd.github.io/schriftohr-books/books/pilgrims-progress/Bunyan_John-SchriftOhr_Edition-Pilgrims_Progress.epub",
-      "cover": "https://rfrmd.github.io/schriftohr-books/books/pilgrims-progress/cover.jpg",
-      "source": "The Works of John Bunyan, ed. George Offor, 1855, via Project Gutenberg and Standard Ebooks",
-      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC, CC BY 4.0; cover and marks reserved"
-    },
-    {
       "id": "adventures-of-sherlock-holmes",
       "title": "The Adventures of Sherlock Holmes",
       "author": "Arthur Conan Doyle",
@@ -21,6 +11,16 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/adventures-of-sherlock-holmes/cover.jpg",
       "source": "Harper & Brothers, New York, 1892 — collated from two scans of two copies of that printing, read independently",
       "license": "Text and Sidney Paget’s plates public domain; cover, Adventure plates and editorial matter © RFRMD Word Labs LLC"
+    },
+    {
+      "id": "pilgrims-progress",
+      "title": "The Pilgrim's Progress",
+      "author": "John Bunyan",
+      "blurb": "A man named Christian, a burden on his back and a book in his hand, flees the City of Destruction for the Celestial City. The road runs through the Slough of Despond, Vanity Fair, the Valley of the Shadow of Death and the dungeons of Doubting Castle. Part Two follows his wife Christiana and their children along the same road — the most widely read allegory in the English language.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/pilgrims-progress/Bunyan_John-SchriftOhr_Edition-Pilgrims_Progress.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/pilgrims-progress/cover.jpg",
+      "source": "The Works of John Bunyan, ed. George Offor, 1855, via Project Gutenberg and Standard Ebooks",
+      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC, CC BY 4.0; cover and marks reserved"
     },
     {
       "id": "mortification-of-sin",
