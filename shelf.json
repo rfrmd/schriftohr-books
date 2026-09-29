@@ -59,26 +59,6 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/sovereignty-of-god/cover.jpg"
     },
     {
-      "id": "tales-of-the-covenanters-pollok",
-      "title": "Tales of the Covenanters",
-      "author": "Robert Pollok",
-      "blurb": "Three tales from the years of persecution in Scotland, when soldiers hunted the Presbyterians who would not renounce their covenant. Helen of the Glen, Ralph Gemmell and The Persecuted Family follow ordinary households — children, shepherds, mothers — caught between the dragoons and their consciences.",
-      "epub": "https://rfrmd.github.io/schriftohr-books/books/tales-of-the-covenanters-pollok/Pollok_Robert-SchriftOhr_Edition-Tales_of_the_Covenanters.epub",
-      "cover": "https://rfrmd.github.io/schriftohr-books/books/tales-of-the-covenanters-pollok/cover.jpg",
-      "source": "Internet Archive scan of the 1895 Oliphant Anderson & Ferrier edition",
-      "license": "Text and illustrations public domain"
-    },
-    {
-      "id": "tales-of-the-covenanters-guthrie",
-      "title": "Tales of the Covenanters",
-      "author": "Ellen Jane Guthrie",
-      "blurb": "The covenanting martyrs told as a series of short tales, each tied to the place that remembers it: Bothwell Bridge, Peden's Stone, the murder at Inchdarnie — and the persecutors, Culzean and the Laird of Lag, whose names the hunted did not forget.",
-      "epub": "https://rfrmd.github.io/schriftohr-books/books/tales-of-the-covenanters-guthrie/Guthrie_Ellen_Jane-SchriftOhr_Edition-Tales_of_the_Covenanters.epub",
-      "cover": "https://rfrmd.github.io/schriftohr-books/books/tales-of-the-covenanters-guthrie/cover.jpg",
-      "source": "Project Gutenberg ebook 45678",
-      "license": "Text and plates public domain"
-    },
-    {
       "id": "treasure-island",
       "title": "Treasure Island",
       "author": "Robert Louis Stevenson",

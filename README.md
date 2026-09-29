@@ -18,13 +18,6 @@ Seven editions. Every download link below serves the EPUB directly.
   the journey's stages as chapters, Scripture-only footnotes, Bunyan's
   own writings as endnotes.
   [EPUB](https://rfrmd.github.io/schriftohr-books/books/pilgrims-progress/Bunyan_John-SchriftOhr_Edition-Pilgrims_Progress.epub)
-- **Tales of the Covenanters** — Robert Pollok. Helen of the Glen,
-  Ralph Gemmell, and The Persecuted Family, from the illustrated 1895
-  edition.
-  [EPUB](https://rfrmd.github.io/schriftohr-books/books/tales-of-the-covenanters-pollok/Pollok_Robert-SchriftOhr_Edition-Tales_of_the_Covenanters.epub)
-- **Tales of the Covenanters** — Ellen Jane Guthrie. The eleventh
-  edition with its 1920 plates.
-  [EPUB](https://rfrmd.github.io/schriftohr-books/books/tales-of-the-covenanters-guthrie/Guthrie_Ellen_Jane-SchriftOhr_Edition-Tales_of_the_Covenanters.epub)
 - **Treasure Island** — Robert Louis Stevenson, with Louis Rhead's
   illustrations.
   [EPUB](https://rfrmd.github.io/schriftohr-books/books/treasure-island/Stevenson_Robert_Louis-SchriftOhr_Edition-Treasure_Island.epub)
