@@ -83,10 +83,10 @@ def cards(books, klass, shape, indent='    '):
     return '\n'.join(out)
 
 
-def shelf_strip(books, base_indent='        '):
-    """The drifting row of covers on the front page, each linking to the books page."""
+def shelf_strip(books, href='books.html', base_indent='        '):
+    """The drifting row of covers on a front page, each linking to its site's books page."""
     return '\n'.join(
-        f'{base_indent}<a href="books.html"><img src="{html.escape(b["cover"])}" '
+        f'{base_indent}<a href="{href}"><img src="{html.escape(b["cover"])}" '
         f'alt="{html.escape(b["title"])}" loading="lazy" width="1074" height="1600"></a>'
         for b in books)
 
@@ -235,25 +235,26 @@ def main():
     # in the prose. It said "Eleven so far" on the day the fourteenth went up,
     # which is the same drift the card lists had, in a place that is harder to
     # notice (John, 2026-08-29).
-    front = DEV / 'rfrmdwordlabs-web/index.html'
-    if front.exists():
-        text = strip_live(front.read_text(encoding='utf-8'))
-        new, had = replace_strip(text, shelf_strip(books))
-        if new is None:
-            print(f'  !! no shelf strip in {front.name}')
-        else:
-            new, was = replace_count(new, len(books))
-            same = new == text
-            if args.live:
-                new = inject_live(new, 'card bk', 'title')
-            same = new == text
-            print(f'  {front.parent.name}/{front.name}: strip {had} -> {len(books)} '
-                  f'cover(s); count {was!r} -> {spell(len(books))!r}'
-                  f'{"  (already current)" if same else ""}')
-            if not same:
-                stale += 1
-                if not args.check:
-                    front.write_text(new, encoding='utf-8')
+    for front in (DEV / 'rfrmdwordlabs-web/index.html', DEV / 'schriftohr-web/index.html'):
+      if front.exists():
+          text = strip_live(front.read_text(encoding='utf-8'))
+          new, had = replace_strip(text, shelf_strip(
+              books, 'books.html#editions' if 'schriftohr' in front.parent.name else 'books.html'))
+          if new is None:
+              print(f'  !! no shelf strip in {front.name}')
+          else:
+              new, was = replace_count(new, len(books))
+              same = new == text
+              if args.live:
+                  new = inject_live(new, 'card bk', 'title')
+              same = new == text
+              print(f'  {front.parent.name}/{front.name}: strip {had} -> {len(books)} '
+                    f'cover(s); count {was!r} -> {spell(len(books))!r}'
+                    f'{"  (already current)" if same else ""}')
+              if not same:
+                  stale += 1
+                  if not args.check:
+                      front.write_text(new, encoding='utf-8')
 
     for path, klass, shape in SITES:
         if not path.exists():
