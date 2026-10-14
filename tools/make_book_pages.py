@@ -20,6 +20,8 @@ import re
 import sys
 
 SHELF = pathlib.Path(__file__).resolve().parent.parent / 'shelf.json'
+# The sites are sibling repos of this one (all of John's work lives in one folder).
+DEV = SHELF.parent.parent
 
 WORDS = ('no', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight',
          'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen',
@@ -35,51 +37,67 @@ def spell(n):
     return WORDS[n] if n < len(WORDS) else str(n)
 
 
+PROOF = 'Proofing copy: corrections welcome.'
+
+
+def split_proof(blurb):
+    """The shelf's blurb carries the proofing line (the app shows the blurb as
+    it stands); the websites set that line apart under the description."""
+    if blurb.endswith(PROOF):
+        return blurb[:-len(PROOF)].rstrip(), True
+    return blurb, False
+
+
 SITES = [
-    # (path, css class, how the title line reads, how the description reads)
-    (pathlib.Path.home() / 'Developer/rfrmdwordlabs-web/books.html', 'card bk',
-     lambda b: html.escape(b['title']),
-     lambda b: f"{html.escape(b['author'])} — {html.escape(b['blurb'])}"),
-    (pathlib.Path.home() / 'Developer/schriftohr-web/books.html', 'src bk',
-     lambda b: f"{html.escape(b['title'])} — {html.escape(b['author'])}",
-     lambda b: html.escape(b['blurb'])),
+    # (path, css class, card shape). No em dashes in reader-facing copy.
+    (DEV / 'rfrmdwordlabs-web/books.html', 'card bk', 'byline'),
+    (DEV / 'schriftohr-web/books.html', 'src bk', 'inline'),
 ]
 
 
-def cards(books, klass, title_of, desc_of, indent='    '):
+def cards(books, klass, shape, indent='    '):
     out = []
     for b in books:
         # ⚠️ A proofing copy says so on the page as well as on its cover. A
         # reader downloading from the site never sees the shelf entry.
-        proof = 'proofing copy' in b.get('blurb', '').lower()
-        tag = 'proofing copy — free EPUB' if proof else 'free EPUB download'
+        desc, proof = split_proof(b.get('blurb', ''))
+        tag = 'Free EPUB · proofing copy' if proof else 'Free EPUB'
+        title, author = html.escape(b['title']), html.escape(b['author'])
+        if shape == 'byline':
+            lines = [f'<b>{title} <span class="host">{tag}</span></b>',
+                     f'<span class="by">{author}</span>',
+                     f'<span class="d">{html.escape(desc)}'
+                     + (f' <span class="proof">{PROOF}</span>' if proof else '') + '</span>']
+        else:
+            lines = [f'<b>{title} · {author} <span class="host">{tag}</span></b>',
+                     f'<span class="d">{html.escape(desc)}'
+                     + (f' {PROOF}' if proof else '') + '</span>']
         out.append(
             f'{indent}<a class="{klass}" href="{html.escape(b["epub"])}" rel="noopener">\n'
             f'{indent}  <img class="cover" src="{html.escape(b["cover"])}" alt="" '
             f'loading="lazy" width="1074" height="1600">\n'
             f'{indent}  <span class="t">\n'
-            f'{indent}    <b>{title_of(b)} <span class="host">{tag}</span></b>\n'
-            f'{indent}    <span class="d">{desc_of(b)}</span>\n'
+            + ''.join(f'{indent}    {l}\n' for l in lines) +
             f'{indent}  </span>\n'
             f'{indent}</a>')
     return '\n'.join(out)
 
 
-def shelf_strip(books, base_indent='      '):
-    """The row of cover thumbnails on a front page."""
+def shelf_strip(books, base_indent='        '):
+    """The drifting row of covers on the front page, each linking to the books page."""
     return '\n'.join(
-        f'{base_indent}<img src="{html.escape(b["cover"])}" '
-        f'alt="{html.escape(b["title"])}" loading="lazy" width="1074" height="1600">'
+        f'{base_indent}<a href="books.html"><img src="{html.escape(b["cover"])}" '
+        f'alt="{html.escape(b["title"])}" loading="lazy" width="1074" height="1600"></a>'
         for b in books)
 
 
 def replace_strip(text, block):
-    """Swap the images inside <a class="shelf"> and leave the anchor alone."""
-    m = re.search(r'(<a class="shelf"[^>]*>)(.*?)(</a>)', text, re.S)
+    """Swap the covers inside <div class="track" id="track"> and leave the div alone."""
+    m = re.search(r'(<div class="track" id="track">)(.*?)(\n\s*</div>)', text, re.S)
     if not m:
         return None, 0
     had = len(re.findall(r'<img', m.group(2)))
-    return text[:m.end(1)] + '\n' + block + '\n    ' + text[m.start(3):], had
+    return text[:m.end(1)] + '\n' + block + text[m.start(3):], had
 
 
 def replace_count(text, n):
@@ -137,14 +155,14 @@ LIVE_JS = """<script>
     var t = document.createElement('span'); t.className = 't';
     var bold = document.createElement('b');
     bold.appendChild(document.createTextNode(
-      TITLE_MODE === 'both' ? b.title + ' \u2014 ' + b.author : b.title));
+      TITLE_MODE === 'both' ? b.title + ' \u00b7 ' + b.author : b.title));
     var host = document.createElement('span');
     host.className = 'host';
     host.textContent = /proofing copy/i.test(b.blurb || '')
-      ? 'proofing copy \u2014 free EPUB' : 'free EPUB download';
+      ? 'Free EPUB \u00b7 proofing copy' : 'Free EPUB';
     bold.appendChild(document.createTextNode(' ')); bold.appendChild(host);
     var d = document.createElement('span'); d.className = 'd';
-    d.textContent = TITLE_MODE === 'both' ? b.blurb : b.author + ' \u2014 ' + b.blurb;
+    d.textContent = TITLE_MODE === 'both' ? b.blurb : b.author + '. ' + b.blurb;
     t.appendChild(bold); t.appendChild(d);
     a.appendChild(img); a.appendChild(t);
     return a;
@@ -217,7 +235,7 @@ def main():
     # in the prose. It said "Eleven so far" on the day the fourteenth went up,
     # which is the same drift the card lists had, in a place that is harder to
     # notice (John, 2026-08-29).
-    front = pathlib.Path.home() / 'Developer/rfrmdwordlabs-web/index.html'
+    front = DEV / 'rfrmdwordlabs-web/index.html'
     if front.exists():
         text = strip_live(front.read_text(encoding='utf-8'))
         new, had = replace_strip(text, shelf_strip(books))
@@ -237,12 +255,14 @@ def main():
                 if not args.check:
                     front.write_text(new, encoding='utf-8')
 
-    for path, klass, title_of, desc_of in SITES:
+    for path, klass, shape in SITES:
         if not path.exists():
             print(f'  !! {path} is not here'); continue
         text = strip_live(path.read_text(encoding='utf-8'))
-        block = cards(books, klass, title_of, desc_of)
+        block = cards(books, klass, shape)
         new, had = replace_block(text, klass, block)
+        if new is not None:
+            new, _ = replace_count(new, len(books))
         if new is None:
             print(f'  !! no "{klass}" cards found in {path.name} — not touching it')
             continue
