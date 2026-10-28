@@ -23,6 +23,16 @@
       "license": "Text public domain; editorial matter © RFRMD Word Labs LLC, CC BY 4.0; cover and marks reserved"
     },
     {
+      "id": "confessions",
+      "title": "The Confessions",
+      "author": "Augustine of Hippo",
+      "blurb": "Augustine tells God the story of his own restless heart: the stolen pears, the years among the Manichees, his mother Monica's long prayers, and the garden in Milan where a child's voice said, “Take up and read.” Then he turns to memory, time and the first words of Genesis. Pilkington's translation, its old forms of address made modern so it reads naturally aloud and together.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/confessions/Augustine-SchriftOhr_Edition-Confessions.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/confessions/cover.jpg",
+      "source": "J. G. Pilkington's translation (Edinburgh, 1876), as T. & T. Clark printed it in 1882, collated with the New York printing of 1886",
+      "license": "Pilkington's translation public domain; the modernized text and editorial matter © RFRMD Word Labs LLC, CC BY-NC 4.0; cover reserved"
+    },
+    {
       "id": "mortification-of-sin",
       "title": "The Mortification of Sin in Believers",
       "author": "John Owen",
