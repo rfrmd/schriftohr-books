@@ -47,7 +47,8 @@ PROOFING_CSS = """
 /* The proofing notice. Loud on purpose: this copy is not for keeping.
    .note is the same box for a published edition — the orange is the house
    mark and stays; only the words change. */
-.proof{border:2px solid #fd8008;border-radius:10px;padding:1.2em 1.1em;margin:2.2em 0}
+/* two-thirds size and never split, so it stays on one page in every reader (John, 2026-10-29) */
+.proof{border:2px solid #fd8008;border-radius:10px;padding:1.2em 1.1em;margin:1.5em 0;font-size:67%;break-inside:avoid;page-break-inside:avoid}
 .proof h1{font-size:1.25em;letter-spacing:.14em;text-align:center;color:#fd8008;
           margin:0 0 .8em;text-transform:uppercase}
 .proof p{text-indent:0;margin:.75em 0;font-size:.97em;text-align:left}
