@@ -205,18 +205,16 @@ def closing_xhtml(title='How These Books Are Made'):
       '<h2>' + html.escape(title) + '</h2>\n'
       + P % ('The leaf after this one says why we make them. This page says how.')
       + '<h3>How an edition comes to be</h3>\n'
-      + P % ('Every book here begins as a <b>proofing copy</b>. That is not an apology, it is '
-             'a stage. The text has been set with care and now wants other eyes on it. Readers '
-             'who find an error tell us, and we correct it.')
-      + P % ('When that has run its course the book is issued as an <b>initial edition</b> '
-             '\u2014 the same work, settled, with the corrections in and the proofing notice '
-             'gone. Nothing is hurried past that stage, and nothing is called finished before '
-             'it is.')
+      + P % ('Every book here begins as a <b>proofing copy</b>. The text has been set with '
+             'care and now wants other eyes on it. Readers who find an error tell us, and we '
+             'correct it.')
+      + P % ('When that has run its course the book is issued as an <b>initial edition</b>: '
+             'the same work, with the corrections in and the proofing notice gone.')
       + '<h3>What was done to this book</h3>\n'
       + P % ('<b>Every edition states, on its own front matter, what was done to its text.</b> '
              'Not in general terms: which printing, what was changed, what was left alone, and '
              'what could not be recovered.')
-      + P % ('We begin with <b>straightforward transcription</b> \u2014 the author\u2019s '
+      + P % ('We begin with <b>straightforward transcription</b>: the author\u2019s '
              'words as he set them, cleared of what the passage into digital form left behind, '
              'and nothing more. In time we hope to offer <b>faithful modernised editions</b> as '
              'well: the same work brought forward in spelling and in the conventions of the '
@@ -224,8 +222,7 @@ def closing_xhtml(title='How These Books Are Made'):
              'modernised it says so, and says what was changed. It will not be silent about it, '
              'and it will not be abridged.')
       + '<h3>Reading it in portions</h3>\n'
-      + P % ('A book like this is not read at a sitting, and where it breaks decides whether a '
-             'group can use it. We divide only where the author divides. Where he says '
+      + P % ('A book like this is not read at a sitting, so where it breaks matters. We divide only where the author divides. Where he says '
              '\u201cI shall do these three things\u201d, or \u201cthe second thing proposed '
              'is\u201d, we set a heading there and give it a place in the contents, so the '
              'break falls where his own thought turns.')
@@ -234,30 +231,28 @@ def closing_xhtml(title='How These Books Are Made'):
              'the author\u2019s own shape, and imposing a tidier one would mean deciding for '
              'him where his argument turns.')
       + '<h3>A word on spelling</h3>\n'
-      + P % ('We keep English spelling \u2014 <i>Saviour</i>, <i>honour</i>, <i>labour</i> '
-             '\u2014 because that is how these authors wrote and how their printers set them. '
-             'Where we bring a spelling forward it is because the word itself has changed, '
-             'never to suit a different country.')
+      + P % ('We keep English spelling (<i>Saviour</i>, <i>honour</i>, <i>labour</i>), '
+             'because that is how these authors wrote and how their printers set them. Where a '
+             'text came to us with some spellings already brought forward, its About This '
+             'Edition says so.')
       + '<h3>How we keep them faithful</h3>\n<ol>\n'
       + '<li><b>We name what we set from.</b> Every edition says which printing, and where that '
         'printing was found.</li>\n'
-      + '<li><b>Where two copies survive, we collate them</b> \u2014 and record every place '
+      + '<li><b>Where two copies survive, we collate them</b>, and record every place '
         'they differ, with the reason one was preferred.</li>\n'
       + '<li><b>Scripture is left exactly as it was printed</b>, capitals, spelling and all. '
         'Those words are not ours to modernise.</li>\n'
       + '<li><b>The author\u2019s own English is left alone.</b> We may correct his spelling; '
         'we do not rewrite him. <i>Thou</i>, <i>hath</i> and <i>doth</i> stand.</li>\n'
       + '<li><b>Nothing is invented.</b> Where the page is lost and no witness settles it, the '
-        'edition says so. A book that quietly fills its holes with something plausible reads '
-        'better and is worth less.</li>\n'
+        'edition says so.</li>\n'
       + '<li><b>A heading we add stands only where the author announces the division '
         'himself.</b> Where he divides nothing, we add nothing.</li>\n'
       + '<li><b>Nothing is abridged.</b> No chapter cut, nothing summarised, nothing left out '
         'because it is difficult.</li>\n</ol>\n'
       + '<h3>What we hope of it</h3>\n'
-      + P % ('That it reaches people. That it grows their love for the Lord. That it increases '
-             'their joy in reading. If this book does that for one reader, it has done what it '
-             'was made for, and the labour of setting it was worth spending.')
+      + P % ('That it reaches people, grows their love for the Lord, and increases their joy '
+             'in reading.')
       + P % ('If you find something wrong in it, we would rather know.')
       + '</section></body></html>\n')
 
