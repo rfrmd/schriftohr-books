@@ -43,3 +43,23 @@ add | P2-23 | Now the day drew on, that Christiana
 add | P2-24 | Then he thanked Mr. Great-heart for his conduct
 punct | P2-25 | to what purpose should I make a will. -> to what purpose should I make a will?
 punct | P1-13 | at this fair there is at all times, to be seen -> at this fair there is at all times to be seen
+punct | P1-03 | hazarding of thy perdition! -> hazarding of thy perdition.
+punct | P1-06 | fall from off my back -> fall from off my back?
+punct | P1-06 | and we, are also in the way -> and we are also in the way
+punct | P1-08 | they were willing he should, But first -> they were willing he should. But first
+punct | P1-12 | and how and with what difficulty -> and how, and with what difficulty
+punct | P1-19 | boast of my manhood: Glad -> boast of my manhood. Glad
+punct | P1-20 | the hopes of that thing, for which -> the hopes of that thing for which
+punct | P2-00 | He laughs too loud -> He laughs too loud;
+punct | P2-05 | natures and office and so cannot -> natures and office, and so cannot
+punct | P2-06 | This stage, was built -> This stage was built
+punct | P2-08 | design in saving, of poor men -> design in saving of poor men
+punct | P2-08 | has promised it secondly, because -> has promised it; secondly, because
+punct | P2-09 | for the eating, of which -> for the eating of which
+punct | P2-10 | have heard thereof, But be -> have heard thereof. But be
+punct | P2-11 | out here again said the boy -> out here again, said the boy
+punct | P2-13 | we were beguil’d -> we were beguil’d;
+punct | P2-13 | make you sick but not -> make you sick, but not
+punct | P2-14 | A man there was though some -> A man there was, though some
+punct | P2-20 | the Enchanted Ground: which was dangerous. -> the Enchanted Ground, which was dangerous.
+punct | P2-20 | Further they said I must go -> Further, they said I must go
