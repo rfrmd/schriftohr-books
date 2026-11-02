@@ -1,0 +1,43 @@
+# kind | chapter | the words that begin the paragraph (add) or that should run on (join)
+add | P1-02 | Wherefore Christian was left to tumble
+add | P1-03 | First, Thou must abhor his turning
+add | P1-05 | Then I saw in my dream that the Interpreter took Christian
+add | P1-15 | Suppose a man, a minister, or a tradesman
+add | P1-23 | There were also of them that had wings
+stanza | P2-00 | In Holland too, ’tis said
+stanza | P2-00 | ’Tis in New England under such advance
+stanza | P2-00 | Wherefore, my book, let no discouragement
+add | P2-01 | It is true; I can give you an account
+join | P2-01 | Christiana, the Merciful One has sent
+add | P2-03 | Well, said the other, you know your sore
+add | P1-15 | Demas cried again, That he also
+add | P2-03 | I grant pardon, said he, by word and deed
+add | P2-04 | Then the Interpreter began, and said, The fatter
+add | P2-04 | It is easier watching a night or two
+add | P2-04 | One leak will sink a ship
+add | P2-04 | If a man would live well, let him fetch
+add | P2-04 | If the world, which God sets light by
+add | P2-04 | So I asked her further of the truth
+add | P2-04 | And I am come, with all the desire of my heart
+add | P2-08 | So they came with haste to the Porter
+add | P2-08 | Then said Prudence to Samuel
+add | P2-08 | Then she addressed herself to the eldest
+add | P2-08 | Now, by that these Pilgrims had been at this place
+add | P2-08 | Her mind also was, to be always busying
+add | P2-08 | Nay then, said Mercy, I will look no more
+add | P2-08 | So the next time he comes, he finds her
+add | P2-10 | I have also been a conductor to several pilgrims
+add | P2-12 | All this while the guide, Mr. Great-heart
+add | P2-13 | I have heard some, when they first set out
+add | P2-14 | Then Samuel whispered to Christiana
+add | P2-14 | No, said Gaius, it was put to you
+add | P2-14 | Then said the old gentleman
+add | P2-15 | When they came to the place where he was
+add | P2-15 | Then Gaius took his leave of them all
+add | P2-17 | They, therefore, that were of the Pilgrims
+add | P2-19 | Then they had them to some new places
+add | P2-19 | Then said they, What should this be
+add | P2-23 | When she had spoken these words to her guide
+add | P2-23 | After him came in Mr. Despondency
+add | P2-23 | Now the day drew on, that Christiana
+add | P2-24 | Then he thanked Mr. Great-heart for his conduct
