@@ -216,13 +216,14 @@ def carry_quotes(text):
 # The wording of a proofread copy (John, 2026-11-01): say what was done and that it was done with care, without
 # claiming perfection; name the printing; say plainly that no one else's edition was used. No em dashes.
 STAMP_DATE = '2026-11-02'
+BUILD = '2026-11-02.1'   # the Edition updates standard's build stamp: YYYY-MM-DD.n
 NOTICE = """<div class="proof">
 <h1>A Proofread Copy</h1>
 <hr class="rule"/>
 <p><strong>This copy has been read against the 1892 printing and corrected.</strong> We have taken care over it, but no reading catches everything. If something still reads wrongly (a misprint, a word that sits oddly, a paragraph that breaks in the wrong place) note the Adventure and the sentence around it and send it to <a href="mailto:john@rfrmdwordlabs.com">john@rfrmdwordlabs.com</a>.</p>
 <p>Please point friends to the SchriftOhr shelf rather than passing this file on, so that they receive the latest corrections.</p>
 <p>Two things are deliberate. The colour plate that opens each Adventure was made for this edition; it is not a Victorian illustration and does not pretend to be one. The black-and-white plates inside the stories are Sidney Paget\u2019s, photographed from the 1892 printing this text is set from.</p>
-<p class="stamp">The Adventures of Sherlock Holmes &#183; Arthur Conan Doyle<br/>SchriftOhr Edition &#183; proofread __DATE__</p>
+<p class="stamp">The Adventures of Sherlock Holmes &#183; Arthur Conan Doyle<br/>SchriftOhr Edition &#183; build __BUILD__</p>
 </div>"""
 NOTES = {
     '00-title.xhtml': [
@@ -243,7 +244,7 @@ NOTES = {
 def reword(work):
     t = work / 'OEBPS/text'
     proof = (t / '00-proofing.xhtml').read_text(encoding='utf-8')
-    proof = re.sub(r'<div class="proof">.*?</div>', NOTICE.replace('__DATE__', STAMP_DATE).replace('\\u2019', '\u2019'), proof, flags=re.S)
+    proof = re.sub(r'<div class="proof">.*?</div>', NOTICE.replace('__BUILD__', BUILD).replace('\\u2019', '\u2019'), proof, flags=re.S)
     (t / '00-proofing.xhtml').write_text(proof.replace('<title>Proofing Copy</title>', '<title>A Proofread Copy</title>'), encoding='utf-8')
     for name, edits in NOTES.items():
         x = (t / name).read_text(encoding='utf-8')
