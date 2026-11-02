@@ -115,14 +115,17 @@ def replace_block(text, klass, block):
     first = re.search(pattern, text)
     if not first:
         return None, 0
-    # the run ends at the last such card's </a>, before the section closes
-    end_of_section = text.find('</section>', first.start())
-    if end_of_section < 0:
-        end_of_section = len(text)
-    last_close = text.rfind('</a>', first.start(), end_of_section)
-    if last_close < 0:
-        return None, 0
-    had = len(re.findall(pattern, text[first.start():end_of_section]))
+    # ⚠️ The run is the cards that follow one another, each to its own </a>, and nothing past them. It used to
+    # run to the last </a> before a </section>; the v2.0.0 page has no </section>, so the run reached into the
+    # footer and every rebuild since 2026-10-14 cut the grid's closing tags and the footer's links (2026-11-02).
+    card = re.compile(r'\s*<a class="' + re.escape(klass) + r'"[^>]*>.*?</a>', re.S)
+    end, had = first.start(), 0
+    while True:
+        m = card.match(text, end)
+        if not m:
+            break
+        end, had = m.end(), had + 1
+    last_close = end - 4
     return text[:first.start()] + block.lstrip() + text[last_close + 4:], had
 
 
