@@ -76,13 +76,15 @@ PROTECT = {'God', 'Lord', 'Christ', 'Jesus', 'Father', 'Son', 'Ghost', 'Holy', '
            'Christian', 'Christians', 'Christianity', 'Apostle', 'Prophet', 'Psalmist', 'Testament', 'Covenant'}
 
 
-def caps(text, log):
+def caps(text, log, seen=None):
     """A common noun the 1649 page capitalised mid-sentence (Contentment, Soul, Mystery) set in lower case, as we set
     them now. Only where the word follows a word, never after a stop, colon, comma or quotation mark (Burroughs
     begins a quotation with a capital after a comma). Only words the book also uses in lower case, so names stay."""
-    lower_seen = set(re.findall(r"\b[a-z][a-z’']+\b", text))
+    lower_seen = seen if seen is not None else set(re.findall(r"\b[a-z][a-z’']+\b", text))
     def one(m):
         w = m.group(2)
+        if m.group(1) == 'verse ':    # a quotation begins after a reference: the 13th verse, Stand still
+            return m.group(0)
         if w in PROTECT or w.lower() not in lower_seen or (w.isupper() and len(w) > 1):
             return m.group(0)
         if w == 'Spirit' and re.search(r'(Holy|the)\s+$', text[max(0, m.start() - 8):m.start() + len(m.group(1))]):

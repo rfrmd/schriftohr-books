@@ -89,7 +89,20 @@ def main():
     (wd / 'references.tsv').write_text('was\tnow\n' + ''.join(f'{a}\t{b}\n' for a, b in reflog), encoding='utf-8')
     print(f'{len(reflog)} references and abbreviations spelled out')
     caplog, before_caps = [], out
-    out = rare_jewel_refs.caps(out, caplog)
+    # never in a heading or the editor's line under it: those are titles, set in title case
+    seen = set(re.findall(r"\b[a-z][a-z’']+\b", out))
+    pieces, keep = re.split(r'(\{\d+\})', out), False
+    for i, piece in enumerate(pieces):
+        m = re.fullmatch(r'\{(\d+)\}', piece)
+        if m:
+            mk = marks[int(m.group(1))]
+            if re.match(r'<h\d|<p class="argument"', mk):
+                keep = True
+            elif re.match(r'</h\d|</p>', mk):
+                keep = False
+        elif not keep:
+            pieces[i] = rare_jewel_refs.caps(piece, caplog, seen)
+    out = ''.join(pieces)
     if before_caps.lower() != out.lower():
         sys.exit('!! capitals step changed more than capitals')
     print(f'{len(caplog)} common nouns set in lower case')
