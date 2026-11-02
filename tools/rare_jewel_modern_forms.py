@@ -104,14 +104,96 @@ def main():
             (T / mark[1:]).write_text(''.join(buf), encoding='utf-8'); buf = []
         else:
             buf.append(mark)
+    # Words whose meaning has moved (shifted-words.tsv): the modern word in the text, and on its first use in each
+    # chapter a lettered note giving the word Burroughs wrote. Letters, so a word note is told at a glance from the
+    # numbered notes on Greek and Scripture. Text only: never inside markup, the Greek or a note.
+    rows = []
+    for line in (G.parent / 'shifted-words.tsv').read_text(encoding='utf-8').splitlines():
+        if line.strip() and not line.startswith('#'):
+            pat, rep, old_w = line.split('\t')
+            rows.append((re.compile(r'\b' + pat + r'\b', re.I), rep, old_w))
+    LET = 'abcdefghijklmnopqrstuvwxyz'
+    total = 0
+    for f in files:
+        x = f.read_text(encoding='utf-8')
+        a = x.index('<body'); body = x[a:]
+        k = body.find('<section epub:type="endnotes"')
+        main, tail = (body[:k], body[k:]) if k >= 0 else (body, '')
+        notes, seen = [], set()
+        def edit(seg):
+            def textnode(t):
+                s = html.unescape(t.group(0))
+                for rx, rep, old_w in rows:
+                    def one(m):
+                        nonlocal_total[0] += 1
+                        new = rep[0].upper() + rep[1:] if m.group(0)[0].isupper() else rep
+                        if old_w in seen:
+                            return new
+                        seen.add(old_w); notes.append(old_w); n = len(notes) - 1
+                        return new + '\x01%d\x02' % n
+                    s = rx.sub(one, s)
+                return html.escape(s, quote=False)
+            return re.sub(r'(?<=>)[^<]+', textnode, seg)
+        nonlocal_total = [0]
+        out_main, pos = [], 0
+        for m in re.finditer(r'<(span|i|b)\b[^>]*class="(?:gk|hb|ph)"[^>]*>.*?</\1>|<a\b[^>]*class="nref".*?</a>', main, re.S):
+            out_main.append(edit(main[pos:m.start()])); out_main.append(m.group(0)); pos = m.end()
+        out_main.append(edit(main[pos:]))
+        main = ''.join(out_main)
+        main = re.sub('\x01(\d+)\x02', lambda m: (f'<a epub:type="noteref" href="#wn{m.group(1)}" id="wr{m.group(1)}" '
+                      f'class="nref wref"><sup>{LET[int(m.group(1))]}</sup></a>'), main)
+        if notes:
+            asides = ''.join(f' <aside epub:type="footnote" id="wn{i}" class="fn wn"><p><a href="#wr{i}">{LET[i]}.</a> '
+                             f'Burroughs wrote <i>{html.escape(w)}</i>.</p></aside>' for i, w in enumerate(notes))
+            if tail:
+                tail = tail.replace('<hr/>', '<hr/>' + asides, 1)
+            else:
+                main = main.replace('</section></body>', '<section epub:type="endnotes" class="notes"><hr/>' + asides
+                                    + '</section></section></body>', 1)
+        total += nonlocal_total[0]
+        f.write_text(x[:a] + main + tail, encoding='utf-8')
+    print(f'{total} words whose meaning has moved, given their modern word')
+    # The back page: every word brought forward, in one list
+    pairs = []
+    for rx, rep, old_w in rows:
+        if (old_w, rep) not in pairs and not (old_w == 'dispose' and rep == 'disposal'):
+            pairs.append((old_w, rep))
+    pairs = sorted(set(pairs) | ({('dispose', 'ordering, disposal')} if any(o == 'dispose' for o, _ in pairs) else set()))
+    pairs = [x for x in pairs if not (x[0] == 'dispose' and x[1] == 'ordering')]
+    head = (T / '01-edition-note.xhtml').read_text(encoding='utf-8')
+    head = head[:head.index('<body')].replace('<title>About This Edition</title>', '<title>Words Brought Forward</title>')
+    items = ''.join(f'<tr><td><i>{html.escape(o)}</i></td><td>{html.escape(n)}</td></tr>' for o, n in pairs)
+    (T / '96-words.xhtml').write_text(head + '<body epub:type="backmatter"><section epub:type="glossary" class="preamble">'
+        '<h2>Words Brought Forward</h2><p>A few of Burroughs\u2019s words have changed their meaning since 1649. In this '
+        'edition each is given in the word we would use now, and a lettered note at its first use in each sermon shows '
+        'the word he wrote. These are the words.</p><table class="words"><tr><th>He wrote</th><th>This edition has'
+        '</th></tr>' + items + '</table></section></body></html>', encoding='utf-8')
+    opf = work / 'OEBPS/content.opf'; o = opf.read_text(encoding='utf-8')
+    if '96-words.xhtml' not in o:
+        o = o.replace('</manifest>', '  <item id="words" href="text/96-words.xhtml" media-type="application/xhtml+xml"/>\n  </manifest>', 1)
+        ed = re.search(r'<item id="([^"]+)" href="text/01-edition-note.xhtml"', o).group(1)
+        o = re.sub(r'(<itemref idref="' + re.escape(ed) + r'"[^>]*/>)', r'\1\n    <itemref idref="words"/>', o, 1)
+        opf.write_text(o, encoding='utf-8')
+    nav = work / 'OEBPS/nav.xhtml'; n = nav.read_text(encoding='utf-8')
+    if '96-words.xhtml' not in n:
+        n = n.replace('<li><a href="text/01-edition-note.xhtml">About This Edition</a></li>',
+                      '<li><a href="text/01-edition-note.xhtml">About This Edition</a></li>\n'
+                      '      <li><a href="text/96-words.xhtml">Words Brought Forward</a></li>', 1)
+        nav.write_text(n, encoding='utf-8')
+    css = work / 'OEBPS/css/style.css'; c = css.read_text(encoding='utf-8')
+    if 'table.words' not in c:
+        css.write_text(c + '\ntable.words{border-collapse:collapse;margin:1em 0}table.words td,table.words th{text-align:left;'
+                       'padding:.2em 1.2em .2em 0;vertical-align:top}\n', encoding='utf-8')
     # About This Edition says what this edition now is
     note = T / '01-edition-note.xhtml'; t = note.read_text(encoding='utf-8')
     a = ('Burroughs\u2019s words themselves are kept, hath and doth and thou among them, and the British spellings '
          'stand.')
-    b = ('This is a modernised edition, made for clear reading and listening, not for interpretation. Thou and thee '
-         'are you, hath is has, and the old endings of the verbs are the ones we use now; where a question or a '
-         'command was put the old way, it is put as we would say it. Burroughs\u2019s words, his order of thought '
-         'and his meaning are his own throughout. The British spellings stand.')
+    b = ('This edition is lightly modernised, for clear reading and listening, not for interpretation. The old forms '
+         'are given as we say them now (thou is you, hath is has), references and abbreviations are written out, and '
+         'some long sentences are divided by punctuation. A few words whose meaning has changed since 1649 are given in '
+         'the word we use now, with a lettered note showing the word he wrote; they are listed at the back under Words '
+         'Brought Forward. Burroughs\u2019s words, phrases and order of thought are otherwise his own. The British '
+         'spellings stand.')
     if a not in t:
         sys.exit('!! About This Edition: the sentence on his words was not found')
     note.write_text(t.replace(a, b), encoding='utf-8')

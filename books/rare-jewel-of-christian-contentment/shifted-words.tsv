@@ -1,0 +1,24 @@
+# Words whose meaning has moved since 1649 (John, 2026-11-02): replaced by the modern word of the same meaning, with a
+# lettered note on the first use in each chapter giving the word Burroughs wrote. pattern (regex, whole words)	replacement	the word he wrote
+complacency	delight	complacency
+sensible of	aware of	sensible of
+discovered	revealed	discovered
+discover	reveal	discover
+frowardness	stubbornness	frowardness
+froward	stubborn	froward
+conversation	conduct	conversation
+prevented(?= the speaking)	anticipated	prevented
+artificially	skilfully	artificially
+(?<=at God’s )dispose	disposal	dispose
+(?<=at his )dispose	disposal	dispose
+(?<=at your )dispose	disposal	dispose
+(?<=absolute )dispose	disposal	dispose
+(?<=God’s )dispose	ordering	dispose
+(?<=fatherly )dispose	ordering	dispose
+(?<=the )dispose(?= of God)	ordering	dispose
+naught	worthless	naught
+(?<=dainty and )nice	fastidious	nice
+nice(?=,? and dainty)	fastidious	nice
+nice(?=, and froward)	fastidious	nice
+physic	medicine	physic
+meat	food	meat
