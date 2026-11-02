@@ -1,0 +1,37 @@
+{
+  "v": 1,
+  "about": "The publisher's log on rfrmdwordlabs.com/editions/log (rfrmdwordlabs-web/tools/make_editions_log.py). One entry per update a reader is offered, newest first, keyed by the shelf id. Reader-facing: what is better, in plain words, no dashes.",
+  "began": "2026-10-31",
+  "books": {
+    "pilgrims-progress": [
+      { "date": "2026-11-02", "build": "2026-11-02.1",
+        "text": "Paragraphs and punctuation now follow George Offor's edition of 1855: 37 paragraphs divided where he divided them, one joined, three breaks between stanzas restored, and 22 marks of punctuation corrected. Bunyan's words are unchanged." },
+      { "date": "2026-10-31", "build": "2026-10-31.6",
+        "text": "The lines that open Part II are centred, as printed, and the marks that lead to the notes are shown." },
+      { "date": "2026-10-31", "build": "2026-10-31.5",
+        "text": "Read against Offor's editions of 1855 and 1859: 30 typing errors corrected, and Bunyan's own words restored where they had been changed. The notes keep to Bunyan's own, and the life of Bunyan has been checked against its sources." }
+    ],
+    "adventures-of-sherlock-holmes": [
+      { "date": "2026-11-02", "build": "2026-11-02.1",
+        "text": "Read against our own scan of the 1892 Harper printing: more than 1,100 corrections across the twelve stories. Misread figures and words are put right, conversation that had run together is divided as printed, paragraphs broken at a page turn are joined, stray spaces in the punctuation are gone, and the quotation marks are curly." },
+      { "date": "2026-10-31", "build": "2026-10-31",
+        "text": "The closing page, How These Books Are Made, is plainer and says truly how the spelling is handled." }
+    ],
+    "mortification-of-sin": [
+      { "date": "2026-10-31", "build": "2026-10-31",
+        "text": "The closing page, How These Books Are Made, is plainer and says truly how the spelling is handled." }
+    ],
+    "rare-jewel-of-christian-contentment": [
+      { "date": "2026-10-31", "build": "2026-10-31",
+        "text": "The closing page, How These Books Are Made, is plainer and says truly how the spelling is handled." }
+    ],
+    "glory-of-christ": [
+      { "date": "2026-10-31", "build": "2026-10-31",
+        "text": "The closing page, How These Books Are Made, is plainer and says truly how the spelling is handled." }
+    ],
+    "sovereignty-of-god": [
+      { "date": "2026-10-31", "build": "2026-10-31",
+        "text": "The closing page, How These Books Are Made, is plainer and says truly how the spelling is handled." }
+    ]
+  }
+}
