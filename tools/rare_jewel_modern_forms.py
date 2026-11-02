@@ -64,6 +64,23 @@ def main():
         if out.count(g[0]) != times:
             sys.exit(f'!! grammar: {g[0]!r} found {out.count(g[0])} times, not {times}')
         out = out.replace(g[0], g[1])
+    # clarity (step three): long sentences divided, punctuation made modern. Each line keeps the same words in the
+    # same order, only stops, commas, semicolons and capitals may differ, and must match exactly once.
+    C = G.parent / 'clarity.tsv'
+    words = lambda x: re.findall(r"[A-Za-z0-9\u2019']+", x.lower())
+    missed = []
+    if C.exists():
+        for line in C.read_text(encoding='utf-8').splitlines()[1:]:
+            if not line.strip() or line.startswith('#'):
+                continue
+            a, b = line.split('\t')[:2]
+            if words(a) != words(b):
+                sys.exit(f'!! clarity changes words: {a[:60]!r}')
+            if out.count(a) != 1:
+                missed.append(f'{out.count(a)}x {a!r}'); continue
+            out = out.replace(a, b)
+        if missed:
+            sys.exit('!! clarity lines that do not match exactly once:\n' + '\n'.join(missed))
     # put the marks back, one file at a time
     cur, buf = None, []
     for piece in re.split(r'(\{\d+\})', out):
