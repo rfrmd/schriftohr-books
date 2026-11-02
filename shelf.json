@@ -10,7 +10,16 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/adventures-of-sherlock-holmes/Doyle_Arthur_Conan-SchriftOhr_Edition-Adventures_of_Sherlock_Holmes.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/adventures-of-sherlock-holmes/cover.jpg",
       "source": "Harper & Brothers, New York, 1892 — collated from two scans of two copies of that printing, read independently",
-      "license": "Text and Sidney Paget’s plates public domain; cover, Adventure plates and editorial matter © RFRMD Word Labs LLC"
+      "license": "Text and Sidney Paget’s plates public domain; cover, Adventure plates and editorial matter © RFRMD Word Labs LLC",
+      "build": "2026-11-02.1",
+      "sha256": "debed8741f9473ba99a70fe53d920dc942f35b480d17f9031f329b4c02e16fc8",
+      "identifiers": [
+        "urn:uuid:9fb026ed-3aa3-426d-8781-defdaa4b74fb",
+        "urn:uuid:3b138f62-ad6d-50a7-b868-8cd229df8ff6"
+      ],
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "pilgrims-progress",
@@ -20,7 +29,16 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/pilgrims-progress/Bunyan_John-SchriftOhr_Edition-Pilgrims_Progress.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/pilgrims-progress/cover.jpg",
       "source": "The Works of John Bunyan, ed. George Offor, 1855, via Project Gutenberg and Standard Ebooks",
-      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC, CC BY 4.0; cover and marks reserved"
+      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC, CC BY 4.0; cover and marks reserved",
+      "build": "2026-11-02.1",
+      "sha256": "5fe66fe53d07f28358994ca09886b9403d4f944ae77c4af76c29491ff90d8ba5",
+      "identifiers": [
+        "urn:uuid:8748c33b-02b4-4784-8128-204d49503182",
+        "urn:uuid:7c3f9a52-4d18-4b6e-9f21-8ac0d5e13b74"
+      ],
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "mortification-of-sin",
@@ -30,7 +48,12 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/mortification-of-sin/Owen_John-SchriftOhr_Edition-Mortification_of_Sin.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mortification-of-sin/cover.jpg",
       "source": "EEBO-TCP A53715 (Wing O787), the 1668 printing, keyed and released CC0",
-      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC"
+      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC",
+      "sha256": "ba45363618a2c4af8a01f7ba3202fd6a4b0ecaa5cf77e67e15509b83dc2c0503",
+      "identifiers": [
+        "urn:uuid:586f9ba1-c856-4b1b-b989-dcefa2af476e",
+        "urn:uuid:e1529349-45d1-5689-9221-efa4f5156a4c"
+      ]
     },
     {
       "id": "rare-jewel-of-christian-contentment",
@@ -40,7 +63,12 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/rare-jewel-of-christian-contentment/Burroughs_Jeremiah-SchriftOhr_Edition-Rare_Jewel_of_Christian_Contentment.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/rare-jewel-of-christian-contentment/cover.jpg",
       "source": "EEBO-TCP A30598 (Wing B6103), the 1649 printing, keyed and released CC0",
-      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC"
+      "license": "Text public domain; editorial matter © RFRMD Word Labs LLC",
+      "sha256": "f5f39e3fe3c402d058d728299859938746c2a3d255e02263288aeb1441269b89",
+      "identifiers": [
+        "urn:uuid:e26b733e-dadc-4cb5-b4dc-367132fb8e43",
+        "urn:uuid:0a20a90c-e4a9-5fcb-9604-668d740cd837"
+      ]
     },
     {
       "id": "glory-of-christ",
@@ -48,7 +76,12 @@
       "author": "John Owen",
       "blurb": "Owen's last work, and two books in one. The Meditations dwell on the glory of Christ in his person, his office and his grace; the Discourses that complete them turn that glory toward the unbeliever and toward the Christian whose love has grown cold. Read together, each makes the other richer. Spelling is modernised; Scripture stands as printed. Proofing copy: corrections welcome.",
       "epub": "https://rfrmd.github.io/schriftohr-books/books/glory-of-christ/Owen_John-SchriftOhr_Edition-Glory_of_Christ.epub",
-      "cover": "https://rfrmd.github.io/schriftohr-books/books/glory-of-christ/cover.jpg"
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/glory-of-christ/cover.jpg",
+      "sha256": "c46073abe00a368841b822fab6d18f2113fc2cac5780b867e24ed8f357f84396",
+      "identifiers": [
+        "urn:uuid:ca0d1fe4-c4d0-4dae-84a0-8f74f5113407",
+        "urn:uuid:bf0b2d9d-13ef-5c8c-9b69-3c16a6a611c0"
+      ]
     },
     {
       "id": "sovereignty-of-god",
@@ -56,7 +89,12 @@
       "author": "A. W. Pink",
       "blurb": "Plain words on a hard subject. Pink sets out what Scripture says of God's rule over creation, salvation and the human will, then takes the usual objections one at a time. This is the full 1918 first edition, with the three appendices that later abridgements cut. Proofing copy: corrections welcome.",
       "epub": "https://rfrmd.github.io/schriftohr-books/books/sovereignty-of-god/Pink_Arthur_W-SchriftOhr_Edition-Sovereignty_of_God.epub",
-      "cover": "https://rfrmd.github.io/schriftohr-books/books/sovereignty-of-god/cover.jpg"
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/sovereignty-of-god/cover.jpg",
+      "sha256": "beae981c88ac867c732aedb84329f151c5885ebd15b987d5a910192637970902",
+      "identifiers": [
+        "urn:uuid:7be5344e-690c-4bec-bcb3-977c979b373d",
+        "urn:uuid:3df30cd9-49e1-5077-b375-bd88c9074495"
+      ]
     },
     {
       "id": "treasure-island",
@@ -66,7 +104,12 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/treasure-island/Stevenson_Robert_Louis-SchriftOhr_Edition-Treasure_Island.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/treasure-island/cover.jpg",
       "source": "Project Gutenberg ebook 120",
-      "license": "Text and illustrations public domain"
+      "license": "Text and illustrations public domain",
+      "sha256": "c5284cb73c6ce6dbbddbb1708500afe685ef82397b8ec482da621cb73570eb16",
+      "identifiers": [
+        "urn:uuid:602d0058-9ed6-4ba9-97d5-ac5c38cb81a3",
+        "urn:uuid:2f8c41a7-9d63-4e15-b0c2-7ae5f9d31c48"
+      ]
     },
     {
       "id": "swiss-family-robinson",
@@ -76,7 +119,12 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/swiss-family-robinson/Wyss_JD-SchriftOhr_Edition-Swiss_Family_Robinson.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/swiss-family-robinson/cover.jpg",
       "source": "Project Gutenberg ebook 41659",
-      "license": "Text public domain"
+      "license": "Text public domain",
+      "sha256": "36a275e6f74db099a40df8d6342ccd57f0520e1c95b05b957d8c99e7bd38c282",
+      "identifiers": [
+        "urn:uuid:fc78934f-3427-44c7-8c0d-4b5e36a6e742",
+        "urn:uuid:9b41e7c3-52d8-44a6-8f10-3c6ad9e27b55"
+      ]
     },
     {
       "id": "mystery-at-dark-cedars",
@@ -86,7 +134,12 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/mystery-at-dark-cedars/Lavell_Edith-SchriftOhr_Edition-Mystery_at_Dark_Cedars.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-at-dark-cedars/cover.jpg",
       "source": "Project Gutenberg ebook 43582",
-      "license": "Text public domain in the United States"
+      "license": "Text public domain in the United States",
+      "sha256": "0aed3ff802fdc3a22c4c13b96ab3e509331e0dafa3b0e2cefc2c0292768d974e",
+      "identifiers": [
+        "urn:uuid:bfedb2e9-c50b-400c-98c1-3d9ffed78eaf",
+        "urn:uuid:6e29d4b8-13af-4c72-9d05-b8f1a63e07d2"
+      ]
     },
     {
       "id": "mystery-of-the-fires",
@@ -96,7 +149,12 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-fires/Lavell_Edith-SchriftOhr_Edition-Mystery_of_the_Fires.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-fires/cover.jpg",
       "source": "Project Gutenberg ebook 43583, retrieved via OpenChapter.io",
-      "license": "Text public domain in the United States"
+      "license": "Text public domain in the United States",
+      "sha256": "ceccec4a378878f9019b38d2b1c43a9eca712af3ccddc91ce722661b4a817f49",
+      "identifiers": [
+        "urn:uuid:54cebf6c-1c75-4358-b24b-39b5a4a93b84",
+        "urn:uuid:d1193b6f-9fc9-5fb4-be6f-85b67ae6fbaf"
+      ]
     },
     {
       "id": "mystery-of-the-secret-band",
@@ -106,7 +164,12 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-secret-band/Lavell_Edith-SchriftOhr_Edition-Mystery_of_the_Secret_Band.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-secret-band/cover.jpg",
       "source": "Project Gutenberg ebook 43584, retrieved via OpenChapter.io",
-      "license": "Text public domain in the United States"
+      "license": "Text public domain in the United States",
+      "sha256": "5b0d56f971aaa0e4bf1f204931b3bc2bfc55999f97754c6ae543bc4e46cd7381",
+      "identifiers": [
+        "urn:uuid:76da0346-a4f2-4c54-833c-97bd0d32833e",
+        "urn:uuid:4fe1563c-8712-5a60-a87f-7403ab2e3e4c"
+      ]
     },
     {
       "id": "sugar-creek-goes-north",
@@ -116,7 +179,12 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-goes-north/Hutchens_Paul-SchriftOhr_Edition-Sugar_Creek_Gang_Goes_North.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-goes-north/cover.jpg",
       "source": "Project Gutenberg ebook 56554, retrieved via OpenChapter.io",
-      "license": "Text public domain in the United States"
+      "license": "Text public domain in the United States",
+      "sha256": "9f7849dc44439c37fbd9cd1b801faf3cecb5a77363e3e4ee5e49694a454fc6c1",
+      "identifiers": [
+        "urn:uuid:7f3cbdcf-3bee-4c32-b0cd-ffc6bc804e1d",
+        "urn:uuid:e2485c7a-9dff-5753-a34f-fef5ebeadcc1"
+      ]
     },
     {
       "id": "sugar-creek-digs-for-treasure",
@@ -126,7 +194,12 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-digs-for-treasure/Hutchens_Paul-SchriftOhr_Edition-Sugar_Creek_Gang_Digs_for_Treasure.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-digs-for-treasure/cover.jpg",
       "source": "Project Gutenberg ebook 56553, retrieved via OpenChapter.io",
-      "license": "Text public domain in the United States"
+      "license": "Text public domain in the United States",
+      "sha256": "50c663b57020d84008cb534d1fc2d7e865db587e0043c0a4f6c27c1a2174727f",
+      "identifiers": [
+        "urn:uuid:698974f4-4495-43e9-a844-664628ba2b23",
+        "urn:uuid:82770595-a7cf-54a1-ba77-cfa8d4262593"
+      ]
     },
     {
       "id": "green-tent-mystery",
@@ -136,7 +209,12 @@
       "epub": "https://rfrmd.github.io/schriftohr-books/books/green-tent-mystery/Hutchens_Paul-SchriftOhr_Edition-Green_Tent_Mystery_at_Sugar_Creek.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/green-tent-mystery/cover.jpg",
       "source": "Project Gutenberg ebook 58514",
-      "license": "Text public domain in the United States"
+      "license": "Text public domain in the United States",
+      "sha256": "7293bd3c767583bac5f4b18955c0ccc09fec63a815cb993d1695026be05b8029",
+      "identifiers": [
+        "urn:uuid:adf0916f-ec03-4c80-9cbf-caccd7924dbd",
+        "urn:uuid:c4d81f60-7b23-4e95-a1d6-58e0f2c74a19"
+      ]
     }
   ],
   "note": "Every edition begins with a work long out of copyright, usually an original printing we can name. We set the text properly — collating the copies that survive, and clearing away what scanning and re-keying leave behind — so the book reads well on the page and sounds right read aloud. Where we mark a division inside a chapter, it is one the author announces himself. Every edition says on its own front matter what was done to its text. They are free to read and free to keep; our hope is that they reach people, grow their love for the Lord, and increase their joy in reading."
