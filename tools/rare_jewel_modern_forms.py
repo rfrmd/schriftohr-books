@@ -75,6 +75,17 @@ def main():
             (T / mark[1:]).write_text(''.join(buf), encoding='utf-8'); buf = []
         else:
             buf.append(mark)
+    # About This Edition says what this edition now is
+    note = T / '01-edition-note.xhtml'; t = note.read_text(encoding='utf-8')
+    a = ('Burroughs\u2019s words themselves are kept, hath and doth and thou among them, and the British spellings '
+         'stand.')
+    b = ('This is a modernised edition, made for clear reading and listening, not for interpretation. Thou and thee '
+         'are you, hath is has, and the old endings of the verbs are the ones we use now; where a question or a '
+         'command was put the old way, it is put as we would say it. Burroughs\u2019s words, his order of thought '
+         'and his meaning are his own throughout. The British spellings stand.')
+    if a not in t:
+        sys.exit('!! About This Edition: the sentence on his words was not found')
+    note.write_text(t.replace(a, b), encoding='utf-8')
     o = pathlib.Path(dst)
     if o.exists():
         o.unlink()
