@@ -1,12 +1,11 @@
 # kind | chapter | the words that begin the paragraph (add) or that should run on (join)
 add | P1-02 | Wherefore Christian was left to tumble
-add | P1-03 | First, Thou must abhor his turning
 add | P1-05 | Then I saw in my dream that the Interpreter took Christian
 add | P1-15 | Suppose a man, a minister, or a tradesman
 add | P1-23 | There were also of them that had wings
-stanza | P2-00 | In Holland too, ’tis said
-stanza | P2-00 | ’Tis in New England under such advance
-stanza | P2-00 | Wherefore, my book, let no discouragement
+stanza | P2-00-authors | In Holland too, ’tis said
+stanza | P2-00-authors | ’Tis in New England under such advance
+stanza | P2-00-authors | Wherefore, my book, let no discouragement
 add | P2-01 | Sag. It is true; I can give you an account
 join | P2-01 | Christiana, the Merciful One has sent
 add | P2-03 | Well, said the other, you know your sore
@@ -50,7 +49,7 @@ punct | P1-08 | they were willing he should, But first -> they were willing he s
 punct | P1-12 | and how and with what difficulty -> and how, and with what difficulty
 punct | P1-19 | boast of my manhood: Glad -> boast of my manhood. Glad
 punct | P1-20 | the hopes of that thing, for which -> the hopes of that thing for which
-punct | P2-00 | He laughs too loud -> He laughs too loud;
+punct | P2-00-authors | He laughs too loud -> He laughs too loud;
 punct | P2-05 | natures and office and so cannot -> natures and office, and so cannot
 punct | P2-06 | This stage, was built -> This stage was built
 punct | P2-08 | design in saving, of poor men -> design in saving of poor men
