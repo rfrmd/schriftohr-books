@@ -81,6 +81,18 @@ def main():
             out = out.replace(a, b)
         if missed:
             sys.exit('!! clarity lines that do not match exactly once:\n' + '\n'.join(missed))
+    # references and abbreviations, spelled out for the voice (tools/rare_jewel_refs.py); every change listed
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    import rare_jewel_refs
+    reflog = []
+    out = rare_jewel_refs.refs(out, reflog)
+    (wd / 'references.tsv').write_text('was\tnow\n' + ''.join(f'{a}\t{b}\n' for a, b in reflog), encoding='utf-8')
+    print(f'{len(reflog)} references and abbreviations spelled out')
+    caplog, before_caps = [], out
+    out = rare_jewel_refs.caps(out, caplog)
+    if before_caps.lower() != out.lower():
+        sys.exit('!! capitals step changed more than capitals')
+    print(f'{len(caplog)} common nouns set in lower case')
     # put the marks back, one file at a time
     cur, buf = None, []
     for piece in re.split(r'(\{\d+\})', out):
