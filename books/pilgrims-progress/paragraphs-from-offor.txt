@@ -7,11 +7,11 @@ add | P1-23 | There were also of them that had wings
 stanza | P2-00 | In Holland too, ’tis said
 stanza | P2-00 | ’Tis in New England under such advance
 stanza | P2-00 | Wherefore, my book, let no discouragement
-add | P2-01 | It is true; I can give you an account
+add | P2-01 | Sag. It is true; I can give you an account
 join | P2-01 | Christiana, the Merciful One has sent
 add | P2-03 | Well, said the other, you know your sore
 add | P1-15 | Demas cried again, That he also
-add | P2-03 | I grant pardon, said he, by word and deed
+add | P2-03 | I grant pardon, said He, by word and deed
 add | P2-04 | Then the Interpreter began, and said, The fatter
 add | P2-04 | It is easier watching a night or two
 add | P2-04 | One leak will sink a ship
@@ -31,7 +31,7 @@ add | P2-12 | All this while the guide, Mr. Great-heart
 add | P2-13 | I have heard some, when they first set out
 add | P2-14 | Then Samuel whispered to Christiana
 add | P2-14 | No, said Gaius, it was put to you
-add | P2-14 | Then said the old gentleman
+add | P2-14 | Then said the old gentleman, He first by grace
 add | P2-15 | When they came to the place where he was
 add | P2-15 | Then Gaius took his leave of them all
 add | P2-17 | They, therefore, that were of the Pilgrims
@@ -41,3 +41,5 @@ add | P2-23 | When she had spoken these words to her guide
 add | P2-23 | After him came in Mr. Despondency
 add | P2-23 | Now the day drew on, that Christiana
 add | P2-24 | Then he thanked Mr. Great-heart for his conduct
+punct | P2-25 | to what purpose should I make a will. -> to what purpose should I make a will?
+punct | P1-13 | at this fair there is at all times, to be seen -> at this fair there is at all times to be seen
