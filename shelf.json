@@ -211,11 +211,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-goes-north/cover.jpg",
       "source": "Project Gutenberg ebook 56554, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "9f7849dc44439c37fbd9cd1b801faf3cecb5a77363e3e4ee5e49694a454fc6c1",
+      "sha256": "9159434a47a28fdefea3e9d659ffafeec690bd71f394c706512cd8c4cb96661e",
       "identifiers": [
         "urn:uuid:7f3cbdcf-3bee-4c32-b0cd-ffc6bc804e1d",
         "urn:uuid:e2485c7a-9dff-5753-a34f-fef5ebeadcc1"
       ],
+      "build": "2026-11-02.1",
       "update": {
         "offer": true
       }
@@ -229,11 +230,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-digs-for-treasure/cover.jpg",
       "source": "Project Gutenberg ebook 56553, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "50c663b57020d84008cb534d1fc2d7e865db587e0043c0a4f6c27c1a2174727f",
+      "sha256": "f89067203553f89b339a4c498ea3a8a58b5540604676bf6c4a504c93a6331502",
       "identifiers": [
         "urn:uuid:698974f4-4495-43e9-a844-664628ba2b23",
         "urn:uuid:82770595-a7cf-54a1-ba77-cfa8d4262593"
       ],
+      "build": "2026-11-02.1",
       "update": {
         "offer": true
       }
@@ -247,7 +249,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/green-tent-mystery/cover.jpg",
       "source": "Project Gutenberg ebook 58514",
       "license": "Text public domain in the United States",
-      "sha256": "3a3cfd1e97721d0e819c5b1b077fd68dc89c219001a01c1e72134f19e31b1a13",
+      "sha256": "923744b646fd1d2d1d21e6012bd643ae2a4078c86e87bf1cbedde8200654d1ee",
       "identifiers": [
         "urn:uuid:adf0916f-ec03-4c80-9cbf-caccd7924dbd",
         "urn:uuid:c4d81f60-7b23-4e95-a1d6-58e0f2c74a19"

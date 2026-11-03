@@ -3,13 +3,21 @@
   "about": "The publisher's log on rfrmdwordlabs.com/editions/log (rfrmdwordlabs-web/tools/make_editions_log.py). One entry per update a reader is offered, newest first, keyed by the shelf id. Reader-facing: what is better, in plain words, no dashes.",
   "began": "2026-10-31",
   "books": {
+    "sugar-creek-goes-north": [
+      { "date": "2026-11-02", "build": "2026-11-02.1",
+        "text": "Five words that had gone wrong in transcription are put right, among them Little Tom Till's name and a Bible verse, found by reading every sentence for its sense." }
+    ],
+    "sugar-creek-digs-for-treasure": [
+      { "date": "2026-11-02", "build": "2026-11-02.1",
+        "text": "Twenty-four places where a word had gone wrong in transcription are put right, found by reading every sentence for its sense, so Bill now hears Poetry's whisper in his ear, not his car." }
+    ],
     "mystery-of-the-secret-band": [
       { "date": "2026-11-02", "build": "2026-11-02.1",
         "text": "Read against the 1935 Saalfield printing. The list of the hotel's rooms and guests that Mary Louise copies into her notebook in Chapter 3 is back; it had dropped out of the earlier copy. No wrong words were found." }
     ],
     "green-tent-mystery": [
       { "date": "2026-11-02", "build": "2026-11-02.1",
-        "text": "Three short verses in Chapter 10 are back, Charlotte Ann's bedtime prayer among them; they had dropped out of the earlier copy." }
+        "text": "Three short verses in Chapter 10 are back, Charlotte Ann's bedtime prayer among them; they had dropped out of the earlier copy. Eight words that had gone wrong in transcription are put right, found by reading every sentence for its sense." }
     ],
     "pilgrims-progress": [
       { "date": "2026-11-02", "build": "2026-11-02.1",
