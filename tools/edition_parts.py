@@ -54,7 +54,8 @@ PROOFING_CSS = """
 .proof p{text-indent:0;margin:.75em 0;font-size:.97em;text-align:left}
 .proof .stamp{font-size:.84em;color:#777;text-align:center;margin-top:1.2em;
               border-top:1px solid #ddd;padding-top:.7em}
-.note{border:2px solid #fd8008;border-radius:10px;padding:1.2em 1.1em;margin:2.2em 0}
+/* the published note likewise: two-thirds size and never split, one page in every reader (John, 2026-11-03) */
+.note{border:2px solid #fd8008;border-radius:10px;padding:1.2em 1.1em;margin:1.5em 0;font-size:67%;break-inside:avoid;page-break-inside:avoid}
 .note h1{font-size:1.25em;letter-spacing:.14em;text-align:center;color:#fd8008;
          margin:0 0 .8em;text-transform:uppercase}
 .note p{text-indent:0;margin:.75em 0;font-size:.97em;text-align:left}
@@ -189,12 +190,12 @@ def stamp_proof_cover(src, dst, label='PROOFING COPY', at=0.425, quality=90):
 
 
 def closing_xhtml(title='How These Books Are Made'):
-    """The last written page: the process, and the hope.
+    """The last written page: how an edition is made, and the hope.
 
-    ⚠️ John, 2026-08-30: the closing COVER now carries the heart of it — why
-    these old books are worth the effort, and that the point of the talk is the
-    God they are about. So this page no longer repeats that. It says how an
-    edition comes to be, what was done to this one, and what we hope of it.
+    ⚠️ John, 2026-08-30: the closing COVER carries why these old books are worth the
+    effort, so this page does not repeat it. John, 2026-11-03: plain and true of every
+    book on the shelf, not bigger than we are; what was done to one book is said in its
+    own About This Edition, so this page makes no promise a book does not keep.
     """
     P = '<p>%s</p>\n'
     return ('<?xml version="1.0" encoding="utf-8"?>\n'
@@ -205,51 +206,31 @@ def closing_xhtml(title='How These Books Are Made'):
       '<h2>' + html.escape(title) + '</h2>\n'
       + P % ('The leaf after this one says why we make them. This page says how.')
       + '<h3>How an edition comes to be</h3>\n'
-      + P % ('Every book here begins as a <b>proofing copy</b>. The text has been set with '
-             'care and now wants other eyes on it. Readers who find an error tell us, and we '
-             'correct it.')
-      + P % ('When that has run its course the book is issued as an <b>initial edition</b>: '
-             'the same work, with the corrections in and the proofing notice gone.')
+      + P % ('Each book starts as a <b>proofing copy</b> and is read for errors, by us and by '
+             'readers who write in. When that is done it is issued as an edition, with the '
+             'corrections in.')
       + '<h3>What was done to this book</h3>\n'
-      + P % ('<b>Every edition states, on its own front matter, what was done to its text.</b> '
-             'Not in general terms: which printing, what was changed, what was left alone, and '
-             'what could not be recovered.')
-      + P % ('We begin with <b>straightforward transcription</b>: the author\u2019s '
-             'words as he set them, cleared of what the passage into digital form left behind, '
-             'and nothing more. In time we hope to offer <b>faithful modernised editions</b> as '
-             'well: the same work brought forward in spelling and in the conventions of the '
-             'page, for a reader who would otherwise set it down. Where a book has been '
-             'modernised it says so, and says what was changed. It will not be silent about it, '
-             'and it will not be abridged.')
+      + P % ('Its own <b>About This Edition</b>, at the front, says which printing it was set '
+             'from, what was changed and what was left alone.')
+      + P % ('Some books are set as their printer set them, cleared of the errors that came '
+             'with putting them into digital form. Others are also <b>lightly modernised</b>: '
+             'old spellings and forms brought up to date, so the book reads easily and sounds '
+             'right when read aloud. A modernised book says what was changed.')
       + '<h3>Reading it in portions</h3>\n'
-      + P % ('A book like this is not read at a sitting, so where it breaks matters. We divide only where the author divides. Where he says '
-             '\u201cI shall do these three things\u201d, or \u201cthe second thing proposed '
-             'is\u201d, we set a heading there and give it a place in the contents, so the '
-             'break falls where his own thought turns.')
-      + P % ('Where he signposts nothing, we add nothing. That is why one chapter may be opened '
-             'into six passages and the next not divided at all. It is not inconsistency. It is '
-             'the author\u2019s own shape, and imposing a tidier one would mean deciding for '
-             'him where his argument turns.')
-      + '<h3>A word on spelling</h3>\n'
-      + P % ('We keep English spelling (<i>Saviour</i>, <i>honour</i>, <i>labour</i>), '
-             'because that is how these authors wrote and how their printers set them. Where a '
-             'text came to us with some spellings already brought forward, its About This '
-             'Edition says so.')
-      + '<h3>How we keep them faithful</h3>\n<ol>\n'
-      + '<li><b>We name what we set from.</b> Every edition says which printing, and where that '
-        'printing was found.</li>\n'
-      + '<li><b>Where two copies survive, we collate them</b>, and record every place '
-        'they differ, with the reason one was preferred.</li>\n'
-      + '<li><b>Scripture is left exactly as it was printed</b>, capitals, spelling and all. '
-        'Those words are not ours to modernise.</li>\n'
-      + '<li><b>The author\u2019s own English is left alone.</b> We may correct his spelling; '
-        'we do not rewrite him. <i>Thou</i>, <i>hath</i> and <i>doth</i> stand.</li>\n'
-      + '<li><b>Nothing is invented.</b> Where the page is lost and no witness settles it, the '
-        'edition says so.</li>\n'
-      + '<li><b>A heading we add stands only where the author announces the division '
-        'himself.</b> Where he divides nothing, we add nothing.</li>\n'
-      + '<li><b>Nothing is abridged.</b> No chapter cut, nothing summarised, nothing left out '
-        'because it is difficult.</li>\n</ol>\n'
+      + P % ('We break a book only where the author does. Where he says \u201cI shall do these '
+             'three things\u201d, we set a heading there and list it in the contents. Where he '
+             'marks nothing, we add nothing, so one chapter may have several headings and the '
+             'next none.')
+      + '<h3>Spelling</h3>\n'
+      + P % ('Where an author wrote English spelling (<i>Saviour</i>, <i>honour</i>, '
+             '<i>labour</i>), we keep it. Where a book is set in American spelling, or has its '
+             'old spellings brought up to date, its About This Edition says so.')
+      + '<h3>How we keep them faithful</h3>\n<ul>\n'
+      + '<li>We say what we set from, and where it was found.</li>\n'
+      + '<li>Where more than one copy survives, we read one against another.</li>\n'
+      + '<li>Where a word was lost or misread, we put it right from the printed page.</li>\n'
+      + '<li>Nothing is invented. Where a page is lost and no copy settles it, the book says so.</li>\n'
+      + '<li>Nothing is cut. No chapter is left out and nothing is summarised.</li>\n</ul>\n'
       + '<h3>What we hope of it</h3>\n'
       + P % ('That it reaches people, grows their love for the Lord, and increases their joy '
              'in reading.')
@@ -257,23 +238,32 @@ def closing_xhtml(title='How These Books Are Made'):
       + '</section></body></html>\n')
 
 
-def heard_xhtml(title='This Book Is Made to Be Heard'):
+def heard_xhtml(title='This Book Is Made to Be Heard', greek=True, figures=True, refs=True, notes=False):
     """A short note at the FRONT. John, 2026-08-30: the explanation belongs in a
-    foreword as well as at the back — a reader meeting a phonetic gloss on page three
-    should not have to reach the last page to learn why it is there."""
+    foreword as well as at the back, so a reader meeting a phonetic gloss on page three
+    need not reach the last page to learn why it is there. John, 2026-11-03: it says
+    only what this book does, so each part is given or left out by the builder."""
     P = '<p>%s</p>\n'
+    body = P % ('It is set to be read aloud as well as read, and a few things in it are there '
+                'for that reason.')
+    if greek:
+        body += P % ('Every Greek and Hebrew word carries its sound beside it, because a voice '
+                     'cannot read those alphabets.')
+    if figures:
+        body += P % ('Chapters are numbered 1, 2, 3 rather than I, II, III, because a voice '
+                     'meeting \u201cChapter II\u201d may say anything at all.')
+    if refs:
+        body += P % ('Abbreviations and Scripture references are written out in full, so the '
+                     'voice reads them as words.')
+    if notes:
+        body += P % ('Notes are set apart, where you can tap them, so the voice does not read '
+                     'them in the middle of a sentence.')
+    body += P % ('What the scan left behind, page numbers and running heads in the middle of '
+                 'a sentence, is cleared away, so the voice reads only the book.')
     return ('<?xml version="1.0" encoding="utf-8"?>\n'
       '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="en-GB" lang="en-GB">\n'
       '<head><title>' + html.escape(title) + '</title><meta charset="utf-8"/>'
       '<link rel="stylesheet" type="text/css" href="../css/style.css"/></head>\n'
       '<body epub:type="frontmatter"><section epub:type="preface" class="preamble">\n'
       '<h2>' + html.escape(title) + '</h2>\n'
-      + P % ('It is set to be read aloud as well as read, and some of what is in it is '
-             'here for no other reason.')
-      + P % ('Every Greek and Hebrew word carries its sound beside it, because a '
-             'narrator can read neither alphabet. Chapters are numbered 1, 2, 3 rather '
-             'than I, II, III, because a voice meeting \u201cChapter II\u201d may say '
-             'anything at all. Abbreviations are written out, and Scripture references '
-             'are resolved, because a listener cannot turn back to a footnote.')
-      + P % ('None of it shows on the page. It shows when the book is spoken.')
-      + '</section></body></html>\n')
+      + body + '</section></body></html>\n')
