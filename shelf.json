@@ -109,11 +109,15 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/treasure-island/cover.jpg",
       "source": "Project Gutenberg ebook 120",
       "license": "Text and illustrations public domain",
-      "sha256": "c5284cb73c6ce6dbbddbb1708500afe685ef82397b8ec482da621cb73570eb16",
+      "sha256": "0e225a2a8f29b5d6a71001daf4845ea12529ebe85ac8ae32aff81e9fe488e3ed",
       "identifiers": [
         "urn:uuid:602d0058-9ed6-4ba9-97d5-ac5c38cb81a3",
         "urn:uuid:2f8c41a7-9d63-4e15-b0c2-7ae5f9d31c48"
-      ]
+      ],
+      "build": "2026-11-02.1",
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "swiss-family-robinson",
@@ -124,11 +128,15 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/swiss-family-robinson/cover.jpg",
       "source": "Project Gutenberg ebook 41659",
       "license": "Text public domain",
-      "sha256": "36a275e6f74db099a40df8d6342ccd57f0520e1c95b05b957d8c99e7bd38c282",
+      "sha256": "55525ecc0eb5ba3bf29aa657abc8df1725da2c2a64b319e65302b9026e9baee8",
       "identifiers": [
         "urn:uuid:fc78934f-3427-44c7-8c0d-4b5e36a6e742",
         "urn:uuid:9b41e7c3-52d8-44a6-8f10-3c6ad9e27b55"
-      ]
+      ],
+      "build": "2026-11-02.1",
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "mystery-at-dark-cedars",
