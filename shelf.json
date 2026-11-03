@@ -243,6 +243,21 @@
       }
     },
     {
+      "id": "north-woods-manhunt",
+      "title": "North Woods Manhunt",
+      "author": "Paul Hutchens",
+      "blurb": "The ransom money is dug up, but John Till gets away from the old icehouse. A note in the night, a race to the Indian cemetery, and a cry for help on a moonlit lake finish the story begun in Digs for Treasure.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/north-woods-manhunt/Hutchens_Paul-SchriftOhr_Edition-North_Woods_Manhunt.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/north-woods-manhunt/cover.jpg",
+      "source": "Project Gutenberg ebook 58626",
+      "license": "Text public domain in the United States",
+      "sha256": "3a11e85c7cbecc3e02f586f3cc1efc3fef4896dc74c5ca6e3aac1c7a505cc70e",
+      "identifiers": [
+        "urn:uuid:43514dfd-3ce2-5b93-9ea2-5c06aff48e45"
+      ],
+      "build": "2026-11-02.1"
+    },
+    {
       "id": "green-tent-mystery",
       "title": "The Green Tent Mystery at Sugar Creek",
       "author": "Paul Hutchens",
