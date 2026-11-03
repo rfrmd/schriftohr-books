@@ -1,0 +1,160 @@
+# kind	pattern	replacement	where   (Sherlock 2026-11-03: spelling brought up to date, American, as Treasure Island; words kept)
+join	(T|t)o-day	\1oday	all
+join	(T|t)o-night	\1onight	all
+join	(T|t)o-morrow	\1omorrow	all
+join	(A|a)rm-chair	\1rmchair	all
+join	(A|a)rm-chairs	\1rmchairs	all
+join	(U|u)p-stairs	\1pstairs	all
+join	(D|d)own-stairs	\1ownstairs	all
+join	(M|m)antel-piece	\1antelpiece	all
+join	(F|f)inger-tips	\1ingertips	all
+join	(G|g)ame-keeper	\1amekeeper	all
+join	(H|h)ouse-keeper	\1ousekeeper	all
+join	(S|s)tep-father	\1tepfather	all
+join	(S|s)tep-daughter	\1tepdaughter	all
+join	(S|s)tep-mother	\1tepmother	all
+join	(P|p)ost-mark	\1ostmark	all
+join	(P|p)ost-marks	\1ostmarks	all
+join	(W|w)hip-cord	\1hipcord	all
+join	(I|i)n-doors	\1ndoors	all
+join	(C|c)ountry-side	\1ountryside	all
+join	(N|n)ew-comer	\1ewcomer	all
+join	(N|n)ew-comers	\1ewcomers	all
+join	(R|r)iver-side	\1iverside	all
+join	(W|w)indow-sill	\1indowsill	all
+join	(B|b)ull-dog	\1ulldog	all
+join	(H|h)alf-pennies	\1alfpennies	all
+join	(S|s)chool-master	\1choolmaster	all
+join	(C|c)ard-board	\1ardboard	all
+join	(F|f)oot-paths	\1ootpaths	all
+join	(F|f)oot-path	\1ootpath	all
+join	(L|l)and-owner	\1andowner	all
+join	(W|w)ay-side	\1ayside	all
+join	(W|w)ood-work	\1oodwork	all
+join	(H|h)oney-moon	\1oneymoon	all
+join	(O|o)ut-house	\1uthouse	all
+join	(L|l)ight-house	\1ighthouse	all
+join	(T|t)rap-door	\1rapdoor	all
+join	(T|t)ell-tale	\1elltale	all
+join	(F|f)ly-leaf	\1lyleaf	all
+join	(W|w)ater-mark	\1atermark	all
+join	(B|b)ath-room	\1athroom	all
+join	(D|d)oor-mat	\1oormat	all
+join	(P|p)ay-day	\1ayday	all
+join	(K|k)nee-caps	\1neecaps	all
+join	(F|f)arm-house	\1armhouse	all
+join	(C|c)ourt-yard	\1ourtyard	all
+join	(E|e)ar-shot	\1arshot	all
+join	(P|p)en-knife	\1enknife	all
+join	(D|d)eath-beds	\1eathbeds	all
+join	(C|c)ase-book	\1asebook	all
+join	(N|n)ight-dress	\1ightdress	all
+join	(T|t)ooth-brush	\1oothbrush	all
+join	(S|s)tone-work	\1tonework	all
+join	(W|w)icker-work	\1ickerwork	all
+join	(H|h)ead-gear	\1eadgear	all
+join	(L|l)amp-post	\1amppost	all
+join	(M|m)arket-place	\1arketplace	all
+join	(S|s)trong-box	\1trongbox	all
+join	(J|j)ail-bird	\1ailbird	all
+join	(F|f)ish-monger	\1ishmonger	all
+join	(P|p)age-boy	\1ageboy	all
+join	(E|e)ye-glasses	\1yeglasses	all
+join	(S|s)tand-point	\1tandpoint	all
+join	(A|a)nte-room	\1nteroom	all
+join	(P|p)ocket-book	\1ocketbook	all
+join	(O|o)ff-hand	\1ffhand	all
+join	(M|m)id-day	\1idday	all
+join	(D|d)oor-step	\1oorstep	all
+join	(S|s)tory-teller	\1toryteller	all
+join	(E|e)ar-rings	\1arrings	all
+join	(K|k)ey-hole	\1eyhole	all
+join	(N|n)ote-book	\1otebook	all
+join	(N|n)ote-books	\1otebooks	all
+join	(S|s)ea-weed	\1eaweed	all
+join	(T|t)rade-mark	\1rademark	all
+join	(H|h)ouse-maid	\1ousemaid	all
+join	(G|g)reen-grocer	\1reengrocer	all
+join	(C|c)heck-book	\1heckbook	all
+join	(T|t)ype-written	\1ypewritten	all
+join	(T|t)ype-writer	\1ypewriter	all
+join	(T|t)ype-writing	\1ypewriting	all
+join	(T|t)ype-write	\1ypewrite	all
+join	(C|c)o-operation	\1ooperation	all
+join	(R|r)e-marriage	\1emarriage	all
+join	(G|g)ood-bye	\1oodbye	all
+join	(G|g)ood-night	\1ood night	all
+join	(G|g)ood-day	\1ood day	all
+join	(G|g)ood-morning	\1ood morning	all
+join	(G|g)ood-afternoon	\1ood afternoon	all
+join	(G|g)ood-evening	\1ood evening	all
+join	(H|h)alf-past	\1alf past	all
+join	(B|b)y-the-way	\1y the way	all
+join	(S|s)itting-room	\1itting room	all
+join	(S|s)itting-rooms	\1itting rooms	all
+join	(D|d)rawing-room	\1rawing room	all
+join	(D|d)ining-room	\1ining room	all
+join	(D|d)ressing-room	\1ressing room	all
+join	(D|d)ressing-gown	\1ressing gown	all
+join	(P|p)olice-station	\1olice station	all
+join	(P|p)olice-court	\1olice court	all
+join	(P|p)ost-office	\1ost office	all
+us	(C|c)entre	\1enter	all
+us	(C|c)entres	\1enters	all
+us	(C|c)entred	\1entered	all
+us	(T|t)ravelled	\1raveled	all
+us	(T|t)ravelling	\1raveling	all
+us	(O|o)ffence	\1ffense	all
+us	(L|l)ack-lustre	\1ackluster	all
+us	(C|c)lew	\1lue	all
+us	(C|c)lews	\1lues	all
+us	(E|e)mployé	\1mployee	all
+us	(E|e)mployés	\1mployees	all
+us	(A|a)ny one(?! of)	\1nyone	all
+us	(S|s)ome one(?! of)	\1omeone	all
+us	(E|e)very one(?! of)	\1veryone	all
+us	(E|e)qualled	\1qualed	all
+us	(H|h)inderance	\1indrance	all
+us	(D|d)evelope	\1evelop	all
+us	(P|p)rogramme	\1rogram	all
+us	(I|i)mperilled	\1mperiled	all
+us	(F|f)idgetted	\1idgeted	all
+us	(T|t)raveller	\1raveler	all
+us	(T|t)ravellers	\1ravelers	all
+us	(C|c)ounsellor	\1ounselor	all
+us	(B|b)iassed	\1iased	all
+us	(Q|q)uarrelling	\1uarreling	all
+us	(S|s)ignalled	\1ignaled	all
+us	(C|c)udgelled	\1udgeled	all
+us	(S|s)ceptic	\1keptic	all
+us	(F|f)ulfilment	\1ulfillment	all
+us	(S|s)ombre	\1omber	all
+us	(R|r)evellers	\1evelers	all
+us	(F|f)ulfil	\1ulfill	all
+us	(C|c)osey	\1ozy	all
+us	(U|u)nravelled	\1nraveled	all
+us	(U|u)nravelling	\1nraveling	all
+us	(P|p)anelling	\1aneling	all
+us	(P|p)anelled	\1aneled	all
+us	(D|d)raught	\1raft	all
+us	(P|p)retence	\1retense	all
+us	(C|c)araffe	\1arafe	all
+us	(B|b)lurr	\1lur	all
+us	intrusted	entrusted	all
+us	Intrusted	Entrusted	all
+us	(M|m)ould	\1old	all
+us	(A|a)pparelled	\1ppareled	all
+us	(P|p)loughed	\1lowed	all
+us	(J|j)eweller	\1eweler	all
+us	wrapt	rapt	all
+us	Wrapt	Rapt	all
+us	(D|d)espatched	\1ispatched	all
+us	(V|v)ice	\1ise	all
+us	(I|i)n the mean time	\1n the meantime	all
+us	(F|f)or ever	\1orever	all
+us	one’s self	oneself	all
+join	(S|s)trong box	\1trongbox	all
+join	(O|o)ut-door	\1utdoor	all
+join	(E|e)very-day	\1veryday	all
+us	home-centred	home-centered	all
+us	(T|t)ravelling-cloak	\1raveling-cloak	all
