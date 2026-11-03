@@ -11,12 +11,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/adventures-of-sherlock-holmes/cover.jpg",
       "source": "Harper & Brothers, New York, 1892 — collated from two scans of two copies of that printing, read independently",
       "license": "Text and Sidney Paget’s plates public domain; cover, Adventure plates and editorial matter © RFRMD Word Labs LLC",
-      "sha256": "b7c73309eedc65bd7c6999dec2b0a718158dc88021ea9cf1ec4f5dcd01bd0203",
+      "sha256": "77f11d865414cb29405a129d5b9a2e8c4cc6462ebe39b5eaabf994756ddb1139",
       "identifiers": [
         "urn:uuid:9fb026ed-3aa3-426d-8781-defdaa4b74fb",
         "urn:uuid:3b138f62-ad6d-50a7-b868-8cd229df8ff6"
       ],
-      "build": "2026-11-03.3",
+      "build": "2026-11-03.4",
       "update": {
         "offer": true
       }
