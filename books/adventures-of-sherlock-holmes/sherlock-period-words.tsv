@@ -1,5 +1,6 @@
 # pattern	word as the note names it	gloss  (tools/period_words.py: the word stays; a lettered note on its first use in each story)
 # 2026-11-03, read twice in full; John asked for the slavey treatment throughout. Words a modern reader would misread or not know; ordinary old words left bare.
+# ejaculated, ejaculation: replaced by exclaimed, exclamation (John, 2026-11-03; a word whose modern sense is crude is replaced, not explained: tools/replace_period_word.py)
 slavey	slavey	a maid-of-all-work, the lowest servant in a Victorian household; not “slavery.”
 gasogene	gasogene	a device for making soda water at home.
 go into harness	go into harness	to go back to work.
@@ -93,8 +94,6 @@ Bradshaw	Bradshaw	the national railway timetable.
 Southerton’s preserves	preserves	private land kept for shooting game.
 (?:to wire|send you a wire|must wire)	wire	a telegram; to wire is to send one.
 personate	personate	to impersonate.
-ejaculated	ejaculated	cried out suddenly.
-ejaculation	ejaculation	a sudden cry.
 brain-fever	brain-fever	the period’s name for a severe fever thought to follow a shock.
 orange pips	pips	seeds.
 half a crown	half a crown	a silver coin worth two shillings and sixpence.
