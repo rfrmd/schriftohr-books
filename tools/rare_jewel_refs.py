@@ -16,12 +16,13 @@ BOOKS = {
     'Rom': 'Romans', 'Cor': 'Corinthians', 'Gal': 'Galatians', 'Ephes': 'Ephesians', 'Ephe': 'Ephesians',
     'Eph': 'Ephesians', 'Phil': 'Philippians', 'Col': 'Colossians', 'Thes': 'Thessalonians', 'Thess': 'Thessalonians',
     'Tim': 'Timothy', 'Tit': 'Titus', 'Heb': 'Hebrews', 'Jam': 'James', 'Pet': 'Peter', 'Jud': 'Jude',
-    'Rev': 'Revelation', 'Revel': 'Revelation',
+    'Rev': 'Revelation', 'Revel': 'Revelation', 'Revelat': 'Revelation', 'Isai': 'Isaiah', 'Jerem': 'Jeremiah',
+    'Mich': 'Micah', 'Mat': 'Matthew',
 }
 WORDS = [(r'\bvers\.(?= ?\d)', 'verse'), (r'\bver\.(?= ?\d)', 'verse'), (r'\bv\.(?= ?\d)', 'verse'),
          (r'\bvers\.', 'verse'), (r'\bver\.', 'verse'), (r'\b[Cc]hap\.', None),
          (r'\bDoct\.', 'Doctrine.'), (r'\bAnsw\.', 'Answer.'), (r'\bAns\.', 'Answer.'), (r'\bReas\.', 'Reason.'),
-         (r'\bRea\.', 'Reason.'), (r'\bQuest\.', 'Question.'), (r'\bObj\.', 'Objection.'), (r'\bObject\.', 'Objection.'), (r'&c\.', 'etc.'),
+         (r'\bRea\.', 'Reason.'), (r'\bQuest\.', 'Question.'), (r'\bObj\.', 'Objection.'), (r'\bOb\.(?= [A-Z])', 'Objection.'), (r'\bch\.(?= ?\d)', 'chapter'), (r'\bObject\.', 'Objection.'), (r'&c\.', 'etc.'),
          (r' & ', ' and ')]
 
 
@@ -46,6 +47,15 @@ def refs(text, log):
         log.append((m.group(0), s))
         return s
     text = pat.sub(one, text)
+    # a book and a chapter alone, 'Luk. 22.' or '2 Joh. 8' (Owen, 2026-11-03)
+    pat1 = re.compile(r'\b(?:([1-3]) )?(' + ab + r')\.\s?(\d+)(?![.:]\s?\d)(\.?)')
+    def one1(m):
+        n, b, ch, dot = m.groups()
+        s = (f'{n} ' if n else '') + f'{BOOKS[b]} {ch}'
+        after = text[m.end():m.end() + 3]
+        s += '.' if dot and re.match(r'\s+[A-Z\u201c\u2018(]', after or '') else ''
+        log.append((m.group(0), s)); return s
+    text = pat1.sub(one1, text)
     # 'the 17. of Ecclesiastes', 'the 14. vers.', 'the 2. Chapter'
     def ordn(m):
         s = f'the {ordinal(m.group(1))} '

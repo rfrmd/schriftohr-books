@@ -1,0 +1,11 @@
+# Words whose meaning has moved since 1668 (the Rare Jewel method, John 2026-11-02/03): replaced by the modern word of the same meaning, with a lettered note on the first use in each chapter giving the word Owen wrote. pattern (regex, whole words)	replacement	the word he wrote
+intercourse	fellowship	intercourse
+conversation	conduct	conversation
+sensible of	aware of	sensible of
+discovered	revealed	discovered
+(?<=to )discover(?= sin)	reveal	discover
+(?<=as )discover(?= a deep)	reveal	discover
+physic	medicine	physic
+meat(?= into his medicine)	food	meat
+(?<=holy and )awful	reverent	awful
+indifferent(?= well)	fairly	indifferent

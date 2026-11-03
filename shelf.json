@@ -44,16 +44,17 @@
       "id": "mortification-of-sin",
       "title": "The Mortification of Sin in Believers",
       "author": "John Owen",
-      "blurb": "Short, sharp and searching. Owen preached these sermons to Oxford students in 1656 on a single verse, Romans 8:13, and they remain the book many readers are handed first when a sin will not let go. He is just as clear on the ways we fool ourselves that the fight is over. From the 1668 printing. Proofing copy: corrections welcome.",
+      "blurb": "Short, sharp and searching. Owen preached these sermons to Oxford students in 1656 on a single verse, Romans 8:13, and they remain the book many readers are handed first when a sin will not let go. He is just as clear on the ways we fool ourselves that the fight is over. From the 1668 printing, lightly modernised for today’s reader.",
       "epub": "https://rfrmd.github.io/schriftohr-books/books/mortification-of-sin/Owen_John-SchriftOhr_Edition-Mortification_of_Sin.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mortification-of-sin/cover.jpg",
       "source": "EEBO-TCP A53715 (Wing O787), the 1668 printing, keyed and released CC0",
       "license": "Text public domain; editorial matter © RFRMD Word Labs LLC",
-      "sha256": "ba45363618a2c4af8a01f7ba3202fd6a4b0ecaa5cf77e67e15509b83dc2c0503",
+      "sha256": "17d1f94e3edba1a12506d9e6503e9fe8910e2350d60140cf3ada9bda46ad2db1",
       "identifiers": [
         "urn:uuid:586f9ba1-c856-4b1b-b989-dcefa2af476e",
         "urn:uuid:e1529349-45d1-5689-9221-efa4f5156a4c"
       ],
+      "build": "2026-11-03.1",
       "update": {
         "offer": true
       }
@@ -81,14 +82,15 @@
       "id": "glory-of-christ",
       "title": "Meditations and Discourses on the Glory of Christ",
       "author": "John Owen",
-      "blurb": "Owen's last work, and two books in one. The Meditations dwell on the glory of Christ in his person, his office and his grace; the Discourses that complete them turn that glory toward the unbeliever and toward the Christian whose love has grown cold. Read together, each makes the other richer. Spelling is modernised; Scripture stands as printed. Proofing copy: corrections welcome.",
+      "blurb": "Owen's last work, and two books in one. The Meditations dwell on the glory of Christ in his person, his office and his grace; the Discourses that complete them turn that glory toward the unbeliever and toward the Christian whose love has grown cold. Read together, each makes the other richer. Lightly modernised for today’s reader.",
       "epub": "https://rfrmd.github.io/schriftohr-books/books/glory-of-christ/Owen_John-SchriftOhr_Edition-Glory_of_Christ.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/glory-of-christ/cover.jpg",
-      "sha256": "c46073abe00a368841b822fab6d18f2113fc2cac5780b867e24ed8f357f84396",
+      "sha256": "d42f133dd27d9c3dee02dd0c18600787879d14b283497dbf73005fd7b345c5d1",
       "identifiers": [
         "urn:uuid:ca0d1fe4-c4d0-4dae-84a0-8f74f5113407",
         "urn:uuid:bf0b2d9d-13ef-5c8c-9b69-3c16a6a611c0"
       ],
+      "build": "2026-11-03.1",
       "update": {
         "offer": true
       }
@@ -97,14 +99,15 @@
       "id": "sovereignty-of-god",
       "title": "The Sovereignty of God",
       "author": "A. W. Pink",
-      "blurb": "Plain words on a hard subject. Pink sets out what Scripture says of God's rule over creation, salvation and the human will, then takes the usual objections one at a time. This is the full 1918 first edition, with the three appendices that later abridgements cut. Proofing copy: corrections welcome.",
+      "blurb": "Plain words on a hard subject. Pink sets out what Scripture says of God's rule over creation, salvation and the human will, then takes the usual objections one at a time. This is the full 1918 first edition, with the three appendices that later abridgements cut.",
       "epub": "https://rfrmd.github.io/schriftohr-books/books/sovereignty-of-god/Pink_Arthur_W-SchriftOhr_Edition-Sovereignty_of_God.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/sovereignty-of-god/cover.jpg",
-      "sha256": "beae981c88ac867c732aedb84329f151c5885ebd15b987d5a910192637970902",
+      "sha256": "07ac182dd03a76f381377d6367969d2b1dab4076e991dfe5a29a9fca584294b5",
       "identifiers": [
         "urn:uuid:7be5344e-690c-4bec-bcb3-977c979b373d",
         "urn:uuid:3df30cd9-49e1-5077-b375-bd88c9074495"
       ],
+      "build": "2026-11-03.1",
       "update": {
         "offer": true
       }
