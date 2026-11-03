@@ -11,7 +11,10 @@ the run, and so does any difference between the words of the source and the word
 import html, pathlib, re, shutil, subprocess, sys, tempfile, uuid, zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-TEMPLATE = next((ROOT / 'books/sugar-creek-digs-for-treasure').glob('*.epub'))
+# The template is Digs for Treasure as it stood at a fixed commit. Later edits to Digs itself (spelling, content review)
+# change the very sentences the swaps below look for, so the working copy would make this builder drift.
+TEMPLATE_REV = '6a19f5e'
+TEMPLATE_PATH = 'books/sugar-creek-digs-for-treasure/Hutchens_Paul-SchriftOhr_Edition-Sugar_Creek_Gang_Digs_for_Treasure.epub'
 AUTHOR, BUILD, DATE = 'Paul Hutchens', '2026-11-02.1', '2026-11-02'
 WORD = re.compile(r"[A-Za-z0-9]+(?:['’][A-Za-z]+)*")
 DIGS = '<i>The Sugar Creek Gang Digs for Treasure</i>'
@@ -95,7 +98,7 @@ def curl(x):
 def inline(x, book):
     """Keep italics; drop anchors, page numbers, comments and every other span."""
     x = strip_apparatus(x)
-    x = re.sub(r'</?(?:a|span)\b[^>]*>', '', x)
+    x = re.sub(r'</?(?:a|span|ins)\b[^>]*>', '', x)   # <ins title="Transcriber's note...">: keep the corrected words, not the note
     x = re.sub(r'<br\s*/?>', '<br/>', x)
     x = re.sub(r'\s+', ' ', x).strip()
     return curl(x) if book.get('curl') else x
@@ -189,7 +192,10 @@ def main():
         sys.exit('words differ between source and edition')
     print(f'{len(chapters)} chapters, {len(ed_words)} words, every source word accounted for')
 
-    with zipfile.ZipFile(TEMPLATE) as z:
+    import io
+    tpl_bytes = subprocess.run(['git', 'show', f'{TEMPLATE_REV}:{TEMPLATE_PATH}'], cwd=ROOT, check=True,
+                               capture_output=True).stdout
+    with zipfile.ZipFile(io.BytesIO(tpl_bytes)) as z:
         tpl = {n: z.read(n) for n in z.namelist()}
     work = pathlib.Path(tempfile.mkdtemp())
     for n, data in tpl.items():
