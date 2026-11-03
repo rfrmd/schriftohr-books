@@ -156,11 +156,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-at-dark-cedars/cover.jpg",
       "source": "Project Gutenberg ebook 43582",
       "license": "Text public domain in the United States",
-      "sha256": "0aed3ff802fdc3a22c4c13b96ab3e509331e0dafa3b0e2cefc2c0292768d974e",
+      "sha256": "0011f8dd0914693e5d503f71ac8f7aec5109bd3fbd71f29575889ba9c1d9235f",
       "identifiers": [
         "urn:uuid:bfedb2e9-c50b-400c-98c1-3d9ffed78eaf",
         "urn:uuid:6e29d4b8-13af-4c72-9d05-b8f1a63e07d2"
       ],
+      "build": "2026-11-02.1",
       "update": {
         "offer": true
       }
@@ -174,11 +175,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-fires/cover.jpg",
       "source": "Project Gutenberg ebook 43583, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "ceccec4a378878f9019b38d2b1c43a9eca712af3ccddc91ce722661b4a817f49",
+      "sha256": "e862dfb93120a360352cfd8ccb2610f5ce625b44cfe82e944484daa5f3b732ef",
       "identifiers": [
         "urn:uuid:54cebf6c-1c75-4358-b24b-39b5a4a93b84",
         "urn:uuid:d1193b6f-9fc9-5fb4-be6f-85b67ae6fbaf"
       ],
+      "build": "2026-11-02.1",
       "update": {
         "offer": true
       }
@@ -192,7 +194,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-secret-band/cover.jpg",
       "source": "Project Gutenberg ebook 43584, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "d61203e8d81c796ea0e66a3ef4a37f286217cb74770e972061edd10ef26e470f",
+      "sha256": "160cefdb5ab1aeb73fa7cad9c73fdde55dee22d3b75c57c59a23bd1e0bd15ab9",
       "identifiers": [
         "urn:uuid:76da0346-a4f2-4c54-833c-97bd0d32833e",
         "urn:uuid:4fe1563c-8712-5a60-a87f-7403ab2e3e4c"

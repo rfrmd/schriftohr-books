@@ -3,6 +3,14 @@
   "about": "The publisher's log on rfrmdwordlabs.com/editions/log (rfrmdwordlabs-web/tools/make_editions_log.py). One entry per update a reader is offered, newest first, keyed by the shelf id. Reader-facing: what is better, in plain words, no dashes.",
   "began": "2026-10-31",
   "books": {
+    "mystery-at-dark-cedars": [
+      { "date": "2026-11-02", "build": "2026-11-02.1",
+        "text": "Read against the 1935 printing and found faithful word for word. Two small slips in that printing are put right, so Mary Louise now says plainly that she does not share Miss Grant's suspicion of Elsie." }
+    ],
+    "mystery-of-the-fires": [
+      { "date": "2026-11-02", "build": "2026-11-02.1",
+        "text": "Read against the 1935 printing and found faithful word for word. Two small slips in that printing are put right." }
+    ],
     "sugar-creek-goes-north": [
       { "date": "2026-11-02", "build": "2026-11-02.1",
         "text": "Five words that had gone wrong in transcription are put right, among them Little Tom Till's name and a Bible verse, found by reading every sentence for its sense." }
@@ -13,7 +21,7 @@
     ],
     "mystery-of-the-secret-band": [
       { "date": "2026-11-02", "build": "2026-11-02.1",
-        "text": "Read against the 1935 Saalfield printing. The list of the hotel's rooms and guests that Mary Louise copies into her notebook in Chapter 3 is back; it had dropped out of the earlier copy. No wrong words were found." }
+        "text": "Read against the 1935 Saalfield printing. The list of the hotel's rooms and guests that Mary Louise copies into her notebook in Chapter 3 is back; it had dropped out of the earlier copy. No words had gone wrong in transcription; five small slips in the 1935 printing itself are put right, among them the second words of Aunt Ethel's letter as Mary Louise first tries to decode it." }
     ],
     "green-tent-mystery": [
       { "date": "2026-11-02", "build": "2026-11-02.1",
