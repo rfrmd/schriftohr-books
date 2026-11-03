@@ -158,12 +158,19 @@ def main():
 
     p = text / '01-edition-note.xhtml'
     t = p.read_text(encoding='utf-8')
+    # John, 2026-11-02: an edition may be modernised where that helps a reader; the note says so instead of
+    # claiming nothing was. Whether the printing is abridged is not settled yet, so the note does not say.
+    t = once(t, "<p>Kingston's translation is given as he made it. Nothing has been modernised, abridged, or "
+             "rewritten, and the spelling and punctuation are his own. ",
+             '<p>Kingston’s translation is given in his own words. Where an older spelling or a convention of the '
+             'page would slow a reader or trip the voice, it has been brought up to date; nothing has been '
+             'rewritten. ', p.name)
     t = once(t, '</section></body>',
              '<p>This copy (build ' + BUILD + ') brings some older spellings up to date, so the book reads easily '
              'and sounds right when read aloud: <i>today</i>, <i>tomorrow</i> and <i>tonight</i> without their '
              'hyphens, <i>kayak</i> for Kingston’s <i>cajack</i>, <i>parakeet</i> for <i>parroquet</i>. It sets the '
-             'quotation marks properly, sets Juno’s epitaph as verse, and numbers the chapters in figures. '
-             'Kingston’s words are otherwise unchanged.</p>\n</section></body>', p.name)
+             'quotation marks properly, sets Juno’s epitaph as verse, and numbers the chapters in figures.</p>'
+             '\n</section></body>', p.name)
     p.write_text(t, encoding='utf-8')
     p = text / '00-proofing.xhtml'
     p.write_text(once(p.read_text(encoding='utf-8'), 'build 2026-08-23<', f'build {BUILD}<', p.name),
