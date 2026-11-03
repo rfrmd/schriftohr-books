@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Apply a was/now corrections ledger to a finished EPUB, in place.
 
-    tools/apply_ledger.py BOOK.epub LEDGER.tsv
+    tools/apply_ledger.py BOOK.epub LEDGER.tsv [--skip]
 
 Each ledger row is: chapter (C01, C02 ..., or a page's file name such as 01-edition-note) TAB was TAB now TAB evidence TAB note. Lines starting with # are
 comments; a literal \\n in `now` is a line break. `was` must occur exactly once in that chapter's XHTML, or the run
@@ -21,9 +21,10 @@ def rows(ledger):
 
 
 def main():
-    if len(sys.argv) != 3:
+    args = [a for a in sys.argv[1:] if a != '--skip']
+    if len(args) != 2:
         sys.exit(__doc__)
-    epub, ledger = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+    epub, ledger = pathlib.Path(args[0]), pathlib.Path(args[1])
     with zipfile.ZipFile(epub) as z:
         names = z.namelist()
         data = {n: z.read(n) for n in names}
@@ -42,6 +43,9 @@ def main():
             sys.exit(f'{ledger.name}:{n}: no chapter {ch}')
         k = texts[ch].count(was)
         if k != 1:
+            if '--skip' in sys.argv and k == 0:   # a drafted pass whose windows touch: run the draft again after
+                print(f'{ledger.name}:{n}: skipped, already changed by a neighbouring row', file=sys.stderr)
+                continue
             sys.exit(f'{ledger.name}:{n}: {ch} holds "{was[:60]}" {k} times')
         texts[ch] = texts[ch].replace(was, now)
         count += 1

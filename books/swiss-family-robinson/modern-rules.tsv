@@ -1,0 +1,61 @@
+# kind	pattern	replacement	where
+word	(?i:hither and thither)	here and there	all
+word	(?i:ever and anon)	every now and then	all
+word	(?i:ere long)	before long	all
+word	(?i:wont to)	used to	all
+word	(?i:hitherto)	until then	narration
+word	(?i:hitherto)	until now	all
+word	(?i:thither)	there	all
+word	(?i:ere)	before	all
+word	(?i:amongst)	among	all
+word	(?i:anon)	soon	all
+word	(?i:perchance)	perhaps	all
+word	(?i:whither)	where	all
+word	(?i:wherefore)	why	all
+join	(S|s)hell-fish	\1hellfish	all
+join	(F|f)ore-paws	\1orepaws	all
+join	(P|p)ine-apples	\1ineapples	all
+join	(O|o)ut-riggers	\1utriggers	all
+join	(A|a)ngel-fish	\1ngelfish	all
+join	(P|p)ine-apple	\1ineapple	all
+join	(W|w)heel-barrows	\1heelbarrows	all
+join	(H|h)alf-way	\1alfway	all
+join	(A|a)ir-tight	\1irtight	all
+join	(W|w)ork-table	\1orktable	all
+join	(D|d)own-hearted	\1ownhearted	all
+join	(B|b)low-holes	\1lowholes	all
+join	(O|o)ver-ripe	\1verripe	all
+join	(C|c)ane-brake	\1anebrake	all
+join	(C|c)ock-crow	\1ockcrow	all
+join	(P|p)ack-thread	\1ackthread	all
+join	(T|t)ool-box	\1oolbox	all
+join	(H|h)ead-dress	\1eaddress	all
+join	(N|n)ight-shirt	\1ightshirt	all
+join	(S|s)aw-mill	\1awmill	all
+join	(S|s)emi-transparent	\1emitransparent	all
+join	(V|v)ent-hole	\1enthole	all
+join	(W|w)heel-barrow	\1heelbarrow	all
+join	(K|k)ind-hearted	\1indhearted	all
+join	(O|o)ver-hasty	\1verhasty	all
+join	(E|e)arth-worm	\1arthworm	all
+join	(A|a)nt-eater	\1nteater	all
+join	(H|h)and-rail	\1andrail	all
+join	(A|a)rrow-head	\1rrowhead	all
+join	(S|s)emi-civilized	\1emicivilized	all
+join	(D|d)og-fish	\1ogfish	all
+join	(C|c)ounter-plot	\1ounterplot	all
+join	(S|s)hark-skin	\1harkskin	all
+join	(W|w)ork-box	\1orkbox	all
+join	(O|o)ut-posts	\1utposts	all
+join	(G|g)ame-bag	\1amebag	all
+join	(P|p)igeon-holes	\1igeonholes	all
+join	(H|h)orse-hair	\1orsehair	all
+join	(C|c)ross-bar	\1rossbar	all
+join	(D|d)airy-maid	\1airymaid	all
+join	(S|s)emi-circle	\1emicircle	all
+join	(E|e)arth-worms	\1arthworms	all
+join	(H|h)ay-forks	\1ayforks	all
+join	(W|w)atch-tower	\1atchtower	all
+join	(F|f)ish-hooks	\1ishhooks	all
+join	(G|g)uard-house	\1uardhouse	all
+join	(S|s)ide-saddle	\1idesaddle	all

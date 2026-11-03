@@ -1,0 +1,224 @@
+# chapter	was	now	kind	note
+C01	hand-barrow	handbarrow	join	hand-barrow -> handbarrow
+C01	fog-horn	foghorn	join	fog-horn -> foghorn
+C01	four-penny	fourpenny	join	four-penny -> fourpenny
+C01	f the parlour next 	f the parlor next 	us	parlour -> parlor
+C01	d the parlour; and 	d the parlor; and 	us	parlour -> parlor
+C01	l the neighbours joini	l the neighbors joini	us	neighbours -> neighbors
+C01	t the neighbours, and 	t the neighbors, and 	us	neighbours -> neighbors
+C01	o the parlour to sm	o the parlor to sm	us	parlour -> parlor
+C01	honour	honor	us	honour -> honor
+C02	hoar-frost	hoarfrost	join	hoar-frost -> hoarfrost
+C02	grey	gray	us	grey -> gray
+C02	n the parlour door 	n the parlor door 	us	parlour -> parlor
+C02	spy-glass	spyglass	join	spy-glass -> spyglass
+C02	o the parlour, sonn	o the parlor, sonn	us	parlour -> parlor
+C02	o the parlour and p	o the parlor and p	us	parlour -> parlor
+C02	rible colour.	rible color.	us	colour -> color
+C02	n the parlour, and 	n the parlor, and 	us	parlour -> parlor
+C02	fiddle-stick	fiddlestick	join	fiddle-stick -> fiddlestick
+C02	t the colour of yo	t the color of yo	us	colour -> color
+C02	y his colour chang	y his color chang	us	colour -> color
+C03	behaviour	behavior	us	behaviour -> behavior
+C03	honour	honor	us	honour -> honor
+C03	neighbours	neighbors	us	neighbours -> neighbors
+C03	m the parlour to th	m the parlor to th	us	parlour -> parlor
+C03	s the parlour, wher	s the parlor, wher	us	parlour -> parlor
+C03	d the parlour door,	d the parlor door,	us	parlour -> parlor
+C03	f the parlour and i	f the parlor and i	us	parlour -> parlor
+C04	n the parlour floor	n the parlor floor	us	parlour -> parlor
+C04	neighbouring	neighboring	us	neighbouring -> neighboring
+C04	whither	where	word	whither -> where
+C04	candle-light	candlelight	join	candle-light -> candlelight
+C04	o the parlour. He l	o the parlor. He l	us	parlour -> parlor
+C04	about half-way throu	about halfway throu	join	half-way -> halfway
+C04	 than half-way to th	 than halfway to th	join	half-way -> halfway
+C04	neighbours	neighbors	us	neighbours -> neighbors
+C05	ition ere my en	ition before my en	word	ere -> before
+C05	half-heartedly	halfheartedly	join	half-heartedly -> halfheartedly
+C06	top-sails	topsails	join	top-sails -> topsails
+C06	 “The Spy-glass.” The	 “The Spyglass.” The	join	Spy-glass -> Spyglass
+C06	land-locked	landlocked	join	land-locked -> landlocked
+C06	centre	center	us	centre -> center
+C06	harbours	harbors	us	harbours -> harbors
+C06	tree, Spy-glass shoul	tree, Spyglass shoul	join	Spy-glass -> Spyglass
+C06	favourable	favorable	us	favourable -> favorable
+C07	gined ere we we	gined before we we	word	ere -> before
+C07	Spy-glass	Spyglass	join	Spy-glass -> Spyglass
+C07	colour	color	us	colour -> color
+C07	under-gamekeepers	undergamekeepers	join	under-gamekeepers -> undergamekeepers
+C07	Thither	There	word	Thither -> There
+C08	f the Spy-glass, and 	f the Spyglass, and 	join	Spy-glass -> Spyglass
+C08	favoured	favored	us	favoured -> favored
+C08	dead-eye	deadeye	join	dead-eye -> deadeye
+C08	 keel-haul him!”	 keelhaul him!”	join	keel-haul -> keelhaul
+C08	t the Spy-glass, and 	t the Spyglass, and 	join	Spy-glass -> Spyglass
+C09	round-house	roundhouse	join	round-house -> roundhouse
+C09	favourites	favorites	us	favourites -> favorites
+C10	amongst	among	word	amongst -> among
+C11	Spy-glass	Spyglass	join	Spy-glass -> Spyglass
+C11	half-way	halfway	join	half-way -> halfway
+C11	fore-sail	foresail	join	fore-sail -> foresail
+C12	fore-sail	foresail	join	fore-sail -> foresail
+C12	south-west	southwest	join	south-west -> southwest
+C12	Spy-glass	Spyglass	join	Spy-glass -> Spyglass
+C12	open-handed	openhanded	join	open-handed -> openhanded
+C12	yard-arm	yardarm	join	yard-arm -> yardarm
+C13	Spy-glass	Spyglass	join	Spy-glass -> Spyglass
+C13	south-east	southeast	join	south-east -> southeast
+C13	colouring	coloring	us	colouring -> coloring
+C13	grey	gray	us	grey -> gray
+C13	land-locked	landlocked	join	land-locked -> landlocked
+C13	amphitheatre	amphitheater	us	amphitheatre -> amphitheater
+C13	thunder-cloud	thundercloud	join	thunder-cloud -> thundercloud
+C13	fore-sheets	foresheets	join	fore-sheets -> foresheets
+C13	shore-side	shoreside	join	shore-side -> shoreside
+C14	thither	there	word	thither -> there
+C14	f the Spy-glass tremb	f the Spyglass tremb	join	Spy-glass -> Spyglass
+C14	favourable	favorable	us	favourable -> favorable
+C14	behaviour	behavior	us	behaviour -> behavior
+C14	f the Spy-glass re-ec	f the Spyglass re-ec	join	Spy-glass -> Spyglass
+C14	pin-point	pinpoint	join	pin-point -> pinpoint
+C14	 tall Spy-glass hillt	 tall Spyglass hillt	join	Spy-glass -> Spyglass
+C14	blood-stained	bloodstained	join	blood-stained -> bloodstained
+C15	grave-stones	gravestones	join	grave-stones -> gravestones
+C15	short-handed	shorthanded	join	short-handed -> shorthanded
+C16	labour	labor	us	labour -> labor
+C17	fore-sheets	foresheets	join	fore-sheets -> foresheets
+C18	log-book	logbook	join	log-book -> logbook
+C18	itish colours, a Bi	itish colors, a Bi	us	colours -> colors
+C18	p the colours.	p the colors.	us	colours -> colors
+C18	ke my colours!” cri	ke my colors!” cri	us	colours -> colors
+C18	horse-play	horseplay	join	horse-play -> horseplay
+C18	itish colours on th	itish colors on th	us	colours -> colors
+C19	colours	colors	us	colours -> colors
+C19	honour	honor	us	honour -> honor
+C19	shore-side	shoreside	join	shore-side -> shoreside
+C19	grey	gray	us	grey -> gray
+C19	te in colour. It o	te in color. It o	us	colour -> color
+C19	en my snuff-box, have	en my snuffbox, have	join	snuff-box -> snuffbox
+C19	in my snuff-box I car	in my snuffbox I car	join	snuff-box -> snuffbox
+C20	white vapour that 	white vapor that 	us	vapour -> vapor
+C20	d the vapour taken	d the vapor taken	us	vapour -> vapor
+C20	vigour	vigor	us	vigour -> vigor
+C20	honour	honor	us	honour -> honor
+C20	colours	colors	us	colours -> colors
+C21	vapours	vapors	us	vapours -> vapors
+C21	 away ere it wa	 away before it wa	word	ere -> before
+C21	half-way	halfway	join	half-way -> halfway
+C21	a red night-cap, with	a red nightcap, with	join	night-cap -> nightcap
+C21	e red night-cap still	e red nightcap still	join	night-cap -> nightcap
+C21	swain ere he ha	swain before he ha	word	ere -> before
+C21	centre	center	us	centre -> center
+C22	flea-bite	fleabite	join	flea-bite -> fleabite
+C22	thunder-struck	thunderstruck	join	thunder-struck -> thunderstruck
+C22	over-bold	overbold	join	over-bold -> overbold
+C22	south-east	southeast	join	south-east -> southeast
+C22	Spy-glass	Spyglass	join	Spy-glass -> Spyglass
+C22	goat-skins	goatskins	join	goat-skins -> goatskins
+C22	centre	center	us	centre -> center
+C22	 boat—home-made if ev	 boat—homemade if ev	join	home-made -> homemade
+C22	g was home-made; a ru	g was homemade; a ru	join	home-made -> homemade
+C22	lop-sided	lopsided	join	lop-sided -> lopsided
+C22	ng of goat-skin, with	ng of goatskin, with	join	goat-skin -> goatskin
+C23	lop-sided	lopsided	join	lop-sided -> lopsided
+C23	south-east	southeast	join	south-east -> southeast
+C23	south-west	southwest	join	south-west -> southwest
+C23	favoured	favored	us	favoured -> favored
+C23	night-cap	nightcap	join	night-cap -> nightcap
+C23	great camp-fire burni	great campfire burni	join	camp-fire -> campfire
+C23	shore-side	shoreside	join	shore-side -> shoreside
+C23	neighbour	neighbor	us	neighbour -> neighbor
+C23	h the camp-fire. The 	h the campfire. The 	join	camp-fire -> campfire
+C23	t the camp-fire had b	t the campfire had b	join	camp-fire -> campfire
+C23	f the camp-fire. The 	f the campfire. The 	join	camp-fire -> campfire
+C24	Spy-glass	Spyglass	join	Spy-glass -> Spyglass
+C24	south-west	southwest	join	south-west -> southwest
+C24	behaviour	behavior	us	behaviour -> behavior
+C24	whereupon	at which	word	whereupon -> at which
+C24	tree-tops	treetops	join	tree-tops -> treetops
+C24	r her main-sail and t	r her mainsail and t	join	main-sail -> mainsail
+C24	north-west	northwest	join	north-west -> northwest
+C24	. The main-sail hung 	. The mainsail hung 	join	main-sail -> mainsail
+C24	centre	center	us	centre -> center
+C25	f the after-deck. Not 	f the afterdeck. Not 	join	after-deck -> afterdeck
+C25	e lee after-deck.	e lee afterdeck.	join	after-deck -> afterdeck
+C25	home-made	homemade	join	home-made -> homemade
+C25	lop-sided	lopsided	join	lop-sided -> lopsided
+C25	main-mast	mainmast	join	main-mast -> mainmast
+C25	f the colour had c	f the color had c	us	colour -> color
+C25	 have these colours, Mr. Hands;	 have these colors, Mr. Hands;	us	colours -> colors
+C25	o the colour lines	o the color lines	us	colour -> color
+C25	point ere noon 	point before noon 	word	ere -> before
+C26	north-east	northeast	join	north-east -> northeast
+C26	discoloured	discolored	us	discoloured -> discolored
+C26	labour	labor	us	labour -> labor
+C26	favourite	favorite	us	favourite -> favorite
+C26	hitherto	until then	word	hitherto -> until then
+C26	half-way	halfway	join	half-way -> halfway
+C26	f the main-mast I sto	f the mainmast I sto	join	main-mast -> mainmast
+C26	blood-stained	bloodstained	join	blood-stained -> bloodstained
+C26	t the main-mast, whic	t the mainmast, whic	join	main-mast -> mainmast
+C26	cross-trees	crosstrees	join	cross-trees -> crosstrees
+C27	n the cross-trees I had	n the crosstrees I had	join	cross-trees -> crosstrees
+C27	m the cross-trees into 	m the crosstrees into 	join	cross-trees -> crosstrees
+C27	ife’s colour or li	ife’s color or li	us	colour -> color
+C27	t the main-sail was a	t the mainsail was a	join	main-sail -> mainsail
+C27	out-board	outboard	join	out-board -> outboard
+C27	h her main-sail trail	h her mainsail trail	join	main-sail -> mainsail
+C27	thence	from there	word	thence -> from there
+C27	d the Spy-glass on my	d the Spyglass on my	join	Spy-glass -> Spyglass
+C27	f the Spy-glass, and 	f the Spyglass, and 	join	Spy-glass -> Spyglass
+C27	erent colour appea	erent color appea	us	colour -> color
+C28	blood-stained	bloodstained	join	blood-stained -> bloodstained
+C28	cross-trees	crosstrees	join	cross-trees -> crosstrees
+C28	dog-watch	dogwatch	join	dog-watch -> dogwatch
+C28	yard-arm	yardarm	join	yard-arm -> yardarm
+C28	ady. Take a cutlass, him that dares, and I’ll see the colour of his inside, crutch and all, before that pipe’s emp	ady. Take a cutlass, him that dares, and I’ll see the color of his inside, crutch and all, before that pipe’s emp	us	colour -> color
+C29	half-way	halfway	join	half-way -> halfway
+C29	colours	colors	us	colours -> colors
+C29	s the colour of le	s the color of le	us	colour -> color
+C29	thumb-nail	thumbnail	join	thumb-nail -> thumbnail
+C29	 long ere I cou	 long before I cou	word	ere -> before
+C30	door-post	doorpost	join	door-post -> doorpost
+C30	vapour	vapor	us	vapour -> vapor
+C30	colour	color	us	colour -> color
+C30	nt of honour not t	nt of honor not t	us	honour -> honor
+C30	rd of honour as a 	rd of honor as a 	us	honour -> honor
+C30	rd of honour not t	rd of honor not t	us	honour -> honor
+C31	humour	humor	us	humour -> humor
+C31	behaviour	behavior	us	behaviour -> behavior
+C31	tree, Spy-glass shoul	tree, Spyglass shoul	join	Spy-glass -> Spyglass
+C31	f the Spy-glass and r	f the Spyglass and r	join	Spy-glass -> Spyglass
+C31	neighbours	neighbors	us	neighbours -> neighbors
+C31	s own ere we we	s own before we we	word	ere -> before
+C31	half-way	halfway	join	half-way -> halfway
+C31	favourite	favorite	us	favourite -> favorite
+C31	Thence	From there	word	Thence -> From there
+C31	f the Spy-glass. Then	f the Spyglass. Then	join	Spy-glass -> Spyglass
+C31	centre	center	us	centre -> center
+C32	e the Spy-glass, here	e the Spyglass, here	join	Spy-glass -> Spyglass
+C32	r the tree-tops, we b	r the treetops, we b	join	tree-tops -> treetops
+C32	and. ‘Spy-glass shoul	and. ‘Spyglass shoul	join	Spy-glass -> Spyglass
+C32	. The colour went 	. The color went 	us	colour -> color
+C32	green tree-tops, I th	green treetops, I th	join	tree-tops -> treetops
+C32	f the Spy-glass.	f the Spyglass.	join	Spy-glass -> Spyglass
+C32	f the colour to hi	f the color to hi	us	colour -> color
+C32	tural colour had r	tural color had r	us	colour -> color
+C32	f the Spy-glass, and 	f the Spyglass, and 	join	Spy-glass -> Spyglass
+C32	north-west	northwest	join	north-west -> northwest
+C33	pig-nuts	pignuts	join	pig-nuts -> pignuts
+C33	Pig-nuts	Pignuts	join	Pig-nuts -> Pignuts
+C33	rry’s favour. They	rry’s favor. They	us	favour -> favor
+C33	north-east	northeast	join	north-east -> northeast
+C33	south-east	southeast	join	south-east -> southeast
+C33	main-sail	mainsail	join	main-sail -> mainsail
+C33	single-handed	singlehanded	join	single-handed -> singlehanded
+C33	mill-stones	millstones	join	mill-stones -> millstones
+C33	favourite	favorite	us	favourite -> favorite
+C34	thence	from there	word	thence -> from there
+C34	colours	colors	us	colours -> colors
+C34	main-sail	mainsail	join	main-sail -> mainsail
+C34	land-locked	landlocked	join	land-locked -> landlocked
+C34	favourite	favorite	us	favourite -> favorite
+C34	wain-ropes	wainropes	join	wain-ropes -> wainropes

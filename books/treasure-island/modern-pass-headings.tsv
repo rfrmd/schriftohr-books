@@ -1,0 +1,4 @@
+# Spy-glass in the heading and contents, which the drafter could not single out
+C08	<title>Chapter 8: At the Sign of the Spy-glass</title>	<title>Chapter 8: At the Sign of the Spyglass</title>	join	Spy-glass -> Spyglass
+C08	<h2>Chapter 8: At the Sign of the Spy-glass</h2>	<h2>Chapter 8: At the Sign of the Spyglass</h2>	join	Spy-glass -> Spyglass
+nav	>Chapter 8: At the Sign of the Spy-glass<	>Chapter 8: At the Sign of the Spyglass<	join	Spy-glass -> Spyglass
