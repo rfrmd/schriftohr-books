@@ -156,7 +156,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-at-dark-cedars/cover.jpg",
       "source": "Project Gutenberg ebook 43582",
       "license": "Text public domain in the United States",
-      "sha256": "0011f8dd0914693e5d503f71ac8f7aec5109bd3fbd71f29575889ba9c1d9235f",
+      "sha256": "41364b75737bff017a051bb1b892d01770918c8c948d56873fe11470de0086c2",
       "identifiers": [
         "urn:uuid:bfedb2e9-c50b-400c-98c1-3d9ffed78eaf",
         "urn:uuid:6e29d4b8-13af-4c72-9d05-b8f1a63e07d2"
@@ -175,7 +175,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-fires/cover.jpg",
       "source": "Project Gutenberg ebook 43583, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "e862dfb93120a360352cfd8ccb2610f5ce625b44cfe82e944484daa5f3b732ef",
+      "sha256": "09e129d6cb9c85e3abecacb624418b5f5511b8c1cb667f070d2622cbb00323c3",
       "identifiers": [
         "urn:uuid:54cebf6c-1c75-4358-b24b-39b5a4a93b84",
         "urn:uuid:d1193b6f-9fc9-5fb4-be6f-85b67ae6fbaf"
@@ -194,7 +194,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-secret-band/cover.jpg",
       "source": "Project Gutenberg ebook 43584, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "c7f719010651a7d31a35b3c2d531bb58aaf87bdb8fab37195810a7142af15370",
+      "sha256": "bd687765a1a9762d43cbb8bdcd52f701cc9d1f91a879f0c354a511dad7675ef6",
       "identifiers": [
         "urn:uuid:76da0346-a4f2-4c54-833c-97bd0d32833e",
         "urn:uuid:4fe1563c-8712-5a60-a87f-7403ab2e3e4c"
@@ -213,7 +213,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/shenanigans-at-sugar-creek/cover.jpg",
       "source": "Project Gutenberg ebook 27426",
       "license": "Text public domain in the United States",
-      "sha256": "37615843e797ad74b443005b5c1cffed8f1944e7cc7dda7998d317e9895bbaeb",
+      "sha256": "8408ffb806e91805bd88a77ba3a02c7685e74c32ef0e062385746bd77cafa4ac",
       "identifiers": [
         "urn:uuid:6fdad7b9-40b1-5783-815f-57ea13f16240"
       ],
@@ -228,7 +228,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-goes-north/cover.jpg",
       "source": "Project Gutenberg ebook 56554, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "9159434a47a28fdefea3e9d659ffafeec690bd71f394c706512cd8c4cb96661e",
+      "sha256": "4af474ed6b95e6ed58fbd76f0152959601478264056f8340283923d720cf54ff",
       "identifiers": [
         "urn:uuid:7f3cbdcf-3bee-4c32-b0cd-ffc6bc804e1d",
         "urn:uuid:e2485c7a-9dff-5753-a34f-fef5ebeadcc1"
@@ -247,7 +247,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-digs-for-treasure/cover.jpg",
       "source": "Project Gutenberg ebook 56553, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "f89067203553f89b339a4c498ea3a8a58b5540604676bf6c4a504c93a6331502",
+      "sha256": "7b4a2c41bc381fba09f038ef99431e9617d8dd4254cff91919295fc402234f44",
       "identifiers": [
         "urn:uuid:698974f4-4495-43e9-a844-664628ba2b23",
         "urn:uuid:82770595-a7cf-54a1-ba77-cfa8d4262593"
@@ -266,7 +266,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/north-woods-manhunt/cover.jpg",
       "source": "Project Gutenberg ebook 58626",
       "license": "Text public domain in the United States",
-      "sha256": "1f777c051796b89fbc2b1e0d9666b31fcf21fd9d2df0f4e94341a52a18d06195",
+      "sha256": "9e6ac5c271e9375527b7837a0c9479f33e5b485a53229b5f7ca5f5103bce322c",
       "identifiers": [
         "urn:uuid:43514dfd-3ce2-5b93-9ea2-5c06aff48e45"
       ],
@@ -281,7 +281,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/green-tent-mystery/cover.jpg",
       "source": "Project Gutenberg ebook 58514",
       "license": "Text public domain in the United States",
-      "sha256": "923744b646fd1d2d1d21e6012bd643ae2a4078c86e87bf1cbedde8200654d1ee",
+      "sha256": "a5797363ee21a37325c22a9220afd495edd5d653125ef8c6076a81167850e199",
       "identifiers": [
         "urn:uuid:adf0916f-ec03-4c80-9cbf-caccd7924dbd",
         "urn:uuid:c4d81f60-7b23-4e95-a1d6-58e0f2c74a19"
@@ -300,7 +300,7 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/watermelon-mystery/cover.jpg",
       "source": "Project Gutenberg ebook 58628",
       "license": "Text public domain in the United States",
-      "sha256": "45cb542b492ca9e0326c9ccfbfecbf70fdfb6e42fc6029c0ecc828760c35f318",
+      "sha256": "c2a1f5884288065e6225979eeca161a29a002f665a23a33f004c99e4ee1811b1",
       "identifiers": [
         "urn:uuid:591d412f-471f-513f-b186-1aa85d5bf1a9"
       ],
