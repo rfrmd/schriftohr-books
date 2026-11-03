@@ -26,13 +26,17 @@ def ident(data):
 
 
 def build_of(data):
+    """The build on the About This Copy stamp. A book names its build in that one place: a second build anywhere in
+    it (11-03: About This Edition still said "This copy (build 2026-11-02.1)" after the reissue) stops the shelf."""
     with zipfile.ZipFile(io.BytesIO(data)) as z:
+        found = {}
         for n in z.namelist():
             if n.endswith('.xhtml'):
-                m = re.search(r'build (\d{4}-\d\d-\d\d\.\d+)', z.read(n).decode('utf-8', 'replace'))
-                if m:
-                    return m.group(1)
-    return None
+                for m in re.findall(r'build (\d{4}-\d\d-\d\d\.\d+)', z.read(n).decode('utf-8', 'replace')):
+                    found.setdefault(m, []).append(n.rsplit('/', 1)[-1])
+    if len(found) > 1:
+        sys.exit(f'the book names {len(found)} builds: ' + '; '.join(f'{b} in {", ".join(f)}' for b, f in sorted(found.items())))
+    return next(iter(found), None)
 
 
 def history(rel):

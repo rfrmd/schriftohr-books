@@ -228,7 +228,7 @@ def main():
          f'as he wrote it in {book["year"]}. '),
         ('— the page numbers scattered mid-sentence, the broken lines, the apparatus of the scan — ',
          'the page numbers scattered mid-sentence, the broken lines, the apparatus of the scan, '),
-        ('<p>This copy (build 2026-11-02.1) puts right twenty-four places where a word had gone wrong in transcription, '
+        ('<p>This copy puts right twenty-four places where a word had gone wrong in transcription, '
          'found by reading every sentence for its sense.</p>',
          f'<p>{book["note"]} Every sentence has been read for its sense before this copy was set.</p>')])
     swap('OEBPS/text/97-sources.xhtml', [
