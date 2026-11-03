@@ -1,0 +1,12 @@
+# Real-word errors found by reading for sense (John, 2026-11-02: "story may change as needed to confer legitimate reading meaning"). No open scan of this printing; each row read in context. Apply after tools/build_sugar_creek.py.
+C08	freckle-faced Tim Till was as equal	freckle-faced Tom Till was as equal	sense	name: Tom everywhere else
+C10	on the edge my own cot	on the edge of my own cot	sense	dropped word
+C01	keeping Charlotte Anne awake	keeping Charlotte Ann awake	sense	Ann everywhere else
+C09	blue-jeaned, red-and-maroon-shirted friend	blue-jeaned, gray-and-maroon-shirted friend	sense	Tom’s shirt is maroon and gray everywhere else
+C09	pink lady’s dress of something	pink lady’s dress or something	sense	of/or
+C05	in my mind for sum when	in my mind for sure when	sense	sum/sure
+C04	how much more sensible we had been if	how much more sensible we would have been if	sense	dropped words
+C08	this nation under God may have a new birth	this nation under God shall have a new birth	sense	Gettysburg Address
+C08	invited our troupe to church	invited our troop to church	sense	a scout troop
+C08	to a girl scout troupe,	to a girl scout troop,	sense	a scout troop
+C04	my two double-up experienced fists	my two doubled-up experienced fists	sense	doubled-up fists elsewhere

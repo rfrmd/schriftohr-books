@@ -205,6 +205,21 @@
       }
     },
     {
+      "id": "shenanigans-at-sugar-creek",
+      "title": "Shenanigans at Sugar Creek",
+      "author": "Paul Hutchens",
+      "blurb": "A stern new teacher, a bald snowman made to mock him, and a board wired over the schoolhouse chimney. The gang gets the blame, and learns what kindness can do.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/shenanigans-at-sugar-creek/Hutchens_Paul-SchriftOhr_Edition-Shenanigans_at_Sugar_Creek.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/shenanigans-at-sugar-creek/cover.jpg",
+      "source": "Project Gutenberg ebook 27426",
+      "license": "Text public domain in the United States",
+      "sha256": "7ad3590d44002949b8c099a9608ec7d34693a8661a85269febcfadc469967189",
+      "identifiers": [
+        "urn:uuid:6fdad7b9-40b1-5783-815f-57ea13f16240"
+      ],
+      "build": "2026-11-02.1"
+    },
+    {
       "id": "sugar-creek-goes-north",
       "title": "The Sugar Creek Gang Goes North",
       "author": "Paul Hutchens",
@@ -275,6 +290,21 @@
       "update": {
         "offer": true
       }
+    },
+    {
+      "id": "watermelon-mystery",
+      "title": "Watermelon Mystery at Sugar Creek",
+      "author": "Paul Hutchens",
+      "blurb": "Bill's prize melon vanishes in the night, girl scouts take him for a zebra, and the woman in the green tent across the creek is not what she seems.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/watermelon-mystery/Hutchens_Paul-SchriftOhr_Edition-Watermelon_Mystery_at_Sugar_Creek.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/watermelon-mystery/cover.jpg",
+      "source": "Project Gutenberg ebook 58628",
+      "license": "Text public domain in the United States",
+      "sha256": "82417be39708b8206e1c0ff984037b4dd3769f6801ea52cf01c79059b4306621",
+      "identifiers": [
+        "urn:uuid:591d412f-471f-513f-b186-1aa85d5bf1a9"
+      ],
+      "build": "2026-11-02.1"
     }
   ],
   "note": "Every edition begins with a work long out of copyright, usually an original printing we can name. We set the text properly — collating the copies that survive, and clearing away what scanning and re-keying leave behind — so the book reads well on the page and sounds right read aloud. Where we mark a division inside a chapter, it is one the author announces himself. Every edition says on its own front matter what was done to its text. They are free to read and free to keep; our hope is that they reach people, grow their love for the Lord, and increase their joy in reading."
