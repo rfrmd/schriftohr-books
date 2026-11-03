@@ -34,6 +34,14 @@
     "sovereignty-of-god": [
       { "date": "2026-10-31", "build": "2026-10-31",
         "text": "The closing page, How These Books Are Made, is plainer and says truly how the spelling is handled." }
+    ],
+    "treasure-island": [
+      { "date": "2026-11-02", "build": "2026-11-02.1",
+        "text": "The songs and rhymes are set line by line, as Stevenson printed them, and the one footnote now sits at the end of its chapter instead of inside the story. Chapters are numbered so the voice reads them plainly, and every picture carries its caption in words. Stevenson's words and his sailors' speech are unchanged." }
+    ],
+    "swiss-family-robinson": [
+      { "date": "2026-11-02", "build": "2026-11-02.1",
+        "text": "The quotation marks are set properly, some older spellings are brought up to date so the book reads and sounds right (today, tomorrow, kayak), and Juno's epitaph is set as verse. Chapters are numbered so the voice reads them plainly. Kingston's translation is otherwise unchanged." }
     ]
   }
 }
