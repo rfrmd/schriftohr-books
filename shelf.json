@@ -121,12 +121,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/treasure-island/cover.jpg",
       "source": "Project Gutenberg ebook 120",
       "license": "Text and illustrations public domain",
-      "sha256": "7a8b58efa8c640b585fa9d22e7c8e2c6d6baf38127e7195c9b4ad59f34d6c2d4",
+      "sha256": "fa89db1c3521464509a2d626c1ec532fd54a36b3b62d85ab786d3e93e6ee6fdf",
       "identifiers": [
         "urn:uuid:602d0058-9ed6-4ba9-97d5-ac5c38cb81a3",
         "urn:uuid:2f8c41a7-9d63-4e15-b0c2-7ae5f9d31c48"
       ],
-      "build": "2026-11-03.1",
+      "build": "2026-11-03.2",
       "update": {
         "offer": true
       }
@@ -140,12 +140,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/swiss-family-robinson/cover.jpg",
       "source": "Project Gutenberg ebook 41659",
       "license": "Text public domain",
-      "sha256": "d2464636dd4c3d233377d6b7200b320e5d1fb90b27bf6977a30ca27ea6002b8d",
+      "sha256": "574227740f87903c1cf083a0651eda2f93cbc1c68016c7706c0d24c815f023b7",
       "identifiers": [
         "urn:uuid:fc78934f-3427-44c7-8c0d-4b5e36a6e742",
         "urn:uuid:9b41e7c3-52d8-44a6-8f10-3c6ad9e27b55"
       ],
-      "build": "2026-11-03.1",
+      "build": "2026-11-03.2",
       "update": {
         "offer": true
       }
@@ -159,12 +159,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-at-dark-cedars/cover.jpg",
       "source": "Project Gutenberg ebook 43582",
       "license": "Text public domain in the United States",
-      "sha256": "b639a99f7099a9503ad4b59475632ff88ba840ba3f23c2acc45c91404fedbc46",
+      "sha256": "b235b5f8e5f7db810bfe52d99f13ace70c275e9c230eaa19295425d3464b1a22",
       "identifiers": [
         "urn:uuid:bfedb2e9-c50b-400c-98c1-3d9ffed78eaf",
         "urn:uuid:6e29d4b8-13af-4c72-9d05-b8f1a63e07d2"
       ],
-      "build": "2026-11-03.1",
+      "build": "2026-11-03.2",
       "update": {
         "offer": true
       }
@@ -178,12 +178,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-fires/cover.jpg",
       "source": "Project Gutenberg ebook 43583, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "542379b93036d5edb0dea202fa950c8fbcc1c728504fe6396578e2a272092aec",
+      "sha256": "cd15d93181ac1de77da2906b7f3f95958c4788456757771f7bd582c85dd5cc27",
       "identifiers": [
         "urn:uuid:54cebf6c-1c75-4358-b24b-39b5a4a93b84",
         "urn:uuid:d1193b6f-9fc9-5fb4-be6f-85b67ae6fbaf"
       ],
-      "build": "2026-11-03.1",
+      "build": "2026-11-03.2",
       "update": {
         "offer": true
       }
@@ -197,12 +197,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-secret-band/cover.jpg",
       "source": "Project Gutenberg ebook 43584, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "403e00cd49938ae6656b79575b8b567c42164d3e00e24248b40fdb0a4b04d69e",
+      "sha256": "61fe9e0f84eb3e626f8a2f31d2eee45568053f5d352e2e08a97d38c69ad9abdd",
       "identifiers": [
         "urn:uuid:76da0346-a4f2-4c54-833c-97bd0d32833e",
         "urn:uuid:4fe1563c-8712-5a60-a87f-7403ab2e3e4c"
       ],
-      "build": "2026-11-03.1",
+      "build": "2026-11-03.2",
       "update": {
         "offer": true
       }
@@ -234,12 +234,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-goes-north/cover.jpg",
       "source": "Project Gutenberg ebook 56554, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "51a72c7d09ce41f79658a6409631aae46f77c9267be98f3b36cfa3e10ddfd5df",
+      "sha256": "c33cf173fe47f1950bf32135bc787b30c174aad00199807bb8d18a2d13f0e5dc",
       "identifiers": [
         "urn:uuid:7f3cbdcf-3bee-4c32-b0cd-ffc6bc804e1d",
         "urn:uuid:e2485c7a-9dff-5753-a34f-fef5ebeadcc1"
       ],
-      "build": "2026-11-03.1",
+      "build": "2026-11-03.2",
       "update": {
         "offer": true
       }
@@ -253,12 +253,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/sugar-creek-digs-for-treasure/cover.jpg",
       "source": "Project Gutenberg ebook 56553, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "3790e407a89c8a958a2ac80c0e237197d480114f9e3a4a5bc6bb61a5159fc879",
+      "sha256": "874b1ff359c9aac722d2181e3dc5818b604134b4c16cfd2d1e8300a3eebb49e5",
       "identifiers": [
         "urn:uuid:698974f4-4495-43e9-a844-664628ba2b23",
         "urn:uuid:82770595-a7cf-54a1-ba77-cfa8d4262593"
       ],
-      "build": "2026-11-03.1",
+      "build": "2026-11-03.2",
       "update": {
         "offer": true
       }
@@ -290,12 +290,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/green-tent-mystery/cover.jpg",
       "source": "Project Gutenberg ebook 58514",
       "license": "Text public domain in the United States",
-      "sha256": "8b838ffe1f7f1911b5ccba9897a301a79cfdc84200fb1a7689a2186698257de3",
+      "sha256": "113f130a73adb8008091ee9581a626865b0d3b34e0bfde94bcea0b061a37a52b",
       "identifiers": [
         "urn:uuid:adf0916f-ec03-4c80-9cbf-caccd7924dbd",
         "urn:uuid:c4d81f60-7b23-4e95-a1d6-58e0f2c74a19"
       ],
-      "build": "2026-11-03.1",
+      "build": "2026-11-03.2",
       "update": {
         "offer": true
       }
