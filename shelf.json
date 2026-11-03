@@ -68,12 +68,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/rare-jewel-of-christian-contentment/cover.jpg",
       "source": "EEBO-TCP A30598 (Wing B6103), the 1649 printing, keyed and released CC0",
       "license": "Text public domain; editorial matter © RFRMD Word Labs LLC",
-      "sha256": "f9423eba319005a55d1f3a62cb6a6fe716dcb5d33b349e3661ff69fe7587b5d2",
+      "sha256": "482883d355a4d732c34664665fc812111faac36a9af86ed234ce2d505754c1e0",
       "identifiers": [
         "urn:uuid:e26b733e-dadc-4cb5-b4dc-367132fb8e43",
         "urn:uuid:0a20a90c-e4a9-5fcb-9604-668d740cd837"
       ],
-      "build": "2026-11-03.1",
+      "build": "2026-11-03.2",
       "update": {
         "offer": true
       }
