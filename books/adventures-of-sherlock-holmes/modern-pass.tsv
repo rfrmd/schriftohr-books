@@ -2,11 +2,15 @@
 C01	home-centred	home-centered	us	home-centred -> home-centered
 C01	to an arm-chair, thre	to an armchair, thre	join	arm-chair -> armchair
 C01	ed by some one who h	ed by someone who h	us	some one -> someone
+C01	top-hat	top hat	join	top-hat -> top hat
 C01	to an arm-chair. “You	to an armchair. “You	join	arm-chair -> armchair
 C01	By-the-way	By the way	join	By-the-way -> By the way
+C01	inted note-paper which	inted notepaper which	join	note-paper -> notepaper
 C01	to-night	tonight	join	to-night -> tonight
 C01	 that arm-chair, doct	 that armchair, doct	join	arm-chair -> armchair
+C01	half-way	halfway	join	half-way -> halfway
 C01	n his arm-chair and c	n his armchair and c	join	arm-chair -> armchair
+C01	ivate note-paper.”	ivate notepaper.”	join	note-paper -> notepaper
 C01	travelled	traveled	us	travelled -> traveled
 C01	note-book	notebook	join	note-book -> notebook
 C01	 call to-morrow after	 call tomorrow after	join	to-morrow -> tomorrow
@@ -17,7 +21,9 @@ C01	f the sitting-room, paci	f the sitting room, paci	join	sitting-room -> sitti
 C01	co-operation	cooperation	join	co-operation -> cooperation
 C01	s the sitting-room windo	s the sitting room windo	join	sitting-room -> sitting room
 C01	equalled	equaled	us	equalled -> equaled
+C01	Sherlock Holmes’ succinct	Sherlock Holmes’s succinct	us	Sherlock Holmes’ succinct -> Sherlock Holmes’s succinct
 C01	any one	anyone	us	any one -> anyone
+C01	business man	businessman	join	business man -> businessman
 C01	s the centre of a 	s the center of a 	us	centre -> center
 C01	o the sitting-room. Ther	o the sitting room. Ther	join	sitting-room -> sitting room
 C01	intrusted	entrusted	us	intrusted -> entrusted
@@ -37,9 +43,12 @@ C01	good-morning	good morning	join	good-morning -> good morning
 C02	o his arm-chair and p	o his armchair and p	join	arm-chair -> armchair
 C02	finger-tips	fingertips	join	finger-tips -> fingertips
 C02	every-day	everyday	join	every-day -> everyday
+C02	none the less	nonetheless	join	none the less -> nonetheless
+C02	great-coat	greatcoat	join	great-coat -> greatcoat
+C02	top-hat	top hat	join	top-hat -> top hat
+C02	half-way	halfway	join	half-way -> halfway
 C02	employé	employee	us	employé -> employee
 C02	le to develope his p	le to develop his p	us	develope -> develop
-C02	’s no vice in hi	’s no vise in hi	us	vice -> vise
 C02	door-mat	doormat	join	door-mat -> doormat
 C02	pay-day	payday	join	pay-day -> payday
 C02	to-morrow	tomorrow	join	to-morrow -> tomorrow
@@ -48,7 +57,9 @@ C02	 that any one could	 that anyone could	us	any one -> anyone
 C02	good-day	good day	join	good-day -> good day
 C02	re of card-board hamme	re of cardboard hamme	join	card-board -> cardboard
 C02	white card-board about	white cardboard about	join	card-board -> cardboard
+C02	note-paper	notepaper	join	note-paper -> notepaper
 C02	knee-caps	kneecaps	join	knee-caps -> kneecaps
+C02	half-wages	half wages	join	half-wages -> half wages
 C02	To-day	Today	join	To-day -> Today
 C02	mantel-piece	mantelpiece	join	mantel-piece -> mantelpiece
 C02	to do to-day. My p	to do today. My p	join	to-day -> today
@@ -74,12 +85,14 @@ C03	story-teller	storyteller	join	story-teller -> storyteller
 C03	n the centre of th	n the center of th	us	centre -> center
 C03	fidgetted	fidgeted	us	fidgetted -> fidgeted
 C03	to an arm-chair, he l	to an armchair, he l	join	arm-chair -> armchair
+C03	merchant-man	merchantman	join	merchant-man -> merchantman
 C03	 much type-writing?”	 much typewriting?”	join	type-writing -> typewriting
 C03	every one	everyone	us	every one -> everyone
 C03	h his finger-tips toget	h his fingertips toget	join	finger-tips -> fingertips
 C03	“your step-father, sure	“your stepfather, sure	join	step-father -> stepfather
 C03	s, my step-father. I ca	s, my stepfather. I ca	join	step-father -> stepfather
 C03	ing a traveller in wi	ing a traveler in wi	us	traveller -> traveler
+C03	per cent	percent	join	per cent -> percent
 C03	rn at type-writing. It b	rn at typewriting. It b	join	type-writing -> typewriting
 C03	in the mean time	in the meantime	us	in the mean time -> in the meantime
 C03	 were type-written he al	 were typewritten he al	join	type-written -> typewritten
@@ -89,6 +102,8 @@ C03	 your step-father, retu	 your stepfather, retu	join	step-father -> stepfathe
 C03	could any one have 	could anyone have 	us	any one -> anyone
 C03	h his finger-tips still	h his fingertips still	join	finger-tips -> fingertips
 C03	counsellor	counselor	us	counsellor -> counselor
+C03	thumb-nails	thumbnails	join	thumb-nails -> thumbnails
+C03	boot-lace	bootlace	join	boot-lace -> bootlace
 C03	ear-rings	earrings	join	ear-rings -> earrings
 C03	t and type-writing, whic	t and typewriting, whic	join	type-writing -> typewriting
 C03	n the centre, bush	n the center, bush	us	centre -> center
@@ -116,6 +131,7 @@ C03	y was type-written, and 	y was typewritten, and 	join	type-written -> typewr
 C03	f the type-writer, and 	f the typewriter, and 	join	type-writer -> typewriter
 C03	employé	employee	us	employé -> employee
 C03	travellers	travelers	us	travellers -> travelers
+C03	Voila tout	Voilà tout	us	Voila tout -> Voilà tout
 C04	traveller	traveler	us	traveller -> traveler
 C04	travelling-cloak	traveling-cloak	us	travelling-cloak -> traveling-cloak
 C04	aving some one with 	aving someone with 	us	some one -> someone
@@ -127,6 +143,7 @@ C04	Farm-house	Farmhouse	join	Farm-house -> Farmhouse
 C04	, the game-keeper, lost	, the gamekeeper, lost	join	game-keeper -> gamekeeper
 C04	police-court	police court	join	police-court -> police court
 C04	rthys quarrelling near 	rthys quarreling near 	us	quarrelling -> quarreling
+C04	Wilful	Willful	us	Wilful -> Willful
 C04	oring land-owner, who 	oring landowner, who 	join	land-owner -> landowner
 C04	, the game-keeper, as h	, the gamekeeper, as h	join	game-keeper -> gamekeeper
 C04	signalled	signaled	us	signalled -> signaled
@@ -138,12 +155,15 @@ C04	 him. Good-bye, and 	 him. Goodbye, and 	join	Good-bye -> Goodbye
 C04	e him to-night?”	e him tonight?”	join	to-night -> tonight
 C04	 seen quarrelling he wa	 seen quarreling he wa	us	quarrelling -> quarreling
 C04	cudgelled	cudgeled	us	cudgelled -> cudgeled
+C04	worth while	worthwhile	join	worth while -> worthwhile
 C04	ed as every one else.	ed as everyone else.	us	every one -> everyone
 C04	until to-morrow.”	until tomorrow.”	join	to-morrow -> tomorrow
 C04	 with some one at th	 with someone at th	us	some one -> someone
 C04	t the some one could	t the someone could	us	some one -> someone
 C04	court-yard	courtyard	join	court-yard -> courtyard
+C04	wide-spread	widespread	join	wide-spread -> widespread
 C04	whip-cord	whipcord	join	whip-cord -> whipcord
+C04	détour	detour	us	détour -> detour
 C04	 rich land-owner’s dwe	 rich landowner’s dwe	join	land-owner -> landowner
 C04	sceptic	skeptic	us	sceptic -> skeptic
 C04	ings. Good-bye. I sh	ings. Goodbye. I sh	join	Good-bye -> Goodbye
@@ -155,16 +175,19 @@ C04	sitting-room	sitting room	join	sitting-room -> sitting room
 C04	death-beds	deathbeds	join	death-beds -> deathbeds
 C05	 come to-night? Some	 come tonight? Some	join	to-night -> tonight
 C05	new-comer	newcomer	join	new-comer -> newcomer
+C05	south-west	southwest	join	south-west -> southwest
 C05	key-hole	keyhole	join	key-hole -> keyhole
 C05	 room to-day, and 	 room today, and 	join	to-day -> today
 C05	note-books	notebooks	join	note-books -> notebooks
 C05	t the post-mark.	t the postmark.	join	post-mark -> postmark
+C05	wellnigh	well-nigh	us	wellnigh -> well-nigh
 C05	 “The post-mark is Lo	 “The postmark is Lo	join	post-mark -> postmark
 C05	h you to-night?”	h you tonight?”	join	to-night -> tonight
 C05	 only to-day that 	 only today that 	join	to-day -> today
 C05	To-morrow	Tomorrow	join	To-morrow -> Tomorrow
 C05	sea-weed	seaweed	join	sea-weed -> seaweed
 C05	finger-tips	fingertips	join	finger-tips -> fingertips
+C05	encyclopædias	encyclopedias	us	encyclopædias -> encyclopedias
 C05	to us to-night, we n	to us tonight, we n	join	to-night -> tonight
 C05	post-marks	postmarks	join	post-marks -> postmarks
 C05	 in fear of some one or somethin	 in fear of someone or somethin	us	some one -> someone
@@ -177,6 +200,8 @@ C05	river-side	riverside	join	river-side -> riverside
 C05	 long draught of wa	 long draft of wa	us	draught -> draft
 C05	ave a clew?”	ave a clue?”	us	clew -> clue
 C05	trade-mark	trademark	join	trade-mark -> trademark
+C06	pin-point	pinpoint	join	pin-point -> pinpoint
+C06	needle-work	needlework	join	needle-work -> needlework
 C06	light-house	lighthouse	join	light-house -> lighthouse
 C06	ft my arm-chair and c	ft my armchair and c	join	arm-chair -> armchair
 C06	heery sitting-room behin	heery sitting room behin	join	sitting-room -> sitting room
@@ -260,6 +285,7 @@ C07	strong-box	strongbox	join	strong-box -> strongbox
 C07	elves to-night. Well	elves tonight. Well	join	to-night -> tonight
 C07	finger-tips	fingertips	join	finger-tips -> fingertips
 C07	jail-bird	jailbird	join	jail-bird -> jailbird
+C08	wide-spread	widespread	join	wide-spread -> widespread
 C08	mantel-piece	mantelpiece	join	mantel-piece -> mantelpiece
 C08	n the sitting-room. Now,	n the sitting room. Now,	join	sitting-room -> sitting room
 C08	o the sitting-room. A la	o the sitting room. A la	join	sitting-room -> sitting room
@@ -269,6 +295,7 @@ C08	case-book	casebook	join	case-book -> casebook
 C08	th my step-father, who 	th my stepfather, who 	join	step-father -> stepfather
 C08	n, my step-father, seei	n, my stepfather, seei	join	step-father -> stepfather
 C08	re-marriage	remarriage	join	re-marriage -> remarriage
+C08	Major-general	Major-General	us	Major-general -> Major-General
 C08	r our step-father about	r our stepfather about	join	step-father -> stepfather
 C08	in my step-father’s cas	in my stepfather’s cas	join	step-father -> stepfather
 C08	police-court	police court	join	police-court -> police court
@@ -285,6 +312,8 @@ C08	 your step-father?”	 your stepfather?”	join	step-father -> stepfather
 C08	 town to-day upon 	 town today upon 	join	to-day -> today
 C08	ave a house-keeper now, 	ave a housekeeper now, 	join	house-keeper -> housekeeper
 C08	g his step-daughter’s mar	g his stepdaughter’s mar	join	step-daughter -> stepdaughter
+C08	cross bar	crossbar	join	cross bar -> crossbar
+C08	top-hat	top hat	join	top-hat -> top hat
 C08	d. My step-daughter has b	d. My stepdaughter has b	join	step-daughter -> stepdaughter
 C08	draught	draft	us	draught -> draft
 C08	tooth-brush	toothbrush	join	tooth-brush -> toothbrush
@@ -315,7 +344,7 @@ C08	m and sitting-room at th	m and sitting room at th	join	sitting-room -> sitti
 C08	f the sitting-rooms.	f the sitting rooms.	join	sitting-rooms -> sitting rooms
 C08	g you to-night. Ther	g you tonight. Ther	join	to-night -> tonight
 C08	sombre	somber	us	sombre -> somber
-C08	ike a vice upon 	ike a vise upon 	us	vice -> vise
+C08	like a vice	like a vise	us	like a vice -> like a vise
 C08	Some one	Someone	us	Some one -> Someone
 C08	 gray dressing-gown, his 	 gray dressing gown, his 	join	dressing-gown -> dressing gown
 C08	head-gear	headgear	join	head-gear -> headgear
@@ -323,6 +352,7 @@ C08	as we travelled back 	as we traveled back 	us	travelled -> traveled
 C08	y her step-father hasti	y her stepfather hasti	join	step-father -> stepfather
 C08	op of whip-cord were 	op of whipcord were 	join	whip-cord -> whipcord
 C09	down-stairs	downstairs	join	down-stairs -> downstairs
+C09	(3d floor)	(3rd floor)	us	(3d floor) -> (3rd floor)
 C09	caraffe	carafe	us	caraffe -> carafe
 C09	clews	clues	us	clews -> clues
 C09	ushed up-stairs, expl	ushed upstairs, expl	join	up-stairs -> upstairs
@@ -347,6 +377,7 @@ C09	us if any one were 	us if anyone were 	us	any one -> anyone
 C09	police-station	police station	join	police-station -> police station
 C09	r its centre.	r its center.	us	centre -> center
 C09	n the centre of th	n the center of th	us	centre -> center
+C09	wide-spread	widespread	join	wide-spread -> widespread
 C09	least clew as to	least clue as to	us	clew -> clue
 C09	window-sill	windowsill	join	window-sill -> windowsill
 C09	out-house	outhouse	join	out-house -> outhouse
@@ -379,6 +410,7 @@ C10	lowed any one to ac	lowed anyone to ac	us	any one -> anyone
 C10	 seen some one, then	 seen someone, then	us	some one -> someone
 C10	st be some one from 	st be someone from 	us	some one -> someone
 C10	travelled	traveled	us	travelled -> traveled
+C10	eight-pence	eightpence	join	eight-pence -> eightpence
 C11	m his arm-chair and s	m his armchair and s	join	arm-chair -> armchair
 C11	foot-paths	footpaths	join	foot-paths -> footpaths
 C11	dressing-gown	dressing gown	join	dressing-gown -> dressing gown
@@ -388,6 +420,7 @@ C11	sombre	somber	us	sombre -> somber
 C11	o the centre of th	o the center of th	us	centre -> center
 C11	co-operation	cooperation	join	co-operation -> cooperation
 C11	one’s self	oneself	us	one’s self -> oneself
+C11	imbedded	embedded	us	imbedded -> embedded
 C11	en it up-stairs and l	en it upstairs and l	join	up-stairs -> upstairs
 C11	of my dressing-room.	of my dressing room.	join	dressing-room -> dressing room
 C11	finger-tips	fingertips	join	finger-tips -> fingertips
@@ -427,6 +460,7 @@ C11	ndow, some one had b	ndow, someone had b	us	some one -> someone
 C12	t ten to-morrow, if I	t ten tomorrow, if I	join	to-morrow -> tomorrow
 C12	ll at half-past ten t	ll at half past ten t	join	half-past -> half past
 C12	It is half-past ten n	It is half past ten n	join	half-past -> half past
+C12	finger tips	fingertips	join	finger tips -> fingertips
 C12	ante-room	anteroom	join	ante-room -> anteroom
 C12	pocket-book	pocketbook	join	pocket-book -> pocketbook
 C12	off-hand	offhand	join	off-hand -> offhand
@@ -442,6 +476,7 @@ C12	r the country-side, away	r the countryside, away	join	country-side -> countr
 C12	tiful country-side.”	tiful countryside.”	join	country-side -> countryside
 C12	sitting-room	sitting room	join	sitting-room -> sitting room
 C12	step-mother	stepmother	join	step-mother -> stepmother
+C12	spoilt	spoiled	us	spoilt -> spoiled
 C12	n the drawing-room, whic	n the drawing room, whic	join	drawing-room -> drawing room
 C12	out-house	outhouse	join	out-house -> outhouse
 C12	wrapt	rapt	us	wrapt -> rapt

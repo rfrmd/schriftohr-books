@@ -8,8 +8,8 @@ above all one that looks like another word, stays in the text and is explained, 
 educated and shown the original text correctly." (tools/shifted_words.py, which put the modern word in the text,
 is the earlier treatment.)
 
-PERIOD.tsv rows: pattern (regex, whole words, matched without regard to case) TAB the word as the note names it TAB
-the gloss. The note reads "<i>word</i>: gloss". Letters, so a word note is told at a glance from a numbered
+PERIOD.tsv rows: pattern (regex, whole words, matched without regard to case) TAB the word as the note names it
+("*" names it as the text has it: ejaculated or ejaculation) TAB the gloss. The note reads "<i>word</i>: gloss". Letters, so a word note is told at a glance from a numbered
 footnote. Text only: never inside a tag, a heading or a note. The chapter's notes go in an endnotes section at its
 foot, which the voice steps over. In place; every other file is copied byte for byte.
 """
@@ -57,12 +57,17 @@ def main():
                     if not m:
                         continue
                     seen.add(word)
-                    notes.append((word, gloss))
+                    notes.append((m.group(0) if word == '*' else word, gloss))
                     s = s[:m.end()] + '\x01%d\x02' % (len(notes) - 1) + s[m.end():]
                 return html.escape(s, quote=False)
             return re.sub(r'(?<=>)[^<]+', textnode, p.group(0))
         # paragraphs only: headings, captions and figures keep their words bare
         main_ = re.sub(r'<p\b[^>]*>.*?</p>', paragraph, main_, flags=re.S)
+        # letters in reading order, whatever order the table found them in
+        order = [int(k) for k in re.findall('\x01(\\d+)\x02', main_)]
+        notes = [notes[k] for k in order]
+        rank = {k: i for i, k in enumerate(order)}
+        main_ = re.sub('\x01(\\d+)\x02', lambda m: '\x01%d\x02' % rank[int(m.group(1))], main_)
         main_ = re.sub('\x01(\\d+)\x02', lambda m: (
             f'<a epub:type="noteref" href="#pn{m.group(1)}" id="pr{m.group(1)}" class="nref pref">'
             f'<sup>{LET[int(m.group(1))]}</sup></a>'), main_)

@@ -149,7 +149,7 @@ us	(J|j)eweller	\1eweler	all
 us	wrapt	rapt	all
 us	Wrapt	Rapt	all
 us	(D|d)espatched	\1ispatched	all
-us	(V|v)ice	\1ise	all
+us	like a vice	like a vise	all
 us	(I|i)n the mean time	\1n the meantime	all
 us	(F|f)or ever	\1orever	all
 us	one’s self	oneself	all
@@ -158,3 +158,32 @@ join	(O|o)ut-door	\1utdoor	all
 join	(E|e)very-day	\1veryday	all
 us	home-centred	home-centered	all
 us	(T|t)ravelling-cloak	\1raveling-cloak	all
+join	(S|s)outh-west	\1outhwest	all
+join	(P|p)in-point	\1inpoint	all
+join	(N|n)eedle-work	\1eedlework	all
+join	(W|w)ide-spread	\1idespread	all
+join	(C|c)ross bar	\1rossbar	all
+us	Major-general	Major-General	all
+us	(W|w)ilful	\1illful	all
+join	(H|h)alf-way	\1alfway	all
+join	(G|g)reat-coat	\1reatcoat	all
+join	(N|n)one the less	\1onetheless	all
+join	per cent	percent	all
+join	(T|t)op-hat	\1op hat	all
+join	(H|h)alf-wages	\1alf wages	all
+join	(B|b)usiness man	\1usinessman	all
+join	(M|m)erchant-man	\1erchantman	all
+us	(D|d)étour	\1etour	all
+join	(T|t)humb-nails	\1humbnails	all
+join	(B|b)oot-lace	\1ootlace	all
+join	(W|w)orth while	\1orthwhile	all
+join	(N|n)ote-paper	\1otepaper	all
+us	imbedded	embedded	all
+join	(F|f)inger tips	\1ingertips	all
+us	(S|s)poilt	\1poiled	all
+join	(E|e)ight-pence	\1ightpence	all
+us	encyclopædias	encyclopedias	all
+us	Voila tout	Voilà tout	all
+us	wellnigh	well-nigh	all
+us	Sherlock Holmes’ succinct	Sherlock Holmes’s succinct	all
+us	\(3d floor\)	(3rd floor)	all

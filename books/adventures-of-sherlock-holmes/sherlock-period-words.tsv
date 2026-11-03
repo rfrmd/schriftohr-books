@@ -28,17 +28,17 @@ three gilt balls	three gilt balls	the pawnbroker’s sign.
 smasher	smasher	one who passes counterfeit coins.
 my bracelets	bracelets	handcuffs.
 napoleons	napoleon	a French gold coin of twenty francs.
-dark lantern|dark-lantern	dark-lantern	a lantern with a shutter to hide its light.
+dark lantern|dark-lantern	*	a lantern with a shutter to hide its light.
 boy in buttons	boy in buttons	a page boy in a buttoned uniform.
 typewriting	typewriting	typing; a “typewriter” could mean the typist as well as the machine.
 traveler(?= in wines)	traveler	a traveling salesman.
 quinsy	quinsy	an abscess in the throat beside the tonsil.
 four-wheeler	four-wheeler	a closed, four-wheeled cab.
 pince-nez	pince-nez	spectacles that clip onto the nose.
-breach of promise	breach of promise	a lawsuit for a broken engagement to marry.
+breach of promise	breach of promise	breaking a promise to marry, grounds for a lawsuit.
 
 assizes	assizes	the county criminal courts, held by judges on circuit.
-his deserts	deserts	what he deserved; not "desserts."
+his deserts	deserts	what he deserved; not “desserts.”
 (?:his|our|a) trap(?= in the yard| at the| to| should)|put up our trap	trap	a light two-wheeled carriage.
 Cooee	Cooee	a long, carrying call used in the Australian bush.
 a plaid	plaid	a woolen shawl or wrap, not the pattern.
@@ -63,7 +63,7 @@ commissionaire	commissionaire	a uniformed doorman and messenger, often an old so
 billycock	billycock	a bowler hat.
 gas laid on	gas laid on	gas lighting piped into the house.
 carbuncle	carbuncle	a deep-red gemstone, usually a garnet; this one is blue.
-inst\.	inst.	“instant”: of this month.
+inst\.	inst.	short for “instant,” this month.
 vitriol-throwing	vitriol-throwing	throwing sulfuric acid at someone.
 pink ’un	pink ’un	the Sporting Times, a racing paper printed on pink paper.
 knock you up	knock you up	wake you by knocking at your door.
@@ -93,7 +93,7 @@ Bradshaw	Bradshaw	the national railway timetable.
 Southerton’s preserves	preserves	private land kept for shooting game.
 (?:to wire|send you a wire|must wire)	wire	a telegram; to wire is to send one.
 personate	personate	to impersonate.
-ejaculat(?:ed|ion)	ejaculated	exclaimed suddenly; an ejaculation is a sudden cry.
+ejaculat(?:ed|ion)	*	cried out suddenly; an ejaculation is a sudden cry, nothing more.
 brain-fever	brain-fever	the period’s name for a severe fever thought to follow a shock.
 orange pips	pips	seeds.
 half a crown	half a crown	a silver coin worth two shillings and sixpence.
