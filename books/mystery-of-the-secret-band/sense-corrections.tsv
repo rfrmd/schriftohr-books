@@ -4,3 +4,6 @@ C09	for Mrs. Hillard,	for Mrs. Hilliard,	sense	name
 C10	daylight tomorrow, morning	daylight tomorrow morning	sense	stray comma
 C14	sensed that fact that	sensed the fact that	sense	sense
 C13	your—courts—what—is—can’t—her—island	your—justice—what—is—can’t—you—her—island	sense	the second words of the letter as printed in Chapter 12 (justice, and you from Will you write)
+# The code letter reworded so its hidden message decodes exactly (John, 2026-11-02: "Reword it"). As printed, the last sentence opened "Tonight", which does not give the "to" of "bring it to Baltimore".
+C12	<i>Tonight I am packing. Baltimore	<i>To think I am packing tonight! Baltimore	John 2026-11-02	the letter as Mary Louise first reads it
+C13	<i>Tonight I am packing. Baltimore	<i>To think I am packing tonight! Baltimore	John 2026-11-02	the letter as she studies it
