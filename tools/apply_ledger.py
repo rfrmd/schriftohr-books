@@ -3,7 +3,7 @@
 
     tools/apply_ledger.py BOOK.epub LEDGER.tsv
 
-Each ledger row is: chapter (C01, C02 ...) TAB was TAB now TAB evidence TAB note. Lines starting with # are
+Each ledger row is: chapter (C01, C02 ..., or a page's file name such as 01-edition-note) TAB was TAB now TAB evidence TAB note. Lines starting with # are
 comments; a literal \\n in `now` is a line break. `was` must occur exactly once in that chapter's XHTML, or the run
 stops before anything is written. Every other file in the EPUB is copied byte for byte.
 """
@@ -33,6 +33,8 @@ def main():
         base = n.rsplit('/', 1)[-1]
         if base[:1] == 'C' and base[1:3].isdigit() and base.endswith('.xhtml'):
             chapters[base[:3]] = n
+        elif base.endswith('.xhtml'):
+            chapters[base[:-6]] = n   # a front or back page, named by its file: 01-edition-note
     texts = {k: data[v].decode('utf-8') for k, v in chapters.items()}
     count = 0
     for n, ch, was, now in rows(ledger):
