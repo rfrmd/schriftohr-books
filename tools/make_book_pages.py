@@ -106,7 +106,11 @@ def replace_count(text, n):
     m = pat.search(text)
     if not m:
         return text, None
-    return pat.sub(f'<strong>{spell(n)} so far</strong>', text, count=1), m.group(1)
+    text = pat.sub(f'<strong>{spell(n)} so far</strong>', text, count=1)
+    # The link under the strip counts the shelf too: "See all fourteen, with their stories" stood beside
+    # "Seventeen so far" on 2026-11-03.
+    text = re.sub(r'(See all )[a-z-]+(, with their stories)', lambda k: k.group(1) + spell(n).lower() + k.group(2), text)
+    return text, m.group(1)
 
 
 def replace_block(text, klass, block):
