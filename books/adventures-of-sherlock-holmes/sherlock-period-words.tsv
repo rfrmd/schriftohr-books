@@ -29,7 +29,7 @@ smasher	smasher	one who passes counterfeit coins.
 my bracelets	bracelets	handcuffs.
 napoleons	napoleon	a French gold coin of twenty francs.
 dark lantern|dark-lantern	*	a lantern with a shutter to hide its light.
-boy in buttons	boy in buttons	a page boy in a buttoned uniform.
+boy in buttons	boy in buttons	a pageboy in a buttoned uniform.
 typewriting	typewriting	typing; a “typewriter” could mean the typist as well as the machine.
 traveler(?= in wines)	traveler	a traveling salesman.
 quinsy	quinsy	an abscess in the throat beside the tonsil.
@@ -93,7 +93,8 @@ Bradshaw	Bradshaw	the national railway timetable.
 Southerton’s preserves	preserves	private land kept for shooting game.
 (?:to wire|send you a wire|must wire)	wire	a telegram; to wire is to send one.
 personate	personate	to impersonate.
-ejaculat(?:ed|ion)	*	cried out suddenly; an ejaculation is a sudden cry, nothing more.
+ejaculated	ejaculated	cried out suddenly.
+ejaculation	ejaculation	a sudden cry.
 brain-fever	brain-fever	the period’s name for a severe fever thought to follow a shock.
 orange pips	pips	seeds.
 half a crown	half a crown	a silver coin worth two shillings and sixpence.
@@ -112,7 +113,7 @@ remarkable brilliant	brilliant	a cut diamond.
 affaire de cœur	affaire de cœur	French: an affair of the heart.
 outré	outré	bizarre, beyond the usual.
 pluck at my skirt	skirt	the tail of his coat.
-shag tobacco	shag	strong, coarse-cut tobacco.
+shag(?= tobacco)	shag	strong, coarse-cut tobacco.
 piece of chaff	chaff	teasing banter.
 Nous verrons	Nous verrons	French: we shall see.
 the swag	swag	the stolen goods.

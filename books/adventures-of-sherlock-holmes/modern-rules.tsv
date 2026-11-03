@@ -187,3 +187,7 @@ us	Voila tout	Voilà tout	all
 us	wellnigh	well-nigh	all
 us	Sherlock Holmes’ succinct	Sherlock Holmes’s succinct	all
 us	\(3d floor\)	(3rd floor)	all
+us	(F|f)orego	\1orgo	all
+join	Oh, so so\.	Oh, so-so.	all
+join	(T|t)ype-writist	\1ypewritist	all
+us	Street Post office	Street Post Office	all

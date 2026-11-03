@@ -106,6 +106,7 @@ C03	thumb-nails	thumbnails	join	thumb-nails -> thumbnails
 C03	boot-lace	bootlace	join	boot-lace -> bootlace
 C03	ear-rings	earrings	join	ear-rings -> earrings
 C03	t and type-writing, whic	t and typewriting, whic	join	type-writing -> typewriting
+C03	type-writist	typewritist	join	type-writist -> typewritist
 C03	n the centre, bush	n the center, bush	us	centre -> center
 C03	ly no clew in th	ly no clue in th	us	clew -> clue
 C03	y are type-written,” I r	y are typewritten,” I r	join	type-written -> typewritten
@@ -351,6 +352,7 @@ C08	head-gear	headgear	join	head-gear -> headgear
 C08	as we travelled back 	as we traveled back 	us	travelled -> traveled
 C08	y her step-father hasti	y her stepfather hasti	join	step-father -> stepfather
 C08	op of whip-cord were 	op of whipcord were 	join	whip-cord -> whipcord
+C09	forego	forgo	us	forego -> forgo
 C09	down-stairs	downstairs	join	down-stairs -> downstairs
 C09	(3d floor)	(3rd floor)	us	(3d floor) -> (3rd floor)
 C09	caraffe	carafe	us	caraffe -> carafe
@@ -445,6 +447,7 @@ C11	ker’s dressing-room was a	ker’s dressing room was a	join	dressing-room -
 C11	jeweller	jeweler	us	jeweller -> jeweler
 C11	to-morrow	tomorrow	join	to-morrow -> tomorrow
 C11	Good-bye	Goodbye	join	Good-bye -> Goodbye
+C11	Oh, so so.	Oh, so-so.	join	Oh, so so. -> Oh, so-so.
 C11	tened up-stairs, and 	tened upstairs, and 	join	up-stairs -> upstairs
 C11	o the arm-chair which	o the armchair which	join	arm-chair -> armchair
 C11	mould	mold	us	mould -> mold
@@ -495,3 +498,4 @@ C12	despatched	dispatched	us	despatched -> dispatched
 C12	 than any one else.	 than anyone else.	us	any one -> anyone
 C12	police-court	police court	join	police-court -> police court
 C12	e the centre of on	e the center of on	us	centre -> center
+C03	Street Post office	Street Post Office	us	Street Post office -> Street Post Office
