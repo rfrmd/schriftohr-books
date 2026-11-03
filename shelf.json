@@ -53,7 +53,10 @@
       "identifiers": [
         "urn:uuid:586f9ba1-c856-4b1b-b989-dcefa2af476e",
         "urn:uuid:e1529349-45d1-5689-9221-efa4f5156a4c"
-      ]
+      ],
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "rare-jewel-of-christian-contentment",
@@ -85,7 +88,10 @@
       "identifiers": [
         "urn:uuid:ca0d1fe4-c4d0-4dae-84a0-8f74f5113407",
         "urn:uuid:bf0b2d9d-13ef-5c8c-9b69-3c16a6a611c0"
-      ]
+      ],
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "sovereignty-of-god",
@@ -98,7 +104,10 @@
       "identifiers": [
         "urn:uuid:7be5344e-690c-4bec-bcb3-977c979b373d",
         "urn:uuid:3df30cd9-49e1-5077-b375-bd88c9074495"
-      ]
+      ],
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "treasure-island",
@@ -151,7 +160,10 @@
       "identifiers": [
         "urn:uuid:bfedb2e9-c50b-400c-98c1-3d9ffed78eaf",
         "urn:uuid:6e29d4b8-13af-4c72-9d05-b8f1a63e07d2"
-      ]
+      ],
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "mystery-of-the-fires",
@@ -166,7 +178,10 @@
       "identifiers": [
         "urn:uuid:54cebf6c-1c75-4358-b24b-39b5a4a93b84",
         "urn:uuid:d1193b6f-9fc9-5fb4-be6f-85b67ae6fbaf"
-      ]
+      ],
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "mystery-of-the-secret-band",
@@ -181,7 +196,10 @@
       "identifiers": [
         "urn:uuid:76da0346-a4f2-4c54-833c-97bd0d32833e",
         "urn:uuid:4fe1563c-8712-5a60-a87f-7403ab2e3e4c"
-      ]
+      ],
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "sugar-creek-goes-north",
@@ -196,7 +214,10 @@
       "identifiers": [
         "urn:uuid:7f3cbdcf-3bee-4c32-b0cd-ffc6bc804e1d",
         "urn:uuid:e2485c7a-9dff-5753-a34f-fef5ebeadcc1"
-      ]
+      ],
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "sugar-creek-digs-for-treasure",
@@ -211,7 +232,10 @@
       "identifiers": [
         "urn:uuid:698974f4-4495-43e9-a844-664628ba2b23",
         "urn:uuid:82770595-a7cf-54a1-ba77-cfa8d4262593"
-      ]
+      ],
+      "update": {
+        "offer": true
+      }
     },
     {
       "id": "green-tent-mystery",
@@ -226,7 +250,10 @@
       "identifiers": [
         "urn:uuid:adf0916f-ec03-4c80-9cbf-caccd7924dbd",
         "urn:uuid:c4d81f60-7b23-4e95-a1d6-58e0f2c74a19"
-      ]
+      ],
+      "update": {
+        "offer": true
+      }
     }
   ],
   "note": "Every edition begins with a work long out of copyright, usually an original printing we can name. We set the text properly — collating the copies that survive, and clearing away what scanning and re-keying leave behind — so the book reads well on the page and sounds right read aloud. Where we mark a division inside a chapter, it is one the author announces himself. Every edition says on its own front matter what was done to its text. They are free to read and free to keep; our hope is that they reach people, grow their love for the Lord, and increase their joy in reading."
