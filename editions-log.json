@@ -3,6 +3,14 @@
   "about": "The publisher's log on rfrmdwordlabs.com/editions/log (rfrmdwordlabs-web/tools/make_editions_log.py). One entry per update a reader is offered, newest first, keyed by the shelf id. Reader-facing: what is better, in plain words, no dashes.",
   "began": "2026-10-31",
   "books": {
+    "mystery-of-the-secret-band": [
+      { "date": "2026-11-02", "build": "2026-11-02.1",
+        "text": "Read against the 1935 Saalfield printing. The list of the hotel's rooms and guests that Mary Louise copies into her notebook in Chapter 3 is back; it had dropped out of the earlier copy. No wrong words were found." }
+    ],
+    "green-tent-mystery": [
+      { "date": "2026-11-02", "build": "2026-11-02.1",
+        "text": "Three short verses in Chapter 10 are back, Charlotte Ann's bedtime prayer among them; they had dropped out of the earlier copy." }
+    ],
     "pilgrims-progress": [
       { "date": "2026-11-02", "build": "2026-11-02.1",
         "text": "Paragraphs and punctuation now follow George Offor's edition of 1855: 37 paragraphs divided where he divided them, one joined, three breaks between stanzas restored, and 22 marks of punctuation corrected. Bunyan's words are unchanged." },

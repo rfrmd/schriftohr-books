@@ -192,11 +192,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/mystery-of-the-secret-band/cover.jpg",
       "source": "Project Gutenberg ebook 43584, retrieved via OpenChapter.io",
       "license": "Text public domain in the United States",
-      "sha256": "5b0d56f971aaa0e4bf1f204931b3bc2bfc55999f97754c6ae543bc4e46cd7381",
+      "sha256": "d61203e8d81c796ea0e66a3ef4a37f286217cb74770e972061edd10ef26e470f",
       "identifiers": [
         "urn:uuid:76da0346-a4f2-4c54-833c-97bd0d32833e",
         "urn:uuid:4fe1563c-8712-5a60-a87f-7403ab2e3e4c"
       ],
+      "build": "2026-11-02.1",
       "update": {
         "offer": true
       }
@@ -246,11 +247,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/green-tent-mystery/cover.jpg",
       "source": "Project Gutenberg ebook 58514",
       "license": "Text public domain in the United States",
-      "sha256": "7293bd3c767583bac5f4b18955c0ccc09fec63a815cb993d1695026be05b8029",
+      "sha256": "3a3cfd1e97721d0e819c5b1b077fd68dc89c219001a01c1e72134f19e31b1a13",
       "identifiers": [
         "urn:uuid:adf0916f-ec03-4c80-9cbf-caccd7924dbd",
         "urn:uuid:c4d81f60-7b23-4e95-a1d6-58e0f2c74a19"
       ],
+      "build": "2026-11-02.1",
       "update": {
         "offer": true
       }
