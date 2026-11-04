@@ -50,8 +50,8 @@ def split_proof(blurb):
 
 SITES = [
     # (path, css class, card shape). No em dashes in reader-facing copy.
-    (DEV / 'rfrmdwordlabs-web/books.html', 'card bk', 'byline'),
-    (DEV / 'schriftohr-web/books.html', 'src bk', 'inline'),
+    (DEV / 'rfrmdwordlabs-web/books.html', 'card bk', 'byline', 'https://schriftohr.com/editions/'),
+    (DEV / 'schriftohr-web/books.html', 'src bk', 'inline', 'editions/'),
 ]
 
 
@@ -66,14 +66,16 @@ def originals(books):
     return {b['listed_with']: b for b in books if b.get('listed_with')}
 
 
-def cards(books, klass, shape, indent='    '):
+def cards(books, klass, shape, indent='    ', pages=''):
+    """pages: where this site finds the edition pages. The card is the way in (John, 2026-11-04); the page has
+    the download."""
     out = []
     orig = originals(books)
     for b in on_the_shelf(books):
         # ⚠️ A proofing copy says so on the page as well as on its cover. A
         # reader downloading from the site never sees the shelf entry.
         desc, proof = split_proof(b.get('blurb', ''))
-        tag = 'Free EPUB · proofing copy' if proof else 'Free EPUB'
+        tag = 'Free · proofing copy' if proof else 'Free'
         title, author = html.escape(b['title']), html.escape(b['author'])
         if shape == 'byline':
             lines = [f'<b>{title} <span class="host">{tag}</span></b>',
@@ -85,7 +87,7 @@ def cards(books, klass, shape, indent='    '):
                      f'<span class="d">{html.escape(desc)}'
                      + (f' {PROOF}' if proof else '') + '</span>']
         card = (
-            f'{indent}<a class="{klass}" href="{html.escape(b["epub"])}" rel="noopener">\n'
+            f'{indent}<a class="{klass}" href="{pages}{b["id"]}.html">\n'
             f'{indent}  <img class="cover" src="{html.escape(b["cover"])}" alt="" '
             f'loading="lazy" width="1074" height="1600">\n'
             f'{indent}  <span class="t">\n'
@@ -95,7 +97,7 @@ def cards(books, klass, shape, indent='    '):
         o = orig.get(b['id'])
         if o:   # a link cannot sit inside a link, so the card and its corner link share a wrapper
             card = (f'{indent}<div class="bkwrap">\n{card}\n'
-                    f'{indent}<a class="orig" href="{html.escape(o["epub"])}" rel="noopener">Original edition</a>\n'
+                    f'{indent}<a class="orig" href="{pages}{o["id"]}.html">Original edition</a>\n'
                     f'{indent}</div>')
         out.append(card)
     return '\n'.join(out)
@@ -283,11 +285,11 @@ def main():
                   if not args.check:
                       front.write_text(new, encoding='utf-8')
 
-    for path, klass, shape in SITES:
+    for path, klass, shape, pages in SITES:
         if not path.exists():
             print(f'  !! {path} is not here'); continue
         text = strip_live(path.read_text(encoding='utf-8'))
-        block = cards(books, klass, shape)
+        block = cards(books, klass, shape, pages=pages)
         new, had = replace_block(text, klass, block)
         if new is not None:
             new, _ = replace_count(new, listed)
