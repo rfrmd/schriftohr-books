@@ -28,11 +28,12 @@ BOX = {
     'green-tent-mystery':            ((364, 1439, 712, 1485), BI, 18),
     'mystery-at-dark-cedars':        ((384, 628, 692, 660), BD, 18),
     'swiss-family-robinson':         ((398, 738, 738, 778), BI, 18),
+    'treasure-island':               ((325, 730, 755, 772), BD, 18),
     'swiss-subtitle':                ((190, 496, 892, 538), BI, 18),
 }
 
 # how much wider than the old words the new may stand before they meet the cover's ornaments
-ROOM = {'swiss-family-robinson': 1.12, 'shenanigans-at-sugar-creek': 1.03, 'north-woods-manhunt': 1.2, 'watermelon-mystery': 1.2,
+ROOM = {'treasure-island': 1.12, 'swiss-family-robinson': 1.12, 'shenanigans-at-sugar-creek': 1.03, 'north-woods-manhunt': 1.2, 'watermelon-mystery': 1.2,
         'mystery-of-the-secret-band': 1.12, 'green-tent-mystery': 1.15, 'mystery-at-dark-cedars': 1.02,
         'sugar-creek-digs-for-treasure': 1.02}
 
