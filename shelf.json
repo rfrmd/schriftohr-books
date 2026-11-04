@@ -140,12 +140,12 @@
       "cover": "https://rfrmd.github.io/schriftohr-books/books/swiss-family-robinson/cover.jpg",
       "source": "Project Gutenberg ebook 41659",
       "license": "Text public domain",
-      "sha256": "574227740f87903c1cf083a0651eda2f93cbc1c68016c7706c0d24c815f023b7",
+      "sha256": "5582a6bd9e38afc8788e787aab461f64e0109f42c6ae0b67fb737c3223460a9d",
       "identifiers": [
         "urn:uuid:fc78934f-3427-44c7-8c0d-4b5e36a6e742",
         "urn:uuid:9b41e7c3-52d8-44a6-8f10-3c6ad9e27b55"
       ],
-      "build": "2026-11-03.2",
+      "build": "2026-11-03.3",
       "update": {
         "offer": true
       }
