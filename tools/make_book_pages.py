@@ -55,9 +55,21 @@ SITES = [
 ]
 
 
+def on_the_shelf(books):
+    """The cards a reader sees: a book with a Family Edition is one card (John, 2026-11-04). Its faithful copy,
+    marked listed_with, stays in shelf.json so the apps keep offering it and its readers keep their updates; on
+    the sites it is the "Original edition" link on the Family Edition's card."""
+    return [b for b in books if not b.get('listed_with')]
+
+
+def originals(books):
+    return {b['listed_with']: b for b in books if b.get('listed_with')}
+
+
 def cards(books, klass, shape, indent='    '):
     out = []
-    for b in books:
+    orig = originals(books)
+    for b in on_the_shelf(books):
         # ⚠️ A proofing copy says so on the page as well as on its cover. A
         # reader downloading from the site never sees the shelf entry.
         desc, proof = split_proof(b.get('blurb', ''))
@@ -72,7 +84,7 @@ def cards(books, klass, shape, indent='    '):
             lines = [f'<b>{title} · {author} <span class="host">{tag}</span></b>',
                      f'<span class="d">{html.escape(desc)}'
                      + (f' {PROOF}' if proof else '') + '</span>']
-        out.append(
+        card = (
             f'{indent}<a class="{klass}" href="{html.escape(b["epub"])}" rel="noopener">\n'
             f'{indent}  <img class="cover" src="{html.escape(b["cover"])}" alt="" '
             f'loading="lazy" width="1074" height="1600">\n'
@@ -80,6 +92,12 @@ def cards(books, klass, shape, indent='    '):
             + ''.join(f'{indent}    {l}\n' for l in lines) +
             f'{indent}  </span>\n'
             f'{indent}</a>')
+        o = orig.get(b['id'])
+        if o:   # a link cannot sit inside a link, so the card and its corner link share a wrapper
+            card = (f'{indent}<div class="bkwrap">\n{card}\n'
+                    f'{indent}<a class="orig" href="{html.escape(o["epub"])}" rel="noopener">Original edition</a>\n'
+                    f'{indent}</div>')
+        out.append(card)
     return '\n'.join(out)
 
 
@@ -88,7 +106,7 @@ def shelf_strip(books, href='books.html', base_indent='        '):
     return '\n'.join(
         f'{base_indent}<a href="{href}"><img src="{html.escape(b["cover"])}" '
         f'alt="{html.escape(b["title"])}" loading="lazy" width="1074" height="1600"></a>'
-        for b in books)
+        for b in on_the_shelf(books))
 
 
 def replace_strip(text, block):
@@ -115,14 +133,15 @@ def replace_count(text, n):
 
 def replace_block(text, klass, block):
     """Swap the run of cards, leaving every word around them alone."""
-    pattern = re.escape(f'<a class="{klass}"')
+    pattern = r'(?:<div class="bkwrap">\s*)?' + re.escape(f'<a class="{klass}"')
     first = re.search(pattern, text)
     if not first:
         return None, 0
     # ⚠️ The run is the cards that follow one another, each to its own </a>, and nothing past them. It used to
     # run to the last </a> before a </section>; the v2.0.0 page has no </section>, so the run reached into the
     # footer and every rebuild since 2026-10-14 cut the grid's closing tags and the footer's links (2026-11-02).
-    card = re.compile(r'\s*<a class="' + re.escape(klass) + r'"[^>]*>.*?</a>', re.S)
+    card = re.compile(r'\s*(?:<div class="bkwrap">\s*)?<a class="' + re.escape(klass) + r'"[^>]*>.*?</a>'
+                      r'(?:\s*<a class="orig"[^>]*>.*?</a>\s*</div>)?', re.S)
     end, had = first.start(), 0
     while True:
         m = card.match(text, end)
@@ -234,7 +253,8 @@ def main():
     args = ap.parse_args()
 
     books = json.loads(SHELF.read_text())['books']
-    print(f'{len(books)} editions on the shelf')
+    listed = len(on_the_shelf(books))
+    print(f'{listed} books on the shelf, {len(books)} files')
 
     stale = 0
 
@@ -250,13 +270,13 @@ def main():
           if new is None:
               print(f'  !! no shelf strip in {front.name}')
           else:
-              new, was = replace_count(new, len(books))
+              new, was = replace_count(new, listed)
               same = new == text
               if args.live:
                   new = inject_live(new, 'card bk', 'title')
               same = new == text
-              print(f'  {front.parent.name}/{front.name}: strip {had} -> {len(books)} '
-                    f'cover(s); count {was!r} -> {spell(len(books))!r}'
+              print(f'  {front.parent.name}/{front.name}: strip {had} -> {listed} '
+                    f'cover(s); count {was!r} -> {spell(listed)!r}'
                     f'{"  (already current)" if same else ""}')
               if not same:
                   stale += 1
@@ -270,14 +290,14 @@ def main():
         block = cards(books, klass, shape)
         new, had = replace_block(text, klass, block)
         if new is not None:
-            new, _ = replace_count(new, len(books))
+            new, _ = replace_count(new, listed)
         if new is None:
             print(f'  !! no "{klass}" cards found in {path.name} — not touching it')
             continue
         if args.live:
             new = inject_live(new, klass, 'both' if 'src' in klass else 'title')
         same = new == text
-        print(f'  {path.parent.name}/{path.name}: {had} card(s) -> {len(books)}'
+        print(f'  {path.parent.name}/{path.name}: {had} card(s) -> {listed}'
               f'{"  (already current)" if same else ""}')
         if not same:
             stale += 1

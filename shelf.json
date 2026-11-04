@@ -129,7 +129,8 @@
       "build": "2026-11-04.2",
       "update": {
         "offer": true
-      }
+      },
+      "listed_with": "treasure-island-family-edition"
     },
     {
       "id": "treasure-island-family-edition",
@@ -164,7 +165,8 @@
       "build": "2026-11-04.2",
       "update": {
         "offer": true
-      }
+      },
+      "listed_with": "swiss-family-robinson-family-edition"
     },
     {
       "id": "swiss-family-robinson-family-edition",
