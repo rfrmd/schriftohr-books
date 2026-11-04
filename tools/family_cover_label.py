@@ -85,7 +85,8 @@ def main():
         size = 100 * (wx2 - wx1) / probe.getlength('A Translation from the Original German by Wyss')
     f = ImageFont.truetype(face, round(size * S), index=idx)
     H, W = im.shape[:2]
-    x = ((wx1 + wx2) / 2) * S - f.getlength(text) / 2
+    centre = 537 if book == 'swiss-family-robinson' else (wx1 + wx2) / 2   # the old words stood right of the author's name
+    x = centre * S - f.getlength(text) / 2
     layer = Image.new('L', (W * S, H * S), 0)
     ImageDraw.Draw(layer).text((x, base * S), text, font=f, fill=255, anchor='ls')
     letters = layer.resize((W, H), Image.LANCZOS)
