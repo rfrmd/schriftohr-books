@@ -68,12 +68,20 @@ def main():
     ids = {b['id'] for b in shelf['books']}
     if offer - ids:
         sys.exit(f'!! not on the shelf: {sorted(offer - ids)}')
+    # A Family Edition's folder once held a plain copy of its faithful book (11-04), so history alone would give it
+    # the other book's identifier, and the app would take one book for the other. Another book's own never carries.
+    currents = {b['id']: ident((ROOT / b['epub'][len(PREFIX):]).read_bytes()) for b in shelf['books']}
     for b in shelf['books']:
         rel = b['epub'][len(PREFIX):]
         data = (ROOT / rel).read_bytes()
         sha = hashlib.sha256(data).hexdigest()
         current = ident(data)
-        ids_all = [current] + [i for i in history(rel) if i != current]
+        others = {v for k, v in currents.items() if k != b['id']}
+        past = history(rel)
+        for i in past:
+            if i in others:
+                print(f'{b["id"]}: {i} in this folder\'s history belongs to another book; left out')
+        ids_all = [current] + [i for i in past if i != current and i not in others]
         if sha not in published:
             # the shelf names a fingerprint only once the site knows it (section 1)
             if b['id'] in offer:
