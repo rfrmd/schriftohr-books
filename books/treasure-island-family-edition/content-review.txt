@@ -1,0 +1,228 @@
+TREASURE ISLAND (Stevenson, 1883), CONTENT REVIEW, 2026-11-03
+Read in full, all 34 chapters. Nothing has been changed.
+NOW is copied character for character from our current Edition text; each NOW occurs once in its chapter.
+¶ = paragraph number within the chapter, the chapter heading not counted (letter lines in C07 count as paragraphs).
+SOFTEN / CUT / NOTE / LEAVE as in the summary file.
+
+------------------------------------------------------------
+SUMMARY
+------------------------------------------------------------
+A. Recommended: 18 changes
+   Race and nation 5 (Silver's wife twice, the harbour crowd, "a white man like myself", "a rank Irelander")
+   Teaching 4 (the dead "watching us", "rest his soul", dying in duty as the ground of hope, "a kind of fate")
+   Oaths on your list 9 ("by gum" x3, "in heaven's name", "in the name of heaven", "the Lord help you", "heaven knows" x2, "by Jupiter")
+B. Optional, your call: 21 small changes (confound, deuce, "Dutchman", "burn you", "bless your stars", two violent details, and the like)
+C. NOTE, no change: 6
+D. LEAVE: the pirate oaths that do not name God, the drinking, and the Scripture used rightly
+
+The five I would do first:
+1. C07 ¶21 and C34 ¶26: Silver's wife as "a woman of color" (the bachelors' joke turns on her race) and "his old Negress". Same woman; change both.
+2. C34 ¶20: the harbour scene, "Negroes and Mexican Indians and half-bloods ... (especially the blacks)". Name no race.
+3. C26 ¶5: Jim tells Hands the dead O'Brien "may be watching us". The dead do not watch the living (WCF 32.1). One clause.
+4. C18 ¶21: the captain over Redruth's body, "no fear for a hand that's been shot down in his duty". Hope grounded in dying at one's post; Stevenson himself adds "It mayn't be good divinity".
+5. C14 ¶22: honest Tom's "Then rest his soul for a true seaman!", a prayer for the dead (WCF 21.4).
+
+The story's own lessons are kept throughout: drink kills the captain, Mr. Arrow and Flint ("Drink and the devil had done for the rest");
+Hands dies by his creed "Him as strikes first ... dead men don't bite" moments after saying it; Jim's two desertions are named as folly and
+he weeps over them; Jim keeps his word to Silver when the doctor bids him run; the pirates' fear of "sperrits" is shown up as Ben Gunn's voice.
+
+About This Edition: the full note fits (there are racial changes), plus the theology sentence:
+"A few phrases about salvation and prayer now follow historic Christian teaching. Salvation is God's work from first to last."
+
+------------------------------------------------------------
+A. RECOMMENDED
+------------------------------------------------------------
+
+RACE AND NATION
+
+C07 ¶21 (the squire's letter)  RACE  SOFTEN
+  NOW: He leaves his wife to manage the inn; and as she is a woman of color, a pair of old bachelors like you and I may be excused for guessing
+  NEW: He leaves his wife to manage the inn; and a pair of old bachelors like you and I may be excused for guessing
+  (The rest of the sentence stands: "...that it is the wife, quite as much as the health, that sends him back to roving." The joke now turns on marriage, not race.)
+
+C34 ¶26  RACE  SOFTEN  (the same woman as C07; change together)
+  NOW: I dare say he met his old Negress, and perhaps still lives in comfort with her and Captain Flint.
+  NEW: I dare say he met his old wife, and perhaps still lives in comfort with her and Captain Flint.
+
+C34 ¶20  RACE  SOFTEN  (even-handed: no race named for anyone in the boats)
+  NOW: surrounded by shore boats full of Negroes and Mexican Indians and half-bloods selling fruits and vegetables and offering to dive for bits of money. The sight of so many good-humoured faces (especially the blacks), the taste
+  NEW: surrounded by shore boats full of the people of the place selling fruits and vegetables and offering to dive for bits of money. The sight of so many good-humoured faces, the taste
+
+C15 ¶9  RACE  SOFTEN
+  NOW: I could now see that he was a white man like myself and that his features were even pleasing.
+  NEW: I could now see that he was a man like myself and that his features were even pleasing.
+  (Jim's relief that the "creature of the woods" is a man stays; the next sentence, his skin burnt dark by the sun, stays.)
+
+C25 ¶31  NATION (a sneer at the Irish)  SOFTEN
+  NOW: “This man,” he began, nodding feebly at the corpse “—O’Brien were his name, a rank Irelander—this man and me
+  NEW: “This man,” he began, nodding feebly at the corpse “—O’Brien were his name—this man and me
+
+TEACHING
+
+C26 ¶5  THE DEAD (WCF 32.1)  SOFTEN
+  NOW: O’Brien there is in another world, and may be watching us.
+  NEW: O’Brien there is in another world, and has his account to give.
+  (Jim's first half, "You can kill the body, Mr. Hands, but not the spirit", is Matthew 10:28 and stays. Hands's answer still fits: "appears as if killing parties was a waste of time.")
+
+C18 ¶21  SALVATION BY DUTY  SOFTEN
+  NOW: All’s well with him; no fear for a hand that’s been shot down in his duty to captain and owner. It mayn’t be good divinity, but it’s a fact.
+  NEW: He went down in his duty to captain and owner, and no man can do better than that. The rest we leave with his Maker.
+  (Redruth's "so be it, amen" and his asking for a prayer to be read stay, and are the better comfort.)
+  Alternative: LEAVE and NOTE, since the captain himself flags it as not good divinity.
+
+C14 ¶22  PRAYER FOR THE DEAD (WCF 21.4)  SOFTEN
+  NOW: Then rest his soul for a true seaman!
+  NEW: Then there goes a true seaman!
+
+C30 ¶46  FATE  SOFTEN  (the doctor, the book's soundest voice)
+  NOW: There is a kind of fate in this,
+  NEW: There is the hand of Providence in this,
+  (Silver's "in spite o' fate and fortune", C31 ¶1, is a villain's speech: LEAVE.)
+
+OATHS ON YOUR LIST
+
+"By gum" is a minced "by God", the class of Gosh and Gee.
+C28 ¶45  SOFTEN
+  NOW: “Aye, by gum, I do!” he answered.
+  NEW: “Aye, that I do!” he answered.
+C29 ¶27  SOFTEN
+  NOW: Ah! By gum, if you could understand how bad it’s bungled
+  NEW: Ah! If you could understand how bad it’s bungled
+C31 ¶35  SOFTEN
+  NOW: “No, by gum, it don’t,” agreed Silver
+  NEW: “No, that it don’t,” agreed Silver
+
+Heaven in God's place, the class of "Thank heaven":
+C14 ¶19 (honest Tom)  SOFTEN
+  NOW: But in heaven’s name, tell me, what was that?
+  NEW: But tell me, man, what was that?
+C20 ¶41 (Captain Smollett)  SOFTEN
+  NOW: for in the name of heaven, I’ll put a bullet in your back when next I meet you.
+  NEW: for, mark me, I’ll put a bullet in your back when next I meet you.
+C29 ¶43 (Jim narrating)  SOFTEN
+  NOW: and heaven knows I had matter enough for thought
+  NEW: and I had matter enough for thought
+C30 ¶38 (the doctor)  SOFTEN
+  NOW: Heaven knows, I cannot find it in my heart to blame you
+  NEW: Indeed, I cannot find it in my heart to blame you
+
+The Lord's name as a by-word, the class of "Good Lord":
+C20 ¶14 (Captain Smollett)  SOFTEN
+  NOW: If there’s any treachery, it’ll be on your side, and the Lord help you.
+  NEW: If there’s any treachery, it’ll be on your side, and so much the worse for you.
+
+An oath by a heathen god:
+C30 ¶46 (the doctor)  SOFTEN
+  NOW: Oh, by Jupiter, and talking of Ben Gunn!
+  NEW: Oh, and talking of Ben Gunn!
+
+------------------------------------------------------------
+B. OPTIONAL (smaller; do all, some, or none)
+------------------------------------------------------------
+
+"Confound" (a minced "damn"):
+C06 ¶26  NOW: But you are so confoundedly hot-headed and exclamatory
+         NEW: But you are so uncommonly hot-headed and exclamatory
+C08 ¶32  NOW: Here I have this confounded son of a Dutchman sitting in my own house
+         NEW: Here I have this black-hearted swab sitting in my own house
+         (also takes out "son of a Dutchman")
+C28 ¶18  NOW: I don’t know where he is, confound him,’ says he, ‘nor I don’t much care.
+         NEW: I don’t know where he is,’ says he, ‘nor I don’t much care.
+
+"The deuce" (the devil):
+C07 ¶12  NOW: I had the worry of the deuce itself to find so much as half a dozen
+         NEW: I had a world of worry to find so much as half a dozen
+C09 ¶41  NOW: Had Livesey not been here I should have seen you to the deuce.
+         NEW: Had Livesey not been here I should have seen you off the ship.
+C30 ¶20  NOW: you’ll all have the deuce to pay before you get that malaria out of your systems
+         NEW: you’ll all have a heavy reckoning to pay before you get that malaria out of your systems
+
+Nations as insults:
+C11 ¶21  NOW: If I was sure of you all, sons of double Dutchmen, I’d have
+         NEW: If I was sure of you all, you lubbers, I’d have
+C07 ¶12  NOW: in case of natives, buccaneers, or the odious French
+         NEW: in case of natives, buccaneers, or the French
+         (the squire's bluster; leaving it is defensible)
+
+Cursing:
+C29 ¶32  NOW: with your interference, burn you! But not you
+         NEW: with your interference! But not you
+C25 ¶26  NOW: handed down their cursed black flag
+         NEW: handed down their wicked black flag
+C25 ¶33  NOW: Why, I ain’t sich an infernal lubber after all.
+         NEW: Why, I ain’t sich a lubber after all.
+
+Luck in the stars:
+C15 ¶23  NOW: you’ll bless your stars, you will, you was the first that found me!
+         NEW: you’ll be glad, you will, you was the first that found me!
+C32 ¶6   NOW: you praise your stars he’s dead
+         NEW: you be thankful he’s dead
+
+God's name in an honest man's mouth (sincere, not vain; change only if you want the book clear of it):
+C14 ¶14  NOW: As sure as God sees me, I’d sooner lose my hand.
+         NEW: As sure as I stand here, I’d sooner lose my hand.
+C06 ¶36  NOW: God help the poor souls that manned her—coral long ago.
+         NEW: Pity the poor souls that manned her—coral long ago.
+         (the souls are long dead, so it is a prayer for the dead, like C14 ¶22)
+C34 ¶6   NOW: “Heaven forgive them,” said the doctor
+         NEW: “God forgive them,” said the doctor
+         (a real prayer, so name God plainly; leaving "Heaven" is defensible)
+
+The mind:
+C33 ¶25  NOW: Ben Gunn, the half-idiot maroon, was the hero from beginning to end.
+         NEW: Ben Gunn, the poor despised maroon, was the hero from beginning to end.
+         (keeps Stevenson's irony: the man nobody minded saves them all)
+
+Church practice:
+C34 ¶25  NOW: a notable singer in church on Sundays and saints’ days.
+         NEW: a notable singer in church on Sundays.
+
+The black-spot Bible (narrator, not a pirate, calls it a curse):
+C29 ¶37  NOW: who was evidently uneasy at the curse he had brought upon himself
+         NEW: who was evidently uneasy at what he had done
+
+Violence, two details beyond what the story needs (the murders themselves stay):
+C14 ¶24  CUT  NOW: From my place of ambush, I could hear him pant aloud as he struck the blows.
+              NEW: (cut the sentence)
+C33 ¶14  NOW: where he lay dead, but still twitching
+         NEW: where he lay dead
+
+C07 ¶1 "Sometimes the isle was thick with savages" and C15 ¶4 "I began to recall what I had heard of cannibals": a boy's fancies, no people named. LEAVE.
+
+------------------------------------------------------------
+C. NOTE (no change proposed)
+------------------------------------------------------------
+C29 ¶10 onward  The black spot cut from a Bible ("You’ve gone and cut this out of a Bible. What fool’s cut a Bible?"); the pirates take the Bible as a luck charm,
+  Dick prays in panic (C32), Silver jokes him. The book does not side with the superstition: the doctor answers "that comed of sp'iling Bibles" with
+  "of being arrant asses" (C30), Jim calls them "the superstitious" (C32), and the verse on the scrap, "Without are dogs and murderers" (Rev. 22:15),
+  stands as their judgment. Dick "had been well brought up ... and fell among bad companions": a lesson worth keeping.
+C15 ¶22  Ben Gunn's piety: "I’m bound I’ll be good, and I see the way to." Reform by resolve, played for comedy. The book answers it: his pious mother
+  was right, and he spends his thousand pounds in nineteen days (C34). Keep.
+C26 ¶39  Jim: "and I’ll blow your brains out! Dead men don’t bite, you know," I added with a chuckle. The boy gloats, but the next paragraphs punish it:
+  "as conceited as a cock upon a wall", and Hands's dirk pins him to the mast. Keep the fodder.
+C26 ¶22  Hands: "I never seen good come o’ goodness yet." His creed, "them’s my views—amen, so be it", is answered minutes later by his death. Keep.
+C33 ¶15  Silver finishes the dying Merry: "George," said he, "I reckon I settled you." Shows what Silver is, at the moment he is trying to look loyal. Keep.
+C34 ¶26  "his chances of comfort in another world are very small." Plain about the end of the unrepentant; not against the Standards. Keep.
+
+------------------------------------------------------------
+D. LEAVE
+------------------------------------------------------------
+- Pirate oaths that do not name God: "by thunder", "by the powers", "shiver my timbers", "split my sides", "dash my buttons", "Davy Jones",
+  "Hang it", "blessed" as a sailor's by-word, "I'll raise Cain". Oaths reported but not voiced ("a villainous, low oath", "with an oath that I leave out");
+  C32 ¶12 "It’s Flint, by ——!" is already blanked.
+- "God save the king!", "King George (God bless him!)", "God defend the right", the marooned men's "for God's sake, to be merciful": sincere, not vain.
+- "by George", "French leave", "gay" (merry), "queer to handle", "arrant asses", "I own myself an ass": period speech.
+- Drinking: the rum is the story, and the book is against it. The doctor's "the name of rum for you is death", Arrow drowned drunk, Flint
+  "died of rum at Savannah", Jim refusing Silver's cognac (C28). The cabin party's wine and brandy grog are period, unglamorous.
+- Violence that carries the plot: Tom's murder, Pew under the horses, the stockade fight, Hands's fall. The squire's "like stamping on a cockroach"
+  (C06 ¶13) is his bluster; Dance himself is uneasy about the death. The captain's "as well without that extra mouth" (C18 ¶27) shows his hard sense.
+  The marooning, "a cruel sort of kindness" (C34 ¶16), is weighed honestly.
+- Scripture used rightly: "go to your own place, like the man in the Bible" (C02 ¶45, Acts 1:25); "gone where the wicked cease from troubling"
+  (C07 ¶26, Job 3:17); "hang about your neck like millstones" (C33 ¶37); "you can kill the body ... but not the spirit" (C26 ¶5).
+  "you can't touch pitch and not be mucked" (C10 ¶24) is a proverb (from Ecclesiasticus), not given as Scripture.
+- The parrot "swearing blue fire" (C10): told, not quoted.
+- Jokes about wives ("his own married wife", C10 ¶25; the bachelors in C07 after the change): mild, period.
+
+STRENGTHS: Providence named ("all the gifts of Providence", "God defend the right", Jim "recommended my spirit to its Maker"); Jim's call to Hands,
+"go to my prayers like a Christian man ... For God's mercy, Mr. Hands"; keeping one's word at cost; confessing folly; the doctor caring for his enemies
+as patients and offering to go to the fevered mutineers; drink and greed shown as ruin; "Drink and the devil had done for the rest".

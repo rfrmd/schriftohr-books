@@ -1,0 +1,198 @@
+THE SWISS FAMILY ROBINSON (Wyss), CHAPTERS C01 TO C09
+Content review, 2026-11-03. Read in full. Nothing has been changed.
+Line numbers refer to swiss-a.txt. Every CURRENT text is copied from the file and is unique in its chapter.
+
+SOFTEN  change a few words so the story stays and the problem goes
+CUT     remove a sentence that can go with nothing lost
+NOTE    leave the text, and say a word about it in About This Edition
+LEAVE   fine in context
+
+------------------------------------------------------------
+SUMMARY
+------------------------------------------------------------
+30 SOFTEN (3 of them optional), 0 CUT, 3 NOTE, and a LEAVE list at the end.
+  Teaching against the Standards   8 SOFTEN
+  "Savages", "negroes", "Hottentots", "American Indians"   16 SOFTEN (one of them shared with the onager item)
+  Minced oaths                     3 SOFTEN (1 optional)
+  Cruelty to animals               3 SOFTEN (2 optional)
+  Other                            3 NOTE
+
+The strongest items:
+1. C04 The father's Sunday parable. Pardon comes with no Saviour, and the promise goes to all who "molded their future lives to the will of the Great King". As it stands it is salvation by amendment of life. Proposal: the King's Son bears the rebels' punishment, and the reshaped life comes as thankfulness. (WCF 8.5, 11.1, 16.2; WSC 33)
+2. C04 and C06 The Lord's Day. The father openly allows "any innocent recreation they choose" (C04), and on a later Sunday evening he calls for running, wrestling and climbing (C06). Like the Sunday sledding cut from Shenanigans, his blessing goes. In C04 three small edits move the afternoon's crafts to Monday. (WCF 21.8; WSC 60)
+3. C01 "You know God helps those that help themselves!" The first lesson the father gives at the wreck. Proposal: "Let us trust in God and do our part!" (WCF 5.3)
+4. C08 The onager is tamed by biting her ear through, "a plan which, though cruel," and credited to "the American Indians". This is cruelty beyond the story's needs, with a people blamed for it. Proposal: he holds the ear fast and speaks to her steadily (the horseman's hold), and the result stays the same.
+5. "Savages" about 14 times, plus "the negroes" (C02) and "the Hottentots" four times (C07, C09). Mostly the boys' fear of an attack. The fear stays; the race word goes ("strangers", "unfriendly men", "raiders"; "the herdsmen of southern Africa").
+Also: C02 "Nature provides for all things" becomes "God provides"; C06 the father's white lie to his wife about the explosion, after he told Fritz in C01 "stick to the truth in jest and earnest".
+
+------------------------------------------------------------
+TEACHING A REFORMED PARENT WOULD WANT HANDLED
+------------------------------------------------------------
+C01 (line 31)  Providence and means
+  CURRENT   You know God helps those that help themselves!
+  SOFTEN    Let us trust in God and do our part!
+  WCF 5.3 (God works through means, yet is free to work without them). The old proverb makes God's help wait on our effort. Same fix as "Heaven helps them that help themselves" in Green Tent.
+
+C01 (line 137)  Scripture wording (Proverbs 12:10, King James)
+  CURRENT   remember, the merciful man regardeth the life of his beast.
+  SOFTEN    remember, a righteous man regardeth the life of his beast.
+
+C02 (line 315)  Providence called Nature
+  CURRENT   “Nature provides for all things,” I answered
+  SOFTEN    “God provides for all things,” I answered
+  WCF 5.1. The rest of the lesson on the coconut stays.
+
+C03 (line 837)  God's ways, and beasts of prey
+  CURRENT   many of the ways of the Infinite and Eternal Mind are incomprehensible
+  SOFTEN    many of the ways of God are past finding out
+  CURRENT   That animals should prey upon one another is a means of preserving a due balance in the world of nature,
+  SOFTEN    Since man’s fall the whole creation groans, and beasts prey upon one another; yet God makes even this a means of preserving a due balance in the world of nature,
+  WCF 5.1, 6.1; Romans 8:20-22, 11:33. Otherwise the answer is sound: what reason cannot grasp, trust to God's wisdom, and rest on the Rock that is higher than we (Psalm 61:2). The first change takes out a philosopher's name for God. The second puts the Fall where the father only gives Nature's balance. Your call on the second.
+
+C04 (line 999)  The parable: pardon without a Saviour, and heaven promised for a reformed life
+  CURRENT   A message of pardon—of free forgiveness—was nevertheless accorded to these rebels; and to all who, humbly accepting it, molded their future lives to the will of the Great King (now revealed in a character even more gracious than before), was held out the promise of removal at last
+  SOFTEN    A message of pardon—of free forgiveness—was nevertheless accorded to these rebels, for the King’s own Son came among them and bore the punishment of their rebellion; and to all who humbly accepted it, and in thankfulness learned to mold their lives to the will of the Great King (now revealed in a character even more gracious than before), was held out the promise of removal at last
+  WCF 8.5, 11.1, 16.2; WSC 33. "Accepting" can stay (WCF 14.2: "accepting, receiving, and resting upon Christ alone"). The rest of the parable (creation, the Fall and the curse, glory) is good. The dashes are Wyss's own; none are added.
+
+C04 (lines 987, 1003, 1043)  The Lord's Day: the father permits recreation, and the afternoon is spent making arrows, shooting birds and fitting armour
+  WCF 21.8; WSC 60: rest "even from such worldly employments and recreations as are lawful on other days".
+  Recommended: three edits, so the Sunday stays worship and rest and the crafts move to Monday. Nothing in the story is lost. The place-naming dinner, the arrows, Ernest's ortolans and Turk's armour all still happen, a day later, and "Next morning, I proposed an expedition" (line 1045) still follows.
+  CURRENT   we cannot keep them quiet the whole day; afterward, therefore, I shall allow them to pursue any innocent recreation they choose, and in the cool of the evening we will take a walk.
+  SOFTEN    it will not be easy to keep them quiet the whole day; we will therefore keep them about us, and in the cool of the evening we will take a walk.
+  CURRENT   After a thoughtful pause, we separated, and each employed himself as he felt disposed.
+  SOFTEN    After a thoughtful pause, we passed the rest of the day quietly together, and in the cool of the evening walked among the sweet glades near our abode. Next morning each employed himself as he felt disposed.
+  CURRENT   and after a pleasant walk among the sweet glades near our abode, we closed our Sabbath day with prayer
+  SOFTEN    and we closed the day with prayer
+  Lighter alternative: make only the first edit, and NOTE the afternoon. But then the text has him asking for quiet and the boys at their crafts anyway.
+  "Quiet recreation" in the chapter heading (line 961) can stay as it is.
+
+C06 (line 1515)  The Lord's Day evening given to athletics; courage from one's own body
+  CURRENT   In the evening I desired the boys to let me see their dexterity in athletic exercises
+  SOFTEN    Next day I desired the boys to let me see their dexterity in athletic exercises
+  ("On the following day" in the next paragraph still reads right.)
+  CURRENT   No man can be really courageous and self-reliant without an inward consciousness of physical power and capability.
+  SOFTEN    A man who has trained his strength is the better able to meet danger, while he looks to God to make him brave.
+  WCF 21.8 for the first. The second is optional. It turns courage from a feeling of one's own power into strength used under God (Joshua 1:9).
+
+C06 (line 1467)  The father's white lie to his wife
+  CURRENT   “Not at all unlikely,” replied I quietly; “we had a fire below when we were caulking the seams of the pinnace. I shall go off at once
+  SOFTEN    “We shall soon know,” replied I quietly; “I shall go off at once
+  WSC 77. In C01 he told Fritz "I cannot approve of deceit, even as a joke". The surprise for the boys stays (he says nothing, which is not lying), and he still whispers the truth to her before he goes.
+
+------------------------------------------------------------
+RACIAL AND ETHNIC TERMS
+------------------------------------------------------------
+"Savages" is the family's word for any people who might live there and wish them harm. The fear stays in the story; only the word changes.
+
+C02 (line 291)
+  CURRENT   “or any savages that may be here.
+  SOFTEN    “or any unfriendly people who may be here.
+C02 (line 325)
+  CURRENT   “The savages,” I remarked, “are said to form these things most ingeniously
+  SOFTEN    “The people of these warm countries,” I remarked, “are said to form these things most ingeniously
+C02 (line 343)
+  CURRENT   “which the negroes adopt, as I have learned from reading books of travel.”
+  SOFTEN    “which is used in Africa, as I have learned from reading books of travel.”
+C03 (line 657)
+  CURRENT   always having the fear of savages before his eyes
+  SOFTEN    always fearing that strangers might be about
+C04 (line 1045)
+  CURRENT   looked like a couple of young savages.
+  SOFTEN    looked like a couple of young hunters from the wilds.
+C04 (line 1079)
+  CURRENT   “As the savages do,” replied he;
+  SOFTEN    “As I have read that hunters do,” replied he;
+C06 (line 1479)
+  CURRENT   about savages, fleets of canoes, attack, defense, and final annihilation of the invaders.
+  SOFTEN    about pirates, fleets of enemy boats, attack, defense, and the final rout of the invaders.
+C07 (line 1679)
+  CURRENT   reminded us of the possible presence of savages.
+  SOFTEN    reminded us that other men might be near.
+C07 (line 1733)
+  CURRENT   While moist, the savages were in the habit of drawing rude figures
+  SOFTEN    While moist, the makers were in the habit of drawing simple figures
+C07 (line 1763)  "Hottentot" is now a slur for the Khoikhoi people
+  CURRENT   that is due to the Hottentots.
+  SOFTEN    that is due to the herdsmen of southern Africa.
+C07 (line 1777)
+  CURRENT   the attack of even savages, should they appear.
+  SOFTEN    the attack of even hostile men, should they appear.
+C09 (line 2073)
+  CURRENT   wild beasts or savages should they approach
+  SOFTEN    wild beasts or unfriendly strangers should they approach
+C09 (line 2213)
+  CURRENT   like the fighting bulls of the Hottentots?
+  SOFTEN    like the fighting bulls of the herdsmen in southern Africa?
+C09 (line 2217)
+  CURRENT   as regards the race of Hottentots who inhabit the south of Africa,
+  SOFTEN    as regards the herdsmen who inhabit the south of Africa,
+C09 (line 2225)
+  CURRENT   when Hottentot tribes made war on one another,
+  SOFTEN    when the tribes there made war on one another,
+C09 (line 2417)
+  CURRENT   hordes of savages who would soon come
+  SOFTEN    bands of raiders who would soon come
+(The C08 "American Indians" item is under ANIMALS.)
+
+------------------------------------------------------------
+THIRD COMMANDMENT
+------------------------------------------------------------
+C05 (line 1273)
+  CURRENT   For Heaven’s sake be careful!
+  SOFTEN    Do be careful!
+C06 (line 1489)
+  CURRENT   I should have run away with Franz—Heaven knows where!
+  SOFTEN    I should have run away with Franz—I hardly know where!
+C09 (line 2415)  optional; a prayer used as an exclamation
+  CURRENT   but mercy on us! what a confusion the place was in!
+  SOFTEN    but what a sight! what a confusion the place was in!
+No Gosh, Gee, darned, heck, Good Lord or Thank heaven anywhere in C01-C09. "Thank God" (C02, C03) is real thanks. LEAVE.
+
+------------------------------------------------------------
+ANIMALS
+------------------------------------------------------------
+C08 (line 1989)  The onager tamed by biting her ear through, with the cruelty credited to a people
+  CURRENT   I resolved to adopt a plan which, though cruel, was I knew attended with wonderful success by the American Indians, by whom it is practiced. Watching a favorable opportunity, I sprang upon the onager’s back, and seizing her long ear in my teeth, in spite of her kicking and plunging, bit it through.
+  SOFTEN    I resolved to try a horseman’s plan of which I had read. Watching a favorable opportunity, I sprang upon the onager’s back, and seizing her long ear firmly in my hand, in spite of her kicking and plunging, held it fast and spoke to her steadily.
+  The next sentence ("The result was marvelous ... stood stock still") stays as it is.
+C03 (line 707)  optional; Ernest kills gulls with his ramrod for no need
+  CURRENT   striking right and left he speedily killed several, while most of the others took to flight.
+  SOFTEN    striking right and left he speedily drove them back, and most of them took to flight.
+C07 (line 1855)  optional; the dogs kill the jackal cubs and the father is glad
+  CURRENT   I did not much regret this, however, for I firmly believe that, had he saved them,
+  SOFTEN    I was sorry for it, though I own that, had he saved them,
+
+------------------------------------------------------------
+NOTE
+------------------------------------------------------------
+C01 (line 121)  The mother persuaded into a midshipman's suit for the voyage ashore (Deuteronomy 22:5). It is plainly for safety, and she blushes. NOTE, or LEAVE. Your call.
+C08 (line 1953)  Juno's extra puppies "disappeared in that mysterious way". Put discreetly, as in period practice. NOTE or LEAVE.
+Luck words throughout ("better luck next time" C01, "our good fortune" C03 C05 C09, "lucky shot" C03, "a lucky day" C04, "by a lucky chance" C09). These are idioms, not teaching. Against them stand "providentially led" (C03) and "trust in Providence" (C01). One NOTE at most.
+
+------------------------------------------------------------
+LEAVE (sound, or fine in context)
+------------------------------------------------------------
+Piety, sound and worth keeping:
+- C01 "if the Lord will, he can save us ... if not, let us calmly yield our lives into his hand"; family prayer at the wreck, on landing and every night.
+- C01 Fritz: "we must not settle what God is to do for us. We must have patience and wait his time", and the father corrects his harsh tone. This is also the corrective for "the Lord will hear our prayer! He will help us" (line 23).
+- C01 "God will never do so. He has not forsaken us, and we will trust him still."
+- C01 "never strike an enemy in a revengeful spirit"; C01 "stick to the truth in jest and earnest"; C01 Fritz asks pardon for beating the dogs.
+- C02 "we should not return evil for evil", about the sailors who deserted them; C02 morning prayer, "the God to whom we owe all things"; C02 the mother: "If it be the will of God ... let us be content".
+- C03 "providentially led"; "thank God we were delivered"; the boys' evening hymn; "food for our wants is thus provided day by day".
+- C04 Sabbath morning worship, hymns, Scripture read (the Bible from the magic bag, "the Bread of Life"); "We can worship here as well as at home" (WCF 21.6). Franz's grace "for Jesus Christ’s sake", and Fritz and the father on thankfulness shown by obedience and "Give me grace to do Thy will" (Heidelberg, Part III).
+- C04 Jack rebuked for mocking Franz; Fritz overcomes envy; "a youth of manly character will not depend for happiness on mere excitement".
+- C06 "true, genuine happiness consists in that, rather than in mere self-gratification"; "brave to do what is good and right, and to hate evil"; "thank God if their fighting powers ... were never put to the test"; the liane rouge, "one of God’s good gifts to man".
+- C07 "each Sunday and its accompanying rest ... especially thanked God"; Jack checked for boasting.
+- C09 the anniversary: "gratitude to the gracious God, who had then granted us deliverance, and ever since had loaded us with benefits"; Psalms read, "the Lord our Deliverer"; the Sundays marked in the almanac.
+Animals, within survival and the story's needs:
+- C01 Jack hits the lobster and is rebuked. C02 Turk kills the mother monkey and the orphan is reared. The jackal fight, the shark, Ernest's penguin ("almost ashamed to kill it"). C03 the porcupine and the margay. C05 the turtle killed, and Jack clubs the penguins, which the father regrets. C06 the iguana killed "without pain", and "a great dislike to killing any creature and leaving it useless". C07 the grouse shot, and Fritz blamed for "a sad and needless tragedy". The buffalo's nose pierced ("some repugnance ... necessity"). The eagle tears the parrot. C08 the bees smoked out. C09 the fish and seals taken for use, and turtles kept on a tether.
+- C07 Fritz stupefies the eagle with pipe smoke, and C08 the father smokes out the bees. These are tools, not habits ("the dirty, ridiculous habit of snuffing" is refused in C05).
+Other:
+- C02 and C05 wine: the father warns about drink and blames himself for giving the boys strong wine (C05). A lesson; keep it.
+- C01 the sailors' "strange and often ludicrous vows"; C03 the "journey to the Promised Land"; "There are bad angels as well as good ones".
+- C02 "it is woman’s duty and nature, you know, to see after trifles" (the mother of herself, playful).
+- C04 Franz "like an innocent little Cupid" (a picture, not worship); "orthodox ghost fashion".
+- C06 "as if by magic", "the fairy tale of the wishing-cap"; C09 "as by a magician’s wand", "avenging dragons ... a foul, malignant fiend". Figures of speech.
+- Peoples named plainly, without mockery: Arabs, Tartars, Nomads (C03); Mexicans and Patagonians (C06); "the Indians" of South America and the giant cane (C07); "the natives" (C07); Palm Islanders, the Chinese and ginseng (C09). Plant names: Indian fig, Indian pea, Indian corn, West Indian.
+- C05 the boys slip away without leave, and the mother is to reprove them. C06 the surprise salute, forgiven. C09 the dawn cannon, apologised for at once.
+- C09 the Thanksgiving Day sports. Not stated to be a Sunday; the morning goes to Psalms and praise.

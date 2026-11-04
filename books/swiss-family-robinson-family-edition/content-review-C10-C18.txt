@@ -1,0 +1,250 @@
+THE SWISS FAMILY ROBINSON (Wyss), CHAPTERS 10 TO 18 (the end)
+Content review, 2026-11-03. Read in full (C10 to C18, about 2,500 lines). Nothing has been changed.
+Line numbers refer to swiss-b.txt. Every CURRENT text below is copied from the file and was checked to occur there.
+
+------------------------------------------------------------
+SUMMARY
+------------------------------------------------------------
+Counts: 25 SOFTEN (7 of them marked optional), plus 1 probable typo, 0 CUT, 4 NOTE, about 40 LEAVE.
+  Race and ethnic terms: 17 SOFTEN (3 optional; 9 of them in C17, most in the canoe scene)
+  Minced oaths: 3 SOFTEN (2 "Thank Heaven", 1 optional)
+  Theology and Scripture: 3 SOFTEN (1 optional), plus 1 probable typo
+  Animals: 2 optional SOFTEN, 1 NOTE
+
+Strongest items:
+1. C17, the canoe scene (lines 2132 to 2164): Fritz, his face stained dark, is taken for "a tall and muscular
+   savage", "the swarthy native", "a tribe of blacks"; Jack shouts "you black son of a gun"; the family asks why he
+   "turned blackamoor", and washing off the stain turns him "once more into a civilized being". The scene works
+   without any of it. About ten small changes, and the chapter heading.
+2. "Hottentot" twice (C13 line 1130, C17 line 2106). The word is now taken as a slur. "The herdsmen of the Cape".
+3. "Savages" elsewhere: C10 291, C15 1488 ("a naked savage"), C15 1704, C18 2390.
+4. "Thank Heaven!" twice (C12 1026, C17 2170). The father says "thank God" everywhere else, so "Thank God" is his own voice.
+5. C10 213: constant work "is found to constitute the main element of happiness" (WSC 1). And C16 1774 puts
+   Psalm 90 in David's mouth; the Psalm is "A Prayer of Moses the man of God".
+
+On the theology as a whole: this half is sound. Providence is named as God's hand again and again (976, 1714, 2392,
+2478, 2488); prayer is submission ("Thy will be done", 1524) and thanksgiving (1528), never a lever; the father prays
+alone to "the Almighty Father" (1828); family worship is kept (1050, 1400); his parting charge is "duty toward God"
+and holding "fast to the faith" (2498). Nothing teaches salvation by works, luck in place of Providence, or deism.
+What it lacks is Christ. He is not named once in C10 to C18. That is a lack, not an error, and no rewrite is proposed.
+
+HOW TO READ THE PROPOSALS
+  SOFTEN  change a few words so the story stays and the problem goes
+  CUT     remove a sentence that can go with nothing lost
+  NOTE    leave the text, and say a word about it in About This Edition
+  LEAVE   fine in context
+
+------------------------------------------------------------
+RACE AND ETHNIC TERMS
+------------------------------------------------------------
+C10 line 291 (coral for trade)
+  CURRENT  As such, it is greatly prized by savages, and were we to fall in with natives
+  SOFTEN   As such, it is greatly prized in many lands, and were we to fall in with natives
+
+C10 line 371 (whale gut as cordage)
+  CURRENT  Greenlanders, Esquimaux, and others,
+  SOFTEN (optional)  Greenlanders and other peoples of the far north,
+  "Esquimaux" is a period name some now find unkind; "Greenlanders" already carries the meaning.
+
+C12 line 930 (ostriches seen far off)
+  CURRENT  Can they be wild Arabs of the desert?
+  SOFTEN (optional)  Can they be Arab horsemen of the desert?
+  The reply "Arabs my boy! certainly not" stays, and so does the joke in C13 line 1158 ("the mounted Arabs").
+
+C12 line 960 (ostrich hunting)
+  CURRENT  “Among the Bushmen, the hunter sometimes envelopes himself
+  SOFTEN (optional)  “In the deserts of southern Africa, the hunter sometimes envelopes himself
+  The passage admires the hunter's skill; only the name is dated.
+
+C13 line 1130 (Fritz's line of rags across the Gap)
+  CURRENT  that the Hottentots make use of the method
+  SOFTEN   that the herdsmen of the Cape make use of the method
+
+C15 line 1488 (Fritz's walrus)
+  CURRENT  half expecting to see a naked savage come to claim the prize.
+  SOFTEN   half expecting to see some native hunter come to claim the prize.
+
+C15 line 1704 (guessing what Fritz saw among the mimosas)
+  CURRENT  “Savages?” asked Franz timidly.
+  SOFTEN   “Buffaloes?” asked Franz timidly.
+  He has just come from the Buffalo Swamp; Jack's "Black bears, I bet!" follows naturally.
+
+C17 line 2096 (chapter heading)
+  CURRENT  The unexpected appearance of a savage—Fritz in a dusky disguise
+  SOFTEN   The unexpected appearance of a stranger—Fritz in disguise
+
+C17 line 2106 (the boar's head)
+  CURRENT  baked in Hottentot fashion
+  SOFTEN   baked in the Cape fashion
+
+C17 line 2132 (the canoe; three changes in one paragraph)
+  CURRENT  a canoe paddled by a tall and muscular savage, who now stood up
+  SOFTEN   a canoe paddled by a tall and muscular native, who now stood up
+  CURRENT  the swarthy native seized his paddle
+  SOFTEN   the stranger seized his paddle
+  CURRENT  There must be a tribe of blacks lurking on these shores
+  SOFTEN   There must be a hostile tribe lurking on these shores
+  The father's fear, the guns run out, and the suspense all stay.
+
+C17 line 2134
+  CURRENT  Presently a dusky face appeared, peeping at us from a lofty rock
+  SOFTEN   Presently a face appeared, peeping at us from a lofty rock
+
+C17 line 2138
+  CURRENT  and the savage was about to return to the shore.
+  SOFTEN   and the stranger was about to return to the shore.
+
+C17 line 2142 (Jack at the speaking-trumpet; race and a minced oath together)
+  CURRENT  “Come here, you black son of a gun,” he exclaimed.
+  SOFTEN   “Come here, you rascal,” he exclaimed.
+  The father's rebuke that follows ("you foolish boy ... your wild words") keeps its point.
+
+C17 line 2156
+  CURRENT  recognized the well-known face beneath its dusky disguise.
+  SOFTEN   recognized the well-known face beneath its disguise.
+
+C17 line 2158
+  CURRENT  and why had he turned blackamoor?”
+  SOFTEN   and why had he blackened his face?”
+  The same paragraph already says "his blackened face"; the stain is literal, so the plain word is fair.
+
+C17 line 2164
+  CURRENT  and turning himself once more into a civilized being,
+  SOFTEN   and looking once more like himself,
+  As written, dark skin is the opposite of civilized. This is the line a parent would most want gone.
+
+C18 line 2390 (the captain's greeting)
+  CURRENT  or the abode of the fiercest savages.
+  SOFTEN   or the home of fierce and hostile tribes.
+
+LEAVE (race and peoples): "natives of India, Ceylon" (645), "natives of the African deserts" (954), "natives of India"
+(1178), "natives of the tropical countries" (1678), "the Chinese" (1860); "Malay pirates" (2160, 2268, 2352), a real
+danger of those seas and named as a fear, not a people; "Otaheitian fashion" (858) and "Kamschatchan dwelling" (1664),
+place names; "Indian palanquin-bearers" (487); the snake-charmers (627 to 631).
+
+------------------------------------------------------------
+MINCED OATHS
+------------------------------------------------------------
+C12 line 1026 (the bears)
+  CURRENT  “Thank Heaven!” cried I, as with dull groans
+  SOFTEN   “Thank God!” cried I, as with dull groans
+
+C17 line 2170 (to his wife, of Fritz's success)
+  CURRENT  but now, thank Heaven, he has succeeded,
+  SOFTEN   but now, thank God, he has succeeded,
+
+C17 line 2216 (Fritz and the tiger)
+  CURRENT  doomed to, God only knows how many, years of frightful solitude!
+  SOFTEN (optional)  doomed to, who knows how many, years of frightful solitude!
+  It is true that God alone knows; but it is said as a byword, and the softer form reads the same aloud.
+
+"son of a gun" (2142) is handled above.
+LEAVE: "thank God" (165, 595, 1496, 2490), "God speed and bless you" (1092), "God bless and preserve thee" (1932),
+"Thank God, you have come at last!" (2250); these are prayers and thanks, reverently used. "Hullo", "awfully",
+"I bet", "spit it out", "Help! murder" are period boys' speech.
+
+------------------------------------------------------------
+THEOLOGY AND SCRIPTURE
+------------------------------------------------------------
+C10 line 213 (constant work)
+  CURRENT  is found to constitute the main element of happiness.
+  SOFTEN   is, under the blessing of God, a great part of our happiness in this life.
+  WSC 1: man's chief end is to glorify God and enjoy Him. Work as "the main element of happiness" is the one place
+  the father's good sense slides into a creed of its own. Small change; the teaching on diligence stays.
+
+C16 line 1774 (opening of the ten-years chapter)
+  CURRENT  “We spend our years as a tale that is told,” said King David.
+  SOFTEN   “We spend our years as a tale that is told,” said Moses, the man of God.
+  Psalm 90:9; the Psalm's title is "A Prayer of Moses the man of God". A factual slip, not doctrine, but a family
+  reading the Psalms would notice.
+
+C16 line 1964 (the pet ape)
+  CURRENT  long since gathered to his fathers)
+  SOFTEN (optional)  long since dead and buried)
+  Scripture's phrase for the death of the patriarchs, used as a joke about a monkey. Mild; your call.
+
+C12 line 1088 (probable typo, not a content change)
+  CURRENT  it might be the will of God to deprive them easily of their parents
+  SOFTEN   it might be the will of God to deprive them early of their parents
+  I expect "early" is the author's word; I have not checked it against the source edition. Check before changing.
+  The thought itself (a father preparing his sons for God's providence) is sound. WCF 5.1.
+
+NOTE  The Lord's Day is never named in this half. Daily family worship is (1050 "our accustomed devotions",
+  1400 "evening devotions"), and no Sunday work or play is shown, so nothing teaches against the Fourth Commandment.
+  No change; one line in About This Edition only if you want it for the whole book.
+
+NOTE  Christ is not named in C10 to C18. The piety is Providence, prayer and thanksgiving, all of it sound. No change.
+
+LEAVE (sound, and worth keeping):
+  455  bones of whales and birds show "the wisdom and goodness of the great Creator" (natural revelation, WCF 1.1;
+       it does not replace Scripture)
+  976  "a beneficent Providence scatters plants of wild melons" (Providence feeding the creature, WCF 5.1, Ps 104)
+  1124 "the chief thing of all, is God's goodness in bringing you safe back to us"
+  1250 "In the sweat of thy face shalt thou eat bread" (Gen 3:19)
+  1446 "Thou shalt not muzzle the ox" (Deut 25:4); 1452 "filled with all manner of store" (Ps 144:13)
+  1524 "Thy will be done!" in the storm; 1528 the mother and Franz on their knees, and thanks together after
+  1714 the barrier "which defended, in so providential a manner"
+  1780 to 1784 thanks to God for ten years; a pious, industrious home as the forming of character (upbringing,
+       not salvation; Prov 22:6)
+  1822 "honorable, God-fearing young men"; 1828 he lays his trouble before "the Almighty Father"
+  2364 "We must make what preparations we can, and pray for guidance."
+  2374 "joy and gratitude to the Great Giver of all good" (James 1:17)
+  2392, 2478, 2488 the rescue as Providence: "wonderfully ordered and linked together by Divine Providence"
+       ("fortunate chain of events" beside it is ordinary speech)
+  2472 "The whole earth is the Lord's" (Ps 24:1)
+  2498 the father's charge: duty toward God, temptations, "hold fast to the faith"
+  2506 "patient continuance in well-doing" (Rom 2:7) and "brethren dwell together in unity" (Ps 133:1)
+  Nature personified (189, 253, 902, 2338): poetry, not a rival to God.
+  77, 97, 101 "magic", "incantation": the father's open joke with the aniseed trick, called "mock solemnity". LEAVE.
+  1144 "an enchanted princess": Franz's fancy. LEAVE.
+
+------------------------------------------------------------
+ANIMALS
+------------------------------------------------------------
+NOTE  C10 lines 45 to 67, the apes at Woodlands: birdlime, dogs and clubs, "at least forty apes lay mangled and dead".
+  It protects the farm, and the book's own response is right: "we looked with a shudder", "the boys began to be quite
+  sad". Keep it. One optional softening, where the dogs' attack is dressed up as justice:
+  CURRENT  who now rushed to the attack of the unfortunate monkeys, as though burning with zeal to execute justice upon desperate criminals.
+  SOFTEN (optional)  who now rushed to the attack of the unfortunate monkeys.
+
+C11 line 565, Grizzle and the boa (the father describing it to the boys as it happens)
+  CURRENT  closer and more tightly he curls his crushing folds, the bones give way, he is kneading him into a shapeless mass.
+  SOFTEN (optional)  closer and more tightly he curls his crushing folds.
+  The mother takes Franz indoors (567); this is the most graphic sentence read aloud to small children. The scene,
+  the danger and Ernest's epitaph all stay.
+
+NOTE  C15 lines 1638 to 1646: Fritz poisons the apes at Prospect Hill. Under your misdeed rule, keep it: the story
+  learns from it in his own words, "I wished I had not found the poison", and they bury the dead. The father had
+  planned the same (1166). LEAVE the text.
+
+LEAVE: pigeons by torchlight (25) and the whale, seals, herring, peccaries, bears, boar (food and stores); the
+condor and vulture shot at the bears' den (1056); the dogs on the ostrich, with "This sight grieved us" (968);
+the hyena, lion and lioness (in defence of flock and family); the turtle "condemned and executed" (465, a joke);
+Jack's matches in the bees' nest, which he pays for (1144); the albatross struck and then nursed back (1894, 1908);
+the traps "made that they should kill the rats at once, for I could not bear the idea of animals being tortured"
+(1290), a good lesson in itself.
+
+------------------------------------------------------------
+OTHER THINGS CHECKED, ALL LEAVE
+------------------------------------------------------------
+- Jenny Montrose in a midshipman's dress (2174 to 2276): the secret is kept with care, she sleeps aboard or in
+  her bower apart from Fritz, and the engagement waits on her father's consent (2500). Wholesome.
+- "the generality of her sex" (2252), "accomplishments suited to her sex" (2260): period, and the passage praises her.
+- "Fritz and Jack stripped" (343) and canvas trousers only (365) for the whale work: plain and unremarkable.
+- Wine and mead at table (2186, 2304, 2448): temperate.
+- "NO ADMITTANCE FOR ASSES." (684): the old word for a donkey, and a joke on fools. LEAVE.
+- Fritz lets the brothers think the spare seat is for one of them (1936), and the father covers his absence
+  (2088, "he had a fancy to explore more of the coast", which is partly true). A kept surprise, soon told. LEAVE,
+  or NOTE if you want the father's words exact.
+- "Fit abode for demons" (916) and "like demons" (1634): boys' exaggeration.
+
+------------------------------------------------------------
+PROOFREADING ASIDES (not content; noticed while reading, not verified against the source)
+------------------------------------------------------------
+- 2104 Juno's epitaph has lost its line breaks: "JUNO,A servant true lies here;A faithful friend,A Dog,To all most dear;Who met her endFighting".
+- 876 "ravensara" and 1072 "rascusara" name the same tree.
+- 1748 "Ladies and Gentleman" (Gentlemen).
+- 1772 heading "The strange message—- An excursion" (stray hyphen).
+- 49 "They saw innumerable" (probably "They seemed innumerable").
+- 790 "webb feet".
+- 1088 "easily" for "early" (above).
