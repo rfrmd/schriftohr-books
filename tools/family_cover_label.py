@@ -27,10 +27,12 @@ BOX = {
     'mystery-of-the-secret-band':    ((388, 804, 684, 835), BD, 18),
     'green-tent-mystery':            ((364, 1439, 712, 1485), BI, 18),
     'mystery-at-dark-cedars':        ((384, 628, 692, 660), BD, 18),
+    'swiss-family-robinson':         ((398, 738, 738, 778), BI, 18),
+    'swiss-subtitle':                ((190, 496, 892, 538), BI, 18),
 }
 
 # how much wider than the old words the new may stand before they meet the cover's ornaments
-ROOM = {'shenanigans-at-sugar-creek': 1.03, 'north-woods-manhunt': 1.2, 'watermelon-mystery': 1.2,
+ROOM = {'swiss-family-robinson': 1.12, 'shenanigans-at-sugar-creek': 1.03, 'north-woods-manhunt': 1.2, 'watermelon-mystery': 1.2,
         'mystery-of-the-secret-band': 1.12, 'green-tent-mystery': 1.15, 'mystery-at-dark-cedars': 1.02,
         'sugar-creek-digs-for-treasure': 1.02}
 
@@ -78,6 +80,9 @@ def main():
     text = 'SchriftOhr Family Edition'
     probe = ImageFont.truetype(face, 100, index=idx)
     size = 100 * (wx2 - wx1) * ROOM.get(book, 1.05) / probe.getlength(text)
+    if book == 'swiss-subtitle':   # the cover's own line under the title, kept at its size
+        text = 'Based on the Beloved Classic by'
+        size = 100 * (wx2 - wx1) / probe.getlength('A Translation from the Original German by Wyss')
     f = ImageFont.truetype(face, round(size * S), index=idx)
     H, W = im.shape[:2]
     x = ((wx1 + wx2) / 2) * S - f.getlength(text) / 2
