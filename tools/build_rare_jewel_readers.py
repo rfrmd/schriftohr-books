@@ -18,12 +18,14 @@ import sys, os, re, html, json, shutil, subprocess, uuid, zipfile, pathlib, date
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from edition_parts import cover_xhtml, proofing_xhtml, PROOFING_CSS, SCRIPT_CSS
 
-REVISION = 2
-BUILD = "2026-11-06.1"
+REVISION = 3
+BUILD = "2026-11-06.3"
 T = "The Rare Jewel of Christian Contentment"
 AUTHOR = "Jeremiah Burroughs"
 POLICY = pathlib.Path("/Volumes/data/Developer/schriftohr-editions-working/books/03-burroughs-rare-jewel/readers-version/policy")
 PARA = POLICY.parent / "para"   # the paragraphed stage: same words, breaks and sub-heads added
+OUTLINE = POLICY.parent / "outline"   # the numbering stage: his points numbered in the text; built from where it exists
+MARK = re.compile(r"^(\d+\.|\(\d+\)|\([a-z]\)) ")
 DONOR = pathlib.Path("/Volumes/data/Developer/schriftohr-books/books/rare-jewel-of-christian-contentment/Burroughs_Jeremiah-SchriftOhr_Edition-Rare_Jewel_of_Christian_Contentment.epub")
 NAME = f"Burroughs_Jeremiah-SchriftOhr_Edition-Rare_Jewel_of_Christian_Contentment-Readers_Version-proof-r{REVISION}.epub"
 
@@ -86,6 +88,13 @@ def render(text, verse_after_title=True):
             out.append('<p class="finis">FINIS.</p>'); continue
         if re.match(r"^[A-Z][a-z]{2,4}\. \d{1,2}, 16\d\d\.$", p):
             out.append(f'<p class="date">{E(p)}</p>'); continue
+        lines = p.split("\n")
+        if len(lines) > 1 and all(MARK.match(l) for l in lines):
+            out.append('<ul class="plain">' + "".join(f"<li>{inline(l)}</li>" for l in lines) + "</ul>"); continue
+        if re.match(r"^\d+\. ", p):
+            out.append(f'<p class="point">{inline(p)}</p>'); continue
+        if re.match(r"^\([0-9a-z]+\) ", p):
+            out.append(f'<p class="sub">{inline(p)}</p>'); continue
         out.append(f"<p>{inline(p)}</p>")
     close_list()
     return title, "\n".join(out)
@@ -117,7 +126,11 @@ def main():
         ".finis,.date{text-indent:0;text-align:center;margin-top:1.6em}\n"
         "h3.words,h3.notes{margin-top:2.4em}\n"
         "ul.words,ul.notes{list-style:none;padding:0;margin:0 0 1.5em;font-size:.93em}\n"
-        "ul.words li,ul.notes li{margin:.35em 0;text-indent:0}\n")
+        "ul.words li,ul.notes li{margin:.35em 0;text-indent:0}\n"
+        "p.point{text-indent:0;margin-top:1.2em}\n"
+        "p.sub{text-indent:0;margin-left:1.2em}\n"
+        "ul.plain{list-style:none;padding:0;margin:.6em 0 1em 1.2em}\n"
+        "ul.plain li{text-indent:0;margin:.25em 0}\n")
     files = [("cover.xhtml", "Cover")]
     # the proofing page, with this book's own "deliberate" note
     deliberate = ("Three things are deliberate, and are not errors. Words in square brackets are the "
@@ -144,7 +157,7 @@ def main():
         "Burroughs’s sermons are given whole, every point, example and image in his order, but the language has been brought up to date with care: the older grammar is changed to its modern form, the long sentences of the pulpit are divided, and words no longer in use are given in plain English. Nothing is abridged, summarised or added to what he teaches.</p>\n"
         "<p>Where a word of his carries weight in the argument, or is a term the Reformed churches still use, it is kept, and explained once in each sermon in square brackets; everything in square brackets is the editor’s. The words so explained are listed again at the end of the sermon under Words in this sermon.</p>\n"
         "<p>Where Burroughs quotes Scripture, the words of the King James Bible are given, with the reference. Where he gives a verse in his own words, or builds his argument on his own wording, his words stand, unquoted, with the reference beside them. Where his reference or attribution was mistaken it is put right, and every such correction is recorded under Notes on the text at the end of the sermon; nothing is corrected silently.</p>\n"
-        "<p>Each sermon opens with a short note on the time it was preached, the autumn of 1645, in the civil war, and what the names in it meant then. His long paragraphs are divided at his own turns of thought, and his numbered heads are set as headings, so that the outline of each sermon can be followed on the page; not a word is changed by it.</p>\n"
+        "<p>Each sermon opens with a short note on the time it was preached, the autumn of 1645, in the civil war, and what the names in it meant then. His long paragraphs are divided at his own turns of thought, his heads are set as headings in his own words, and his points are numbered in the text, 1, 2, 3 for the main points, (1), (2), (3) beneath them and (a), (b) beneath those, so that the outline of each sermon can be followed on the page and heard by the ear; the bare ordinal word goes where the numeral replaces it, and not a word of his is otherwise changed by it.</p>\n"
         "<p>The Greek and Hebrew Burroughs quotes are set as he quoted them, with how each sounds in brackets after it, so the word can be read aloud by anyone.</p>\n"
         "<p>The volume of 1649 carried a second work after the Rare Jewel: a sermon on Exodus 14:13, <i>The Saints’ Duty in Times of Extremity</i>. It is kept here, where its printer put it, and given the same way.</p>\n"
         "<p>The Classic Version, Burroughs’s own words in modern spelling, is published beside this one for any reader who wants him unmediated.</p>", "frontmatter"), encoding="utf-8")
@@ -152,7 +165,10 @@ def main():
     manifest = json.loads((POLICY / "manifest.json").read_text())
     for sec in manifest["sections"]:
         fn = sec["file"][:-4]
-        text = (PARA / sec["file"]).read_text(encoding="utf-8")
+        src = OUTLINE / sec["file"]
+        if not src.exists():
+            src = PARA / sec["file"]
+        text = src.read_text(encoding="utf-8")
         title, inner = render(text, verse_after_title=fn.startswith("S"))
         et, bt = ("preface", "frontmatter") if fn == "02-to-the-reader" else ("chapter", "bodymatter")
         (build / f"OEBPS/text/{fn}.xhtml").write_text(page(title, et, "chapter" if et == "chapter" else "preamble", inner, bt), encoding="utf-8")
