@@ -18,8 +18,8 @@ import sys, os, re, html, json, shutil, subprocess, uuid, zipfile, pathlib, date
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from edition_parts import cover_xhtml, proofing_xhtml, PROOFING_CSS, SCRIPT_CSS
 
-REVISION = 4
-BUILD = "2026-11-06.4"
+REVISION = 5
+BUILD = "2026-11-06.5"
 T = "The Rare Jewel of Christian Contentment"
 AUTHOR = "Jeremiah Burroughs"
 POLICY = pathlib.Path("/Volumes/data/Developer/schriftohr-editions-working/books/03-burroughs-rare-jewel/readers-version/policy")
@@ -133,10 +133,9 @@ def main():
         "ul.plain li{text-indent:0;margin:.25em 0}\n")
     files = [("cover.xhtml", "Cover")]
     # the proofing page, with this book's own "deliberate" note
-    deliberate = ("Three things are deliberate, and are not errors. Words in square brackets are the "
-                  "editor's, a short explanation of a word Burroughs uses in an older sense. Each sermon "
-                  "opens with a note on the time it was preached and ends with the words explained and the "
-                  "notes on the text; those are the editor's too. And where Burroughs gives Scripture in his "
+    deliberate = ("Two things are deliberate, and are not errors. Each sermon "
+                  "opens with a note on the time it was preached and ends with a list of words Burroughs uses "
+                  "in an older sense, explained, and the notes on the text; those are the editor's. And where Burroughs gives Scripture in his "
                   "own words, his words stand, with the reference beside them.")
     (build / "OEBPS/text/00-proofing.xhtml").write_text(
         proofing_xhtml(T, AUTHOR, build=f"Readers Version &#183; revision {REVISION} &#183; {BUILD}", deliberate=deliberate)
@@ -155,10 +154,10 @@ def main():
         "<h2>About This Edition</h2>\n"
         f"<p>This is the SchriftOhr edition of <i>{T}</i>, the Readers Version, prepared by RFRMD Word Labs LLC. "
         "Burroughs’s sermons are given whole, every point, example and image in his order, but the language has been brought up to date with care: the older grammar is changed to its modern form, the long sentences of the pulpit are divided, and words no longer in use are given in plain English. Nothing is abridged, summarised or added to what he teaches.</p>\n"
-        "<p>Where a word of his carries weight in the argument, or is a term the Reformed churches still use, it is kept, and explained once in each sermon in square brackets; everything in square brackets is the editor’s. The words so explained are listed again at the end of the sermon under Words in this sermon.</p>\n"
+        "<p>Where a word of his carries weight in the argument, or is a term the Reformed churches still use, it is kept as he wrote it, and explained at the end of the sermon under Words in this sermon.</p>\n"
         "<p>Where Burroughs quotes Scripture, the words of the King James Bible are given, with the reference. Where he gives a verse in his own words, or builds his argument on his own wording, his words stand, unquoted, with the reference beside them. Where his reference or attribution was mistaken it is put right, and every such correction is recorded under Notes on the text at the end of the sermon; nothing is corrected silently.</p>\n"
         "<p>Each sermon opens with a short note on the time it was preached, the autumn of 1645, in the civil war, and what the names in it meant then. His long paragraphs are divided at his own turns of thought, his heads are set as headings in his own words, and his points are numbered in the text, 1, 2, 3 for the main points, (1), (2), (3) beneath them and (a), (b) beneath those, so that the outline of each sermon can be followed on the page and heard by the ear; the bare ordinal word goes where the numeral replaces it, and not a word of his is otherwise changed by it.</p>\n"
-        "<p>The Greek and Hebrew Burroughs quotes are set as he quoted them, with how each sounds in brackets after it, so the word can be read aloud by anyone.</p>\n"
+        "<p>The Greek and Hebrew words Burroughs quotes are given in Latin letters, so they can be read and heard by anyone.</p>\n"
         "<p>The volume of 1649 carried a second work after the Rare Jewel: a sermon on Exodus 14:13, <i>The Saints’ Duty in Times of Extremity</i>. It is kept here, where its printer put it, and given the same way.</p>\n"
         "<p>The Classic Version, Burroughs’s own words in modern spelling, is published beside this one for any reader who wants him unmediated.</p>", "frontmatter"), encoding="utf-8")
     files.append(("01-edition-note.xhtml", "About This Edition"))
@@ -178,7 +177,7 @@ def main():
         "<h2>Sources and Acknowledgements</h2>\n"
         f"<p>Jeremiah Burroughs died in 1646; <i>{T}</i> was printed in 1649 for Peter Cole (Wing B6103; ESTC R32016), and his text has long been in the public domain.</p>\n"
         "<p>Our text descends from the <i>Early English Books Online Text Creation Partnership</i>, whose keyers typed it by hand from images of the 1649 pages. The Partnership has waived every right it holds in that work under the <i>CC0 1.0 Public Domain Dedication</i>. Freely given, and gratefully used. The Readers Version was made from our Classic Version of that text.</p>\n"
-        "<p>Burroughs’s text is in the public domain and remains so; we claim nothing in it. The modernised wording, the brackets, the notes on the time and on the text, the lists of words, the chapter titles and the front and back matter are © RFRMD Word Labs LLC, offered under Creative Commons Attribution–NonCommercial 4.0. The cover is all rights reserved.</p>\n"
+        "<p>Burroughs’s text is in the public domain and remains so; we claim nothing in it. The modernised wording, the notes on the time and on the text, the lists of words, the chapter titles and the front and back matter are © RFRMD Word Labs LLC, offered under Creative Commons Attribution–NonCommercial 4.0. The cover is all rights reserved.</p>\n"
         "<p><i>Soli Deo gloria.</i></p>", "backmatter"), encoding="utf-8")
     files.append(("97-sources.xhtml", "Sources and Acknowledgements"))
     files.append(("98-why.xhtml", "Why We Make These Books"))
