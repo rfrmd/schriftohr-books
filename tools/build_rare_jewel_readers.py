@@ -18,11 +18,12 @@ import sys, os, re, html, json, shutil, subprocess, uuid, zipfile, pathlib, date
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from edition_parts import cover_xhtml, proofing_xhtml, PROOFING_CSS, SCRIPT_CSS
 
-REVISION = 1
-BUILD = "2026-11-05.1"
+REVISION = 2
+BUILD = "2026-11-06.1"
 T = "The Rare Jewel of Christian Contentment"
 AUTHOR = "Jeremiah Burroughs"
 POLICY = pathlib.Path("/Volumes/data/Developer/schriftohr-editions-working/books/03-burroughs-rare-jewel/readers-version/policy")
+PARA = POLICY.parent / "para"   # the paragraphed stage: same words, breaks and sub-heads added
 DONOR = pathlib.Path("/Volumes/data/Developer/schriftohr-books/books/rare-jewel-of-christian-contentment/Burroughs_Jeremiah-SchriftOhr_Edition-Rare_Jewel_of_Christian_Contentment.epub")
 NAME = f"Burroughs_Jeremiah-SchriftOhr_Edition-Rare_Jewel_of_Christian_Contentment-Readers_Version-proof-r{REVISION}.epub"
 
@@ -61,6 +62,9 @@ def render(text, verse_after_title=True):
             out.append(f'<h3 class="{mode}">{E(p[3:])}</h3>')
             out.append(f'<ul class="{mode}">'); list_open = True
             continue
+        if p.startswith("### "):
+            close_list(); mode = "body"
+            out.append(f"<h3>{E(p[4:])}</h3>"); continue
         if p.startswith("# "):
             close_list(); mode = "body"
             out.append(f"<h3>{E(p[2:])}</h3>"); continue
@@ -140,7 +144,7 @@ def main():
         "Burroughs’s sermons are given whole, every point, example and image in his order, but the language has been brought up to date with care: the older grammar is changed to its modern form, the long sentences of the pulpit are divided, and words no longer in use are given in plain English. Nothing is abridged, summarised or added to what he teaches.</p>\n"
         "<p>Where a word of his carries weight in the argument, or is a term the Reformed churches still use, it is kept, and explained once in each sermon in square brackets; everything in square brackets is the editor’s. The words so explained are listed again at the end of the sermon under Words in this sermon.</p>\n"
         "<p>Where Burroughs quotes Scripture, the words of the King James Bible are given, with the reference. Where he gives a verse in his own words, or builds his argument on his own wording, his words stand, unquoted, with the reference beside them. Where his reference or attribution was mistaken it is put right, and every such correction is recorded under Notes on the text at the end of the sermon; nothing is corrected silently.</p>\n"
-        "<p>Each sermon opens with a short note on the time it was preached, the autumn of 1645, in the civil war, and what the names in it meant then.</p>\n"
+        "<p>Each sermon opens with a short note on the time it was preached, the autumn of 1645, in the civil war, and what the names in it meant then. His long paragraphs are divided at his own turns of thought, and his numbered heads are set as headings, so that the outline of each sermon can be followed on the page; not a word is changed by it.</p>\n"
         "<p>The Greek and Hebrew Burroughs quotes are set as he quoted them, with how each sounds in brackets after it, so the word can be read aloud by anyone.</p>\n"
         "<p>The volume of 1649 carried a second work after the Rare Jewel: a sermon on Exodus 14:13, <i>The Saints’ Duty in Times of Extremity</i>. It is kept here, where its printer put it, and given the same way.</p>\n"
         "<p>The Classic Version, Burroughs’s own words in modern spelling, is published beside this one for any reader who wants him unmediated.</p>", "frontmatter"), encoding="utf-8")
@@ -148,7 +152,7 @@ def main():
     manifest = json.loads((POLICY / "manifest.json").read_text())
     for sec in manifest["sections"]:
         fn = sec["file"][:-4]
-        text = (POLICY / sec["file"]).read_text(encoding="utf-8")
+        text = (PARA / sec["file"]).read_text(encoding="utf-8")
         title, inner = render(text, verse_after_title=fn.startswith("S"))
         et, bt = ("preface", "frontmatter") if fn == "02-to-the-reader" else ("chapter", "bodymatter")
         (build / f"OEBPS/text/{fn}.xhtml").write_text(page(title, et, "chapter" if et == "chapter" else "preamble", inner, bt), encoding="utf-8")
