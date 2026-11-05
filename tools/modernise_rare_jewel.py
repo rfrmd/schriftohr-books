@@ -20,7 +20,7 @@ BUILD = '2026-11-02.1'
 SKIP = re.compile(r'<(span|i|b)\b[^>]*class="(?:gk|hb|ph)"[^>]*>.*?</\1>', re.S)
 NOTE_OLD = ('The seventeenth-century spelling stands, save that the long <i>ſ</i> is set as <i>s</i> and words '
             'broken across a line are rejoined.')
-NOTE_NEW = ('The spelling has been brought up to date, so that the book reads easily and sounds rightly when read '
+NOTE_NEW = ('The spelling has been brought up to date, so that the book reads easily and sounds right when read '
             'aloud: waies is ways, injoy is enjoy, yeers is years. Burroughs’s words themselves are kept, hath and '
             'doth and thou among them, and the British spellings stand. Words broken across a line are rejoined.')
 
