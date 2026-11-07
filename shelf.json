@@ -60,23 +60,39 @@
       }
     },
     {
+      "id": "rare-jewel-of-christian-contentment-readers-version",
+      "title": "The Rare Jewel of Christian Contentment: Readers Version",
+      "author": "Jeremiah Burroughs",
+      "blurb": "Contentment, Burroughs says, is learned, which means it can be taught. In these sermons on Philippians 4:11 he shows what true contentment is and is not, and answers one by one the excuses a restless heart makes. This is the Readers Version, prepared so that the same truth about contentment can be read in a more modern presentation. A Classic Version is also available: Burroughs’s own words from the 1649 printing, in modern spelling. We would welcome readers who will read the two side by side and tell us anywhere they part company. Proofing copy: corrections welcome.",
+      "epub": "https://rfrmd.github.io/schriftohr-books/books/rare-jewel-of-christian-contentment-readers-version/Burroughs_Jeremiah-SchriftOhr_Edition-Rare_Jewel_of_Christian_Contentment-Readers_Version.epub",
+      "cover": "https://rfrmd.github.io/schriftohr-books/books/rare-jewel-of-christian-contentment-readers-version/cover.jpg",
+      "source": "EEBO-TCP A30598 (Wing B6103), the 1649 printing, keyed and released CC0; our Classic Version of it",
+      "license": "Text public domain; modernised wording and editorial matter © RFRMD Word Labs LLC",
+      "build": "2026-11-07.3",
+      "sha256": "0eb5ed8ecbd5b6b24a99ad26088f6a2f673a3b74c88bee2f433bd0400b7da65a",
+      "identifiers": [
+        "urn:uuid:664daf55-bd24-5da2-b39f-6da1661dbae6"
+      ]
+    },
+    {
       "id": "rare-jewel-of-christian-contentment",
       "title": "The Rare Jewel of Christian Contentment",
       "author": "Jeremiah Burroughs",
-      "blurb": "Contentment, Burroughs says, is learned, which means it can be taught. In these sermons on Philippians 4:11 he shows what true contentment is and is not, and answers one by one the excuses a restless heart makes. A Puritan classic that speaks as if it were written this week. The Classic Version: Burroughs’s own words, in modern spelling, from the 1649 printing.",
+      "blurb": "Contentment, Burroughs says, is learned, which means it can be taught. In these sermons on Philippians 4:11 he shows what true contentment is and is not, and answers one by one the excuses a restless heart makes. This is the Classic Version: Burroughs’s own words from the 1649 printing, in modern spelling. A Readers Version has also been prepared, so that the same truth about contentment can be read in a more modern presentation.",
       "epub": "https://rfrmd.github.io/schriftohr-books/books/rare-jewel-of-christian-contentment/Burroughs_Jeremiah-SchriftOhr_Edition-Rare_Jewel_of_Christian_Contentment.epub",
       "cover": "https://rfrmd.github.io/schriftohr-books/books/rare-jewel-of-christian-contentment/cover.jpg",
       "source": "EEBO-TCP A30598 (Wing B6103), the 1649 printing, keyed and released CC0",
       "license": "Text public domain; editorial matter © RFRMD Word Labs LLC",
-      "sha256": "cdac96322bb154e5726dfbc753fab66ecd3db618f73c7f534a9e78519d62dbc3",
+      "sha256": "3b02360ba9fa192c17657029396dcbfe42e5a7b1ee46eb0fed1c379193713b90",
       "identifiers": [
         "urn:uuid:e26b733e-dadc-4cb5-b4dc-367132fb8e43",
         "urn:uuid:0a20a90c-e4a9-5fcb-9604-668d740cd837"
       ],
-      "build": "2026-11-04.1",
+      "build": "2026-11-07.1",
       "update": {
         "offer": true
-      }
+      },
+      "listed_with": "rare-jewel-of-christian-contentment-readers-version"
     },
     {
       "id": "glory-of-christ",
