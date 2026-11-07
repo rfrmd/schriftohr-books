@@ -189,7 +189,7 @@ def stamp_proof_cover(src, dst, label='PROOFING COPY', at=0.425, quality=90):
     return out.size
 
 
-def closing_xhtml(title='How These Books Are Made'):
+def closing_xhtml(title='How These Books Are Made', portions=None):
     """The last written page: how an edition is made, and the hope.
 
     ⚠️ John, 2026-08-30: the closing COVER carries why these old books are worth the
@@ -217,10 +217,10 @@ def closing_xhtml(title='How These Books Are Made'):
              'old spellings and forms brought up to date, so the book reads easily and sounds '
              'right when read aloud. A modernised book says what was changed.')
       + '<h3>Reading it in portions</h3>\n'
-      + P % ('We break a book only where the author does. Where he says \u201cI shall do these '
+      + P % (portions or ('We break a book only where the author does. Where he says \u201cI shall do these '
              'three things\u201d, we set a heading there and list it in the contents. Where he '
              'marks nothing, we add nothing, so one chapter may have several headings and the '
-             'next none.')
+             'next none.'))
       + '<h3>Spelling</h3>\n'
       + P % ('Where an author wrote English spelling (<i>Saviour</i>, <i>honour</i>, '
              '<i>labour</i>), we keep it. Where a book is set in American spelling, or has its '
@@ -238,7 +238,7 @@ def closing_xhtml(title='How These Books Are Made'):
       + '</section></body></html>\n')
 
 
-def heard_xhtml(title='This Book Is Made to Be Heard', greek=True, figures=True, refs=True, notes=False):
+def heard_xhtml(title='This Book Is Made to Be Heard', greek=True, figures=True, refs=True, notes=False, latin=False, scan=True):
     """A short note at the FRONT. John, 2026-08-30: the explanation belongs in a
     foreword as well as at the back, so a reader meeting a phonetic gloss on page three
     need not reach the last page to learn why it is there. John, 2026-11-03: it says
@@ -249,6 +249,9 @@ def heard_xhtml(title='This Book Is Made to Be Heard', greek=True, figures=True,
     if greek:
         body += P % ('Every Greek and Hebrew word carries its sound beside it, because a voice '
                      'cannot read those alphabets.')
+    if latin:
+        body += P % ('The Greek and Hebrew words are given in Latin letters, because a voice '
+                     'cannot read those alphabets.')
     if figures:
         body += P % ('Chapters are numbered 1, 2, 3 rather than I, II, III, because a voice '
                      'meeting \u201cChapter II\u201d may say anything at all.')
@@ -258,8 +261,9 @@ def heard_xhtml(title='This Book Is Made to Be Heard', greek=True, figures=True,
     if notes:
         body += P % ('Notes are set apart, where you can tap them, so the voice does not read '
                      'them in the middle of a sentence.')
-    body += P % ('What the scan left behind, page numbers and running heads in the middle of '
-                 'a sentence, is cleared away, so the voice reads only the book.')
+    if scan:
+        body += P % ('What the scan left behind, page numbers and running heads in the middle of '
+                     'a sentence, is cleared away, so the voice reads only the book.')
     return ('<?xml version="1.0" encoding="utf-8"?>\n'
       '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="en-GB" lang="en-GB">\n'
       '<head><title>' + html.escape(title) + '</title><meta charset="utf-8"/>'

@@ -16,7 +16,7 @@ REVISION is bumped for every copy that goes to John and never reused (house rule
 import sys, os, re, html, json, shutil, subprocess, uuid, zipfile, pathlib, datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from edition_parts import cover_xhtml, proofing_xhtml, PROOFING_CSS, SCRIPT_CSS
+from edition_parts import cover_xhtml, proofing_xhtml, heard_xhtml, closing_xhtml, PROOFING_CSS, SCRIPT_CSS
 
 REVISION = 7
 BUILD = "2026-11-06.7"
@@ -27,6 +27,7 @@ PARA = POLICY.parent / "para"   # the paragraphed stage: same words, breaks and 
 OUTLINE = POLICY.parent / "outline"   # the numbering stage: his points numbered in the text; built from where it exists
 MARK = re.compile(r"^(\d+\.|\(\d+\)|\([a-z]\)) ")
 DONOR = pathlib.Path("/Volumes/data/Developer/schriftohr-books/books/rare-jewel-of-christian-contentment/Burroughs_Jeremiah-SchriftOhr_Edition-Rare_Jewel_of_Christian_Contentment.epub")
+COVER = pathlib.Path("/Volumes/data/Developer/schriftohr-editions-working/books/03-burroughs-rare-jewel/artwork/covers-2026-11-05/cover-readers.jpg")
 NAME = f"Burroughs_Jeremiah-SchriftOhr_Edition-Rare_Jewel_of_Christian_Contentment-Readers_Version-proof-r{REVISION}.epub"
 
 E = lambda s: html.escape(s, quote=False)
@@ -116,9 +117,19 @@ def main():
     donor = zipfile.ZipFile(DONOR)
     for f in ("OEBPS/css/style.css", "OEBPS/images/cover.jpg", "OEBPS/images/closing-cover.jpg",
               "OEBPS/images/publisher-mark.png", "OEBPS/images/publisher-mark-dark.png",
-              "OEBPS/text/02-heard.xhtml", "OEBPS/text/98-why.xhtml", "OEBPS/text/99-closing-cover.xhtml",
+              "OEBPS/text/99-closing-cover.xhtml",
               "OEBPS/text/cover.xhtml"):
         (build / f).write_bytes(donor.read(f))
+    # the Readers' own cover (the label says Readers Version), and the house pages said true of this book
+    (build / "OEBPS/images/cover.jpg").write_bytes(COVER.read_bytes())
+    # the closing leaf in the house words for a modern-English text, coloured from the front cover
+    sys.path.insert(0, "/Volumes/data/Developer/schriftohr-editions-working/tools")
+    import make_closing_cover as mcc
+    mcc.build(str(build / "OEBPS/images/closing-cover.jpg"), T, AUTHOR, mcc.palette_from(str(COVER)), paras=mcc.READERS_PARAS)
+    (build / "OEBPS/text/02-heard.xhtml").write_text(heard_xhtml(greek=False, latin=True, refs=True, notes=False, scan=False), encoding="utf-8")
+    (build / "OEBPS/text/98-why.xhtml").write_text(closing_xhtml(portions=(
+        "We break a book only where the author does. Here each sermon is a chapter of its own, listed in the "
+        "contents. Within a sermon his points are numbered in the text, so the voice reads straight on.")), encoding="utf-8")
     (build / "OEBPS/css/style.css").open("a", encoding="utf-8").write(
         "\n/* Readers Version */\n"
         ".headnote{text-indent:0;margin:0 0 1.4em;font-size:.95em;color:#444}\n"
@@ -142,7 +153,7 @@ def main():
         .replace("build Readers Version &amp;#183; revision", "Readers Version &#183; revision").replace("&amp;#183;", "&#183;"), encoding="utf-8")
     files.append(("00-proofing.xhtml", "Proofing Copy"))
     (build / "OEBPS/text/00-title.xhtml").write_text(page(T, "titlepage", "titlepage",
-        f"<h1>{T}</h1>\n<h2>Wherein is shewed the Excellent Temper of a Christian</h2>\n"
+        f"<h1>{T}</h1>\n<h2>Wherein is shown the Excellent Temper of a Christian</h2>\n"
         f"<p><strong>{AUTHOR}</strong></p>\n<p>The SchriftOhr Edition</p>\n<p>Readers Version</p>\n"
         "<p>Developed by RFRMD Word Labs LLC</p>\n"
         "<p>For the benefit of readers, prayerfully, to the glory of God.</p>\n"
@@ -180,7 +191,7 @@ def main():
         "<p>Burroughs’s text is in the public domain and remains so; we claim nothing in it. The modernised wording, the notes on the time and on the text, the lists of words, the chapter titles and the front and back matter are © RFRMD Word Labs LLC, offered under Creative Commons Attribution–NonCommercial 4.0. The cover is all rights reserved.</p>\n"
         "<p><i>Soli Deo gloria.</i></p>", "backmatter"), encoding="utf-8")
     files.append(("97-sources.xhtml", "Sources and Acknowledgements"))
-    files.append(("98-why.xhtml", "Why We Make These Books"))
+    files.append(("98-why.xhtml", "How These Books Are Made"))
     files.append(("99-closing-cover.xhtml", "Closing cover"))
     # contents: our pages at the back, listed; the cover and closing cover not listed
     order = ["00-title", "02-to-the-reader"] + [s["file"][:-4] for s in manifest["sections"] if s["file"] != "02-to-the-reader.txt"] + \
@@ -207,7 +218,7 @@ def main():
     (build / "OEBPS/content.opf").write_text(f'''<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="uid" xml:lang="en-GB">
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <dc:identifier id="uid">urn:uuid:{uuid.uuid5(uuid.NAMESPACE_URL, "schriftohr:rare-jewel-readers:" + BUILD)}</dc:identifier>
+    <dc:identifier id="uid">urn:uuid:{uuid.uuid5(uuid.NAMESPACE_URL, "schriftohr:rare-jewel-readers")}</dc:identifier>
     <dc:title>{T}</dc:title>
     <dc:creator id="author">{AUTHOR}</dc:creator>
     <meta refines="#author" property="role" scheme="marc:relators">aut</meta>
@@ -215,7 +226,7 @@ def main():
     <dc:publisher>SchriftOhr / RFRMD Word Labs LLC</dc:publisher>
     <dc:description>The Readers Version: Burroughs’s sermons on contentment in modern English, whole and in his order, with his weighty words kept and explained; Scripture in the King James Version. Proofing copy, revision {REVISION}.</dc:description>
     <dc:source>EEBO-TCP A30598 (Wing B6103), the 1649 printing, CC0; our Classic Version of it</dc:source>
-    <dc:rights>Burroughs’s text is in the public domain and remains so. We claim nothing in it. The modernised wording, the editor’s brackets and notes, the lists of words, the chapter titles and the front and back matter are © RFRMD Word Labs LLC, offered under Creative Commons Attribution–NonCommercial 4.0. The cover is all rights reserved. SchriftOhr and RFRMD Word Labs are our marks: this edition may be given away freely; it may not be sold, and it may not be sold under our name.</dc:rights>
+    <dc:rights>Burroughs’s text is in the public domain and remains so. We claim nothing in it. The modernised wording, the editor’s notes, the lists of words, the chapter titles and the front and back matter are © RFRMD Word Labs LLC, offered under Creative Commons Attribution–NonCommercial 4.0. The cover is all rights reserved. SchriftOhr and RFRMD Word Labs are our marks: this edition may be given away freely; it may not be sold, and it may not be sold under our name.</dc:rights>
     <dc:date>{BUILD[:10]}</dc:date>
     <meta property="dcterms:modified">{now}</meta>
     <meta name="cover" content="cover-img"/>
