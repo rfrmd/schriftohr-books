@@ -18,8 +18,8 @@ import sys, os, re, html, json, shutil, subprocess, uuid, zipfile, pathlib, date
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from edition_parts import cover_xhtml, proofing_xhtml, heard_xhtml, closing_xhtml, PROOFING_CSS, SCRIPT_CSS
 
-REVISION = 7
-BUILD = "2026-11-06.7"
+REVISION = 8
+BUILD = "2026-11-07.1"
 T = "The Rare Jewel of Christian Contentment"
 AUTHOR = "Jeremiah Burroughs"
 POLICY = pathlib.Path("/Volumes/data/Developer/schriftohr-editions-working/books/03-burroughs-rare-jewel/readers-version/policy")
@@ -165,7 +165,7 @@ def main():
         "<h2>About This Edition</h2>\n"
         f"<p>This is the SchriftOhr edition of <i>{T}</i>, the Readers Version, prepared by RFRMD Word Labs LLC. "
         "Burroughs’s sermons are given whole, every point, example and image in his order, but the language has been brought up to date with care: the older grammar is changed to its modern form, the long sentences of the pulpit are divided, and words no longer in use are given in plain English. Nothing is abridged, summarised or added to what he teaches.</p>\n"
-        "<p>Where a word of his carries weight in the argument, or is a term the Reformed churches still use, it is kept as he wrote it, and explained at the end of the sermon under Words in this sermon.</p>\n"
+        "<p>Where a word of his carries weight in the argument, or is a term the Reformed churches still use, it is kept as he wrote it. Its meaning is given in plain words in the sentence where it first matters, and again at the end of the sermon under Words in this sermon.</p>\n"
         "<p>Where Burroughs quotes Scripture, the words of the King James Bible are given, with the reference. Where he gives a verse in his own words, or builds his argument on his own wording, his words stand, unquoted, with the reference beside them. Where his reference or attribution was mistaken it is put right, and every such correction is recorded under Notes on the text at the end of the sermon; nothing is corrected silently.</p>\n"
         "<p>Each sermon opens with a short note on the time it was preached, the autumn of 1645, in the civil war, and what the names in it meant then. His long paragraphs are divided at his own turns of thought, and his points are numbered in the text, 1, 2, 3 for the main points, (1), (2), (3) beneath them and (a), (b) beneath those, so that the outline of each sermon can be followed on the page and heard by the ear; there are no headings inside a sermon, so the voice reads straight on. The bare ordinal word goes where the numeral replaces it, and not a word of his is otherwise changed by it.</p>\n"
         "<p>The Greek and Hebrew words Burroughs quotes are given in Latin letters, so they can be read and heard by anyone.</p>\n"
