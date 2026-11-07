@@ -131,6 +131,7 @@ def main():
         "We break a book only where the author does. Here each sermon is a chapter of its own, listed in the "
         "contents. Within a sermon his points are numbered in the text, so the voice reads straight on.")), encoding="utf-8")
     (build / "OEBPS/css/style.css").open("a", encoding="utf-8").write(
+        PROOFING_CSS +   # the orange box at two-thirds size, never split across pages (the donor's css predates it)
         "\n/* Readers Version */\n"
         ".headnote{text-indent:0;margin:0 0 1.4em;font-size:.95em;color:#444}\n"
         ".gloss{color:#444}\n"
@@ -150,7 +151,11 @@ def main():
                   "own words, his words stand, with the reference beside them.")
     (build / "OEBPS/text/00-proofing.xhtml").write_text(
         proofing_xhtml(T, AUTHOR, build=f"Readers Version &#183; revision {REVISION} &#183; {BUILD}", deliberate=deliberate)
-        .replace("build Readers Version &amp;#183; revision", "Readers Version &#183; revision").replace("&amp;#183;", "&#183;"), encoding="utf-8")
+        .replace("build Readers Version &amp;#183; revision", "Readers Version &#183; revision").replace("&amp;#183;", "&#183;")
+        # no dashes in reader copy; and the ask this copy is for
+        .replace("It is circulated for reading and correction — please read and enjoy, but rather", "It is circulated for reading and correction. Please read and enjoy it, but rather")
+        .replace("If something reads wrongly — a misprint, a word that sits oddly, a chapter that begins in the wrong place, a heading out of order — note", "If something reads wrongly (a misprint, a word that sits oddly, a chapter that begins in the wrong place, a heading out of order), note")
+        .replace("they are exactly what this copy is for.</p>", "they are exactly what this copy is for.</p>\n<p>We would be especially grateful to readers who will read it beside the Classic Version, Burroughs's own words, and tell us anywhere the two part company in meaning.</p>"), encoding="utf-8")
     files.append(("00-proofing.xhtml", "Proofing Copy"))
     (build / "OEBPS/text/00-title.xhtml").write_text(page(T, "titlepage", "titlepage",
         f"<h1>{T}</h1>\n<h2>Wherein is shown the Excellent Temper of a Christian</h2>\n"
