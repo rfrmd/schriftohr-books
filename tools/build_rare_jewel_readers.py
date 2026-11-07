@@ -18,8 +18,8 @@ import sys, os, re, html, json, shutil, subprocess, uuid, zipfile, pathlib, date
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from edition_parts import cover_xhtml, proofing_xhtml, heard_xhtml, closing_xhtml, PROOFING_CSS, SCRIPT_CSS
 
-REVISION = 8
-BUILD = "2026-11-07.1"
+REVISION = 9
+BUILD = "2026-11-07.2"
 T = "The Rare Jewel of Christian Contentment"
 AUTHOR = "Jeremiah Burroughs"
 POLICY = pathlib.Path("/Volumes/data/Developer/schriftohr-editions-working/books/03-burroughs-rare-jewel/readers-version/policy")
