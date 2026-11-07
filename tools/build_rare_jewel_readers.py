@@ -18,8 +18,8 @@ import sys, os, re, html, json, shutil, subprocess, uuid, zipfile, pathlib, date
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from edition_parts import cover_xhtml, proofing_xhtml, heard_xhtml, closing_xhtml, PROOFING_CSS, SCRIPT_CSS
 
-REVISION = 9
-BUILD = "2026-11-07.2"
+REVISION = 10
+BUILD = "2026-11-07.3"
 T = "The Rare Jewel of Christian Contentment"
 AUTHOR = "Jeremiah Burroughs"
 POLICY = pathlib.Path("/Volumes/data/Developer/schriftohr-editions-working/books/03-burroughs-rare-jewel/readers-version/policy")
@@ -150,7 +150,7 @@ def main():
                   "in an older sense, explained, and the notes on the text; those are the editor's. And where Burroughs gives Scripture in his "
                   "own words, his words stand, with the reference beside them.")
     (build / "OEBPS/text/00-proofing.xhtml").write_text(
-        proofing_xhtml(T, AUTHOR, build=f"Readers Version &#183; revision {REVISION} &#183; {BUILD}", deliberate=deliberate)
+        proofing_xhtml(T, AUTHOR, build=f"Readers Version &#183; revision {REVISION} &#183; build {BUILD}", deliberate=deliberate)
         .replace("build Readers Version &amp;#183; revision", "Readers Version &#183; revision").replace("&amp;#183;", "&#183;")
         # no dashes in reader copy; and the ask this copy is for
         .replace("It is circulated for reading and correction — please read and enjoy, but rather", "It is circulated for reading and correction. Please read and enjoy it, but rather")
